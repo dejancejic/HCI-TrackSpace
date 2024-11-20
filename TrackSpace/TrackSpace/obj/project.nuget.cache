@@ -1,8 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "qk5QSk083zJwDg918V9Yz6i8YaGG+9IqesH5uEXQbjtKbype0M0eqepQc3QqX11YsmDYC+k97RBcPko66QXVAg==",
+  "dgSpecHash": "NuP8iN0DYJ8WdJA3dD/2dRdmbcbF7nvM1NBm0xebrygnVbgKadxriu8xzKvsbeJ5sfw+tVV9ZMIt4GgdbGNc9w==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Dejan\\Documents\\Interakcija covjek racunar\\HCI Projektni zadatak 2\\TrackSpace\\TrackSpace\\TrackSpace.csproj",
-  "expectedPackageFiles": [],
+  "projectFilePath": "C:\\Users\\Dejan\\Documents\\Interakcija covjek racunar\\HCI Projektni zadatak 1\\TrackSpace\\TrackSpace\\TrackSpace.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Dejan\\.nuget\\packages\\materialdesigncolors\\3.1.0\\materialdesigncolors.3.1.0.nupkg.sha512",
+    "C:\\Users\\Dejan\\.nuget\\packages\\materialdesignthemes\\5.1.0\\materialdesignthemes.5.1.0.nupkg.sha512",
+    "C:\\Users\\Dejan\\.nuget\\packages\\microsoft.xaml.behaviors.wpf\\1.1.39\\microsoft.xaml.behaviors.wpf.1.1.39.nupkg.sha512"
+  ],
   "logs": []
 }
