@@ -29,5 +29,8 @@
             <Button Content="Login" Style="{StaticResource MaterialDesignRaisedButton}" Width="100" HorizontalAlignment="Center" Click="LoginButton_Click"/>
         </StackPanel>
         <TextBlock Grid.Row="1" Text="Forgot your password?" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0,0,0,20" Foreground="Gray" Cursor="Hand"/>
+        <Label Name="label" Content="" HorizontalAlignment="Left" Height="127" Margin="47,219,0,0" VerticalAlignment="Top" Width="202" Grid.RowSpan="2"/>
+
+
     </Grid>
 </Window>
