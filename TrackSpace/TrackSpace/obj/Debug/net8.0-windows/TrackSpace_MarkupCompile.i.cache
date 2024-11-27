@@ -10,11 +10,11 @@ none
 false
 TRACE;DEBUG;NET;NET8_0;NETCOREAPP
 C:\Users\Dejan\Documents\Interakcija covjek racunar\HCI Projektni zadatak 1\TrackSpace\TrackSpace\App.xaml
-11407045341
+41573522107
 
-23-22544731
+241073141628
 2231341299105
-MainWindow.xaml;
+Forms\Windows\LoginWindow.xaml;Forms\Windows\ObserverMainPage.xaml;Resources\Dictionary-en.xaml;Resources\Dictionary-sr.xaml;
 
-False
+True
 

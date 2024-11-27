@@ -1,0 +1,12 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:System="clr-namespace:System;assembly=System.Runtime">
+
+    <System:String x:Key="login">Login</System:String>
+    <System:String x:Key="chooseLanguage">Select language:</System:String>
+    <System:String x:Key="username">Username</System:String>
+    <System:String x:Key="password">Password</System:String>
+    <System:String x:Key="continueAsObserver">or continue as Observer</System:String>
+    <System:String x:Key="useAllFeatures">to use all features</System:String>
+    <System:String x:Key="ofApplication">of the application</System:String>
+</ResourceDictionary>

@@ -1,12 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using Microsoft.EntityFrameworkCore;
 using Pomelo.EntityFrameworkCore.MySql.Scaffolding.Internal;
+using TrackSpace.DBUtil;
 
 namespace TrackSpace.Models;
 
 public partial class TrackspaceContext : DbContext
 {
+    private static string connectionString= "server=localhost;database=trackspace;user=root;password=dejan";
+
+    public static string ConnectionString { get { return connectionString; } }
+
     public TrackspaceContext()
     {
     }
@@ -14,6 +20,12 @@ public partial class TrackspaceContext : DbContext
     public TrackspaceContext(DbContextOptions<TrackspaceContext> options)
         : base(options)
     {
+    }
+    public static MyDbContext InitializeDBConnection()
+    {
+        var optionsBuilder = new DbContextOptionsBuilder<MyDbContext>();
+        optionsBuilder.UseMySql(TrackspaceContext.ConnectionString, new MySqlServerVersion(new Version(8, 0, 36)));
+        return new MyDbContext(optionsBuilder.Options);
     }
 
     public virtual DbSet<Category> Categories { get; set; }
@@ -47,8 +59,8 @@ public partial class TrackspaceContext : DbContext
     public virtual DbSet<User> Users { get; set; }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-#warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see https://go.microsoft.com/fwlink/?LinkId=723263.
-        => optionsBuilder.UseMySql("server=localhost;database=trackspace;user=root;password=dejan", Microsoft.EntityFrameworkCore.ServerVersion.Parse("8.0.36-mysql"));
+// To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see https://go.microsoft.com/fwlink/?LinkId=723263.
+        => optionsBuilder.UseMySql(connectionString, Microsoft.EntityFrameworkCore.ServerVersion.Parse("8.0.36-mysql"));
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {

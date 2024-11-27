@@ -3,7 +3,8 @@ using System.Configuration;
 using System.Data;
 using System.Windows;
 using TrackSpace.DBUtil;
-using Microsoft.EntityFrameworkCore; 
+using Microsoft.EntityFrameworkCore;
+using TrackSpace.Models;
 namespace TrackSpace
 {
    
@@ -19,8 +20,8 @@ namespace TrackSpace
         private void ConfigureServices(IServiceCollection services) 
         {
             services.AddDbContext<MyDbContext>
-                (options => options.UseMySql("Server=localhost;Database=trackspace;User=root;Password=dejan;", 
-                new MySqlServerVersion(new Version(8, 0, 21)))); }
+                (options => options.UseMySql(TrackspaceContext.ConnectionString, 
+                new MySqlServerVersion(new Version(8, 0, 36)))); }
 
 
         }

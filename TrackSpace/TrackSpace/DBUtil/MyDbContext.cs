@@ -17,7 +17,7 @@ namespace TrackSpace.DBUtil
         public MyDbContext(DbContextOptions<MyDbContext> options) : base(options) { }
 
         public DbSet<Category> Categories { get; set; }
-        public DbSet<ClubAdmin> ClubAdmins{ get; set; }
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<User>()
