@@ -9,4 +9,14 @@
     <System:String x:Key="continueAsObserver">or continue as Observer</System:String>
     <System:String x:Key="useAllFeatures">to use all features</System:String>
     <System:String x:Key="ofApplication">of the application</System:String>
+    <System:String x:Key="yes">Yes</System:String>
+    <System:String x:Key="no">No</System:String>
+    <System:String x:Key="wrongCredentials">Wrong credentials</System:String>
+    <System:String x:Key="enterValidCredentials">Enter valid credentials to login!</System:String>
+    <System:String x:Key="errorOccurred">Oops, error occured</System:String>
+    <System:String x:Key="errorReadingDB">Error reading the database, please try again!</System:String>
+    <System:String x:Key="clubs">Clubs</System:String>
+    <System:String x:Key="competitions">Competitions</System:String>
+    <System:String x:Key="settings">Settings</System:String>
+    <System:String x:Key="logout">Logout</System:String>
 </ResourceDictionary>

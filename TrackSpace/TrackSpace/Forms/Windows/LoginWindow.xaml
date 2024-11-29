@@ -4,6 +4,8 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TrackSpace.Forms.Windows"
+        xmlns:locator="clr-namespace:TrackSpace.ViewModel.Shared"
+        xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d"
         Title="MainWindow" Height="645" Width="875"
@@ -14,7 +16,7 @@
         ResizeMode="NoResize"
         FontSize="18"
         FontFamily="{DynamicResource MaterialDesignFont}"
-        >
+        DataContext="{Binding Source={x:Static locator:ViewModelLocator.LoginViewModel}}">
     <Window.Resources>
         <Style TargetType="Label" x:Key="HoverHighlightLabel">
             <Setter Property="Foreground" Value="#05b790"/>
@@ -30,218 +32,104 @@
             <DropShadowEffect BlurRadius="30"
                               ShadowDepth="1"
                               Opacity="0.4">
-                
             </DropShadowEffect>
         </Grid.Effect>
 
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="*">
-            </ColumnDefinition>
-            <ColumnDefinition Width="1.22*"></ColumnDefinition>
+            <ColumnDefinition Width="400"/>
+            <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
 
         <Border Background="#07bf96"
                 CornerRadius="10 0 0 10"
                 ClipToBounds="True"
-                MouseDown="Border_Mouse_Down">
+                MouseDown="Border_Mouse_Down"
+                Grid.Column="0">
             <Border.Clip>
                 <RectangleGeometry Rect="0,0,400,605"
-                                   RadiusX="10"
-                                   RadiusY="10"></RectangleGeometry>
+                                   RadiusX="0"
+                                   RadiusY="10"/>
             </Border.Clip>
-
-
             <Grid>
-                <StackPanel Margin="0 120 0 0"
-             VerticalAlignment="Top">
+                <StackPanel Margin="0 120 0 0" VerticalAlignment="Top">
                     <TextBlock FontSize="46"
-                FontWeight="Light"
-                Text="{DynamicResource login}"
-                Foreground="#ffffff"
-                TextAlignment="Center"></TextBlock>
+                               FontWeight="Light"
+                               Text="{DynamicResource login}"
+                               Foreground="#ffffff"
+                               TextAlignment="Center"/>
                     <TextBlock FontWeight="Light"
-                FontSize="16"
-                Foreground="#d1f2eb"
-                TextAlignment="Center"
-                Text="{DynamicResource useAllFeatures}"
-                Margin="0 15 0 3"></TextBlock>
+                               FontSize="16"
+                               Foreground="#d1f2eb"
+                               TextAlignment="Center"
+                               Text="{DynamicResource useAllFeatures}"
+                               Margin="0 15 0 3"/>
                     <TextBlock FontWeight="Light"
-FontSize="16"
-Foreground="#d1f2eb"
-TextAlignment="Center"
-Text="{DynamicResource ofApplication}"
-></TextBlock>
-
+                               FontSize="16"
+                               Foreground="#d1f2eb"
+                               TextAlignment="Center"
+                               Text="{DynamicResource ofApplication}"/>
                 </StackPanel>
-
                 <Ellipse Width="500" Height="500"
                          VerticalAlignment="Bottom"
                          Fill="#5eccb4"
                          Margin="50 0 0 -200"
-                         Opacity="0.6"></Ellipse>
-
+                         Opacity="0.6"/>
                 <Ellipse Width="300" Height="300"
-         VerticalAlignment="Bottom"
-         Fill="#5bcbb3"
-         Margin="-450 0 0 30"
-         Opacity="0.3"></Ellipse>
-                
-                
+                         VerticalAlignment="Bottom"
+                         Fill="#5bcbb3"
+                         Margin="-450 0 0 30"
+                         Opacity="0.3"/>
                 <Ellipse Width="400" Height="400"
-         VerticalAlignment="Bottom"
-         Fill="#5eccb4"
-         Margin="-320 0 0 -120"
-         Opacity="0.3"></Ellipse>
-
-
+                         VerticalAlignment="Bottom"
+                         Fill="#5eccb4"
+                         Margin="-320 0 0 -120"
+                         Opacity="0.3"/>
                 <Ellipse Width="250" Height="250"
-         VerticalAlignment="Bottom"
-         Fill="#5bc9b2"
-         Margin="-380 0 0 -120"
-         ></Ellipse>
-                
-
+                         VerticalAlignment="Bottom"
+                         Fill="#5bc9b2"
+                         Margin="-380 0 0 -120"/>
                 <Ellipse Width="400" Height="400"
-         VerticalAlignment="Bottom"
-         Fill="#5eccb4"
-         Margin="280 0 0 -70"
-         Opacity="0.8"></Ellipse>
-
-
+                         VerticalAlignment="Bottom"
+                         Fill="#5eccb4"
+                         Margin="280 0 0 -70"
+                         Opacity="0.8"/>
                 <Border Background="#fdfdfd" CornerRadius="100"
                         HorizontalAlignment="Center" 
                         VerticalAlignment="Bottom"
                         Height="110"
                         Width="110"
-                        Margin="0 0 0 80"
-                        >
+                        Margin="0 0 0 80">
                     <Grid>
                         <Image Source="pack://application:,,,/TrackSpace;component/Resources/logoIcon.png" 
-       HorizontalAlignment="Center" VerticalAlignment="Center"
-       Width="90" Height="90"/>
-
+                               HorizontalAlignment="Center" VerticalAlignment="Center"
+                               Width="90" Height="90"/>
                         <Ellipse Width="100"
                                  Height="100"
                                  StrokeThickness="4">
                             <Ellipse.Stroke>
                                 <LinearGradientBrush>
-                                    <GradientStop Color="#e27c53"
-                                                  Offset="0.15"></GradientStop>
-
-                                    <GradientStop 
-                                        Color="#dca530"
-                                        Offset="0.2"
-                                        ></GradientStop>
-                                    
-                                    <GradientStop Color="#8bb356"
-              Offset="0.3"></GradientStop>
-
-                                    <GradientStop Color="#3bb799"
-              Offset="0.4"></GradientStop>
-                                    
-                                    <GradientStop Color="#67cbee"
-              Offset="0.5"></GradientStop>
-                                    
-                                    
-                                    <GradientStop Color="#3699db"
-              Offset="0.6"></GradientStop>
-
-                                    <GradientStop Color="#9264aa"
-              Offset="0.8"></GradientStop>
-
-                                    <GradientStop Color="#6e94de"
-              Offset="0.9"></GradientStop>
-
-
+                                    <GradientStop Color="#e27c53" Offset="0.15"/>
+                                    <GradientStop Color="#dca530" Offset="0.2"/>
+                                    <GradientStop Color="#8bb356" Offset="0.3"/>
+                                    <GradientStop Color="#3bb799" Offset="0.4"/>
+                                    <GradientStop Color="#67cbee" Offset="0.5"/>
+                                    <GradientStop Color="#3699db" Offset="0.6"/>
+                                    <GradientStop Color="#9264aa" Offset="0.8"/>
+                                    <GradientStop Color="#6e94de" Offset="0.9"/>
                                 </LinearGradientBrush>
                             </Ellipse.Stroke>
-                        </Ellipse> 
-                        
-                        
+                        </Ellipse>
                     </Grid>
                 </Border>
-            
-                <!-- Right part-->
-                
-                
-                
             </Grid>
-
-
-        </Border>
-        <Border Grid.Column="1"
-        Background="#ffffff"
-        CornerRadius="0 10 10 0"
-        MouseDown="Border_Mouse_Down">
-            <Grid>
-                <materialDesign:PackIcon Kind="Close"
-                                VerticalAlignment="Top"
-                                 HorizontalAlignment="Right"
-                                 Width="25"
-                                 Height="25"
-                                 Opacity="0.5"
-                                 Margin="0 13 14 0" MouseUp="CloseFormClick"
-                                ></materialDesign:PackIcon>
-
-                <StackPanel Orientation="Horizontal" Margin="10,30,10,520">
-                    <Label Content="{DynamicResource chooseLanguage}"></Label>
-                    <ComboBox Name="languageComboBox" MinWidth="100" Margin="20,0,0,0" VerticalAlignment="Top"  SelectedIndex="1" Width="135" SelectionChanged="Choose_Language_Changed" >
-                        <ComboBox.Items>
-                            <ComboBoxItem Tag="sr">
-                                <StackPanel Orientation="Horizontal">
-                                    <Image Source="pack://application:,,,/TrackSpace;component/Resources/serbianIcon.png" Width="20" Height="20" Margin="0,0,5,0"/>
-                                    <TextBlock Text="Srpski" VerticalAlignment="Center"/>
-                                </StackPanel>
-                            </ComboBoxItem>
-                            <ComboBoxItem Tag="en">
-                                <StackPanel Orientation="Horizontal">
-                                    <Image Source="pack://application:,,,/TrackSpace;component/Resources/englishIcon.png" Width="20" Height="20" Margin="0,0,5,0"/>
-                                    <TextBlock Text="English" VerticalAlignment="Center"/>
-                                </StackPanel>
-                            </ComboBoxItem>
-                        </ComboBox.Items>
-                    </ComboBox>
-                </StackPanel>
-
-                <StackPanel VerticalAlignment="Center"
-                    Margin="75 0">
-
-                    <DockPanel Margin="0,0,0,10">
-                        <materialDesign:PackIcon Kind="Account" Width="24" Height="24" VerticalAlignment="Center" Margin="0,0,10,0"/>
-                        <TextBox Style="{StaticResource MaterialDesignFloatingHintTextBox}" materialDesign:HintAssist.Hint="{DynamicResource username}"
-                         materialDesign:HintAssist.FloatingOffset="0,-20"
-                         BorderBrush="#c5c8cc"
-                         BorderThickness="0 0 0 1.5"/>
-                    </DockPanel>
-                    <DockPanel Margin="0,27,0,50">
-                        <materialDesign:PackIcon Kind="Lock" Width="24" Height="24" VerticalAlignment="Center" Margin="0,0,10,0"/>
-                        <PasswordBox  Style="{StaticResource MaterialDesignFloatingHintPasswordBox}" materialDesign:HintAssist.Hint="{DynamicResource password}" 
-                              materialDesign:HintAssist.FloatingOffset="0,-20"
-                                BorderBrush="#c5c8cc"
-                                BorderThickness="0 0 0 1.5"/>
-                    </DockPanel>
-
-                    <StackPanel Orientation="Vertical" HorizontalAlignment="Center">
-                        <Button Margin="0,0,0,30" HorizontalAlignment="Center" Content="{DynamicResource login}"
-                        Background="#05b790"
-                        Foreground="#ffffff"
-                        FontSize="18"
-                        Width="180"
-                        Height="45"
-                        materialDesign:ButtonAssist.CornerRadius="22"></Button>
-
-
-                        <Label Style="{StaticResource HoverHighlightLabel}" Content="{DynamicResource continueAsObserver}" MouseUp="Observer_Label_Click"></Label>
-
-                    </StackPanel>
-
-
-                </StackPanel>
-
-
-            </Grid>
-
         </Border>
 
+        <Frame NavigationUIVisibility="Hidden" Name="mainFrame" Grid.Column="1" DataContext="{Binding MainFrame, Mode=TwoWay}">
+            <i:Interaction.Triggers>
+                <i:EventTrigger EventName="Loaded">
+                    <i:InvokeCommandAction Command="{Binding ShowLoginFrameCommand}" CommandParameter="{Binding ElementName=mainFrame}"/>
+                </i:EventTrigger>
+            </i:Interaction.Triggers>
+        </Frame>
     </Grid>
 </Window>

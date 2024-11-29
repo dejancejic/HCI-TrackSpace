@@ -7,6 +7,24 @@
     </ApplicationDefinition>
   </ItemGroup>
   <ItemGroup>
+    <Compile Update="Forms\CustomMessageBox\CustomMessageBox.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Forms\Pages\ClubsPage.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Forms\Pages\CompetitionsPage.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Forms\Pages\LoginPage.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Forms\Pages\SettingsPage.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Forms\Windows\BasePage.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="Forms\Windows\LoginWindow.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -15,6 +33,24 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Page Update="Forms\CustomMessageBox\CustomMessageBox.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Forms\Pages\ClubsPage.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Forms\Pages\CompetitionsPage.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Forms\Pages\LoginPage.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Forms\Pages\SettingsPage.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Forms\Windows\BasePage.xaml">
+      <SubType>Designer</SubType>
+    </Page>
     <Page Update="Forms\Windows\LoginWindow.xaml">
       <SubType>Designer</SubType>
     </Page>
@@ -25,6 +61,9 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Resources\Dictionary-sr.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Themes\GreenTheme.xaml">
       <SubType>Designer</SubType>
     </Page>
   </ItemGroup>

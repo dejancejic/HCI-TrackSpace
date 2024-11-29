@@ -15,6 +15,8 @@ public partial class User
 
     public string Type { get; set; } = null!;
 
+    public int ThemeID { get; set; }
+
     public virtual ClubAdmin? ClubAdmin { get; set; }
 
     public virtual CompetitionOrganizer? CompetitionOrganizer { get; set; }

@@ -9,4 +9,14 @@
     <System:String x:Key="continueAsObserver">ili nastavite kao Posmatrač</System:String>
     <System:String x:Key="useAllFeatures">da biste koristili sve funkcije</System:String>
     <System:String x:Key="ofApplication">aplikacije</System:String>
+    <System:String x:Key="yes">Da</System:String>
+    <System:String x:Key="no">Ne</System:String>
+    <System:String x:Key="wrongCredentials">Pogrešni kredencijali</System:String>
+    <System:String x:Key="enterValidCredentials">Unesite validne kredencijale da biste se prijavili!</System:String>
+    <System:String x:Key="errorOccurred">Ups, desila se greška</System:String>
+    <System:String x:Key="errorReadingDB">Greška pri čitanju baze podataka, molimo pokušajte ponovo!</System:String>
+    <System:String x:Key="clubs">Klubovi</System:String>
+    <System:String x:Key="competitions">Takmičenja</System:String>
+    <System:String x:Key="settings">Podešavanja</System:String>
+    <System:String x:Key="logout">Odjavite se</System:String>
 </ResourceDictionary>
