@@ -147,3 +147,7 @@ C:\Users\Dejan\Documents\Interakcija covjek racunar\HCI Projektni zadatak 1\Trac
 C:\Users\Dejan\Documents\Interakcija covjek racunar\HCI Projektni zadatak 1\TrackSpace\TrackSpace\obj\Debug\net8.0-windows\Forms\Pages\CompetitionsPage.baml
 C:\Users\Dejan\Documents\Interakcija covjek racunar\HCI Projektni zadatak 1\TrackSpace\TrackSpace\obj\Debug\net8.0-windows\Forms\Pages\ClubsPage.g.cs
 C:\Users\Dejan\Documents\Interakcija covjek racunar\HCI Projektni zadatak 1\TrackSpace\TrackSpace\obj\Debug\net8.0-windows\Forms\Pages\ClubsPage.baml
+C:\Users\Dejan\Documents\Interakcija covjek racunar\HCI Projektni zadatak 1\TrackSpace\TrackSpace\obj\Debug\net8.0-windows\Themes\BlueTheme.baml
+C:\Users\Dejan\Documents\Interakcija covjek racunar\HCI Projektni zadatak 1\TrackSpace\TrackSpace\obj\Debug\net8.0-windows\Themes\RedTheme.baml
+C:\Users\Dejan\Documents\Interakcija covjek racunar\HCI Projektni zadatak 1\TrackSpace\TrackSpace\obj\Debug\net8.0-windows\Forms\Windows\ClubAdminMainPage.g.cs
+C:\Users\Dejan\Documents\Interakcija covjek racunar\HCI Projektni zadatak 1\TrackSpace\TrackSpace\obj\Debug\net8.0-windows\Forms\Windows\ClubAdminMainPage.baml

@@ -17,7 +17,7 @@
             <ColumnDefinition Width="1.22*"/>
         </Grid.ColumnDefinitions>
 
-        <Border Background="#07bf96"
+        <Border Background="{DynamicResource Primary}"
                 CornerRadius="10 0 0 10"
                 ClipToBounds="True"
                 Grid.ColumnSpan="2"

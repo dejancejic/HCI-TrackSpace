@@ -13,7 +13,7 @@
         AllowsTransparency="True"
         ResizeMode="NoResize"
         FontSize="18"
-        FontFamily="{DynamicResource MaterialDesignFont}">
+        FontFamily="{DynamicResource AppFont}">
     <Window.Resources>
 
 
@@ -48,7 +48,7 @@
 
                     <ListViewItem Tag="ClubsPage" Name="clubsItem" >
                         <StackPanel HorizontalAlignment="Center">
-                            <materialDesign:PackIcon Foreground="white" Kind="UserUnlocked" Height="30" Width="30" HorizontalAlignment="Center"/>
+                            <materialDesign:PackIcon Foreground="white" Kind="BadgeAccountHorizontal" Height="30" Width="30" HorizontalAlignment="Center"/>
                             <Label HorizontalAlignment="Center" Foreground="White" FontWeight="Bold" FontSize="18" Content="{DynamicResource clubs}"/>
                         </StackPanel>
                     </ListViewItem>
@@ -74,11 +74,7 @@
             </StackPanel>
 
         </DataTemplate>
-        <DataTemplate x:Key="ObserverMainContent">
-            <Frame Name="mainFrame" Content="{Binding MainFrame, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
-                
-            </Frame>
-        </DataTemplate>
+        
 
     </Window.Resources>
     <Grid>

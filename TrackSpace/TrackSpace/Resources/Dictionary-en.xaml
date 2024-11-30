@@ -3,7 +3,7 @@
     xmlns:System="clr-namespace:System;assembly=System.Runtime">
 
     <System:String x:Key="login">Login</System:String>
-    <System:String x:Key="chooseLanguage">Select language:</System:String>
+    <System:String x:Key="chooseLanguage">Select language</System:String>
     <System:String x:Key="username">Username</System:String>
     <System:String x:Key="password">Password</System:String>
     <System:String x:Key="continueAsObserver">or continue as Observer</System:String>
@@ -19,4 +19,11 @@
     <System:String x:Key="competitions">Competitions</System:String>
     <System:String x:Key="settings">Settings</System:String>
     <System:String x:Key="logout">Logout</System:String>
+    <System:String x:Key="selectTheme">Apply Theme</System:String>
+    <System:String x:Key="greenTheme">Green Theme</System:String>
+    <System:String x:Key="blueTheme">Blue Theme</System:String>
+    <System:String x:Key="redTheme">Red Theme</System:String>
+    <System:String x:Key="selectFont">Select Font</System:String>
+    <System:String x:Key="language">Language</System:String>
+    <System:String x:Key="font">Font</System:String>
 </ResourceDictionary>

@@ -15,6 +15,8 @@ namespace TrackSpace.Forms.Windows
             InitializeComponent();
             DataContext = observerViewModel;
 
+            observerViewModel.User = null;
+            ViewModelLocator.ObserverViewModel.UpdateViewModel();
             observerViewModel.MainFrame = mainFrame;
             mainFrame.Navigate(new Uri("Forms/Pages/ClubsPage.xaml", UriKind.Relative));
 

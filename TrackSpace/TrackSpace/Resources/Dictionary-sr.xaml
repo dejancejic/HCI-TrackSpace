@@ -3,7 +3,7 @@
     xmlns:System="clr-namespace:System;assembly=System.Runtime">
 
     <System:String x:Key="login">Prijavite se</System:String>
-    <System:String x:Key="chooseLanguage">Izaberite jezik:</System:String>
+    <System:String x:Key="chooseLanguage">Izaberite jezik</System:String>
     <System:String x:Key="username">Korisničko ime</System:String>
     <System:String x:Key="password">Lozinka</System:String>
     <System:String x:Key="continueAsObserver">ili nastavite kao Posmatrač</System:String>
@@ -19,4 +19,11 @@
     <System:String x:Key="competitions">Takmičenja</System:String>
     <System:String x:Key="settings">Podešavanja</System:String>
     <System:String x:Key="logout">Odjavite se</System:String>
+    <System:String x:Key="selectTheme">Primjeni Temu</System:String>
+    <System:String x:Key="greenTheme">Zelena Tema</System:String>
+    <System:String x:Key="blueTheme">Plava Tema</System:String>
+    <System:String x:Key="redTheme">Crvena Tema</System:String>
+    <System:String x:Key="selectFont">Izaberite Font</System:String>
+    <System:String x:Key="language">Jezik</System:String>
+    <System:String x:Key="font">Font</System:String>
 </ResourceDictionary>

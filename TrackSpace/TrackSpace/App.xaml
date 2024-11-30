@@ -5,16 +5,18 @@
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              StartupUri="Forms/Windows/LoginWindow.xaml">
     <Application.Resources>
+
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
 
-                <materialDesign:BundledTheme BaseTheme="Light" PrimaryColor="Teal" SecondaryColor="Lime" />
+                <materialDesign:BundledTheme  BaseTheme="Light" PrimaryColor="Teal" SecondaryColor="Lime"/>
                 <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesign2.Defaults.xaml" />
                 <ResourceDictionary Source="Themes/GreenTheme.xaml" />
                 <ResourceDictionary Source="Resources/Dictionary-en.xaml" />
-                
-                
+
+
             </ResourceDictionary.MergedDictionaries>
+            <FontFamily x:Key="AppFont">Roboto</FontFamily>
         </ResourceDictionary>
     </Application.Resources>
 </Application>

@@ -10,6 +10,8 @@ namespace TrackSpace.ViewModel.Shared
     {
         private static LoginViewModel _loginViewModel = new LoginViewModel();
         private static ObserverViewModel _observerViewModel = new ObserverViewModel();
+        private static ClubAdminViewModel _clubAdminViewModel = new ClubAdminViewModel();
+        private static ClubsViewModel _clubsViewModel = new ClubsViewModel();
         public static LoginViewModel LoginViewModel
         {
             get { return _loginViewModel; }
@@ -19,7 +21,14 @@ namespace TrackSpace.ViewModel.Shared
         {
             get { return _observerViewModel; }
         }
-
+        public static ClubAdminViewModel ClubAdminViewModel
+        {
+            get { return _clubAdminViewModel; }
+        }
+        public static ClubsViewModel ClubsViewModel
+        {
+            get { return _clubsViewModel; }
+        }
 
     }
 

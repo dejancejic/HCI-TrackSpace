@@ -3,12 +3,54 @@
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
       xmlns:local="clr-namespace:TrackSpace.Forms.Pages"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="ClubsPage">
 
     <Grid Background="White">
-        <Label Content="Clubs" FontSize="35" HorizontalAlignment="Center"></Label>
+        <Label HorizontalAlignment="Left" Margin="15,-20,0,415" Content="{DynamicResource clubs}"
+       FontWeight="Bold" FontSize="40" Foreground="Black" />
+
+        <materialDesign:AutoSuggestBox materialDesign:HintAssist.Hint="Search Club" FontSize="15" Height="50"
+                                       TextChanged="AutoSuggestBox_TextChanged"
+                                       materialDesign:TextFieldAssist.HasClearButton="True" 
+                                       DropDownElevation="Dp0" 
+                                       Style="{StaticResource MaterialDesignOutlinedAutoSuggestBox}"
+                                       Suggestions="{Binding AutoSuggestBox1Suggestions}" 
+                                       Text="{Binding AutoSuggestBox1Text, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
+                                       ValueMember="Value" Margin="13,0,477,382">
+            <materialDesign:AutoSuggestBox.ItemTemplate>
+                <DataTemplate>
+                    <DockPanel>
+                        <TextBlock Margin="10,0,0,0" Text="{Binding Key}" />
+                        <TextBlock Margin="10,0,0,0" Text=" - " />
+                        <TextBlock Margin="10,0,0,0" Text="{Binding Value}" />
+                    </DockPanel>
+                </DataTemplate>
+            </materialDesign:AutoSuggestBox.ItemTemplate>
+        </materialDesign:AutoSuggestBox>
+
+
+        <DataGrid  Margin="10,10,10,0" Height="300"
+            ItemsSource="{Binding Clubs}" 
+            AutoGenerateColumns="False"
+            SelectionMode="Single"
+            SelectionUnit="FullRow"
+            >
+
+                <!-- Define Columns -->
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Club Code" Binding="{Binding ClubCode}" IsReadOnly="True"/>
+                    <DataGridTextColumn Header="Name" Binding="{Binding Name}" IsReadOnly="True"/>
+                    <DataGridTextColumn Header="Contact" Binding="{Binding Contact}" IsReadOnly="True"/>
+                    <DataGridTextColumn Header="Competitor Number" Binding="{Binding CompetitorNumber}" IsReadOnly="True" />
+                </DataGrid.Columns>
+            </DataGrid>
+ 
+
+
+
     </Grid>
 </Page>

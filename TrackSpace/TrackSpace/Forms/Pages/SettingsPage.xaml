@@ -4,10 +4,170 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
       xmlns:local="clr-namespace:TrackSpace.Forms.Pages"
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
       mc:Ignorable="d"
       d:DesignHeight="450" d:DesignWidth="800"
-      Title="SettingsPage">
+      Title="SettingsPage"
+    xmlns:System="clr-namespace:System;assembly=System.Runtime" FontFamily="{DynamicResource AppFont}">
+    <Page.Resources>
+        <Style x:Key="CustomToggleButtonStyle" TargetType="ToggleButton" BasedOn="{StaticResource MaterialDesignSwitchToggleButton}">
+            <Style.Triggers>
+                <Trigger Property="IsEnabled" Value="False">
+                    <Setter Property="Background" Value="{DynamicResource Primary}"/>
+
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+
+
+        <Style TargetType="Button" x:Key="RoundedButtonStyle">
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="BorderBrush" Value="Transparent"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Grid>
+                            <Ellipse Fill="{TemplateBinding Background}" />
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Grid>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" Value="LightGray"/>
+                            </Trigger>
+                            <Trigger Property="IsPressed" Value="True">
+                                <Setter Property="Background" Value="DarkGray"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            </Style>
+
+    </Page.Resources>
     <Grid Background="White">
-        <Label HorizontalAlignment="Center" Content="Welcome to settings" FontSize="35" Foreground="Black"/>
+        <Label HorizontalAlignment="Left" Margin="15,0,0,375" Content="{DynamicResource settings}"
+               FontWeight="Bold" FontSize="40" Foreground="Black" />
+
+        <Label HorizontalAlignment="Left" Margin="50,70,0,329" Content="{DynamicResource selectTheme}"
+        FontSize="25" Foreground="Black" />
+
+        <StackPanel Orientation="Vertical" Margin="50 75 350 0">
+
+            <StackPanel Orientation="Horizontal" Margin="30 30 10 10" Height="64">
+
+                <ToggleButton
+Width="50"
+Style="{StaticResource CustomToggleButtonStyle}" Background="{DynamicResource Primary}"
+                    
+                    IsChecked="{Binding IsGreenTheme, Mode=TwoWay}"
+                    IsEnabled="{Binding IsGreenThemeEnabled}">
+                    <materialDesign:ToggleButtonAssist.SwitchTrackOnBackground>
+                        <SolidColorBrush
+    Color="Green" />
+                    </materialDesign:ToggleButtonAssist.SwitchTrackOnBackground>
+                    <materialDesign:ToggleButtonAssist.SwitchTrackOffBackground>
+                        <SolidColorBrush
+    Color="Red" />
+                    </materialDesign:ToggleButtonAssist.SwitchTrackOffBackground>
+                </ToggleButton>
+
+                <Label Content="{DynamicResource greenTheme}" FontSize="18" Margin="15"></Label>
+
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal" Margin="30 -20 10 10" Height="64">
+
+                <ToggleButton
+Width="50"
+Style="{StaticResource CustomToggleButtonStyle}" Background="{DynamicResource Primary}" 
+                    IsChecked="{Binding IsBlueTheme, Mode=TwoWay}"
+                    IsEnabled="{Binding IsBlueThemeEnabled}">
+                    <materialDesign:ToggleButtonAssist.SwitchTrackOnBackground>
+                        <SolidColorBrush
+    Color="Green" />
+                    </materialDesign:ToggleButtonAssist.SwitchTrackOnBackground>
+                    <materialDesign:ToggleButtonAssist.SwitchTrackOffBackground>
+                        <SolidColorBrush
+    Color="Red" />
+                    </materialDesign:ToggleButtonAssist.SwitchTrackOffBackground>
+                </ToggleButton>
+
+                <Label Content="{DynamicResource blueTheme}" FontSize="18" Margin="15"></Label>
+
+            </StackPanel>
+
+
+            <StackPanel Orientation="Horizontal" Margin="30 -20 10 10" Height="64">
+
+                <ToggleButton
+Width="50"
+Style="{StaticResource CustomToggleButtonStyle}" Background="{DynamicResource Primary}" 
+                    IsChecked="{Binding IsRedTheme, Mode=TwoWay}"
+                    IsEnabled="{Binding IsRedThemeEnabled}"
+>
+                    <materialDesign:ToggleButtonAssist.SwitchTrackOnBackground>
+                        <SolidColorBrush
+    Color="Green" />
+                    </materialDesign:ToggleButtonAssist.SwitchTrackOnBackground>
+                    <materialDesign:ToggleButtonAssist.SwitchTrackOffBackground>
+                        <SolidColorBrush
+    Color="Red" />
+                    </materialDesign:ToggleButtonAssist.SwitchTrackOffBackground>
+                </ToggleButton>
+
+                <Label Content="{DynamicResource redTheme}" FontSize="18" Margin="15"></Label>
+
+            </StackPanel>
+
+            <Label HorizontalAlignment="Left" Margin="0,-10,0,329" Content="{DynamicResource selectFont}"
+    FontSize="25" Foreground="Black" />
+
+
+
+        </StackPanel>
+        <StackPanel Margin="44,320,437,23">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+            </Grid>
+            <ComboBox
+Width="250" FontSize="16"
+materialDesign:HintAssist.Hint="{DynamicResource font}"
+IsEnabled="{Binding IsChecked, ElementName=FilledComboBoxEnabledCheckBox}"
+Style="{StaticResource MaterialDesignFilledComboBox}"
+                 ItemsSource="{Binding Fonts}"
+                SelectedItem="{Binding SelectedFont, Mode=TwoWay}" 
+SelectedIndex="0">
+
+            </ComboBox>
+        </StackPanel>
+
+
+        <Label Content="{DynamicResource chooseLanguage}" Margin="50 380 0 0" FontSize="25"></Label>
+
+
+        <StackPanel Margin="44,430,437,23">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+            </Grid>
+            <ComboBox
+Width="250" FontSize="16"
+materialDesign:HintAssist.Hint="{DynamicResource language}"
+IsEnabled="{Binding IsChecked, ElementName=FilledComboBoxEnabledCheckBox}"
+Style="{StaticResource MaterialDesignFilledComboBox}"
+                 ItemsSource="{Binding Languages}"
+                SelectedItem="{Binding SelectedLanguage, Mode=TwoWay}" 
+SelectedIndex="0">
+                
+            </ComboBox>
+        </StackPanel>
+
+
+
     </Grid>
 </Page>

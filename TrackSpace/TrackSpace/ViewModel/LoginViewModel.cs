@@ -22,6 +22,7 @@ namespace TrackSpace.ViewModel
         public User? User { get; set; }
         private bool closeBtnPressed = false;
         private UserService _userService;
+        private ClubAdminService _clubAdminService;
         private string _selectedLanguage;
         public string SelectedLanguage { get { return _selectedLanguage; }
             set {
@@ -55,12 +56,8 @@ namespace TrackSpace.ViewModel
             SwitchLanguageCommand = new RelayCommand(SwitchLanguage, CanShowWindow);
             try
             {
-                var optionsBuilder = new DbContextOptionsBuilder<TrackspaceContext>();
-                optionsBuilder.UseMySql(TrackspaceContext.ConnectionString,
-                    new MySqlServerVersion(new Version(8, 0, 36)));
-                var context = new TrackspaceContext(optionsBuilder.Options);
-                _userService = new UserService(context);
-
+                _userService = new UserService();
+                _clubAdminService = new ClubAdminService();
             }
             catch (Exception ex)
             {
@@ -75,7 +72,7 @@ namespace TrackSpace.ViewModel
         {
             
                 User = _userService.GetUserByUsernameAndPassword(Username, Password);
-
+               
                 if (User == null)
                 {
                     CustomMessageBox ms = new
@@ -85,9 +82,41 @@ namespace TrackSpace.ViewModel
                 }
                 else
                 {
-                    //TODO select usertype
-                            
+                //TODO select usertype
+                if (User.Type.Equals("club_admin"))
+                {
+                    ClubAdmin? admin;
+                    try
+                    {
+                        admin = _clubAdminService.GetClubAdminById(User.IdUser);
+                        if(admin == null)
+                        {
+                            return;
+                        }
+                        admin!.IdUserNavigation = User;
+                    }
+                    catch (Exception ex)
+                    {
+                        CustomMessageBox cm = new CustomMessageBox(yesNo: false, false, (string)Application.Current.FindResource("errorOccurred"), (string)Application.Current.FindResource("errorReadingDB"));
+                        cm.Show();
+                        return;
+                    }
+                    
+                    ClubAdminMainPage clubAdminPage = new ClubAdminMainPage(admin!);
+                    clubAdminPage.Closed += (a, b) => Application.Current.MainWindow.Show();
+                    clubAdminPage.Show();
+                    Application.Current.MainWindow.Hide();
                 }
+                else if (User.Type.Equals("organizer"))
+                {
+                    CompetitionOrganizer? organizer = User.CompetitionOrganizer;
+
+                    //ObserverMainPage observerPage = new ObserverMainPage();
+                    //observerPage.Closed += (a, b) => Application.Current.MainWindow.Show();
+                    //observerPage.Show();
+                    //Application.Current.MainWindow.Hide();
+                }
+            }
             
         }
         private void SwitchLanguage(object obj)
@@ -98,12 +127,16 @@ namespace TrackSpace.ViewModel
             }
 
         }
-        private void SetLanguage(string language)
+        public static void SetLanguage(string language)
         {
             Thread.CurrentThread.CurrentCulture = new System.Globalization.CultureInfo(language);
             Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo(language);
 
-            Application.Current.Resources.MergedDictionaries.RemoveAt(Application.Current.Resources.MergedDictionaries.Count - 1);
+            var existingLanguage = Application.Current.Resources.MergedDictionaries.FirstOrDefault(d => d.Source != null && d.Source.ToString().Contains("Dictionary-"));
+            if (existingLanguage != null)
+            {
+                Application.Current.Resources.MergedDictionaries.Remove(existingLanguage);
+            }
             ResourceDictionary resdict = new ResourceDictionary()
             {
                 Source = new Uri($"Resources/Dictionary-{language}.xaml", UriKind.Relative)
