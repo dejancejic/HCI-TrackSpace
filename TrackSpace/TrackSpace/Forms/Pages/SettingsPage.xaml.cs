@@ -22,7 +22,7 @@ namespace TrackSpace.Forms.Pages
     /// <summary>
     /// Interaction logic for SettingsPage.xaml
     /// </summary>
-    public partial class SettingsPage : Page
+    public partial class SettingsPage : UserControl
     {
         private ObserverViewModel _observerViewModel = ViewModelLocator.ObserverViewModel;
         public SettingsPage()

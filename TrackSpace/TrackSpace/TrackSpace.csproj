@@ -32,10 +32,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Utils\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <Resource Include="Resources\englishIcon.png" />
     <Resource Include="Resources\logoIcon.png" />
     <Resource Include="Resources\serbianIcon.png" />

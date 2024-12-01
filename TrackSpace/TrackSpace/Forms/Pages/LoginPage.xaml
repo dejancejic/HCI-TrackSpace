@@ -63,13 +63,18 @@ FontFamily="{DynamicResource MaterialDesignFont}"
 
 
                 <StackPanel Orientation="Horizontal" VerticalAlignment="Bottom" HorizontalAlignment="Right">
-                    <Label Content="{DynamicResource chooseLanguage}"></Label>
                     <Button  Height="35" Width="35" Tag="en" Style="{StaticResource RoundedButtonStyle}"  Command="{Binding SwitchLanguageCommand}" CommandParameter="{Binding RelativeSource={RelativeSource Self}, Path=Tag}" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="0,0,15,14">
                         <Image Source="pack://application:,,,/Resources/englishIcon.png"/>
                     </Button>
                     <Button Tag="sr" Height="35" Width="35" Style="{StaticResource RoundedButtonStyle}"  Command="{Binding SwitchLanguageCommand}" CommandParameter="{Binding RelativeSource={RelativeSource Self}, Path=Tag}" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="0,0,10,14">
                         <Image Source="pack://application:,,,/Resources/serbianIcon.png"/>
                     </Button>
+                    
+                    
+                    <!--<CheckBox
+  Content="E"
+  Style="{StaticResource MaterialDesignActionDarkCheckBox}"
+  ToolTip="MaterialDesignActionDarkCheckBox" />-->
                 </StackPanel>
               
 

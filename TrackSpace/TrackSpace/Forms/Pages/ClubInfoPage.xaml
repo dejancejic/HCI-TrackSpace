@@ -1,0 +1,222 @@
+﻿<UserControl x:Class="TrackSpace.Forms.Pages.ClubInfoPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:TrackSpace.Forms.Pages"
+      xmlns:utils="clr-namespace:TrackSpace.Utils"
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+      mc:Ignorable="d" 
+      FontFamily="{DynamicResource AppFont}"
+      d:DesignHeight="650" d:DesignWidth="800"
+      >
+    <UserControl.Resources>
+        <utils:GenderTranslationConverter x:Key="GenderTranslationConverter" />
+    </UserControl.Resources>
+    <Grid Background="White">
+        <Button x:Name="closeBtn" Background="Transparent" BorderBrush="Transparent" Padding="5 0 0 0" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0 13 14 0" Command="{Binding CloseCommand}">
+            <materialDesign:PackIcon Kind="Close" Width="25" Height="25" Opacity="0.5"/>
+        </Button>
+        <Label HorizontalAlignment="Left" Margin="15,10,0,415" Content="{Binding Name}"
+FontWeight="Bold" FontSize="40" Foreground="Black" />
+
+        <Button Command="{Binding GoBackCommand}"
+  IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
+  Style="{StaticResource MaterialDesignFloatingActionMiniDarkButton}" Width="45" Height="45" Background="{DynamicResource Primary}"
+  ToolTip="MaterialDesignFloatingActionMiniDarkButton" VerticalAlignment="Bottom" Margin="0 0 15 15" HorizontalAlignment="Right">
+            <materialDesign:PackIcon
+    Width="30"
+    Height="30"
+    Kind="ArrowBack" />
+        </Button>
+
+
+
+
+        <materialDesign:DialogHost x:Name="UserDetailsDialogHost">
+            <materialDesign:DialogHost.DialogContent >
+
+                <StackPanel Margin="16" HorizontalAlignment="Center" Width="400">
+                    <TextBlock Text="{DynamicResource competitorDetails}" 
+                   FontSize="18" 
+                   FontWeight="Bold" 
+                   Margin="0,0,0,16" 
+                   HorizontalAlignment="Center" />
+
+
+                    <Border Width="80" Height="80" CornerRadius="40" 
+                Background="{DynamicResource PrimaryHueMidBrush}" 
+                HorizontalAlignment="Center" Margin="0,0,0,16">
+                        <materialDesign:PackIcon Kind="AccountCircleOutline" 
+                                     Width="80" Height="80" 
+                                     HorizontalAlignment="Center" 
+                                     VerticalAlignment="Center" />
+                    </Border>
+
+
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Margin="10,8,0,8">
+                        <TextBlock Text="{DynamicResource nameDot}" 
+                       FontWeight="Bold" 
+                       VerticalAlignment="Center" />
+                        <TextBlock Text="{Binding SelectedCompetitor.Name}" 
+                       VerticalAlignment="Center" />
+                        <TextBlock Text=" " />
+                        <TextBlock Text="{Binding SelectedCompetitor.Surname}" 
+                       VerticalAlignment="Center" />
+                    </StackPanel>
+
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Margin="10,28,0,8">
+                        <TextBlock Text="{DynamicResource categoryDot}"
+                       FontWeight="Bold" 
+                       VerticalAlignment="Center" />
+                        <TextBlock Text="{Binding SelectedCompetitor.IdCategoryNavigation.Name}" 
+                       VerticalAlignment="Center" />
+                    </StackPanel>
+
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Margin="10,8,0,8">
+                        <TextBlock Text= "{DynamicResource DoBDot}"
+   FontWeight="Bold" 
+   VerticalAlignment="Center" />
+                        <TextBlock Text="{Binding SelectedCompetitor.Dob, StringFormat={}{0:dd.MM.yyyy.}}" 
+   VerticalAlignment="Center" />
+                    </StackPanel>
+
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Margin="10,8,0,8">
+                        <TextBlock Text="{DynamicResource genderDot}"
+FontWeight="Bold" 
+VerticalAlignment="Center" />
+                        <TextBlock Text="{Binding SelectedCompetitor.Pol, Converter={StaticResource GenderTranslationConverter}}" 
+VerticalAlignment="Center" />
+                    </StackPanel>
+
+
+
+
+                    <Button Width="120" Content="{DynamicResource close}" Background="{DynamicResource Primary}" Foreground="White"
+                            Style="{StaticResource MaterialDesignRaisedDarkButton}"
+                Command="{x:Static materialDesign:DialogHost.CloseDialogCommand}" 
+                HorizontalAlignment="Center" 
+                Margin="0,30,0,0" />
+                </StackPanel>
+            </materialDesign:DialogHost.DialogContent>
+
+
+            <DataGrid Margin="30,275,122,75"
+          
+          ItemsSource="{Binding Club.Competitors}" 
+          AutoGenerateColumns="False"
+          SelectionMode="Single"
+          SelectionUnit="FullRow" VerticalScrollBarVisibility="Visible" HorizontalScrollBarVisibility="Disabled"
+          CanUserAddRows="False"
+          LoadingRow="DataGrid_LoadingRow"
+          SelectionChanged="DataGrid_SelectionChanged"
+          AlternatingRowBackground="{DynamicResource Secondary}">
+
+
+                <DataGrid.ColumnHeaderStyle>
+                    <Style TargetType="DataGridColumnHeader" BasedOn="{StaticResource {x:Type DataGridColumnHeader}}">
+                        <Setter Property="HorizontalContentAlignment" Value="Center" />
+                        <Setter Property="Background" Value="{DynamicResource Primary}" />
+
+                    </Style>
+                </DataGrid.ColumnHeaderStyle>
+
+
+                <DataGrid.CellStyle>
+                    <Style TargetType="DataGridCell">
+                        <Setter Property="TextBlock.TextAlignment" Value="Center" />
+                        <Setter Property="HorizontalContentAlignment" Value="Center" />
+                        <Setter Property="VerticalContentAlignment" Value="Center" />
+                        <Setter Property="MinWidth" Value="120" />
+                        <Setter Property="Height" Value="30" />
+                    </Style>
+                </DataGrid.CellStyle>
+
+
+                <DataGrid.RowStyle>
+                    <Style TargetType="DataGridRow">
+                        <Setter Property="Height" Value="30" />
+
+                    </Style>
+                </DataGrid.RowStyle>
+
+
+                <DataGrid.Columns>
+
+                    <DataGridTemplateColumn Header="{DynamicResource order}">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding RelativeSource={RelativeSource AncestorType=DataGridRow},
+                                              Path=(DataGridRow.Tag), Mode=OneWay}" 
+                               TextAlignment="Center" 
+                               HorizontalAlignment="Center" 
+                               VerticalAlignment="Center" />
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+
+
+                    <DataGridTextColumn Header="{DynamicResource name}" Binding="{Binding Name}" IsReadOnly="True" />
+
+
+                    <DataGridTextColumn Header="{DynamicResource surname}" Binding="{Binding Surname}" IsReadOnly="True" />
+
+
+                    <DataGridTextColumn Header="{DynamicResource category}" Binding="{Binding IdCategoryNavigation.Name}" IsReadOnly="True" />
+                    <DataGridTextColumn Header="{DynamicResource gender}" Binding="{Binding Pol, Converter={StaticResource GenderTranslationConverter}}" IsReadOnly="True" />
+                </DataGrid.Columns>
+            </DataGrid>
+
+
+
+
+
+        </materialDesign:DialogHost>
+        <StackPanel Orientation="Horizontal" Margin="30,224,0,327">
+            <Label Content="{DynamicResource competitors}"
+FontWeight="Bold" FontSize="20" Foreground="Black" Height="105" />
+
+            <Label HorizontalAlignment="Left" Margin="-7 0 -7 0" Content="{Binding Club.CompetitorNumber}"
+FontWeight="Bold" FontSize="20" Foreground="Black"  />
+            <Label  Content=")"
+FontWeight="Bold" FontSize="20" Foreground="Black" Width="15" Height="109"  />
+
+
+        </StackPanel>
+
+        <StackPanel Orientation="Vertical"  Margin="30,100,316,378">
+            <StackPanel Orientation="Horizontal">
+                <Label HorizontalAlignment="Left" Content="{DynamicResource clubCode}" Width="170"
+FontWeight="Bold" FontSize="20" Foreground="Black"  />
+                <Label HorizontalAlignment="Left" Content="{Binding Club.ClubCode}" FontSize="20" Foreground="Black"  />
+
+            </StackPanel>
+
+
+            <StackPanel Orientation="Horizontal">
+                <Label HorizontalAlignment="Left" Content="{DynamicResource contact}" Width="170"
+FontWeight="Bold" FontSize="20" Foreground="Black"  />
+                <Label HorizontalAlignment="Left" Content="{Binding Club.Contact}" FontSize="20" Foreground="Black"  />
+
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal">
+                <Label HorizontalAlignment="Left" Content="{DynamicResource contactMail}" Width="170"
+FontWeight="Bold" FontSize="20" Foreground="Black"  />
+                <Label HorizontalAlignment="Left" Content="{Binding Club.IdUserNavigation.IdUserNavigation.Email}" 
+                       FontSize="20" Foreground="Black"  />
+
+
+            </StackPanel>
+
+
+
+
+
+        </StackPanel>
+
+        <materialDesign:PackIcon Kind="InfoCircleOutline" Height="110" Width="110" HorizontalAlignment="Right"
+                                 Margin="0 85 70 0" Foreground="{DynamicResource Primary}"></materialDesign:PackIcon>
+
+    </Grid>
+</UserControl>

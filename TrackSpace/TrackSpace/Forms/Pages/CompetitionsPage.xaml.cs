@@ -15,10 +15,8 @@ using System.Windows.Shapes;
 
 namespace TrackSpace.Forms.Pages
 {
-    /// <summary>
-    /// Interaction logic for CompetitionsPage.xaml
-    /// </summary>
-    public partial class CompetitionsPage : Page
+   
+    public partial class CompetitionsPage : UserControl
     {
         public CompetitionsPage()
         {

@@ -26,4 +26,25 @@
     <System:String x:Key="selectFont">Select Font</System:String>
     <System:String x:Key="language">Language</System:String>
     <System:String x:Key="font">Font</System:String>
+    <System:String x:Key="close">Close</System:String>
+    <System:String x:Key="competitors">Competitors(</System:String>
+    <System:String x:Key="clubCode">Club Code:</System:String>
+    <System:String x:Key="clubCodeNoDots">Club Code</System:String>
+    <System:String x:Key="contact">Contact Phone:</System:String>
+    <System:String x:Key="contactNoDots">Contact Phone</System:String>
+    <System:String x:Key="contactMail">Contact Mail:</System:String>
+    <System:String x:Key="competitorDetails">Competitor Details</System:String>
+    <System:String x:Key="exit">Exit</System:String>
+    <System:String x:Key="nameDot" xml:space="preserve">Name: </System:String>
+    <System:String x:Key="categoryDot" xml:space="preserve">Category: </System:String>
+    <System:String x:Key="DoBDot" xml:space="preserve">Day of Birth: </System:String>
+    <System:String x:Key="genderDot" xml:space="preserve">Gender: </System:String>
+    <System:String x:Key="name">Name</System:String>
+    <System:String x:Key="surname">Surname</System:String>
+    <System:String x:Key="category">Category</System:String>
+    <System:String x:Key="gender">Gender</System:String>
+    <System:String x:Key="order">Order</System:String>
+    <System:String x:Key="M">M</System:String>
+    <System:String x:Key="F">F</System:String>
+    <System:String x:Key="competitorNumber">Competitors</System:String>
 </ResourceDictionary>

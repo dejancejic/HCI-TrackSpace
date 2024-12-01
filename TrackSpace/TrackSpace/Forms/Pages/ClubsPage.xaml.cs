@@ -13,6 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using TrackSpace.Models;
 using TrackSpace.ViewModel;
 using TrackSpace.ViewModel.Shared;
 
@@ -21,13 +22,15 @@ namespace TrackSpace.Forms.Pages
     /// <summary>
     /// Interaction logic for ClubsPage.xaml
     /// </summary>
-    public partial class ClubsPage : Page
+    public partial class ClubsPage : UserControl
     {
-
-        public ClubsPage()
-        {
+        public ClubsPage()  
+       {
             InitializeComponent();
-            DataContext = ViewModelLocator.ClubsViewModel;
+            ViewModelLocator.ClubsViewModel=new ClubsViewModel();
+            DataContext =ViewModelLocator.ClubsViewModel;
+
+           
         }
 
 
@@ -54,7 +57,22 @@ namespace TrackSpace.Forms.Pages
             }
         }
 
+        private void Hyperlink_Click(object sender, RoutedEventArgs e)
+        {
+            Hyperlink hyperlink = sender as Hyperlink;
+            if (hyperlink != null)
+            {
+                var club = (hyperlink.DataContext as Club); 
+
+                if (club != null)
+                {
+                    
+                    ViewModelLocator.ClubsViewModel.ShowClubByName(club.Name);  
+                }
+            }
 
 
+
+        }
     }
 }

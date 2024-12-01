@@ -1,6 +1,7 @@
 ﻿using System.Windows;
 using System.Windows.Controls;
-
+using System.Windows.Navigation;
+using TrackSpace.Forms.Pages;
 using TrackSpace.ViewModel;
 using TrackSpace.ViewModel.Shared;
 
@@ -10,6 +11,8 @@ namespace TrackSpace.Forms.Windows
     public partial class ObserverMainPage : Window
     {
         private ObserverViewModel observerViewModel=ViewModelLocator.ObserverViewModel;
+
+       
         public ObserverMainPage()
         {
             InitializeComponent();
@@ -17,11 +20,14 @@ namespace TrackSpace.Forms.Windows
 
             observerViewModel.User = null;
             ViewModelLocator.ObserverViewModel.UpdateViewModel();
-            observerViewModel.MainFrame = mainFrame;
-            mainFrame.Navigate(new Uri("Forms/Pages/ClubsPage.xaml", UriKind.Relative));
+
+          
+             
+
 
         }
 
+        
 
         private void ListView_SelectionChanged(object sender, SelectionChangedEventArgs e)
         { 
@@ -39,7 +45,11 @@ namespace TrackSpace.Forms.Windows
                 }
             }
         }
-       
 
+        private void MouseDownHandler(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        {
+                this.DragMove();
+           
+        }
     }
 }

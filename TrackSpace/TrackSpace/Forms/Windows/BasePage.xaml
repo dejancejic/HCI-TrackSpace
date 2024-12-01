@@ -28,7 +28,7 @@
                                    RadiusY="10"/>
             </Border.Clip>
             <!-- Side menu -->
-            <ContentControl ContentTemplate="{Binding SideMenuContent, RelativeSource={RelativeSource AncestorType=UserControl}}" />
+            <ContentControl Content="{Binding SideMenuContent, RelativeSource={RelativeSource AncestorType=UserControl}}" />
         </Border>
 
         <Border Background="#ffffff"
@@ -43,10 +43,9 @@
             </Border.Clip>
             <!-- Main part -->
             <StackPanel>
-                <Button x:Name="closeBtn" Background="Transparent" BorderBrush="Transparent" Padding="5 0 0 0" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0 13 14 0" Click="CloseBtnClick">
-                    <materialDesign:PackIcon Kind="Close" Width="25" Height="25" Opacity="0.5"/>
-                </Button>
-                <ContentControl ContentTemplate="{Binding MainContent, RelativeSource={RelativeSource AncestorType=UserControl}}" />
+
+                <!-- Main content -->
+                <ContentControl  Margin="198 4 0 0" Content="{Binding MainContent, RelativeSource={RelativeSource AncestorType=UserControl}}" Height="583" Width="758" />
             </StackPanel>
         </Border>
     </Grid>

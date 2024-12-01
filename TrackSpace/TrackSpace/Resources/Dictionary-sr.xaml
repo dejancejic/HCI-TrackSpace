@@ -26,4 +26,25 @@
     <System:String x:Key="selectFont">Izaberite Font</System:String>
     <System:String x:Key="language">Jezik</System:String>
     <System:String x:Key="font">Font</System:String>
+    <System:String x:Key="close">Zatvorite</System:String>
+    <System:String x:Key="competitors">Takmičari(</System:String>
+    <System:String x:Key="clubCode">Kod Kluba:</System:String>
+    <System:String x:Key="clubCodeNoDots">Kod Kluba</System:String>
+    <System:String x:Key="contact">Kontakt Telefon:</System:String>
+    <System:String x:Key="contactNoDots">Kontakt Telefon</System:String>
+    <System:String x:Key="contactMail">Kontakt Mejl:</System:String>
+    <System:String x:Key="exit">Izađite</System:String>
+    <System:String x:Key="order">Redni Broj</System:String>
+    <System:String x:Key="competitorDetails">Detalji o Takmičaru</System:String>
+    <System:String x:Key="nameDot" xml:space="preserve">Ime: </System:String>
+    <System:String x:Key="categoryDot" xml:space="preserve">Kategorija: </System:String>
+    <System:String x:Key="DoBDot" xml:space="preserve">Datum Rođenja: </System:String>
+    <System:String x:Key="genderDot" xml:space="preserve">Pol: </System:String>
+    <System:String x:Key="name">Ime</System:String>
+    <System:String x:Key="surname">Prezime</System:String>
+    <System:String x:Key="category">Kategorija</System:String>
+    <System:String x:Key="gender">Pol</System:String>
+    <System:String x:Key="M">M</System:String>
+    <System:String x:Key="F">Ž</System:String>
+    <System:String x:Key="competitorNumber">Takmičari</System:String>
 </ResourceDictionary>

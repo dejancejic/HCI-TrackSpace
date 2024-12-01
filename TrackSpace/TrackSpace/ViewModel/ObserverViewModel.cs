@@ -15,13 +15,13 @@ using TrackSpace.Command;
 using TrackSpace.Forms.Pages;
 using TrackSpace.Models;
 using TrackSpace.Services;
+using TrackSpace.Services.Shared;
+using TrackSpace.ViewModel.Shared;
 
 namespace TrackSpace.ViewModel
 {
-    public class ObserverViewModel : INotifyPropertyChanged
+    public class ObserverViewModel : BaseViewModel, INotifyPropertyChanged
     {
-        private Frame _mainFrame;
-        public Frame MainFrame { get { return _mainFrame; } set { _mainFrame = value; OnPropertyChanged(nameof(MainFrame)); } }
 
         private string _selectedFont;
         private string _selectedLanguage;
@@ -60,7 +60,7 @@ namespace TrackSpace.ViewModel
         public ObservableCollection<string> Fonts { get; set; }
         public ObservableCollection<string> Languages { get; set; }
 
-        private UserService _userService = new UserService();
+        private UserService _userService = ServicesLocator.UserService;
 
         public void UpdateViewModel()
         {
@@ -137,19 +137,28 @@ namespace TrackSpace.ViewModel
                     Logout(parameter);
                     return;
                 }
-                
-                    MainFrame.Navigate(new Uri($"Forms/Pages/{tag}.xaml", UriKind.Relative));
-                
-                    
+              
+
+                var pageInstance = LoadUserControlFromUri($"Forms/Pages/{tag}.xaml");
+                ViewModelLocator.ObserverMainPage.basePage.MainContent = pageInstance;
+
+
             }
         }
 
-        private void Logout(object obj)
+        private UserControl LoadUserControlFromUri(string uri)
         {
 
-            if (obj is Window window) { 
-                window.Close();
-            }
+                Uri pageUri = new Uri(uri, UriKind.Relative);
+                var page = (UserControl)Application.LoadComponent(pageUri);
+                return page;           
+        }
+
+
+
+        private void Logout(object obj)
+        {
+                ViewModelLocator.ObserverMainPage.Close();
         }
 
         private void SwitchTheme(object parameter)
@@ -249,10 +258,7 @@ namespace TrackSpace.ViewModel
         }
 
 
-        private bool CanShowWindow(object obj)
-        {
-            return true;
-        }
+        
         public event PropertyChangedEventHandler PropertyChanged;
         protected void OnPropertyChanged(string propertyName) 
         { 

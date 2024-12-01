@@ -14,10 +14,12 @@ using TrackSpace.Forms.CustomMessageBox;
 using TrackSpace.Forms.Windows;
 using TrackSpace.Models;
 using TrackSpace.Services;
+using TrackSpace.Services.Shared;
+using TrackSpace.ViewModel.Shared;
 
 namespace TrackSpace.ViewModel
 {
-    public class LoginViewModel
+    public class LoginViewModel:BaseViewModel
     {
         public User? User { get; set; }
         private bool closeBtnPressed = false;
@@ -56,8 +58,8 @@ namespace TrackSpace.ViewModel
             SwitchLanguageCommand = new RelayCommand(SwitchLanguage, CanShowWindow);
             try
             {
-                _userService = new UserService();
-                _clubAdminService = new ClubAdminService();
+                _userService = ServicesLocator.UserService;
+                _clubAdminService = ServicesLocator.ClubAdminService;
             }
             catch (Exception ex)
             {
@@ -151,8 +153,9 @@ namespace TrackSpace.ViewModel
 
         private void ShowObserverPage(object obj) {
 
-            
-                ObserverMainPage observerPage = new ObserverMainPage(); 
+
+            ObserverMainPage observerPage = new ObserverMainPage();
+            ViewModelLocator.ObserverMainPage=observerPage; 
                 observerPage.Closed += (a, b) => Application.Current.MainWindow.Show(); 
                 observerPage.Show(); 
                 Application.Current.MainWindow.Hide();
@@ -165,10 +168,6 @@ namespace TrackSpace.ViewModel
         }
 
 
-        private bool CanShowWindow(object obj)
-        {
-            return true;
-
-        }
+       
     }
 }

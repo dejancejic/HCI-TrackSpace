@@ -10,10 +10,11 @@ using System.Windows.Input;
 using TrackSpace.Command;
 using TrackSpace.Forms.Pages;
 using TrackSpace.Models;
+using TrackSpace.Services.Shared;
 
 namespace TrackSpace.ViewModel
 {
-    public class ClubAdminViewModel:INotifyPropertyChanged
+    public class ClubAdminViewModel: BaseViewModel, INotifyPropertyChanged
     {
         private ClubAdmin _admin;
         private Frame _mainFrame;
@@ -65,10 +66,7 @@ namespace TrackSpace.ViewModel
         }
 
 
-        private bool CanShowWindow(object obj)
-        {
-            return true;
-        }
+        
         public event PropertyChangedEventHandler PropertyChanged;
         protected void OnPropertyChanged(string propertyName)
         {

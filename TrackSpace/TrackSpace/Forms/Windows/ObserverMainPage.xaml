@@ -4,6 +4,8 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TrackSpace.Forms.Windows"
+        xmlns:pages="clr-namespace:TrackSpace.Forms.Pages"
+        xmlns:forms="clr-namespace:TrackSpace.Forms"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d"
         Title="ObserverMainPage" Height="650" Width="1000"
@@ -79,11 +81,18 @@
     </Window.Resources>
     <Grid>
 
-        <local:BasePage>
-            <local:BasePage SideMenuContent="{StaticResource ObserverSideMenu}"/>
+        <local:BasePage MouseDown="MouseDownHandler" x:Name="basePage">
+            <local:BasePage.SideMenuContent>
+                <forms:SideMenuObserver></forms:SideMenuObserver>
+            </local:BasePage.SideMenuContent>
+
+            <local:BasePage.MainContent >
+                <pages:ClubsPage></pages:ClubsPage>
+            </local:BasePage.MainContent>
         </local:BasePage>
 
-        <Frame NavigationUIVisibility="Hidden" x:Name="mainFrame"  Margin="220 58,0,42" HorizontalAlignment="Left" Width="755"/>
-
+        <!--<Frame MouseDown="MouseDownHandler" NavigationUIVisibility="Hidden" x:Name="mainFrame"  Margin="220 58,0,42" HorizontalAlignment="Left" Width="755"/>-->
+        
+        
     </Grid>
 </Window>
