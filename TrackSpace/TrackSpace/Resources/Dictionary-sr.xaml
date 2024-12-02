@@ -47,4 +47,7 @@
     <System:String x:Key="M">M</System:String>
     <System:String x:Key="F">Ž</System:String>
     <System:String x:Key="competitorNumber">Takmičari</System:String>
+    <System:String x:Key="switchLanguage">Promjenite Jezik</System:String>
+    <System:String x:Key="searchClubs">Pretražite Klubove</System:String>
+    <System:String x:Key="clubsW(">Klubovi(</System:String>
 </ResourceDictionary>

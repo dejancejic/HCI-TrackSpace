@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -19,21 +20,29 @@ using TrackSpace.ViewModel.Shared;
 
 namespace TrackSpace.ViewModel
 {
-    public class LoginViewModel:BaseViewModel
+    public class LoginViewModel:BaseViewModel,INotifyPropertyChanged
     {
         public User? User { get; set; }
         private bool closeBtnPressed = false;
         private UserService _userService;
         private ClubAdminService _clubAdminService;
         private string _selectedLanguage;
-        public string SelectedLanguage { get { return _selectedLanguage; }
-            set {
-                if (_selectedLanguage != value) 
-                { _selectedLanguage = value; SetLanguage(value); 
-                     
-                } 
-            } 
+       
+        private bool _isEnglishChecked=true;
+        public bool IsEnglishChecked
+        {
+            get => _isEnglishChecked;
+            set
+            {
+                if (_isEnglishChecked != value)
+                {
+                    _isEnglishChecked = value;
+                    OnPropertyChanged(nameof(IsEnglishChecked));
+                    SwitchLanguage(_isEnglishChecked ? "en" : "sr");
+                }
+            }
         }
+
 
         public Frame CurrentFrame { get; set; }
 
@@ -47,8 +56,7 @@ namespace TrackSpace.ViewModel
         public ICommand ShowSettingsFrameCommand { get; set; }
         public ICommand SwitchLanguageCommand { get; set; }
 
-        public bool IsEnglishSelected => SelectedLanguage == "en"; 
-        public bool IsSerbianSelected => SelectedLanguage == "sr";
+        
 
         public LoginViewModel() {
 
@@ -125,7 +133,7 @@ namespace TrackSpace.ViewModel
         {
             if (obj is string language)
             {
-                SelectedLanguage = language;
+                SetLanguage(language);
             }
 
         }
@@ -167,7 +175,14 @@ namespace TrackSpace.ViewModel
         
         }
 
+        public event PropertyChangedEventHandler PropertyChanged;
+        protected void OnPropertyChanged(string propertyName)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
 
-       
+        }
+
+
+
     }
 }

@@ -16,6 +16,9 @@
     <Compile Update="Forms\Pages\ClubsPage.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="Forms\Pages\CompetitionInfoPage.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="Forms\Pages\CompetitionsPage.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -26,6 +29,9 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="Forms\SideMenuObserver.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Forms\UserControls\CompetitionDataGridControl.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="Forms\Windows\BasePage.xaml.cs">
@@ -51,6 +57,9 @@
     <Page Update="Forms\Pages\ClubsPage.xaml">
       <SubType>Designer</SubType>
     </Page>
+    <Page Update="Forms\Pages\CompetitionInfoPage.xaml">
+      <SubType>Designer</SubType>
+    </Page>
     <Page Update="Forms\Pages\CompetitionsPage.xaml">
       <SubType>Designer</SubType>
     </Page>
@@ -61,6 +70,9 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Forms\SideMenuObserver.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Forms\UserControls\CompetitionDataGridControl.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Forms\Windows\BasePage.xaml">

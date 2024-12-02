@@ -13,6 +13,8 @@ public partial class Event
 
     public int IdCategory { get; set; }
 
+    public string? Name { get; set; }
+
     public virtual ICollection<CompetitorEvent> CompetitorEvents { get; set; } = new List<CompetitorEvent>();
 
     public virtual Category IdCategoryNavigation { get; set; } = null!;

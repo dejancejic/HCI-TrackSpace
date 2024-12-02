@@ -57,7 +57,7 @@ namespace TrackSpace.ViewModel
             ViewModelLocator.ObserverMainPage.basePage.MainContent = new ClubsPage();
         }
 
-        public event PropertyChangedEventHandler PropertyChanged;
+        public event PropertyChangedEventHandler? PropertyChanged;
         protected void OnPropertyChanged(string propertyName)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));

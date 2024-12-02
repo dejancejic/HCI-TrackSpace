@@ -6,25 +6,26 @@
       xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
       xmlns:local="clr-namespace:TrackSpace.Forms.Pages"
       mc:Ignorable="d" 
+             FontSize="20"
       d:DesignHeight="650" d:DesignWidth="800"
       FontFamily="{DynamicResource AppFont}"
       >
 
     <Grid Background="White">
-        <Label HorizontalAlignment="Left" Margin="15,10,0,415" Content="{DynamicResource clubs}"
+        <Label HorizontalAlignment="Left" Margin="18,10,0,415" Content="{DynamicResource clubs}"
        FontWeight="Bold" FontSize="40" Foreground="Black" />
         <Button x:Name="closeBtn" Background="Transparent" BorderBrush="Transparent" Padding="5 0 0 0" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0 13 14 0" Command="{Binding CloseCommand}">
             <materialDesign:PackIcon Kind="Close" Width="25" Height="25" Opacity="0.5"/>
         </Button>
 
-        <materialDesign:AutoSuggestBox materialDesign:HintAssist.Hint="Search Club" FontSize="15" Height="50"
+        <materialDesign:AutoSuggestBox materialDesign:HintAssist.Hint="{DynamicResource searchClubs}" FontSize="15" Height="50"
                                        TextChanged="AutoSuggestBox_TextChanged"
                                        materialDesign:TextFieldAssist.HasClearButton="True" 
                                        DropDownElevation="Dp0" 
                                        Style="{StaticResource MaterialDesignOutlinedAutoSuggestBox}"
                                        Suggestions="{Binding AutoSuggestBox1Suggestions}" 
                                        Text="{Binding AutoSuggestBox1Text, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
-                                       ValueMember="Value" Margin="13,60,477,382">
+                                       ValueMember="Value" Margin="18,60,477,382">
             <materialDesign:AutoSuggestBox.ItemTemplate>
                 <DataTemplate>
                     <DockPanel>
@@ -36,44 +37,78 @@
             </materialDesign:AutoSuggestBox.ItemTemplate>
         </materialDesign:AutoSuggestBox>
 
+        <StackPanel Orientation="Horizontal" Margin="17 185 0 0" >
+            <Label Content="{DynamicResource clubsW(}" FontWeight="Bold"></Label>
+            <Label Margin="-5 0 -5 0" Content="{Binding Clubs.Count}" FontWeight="Bold"></Label>
+            <Label  Content=")" FontWeight="Bold"></Label>
+        </StackPanel>
+    
+        <Border  Background="{DynamicResource Primary}" BorderBrush="{DynamicResource Primary}" Margin="18,155,23,0" Height="300" BorderThickness="1" CornerRadius="10">
+            <DataGrid Margin="2,1,2,1"  AlternatingRowBackground="{DynamicResource Secondary}"
+              ItemsSource="{Binding Clubs}" 
+              AutoGenerateColumns="False"
+              SelectionMode="Single" 
+              SelectionUnit="FullRow"
+              CanUserAddRows="False" 
+              HorizontalScrollBarVisibility="Disabled" 
+              VerticalScrollBarVisibility="Hidden">
 
-        <DataGrid Margin="10,80,10,0" Height="300"
-          ItemsSource="{Binding Clubs}" 
-          AutoGenerateColumns="False"
-          SelectionMode="Single"
-          SelectionUnit="FullRow"
-          CanUserAddRows="False">
+                <DataGrid.ColumnHeaderStyle>
+                    <Style TargetType="DataGridColumnHeader" BasedOn="{StaticResource {x:Type DataGridColumnHeader}}">
+                        <Setter Property="HorizontalContentAlignment" Value="Center" />
+                        <Setter Property="Background" Value="{DynamicResource Primary}" />
+                        <Setter Property="FontSize" Value="16" />
+                    </Style>
+                </DataGrid.ColumnHeaderStyle>
 
-            <DataGrid.Columns>
-                
-                <DataGridTemplateColumn Header="{DynamicResource name}">
-                    <DataGridTemplateColumn.CellTemplate>
-                        <DataTemplate>
-                         
-                            <TextBlock>
-                        <Hyperlink  Click="Hyperlink_Click" TextDecorations="None">
-                            <TextBlock Text="{Binding Name}">
-                                        <TextBlock.Style>
-                                            <Style TargetType="TextBlock">
-                                                <Style.Triggers>
-                                                   
-                                                    <DataTrigger Binding="{Binding IsMouseOver, RelativeSource={RelativeSource Self}}" Value="True">
-                                                        <Setter Property="Foreground" Value="{DynamicResource Primary}"/>
-                                                    </DataTrigger>
-                                                </Style.Triggers>
-                                            </Style>
-                                        </TextBlock.Style>
-                            </TextBlock>
-                        </Hyperlink>
-                    </TextBlock>
-                        </DataTemplate>
-                    </DataGridTemplateColumn.CellTemplate>
-                </DataGridTemplateColumn>
-                <DataGridTextColumn Header="{DynamicResource clubCodeNoDots}" Binding="{Binding ClubCode}" IsReadOnly="True" />
-                <DataGridTextColumn Header="{DynamicResource contactNoDots}" Binding="{Binding Contact}" IsReadOnly="True"/>
-                <DataGridTextColumn Header="{DynamicResource competitorNumber}" Binding="{Binding CompetitorNumber}" IsReadOnly="True"/>
-            </DataGrid.Columns>
-        </DataGrid>
+                <DataGrid.CellStyle>
+                    <Style TargetType="DataGridCell">
+                        <Setter Property="TextBlock.TextAlignment" Value="Center" />
+                        <Setter Property="HorizontalContentAlignment" Value="Center" />
+                        <Setter Property="VerticalContentAlignment" Value="Center" />
+                        <Setter Property="Margin" Value="0 3 0 0" />
+                        <Setter Property="MinWidth" Value="180" />
+                        <Setter Property="MinHeight" Value="30" />
+                        <Setter Property="FontSize" Value="16" />
+                    </Style>
+                </DataGrid.CellStyle>
+
+                <DataGrid.RowStyle>
+                    <Style TargetType="DataGridRow">
+                        <Setter Property="Height" Value="30" />
+                    </Style>
+                </DataGrid.RowStyle>
+
+                <DataGrid.Columns>
+                    <DataGridTemplateColumn Header="{DynamicResource name}">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock HorizontalAlignment="Left" Margin="20 0 0 0">
+                            <Hyperlink Click="Hyperlink_Click" TextDecorations="None" Foreground="Black">
+                                <TextBlock Text="{Binding Name}" FontWeight="Bold" TextWrapping="Wrap">
+                                            <TextBlock.Style >
+                                                <Style TargetType="TextBlock">
+                                                    <Style.Triggers>
+                                                        <DataTrigger Binding="{Binding IsMouseOver, RelativeSource={RelativeSource Self}}" Value="True">
+                                                            <Setter Property="Foreground" Value="DarkBlue"/>
+                                                        </DataTrigger>
+                                                    </Style.Triggers>
+                                                </Style>
+                                            </TextBlock.Style>
+                                </TextBlock>
+                            </Hyperlink>
+                        </TextBlock>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+
+                    <DataGridTextColumn Header="{DynamicResource clubCodeNoDots}" Binding="{Binding ClubCode}" IsReadOnly="True" />
+                    <DataGridTextColumn Header="{DynamicResource contactNoDots}" Binding="{Binding Contact}" IsReadOnly="True"/>
+                    <DataGridTextColumn Header="{DynamicResource competitorNumber}" Binding="{Binding Competitors.Count}" IsReadOnly="True"/>
+                </DataGrid.Columns>
+            </DataGrid>
+        </Border>
+
 
 
 

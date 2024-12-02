@@ -4,16 +4,72 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+      xmlns:dataGrid="clr-namespace:TrackSpace.Forms.UserControls"
       xmlns:local="clr-namespace:TrackSpace.Forms.Pages"
       mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800"
+             FontSize="18" FontFamily="{DynamicResource AppFont}"
+      d:DesignHeight="650" d:DesignWidth="800"
       >
 
     <Grid Background="White">
-        <Label Content="Competitions" HorizontalAlignment="Left" FontWeight="Bold" Margin="10" FontSize="35"></Label>
+        <Label Content="Competitions" HorizontalAlignment="Left" FontWeight="Bold" Margin="18,10,0,318" FontSize="35"></Label>
 
         <Button x:Name="closeBtn" Background="Transparent" BorderBrush="Transparent" Padding="5 0 0 0" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0 13 14 0" Command="{Binding CloseCommand}">
             <materialDesign:PackIcon Kind="Close" Width="25" Height="25" Opacity="0.5"/>
-            </Button>
+        </Button>
+
+
+        <!--Search box-->
+        <materialDesign:AutoSuggestBox materialDesign:HintAssist.Hint="Search Competitions" FontSize="15"
+                               TextChanged="AutoSuggestBox_TextChanged"
+                               materialDesign:TextFieldAssist.HasClearButton="True" 
+                               DropDownElevation="Dp0" 
+                               Style="{StaticResource MaterialDesignOutlinedAutoSuggestBox}"
+                               Suggestions="{Binding AutoSuggestBox1Suggestions}" 
+                               Text="{Binding AutoSuggestBox1Text, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
+                               ValueMember="Value" Margin="320,10,91,523">
+            <materialDesign:AutoSuggestBox.ItemTemplate>
+                <DataTemplate>
+                    <DockPanel>
+                        <TextBlock Margin="10,0,0,0" Text="{Binding Key}"/>
+                        <TextBlock Margin="10,0,0,0" Text=" - " />
+                        <TextBlock Margin="10,0,0,0" Text="{Binding Value}" />
+                    </DockPanel>
+                </DataTemplate>
+            </materialDesign:AutoSuggestBox.ItemTemplate>
+        </materialDesign:AutoSuggestBox>
+
+
+
+        
+
+
+
+
+        <materialDesign:Card Margin="0,120,-3,-1" >
+            <TabControl 
+    materialDesign:ColorZoneAssist.Background="{DynamicResource Primary}"
+    materialDesign:ColorZoneAssist.Mode="PrimaryLight"
+    Style="{StaticResource MaterialDesignFilledTabControl}" Margin="63,3,38,0">
+                <TabItem Background="{DynamicResource Primary}" 
+      Header="Ongoing Competitions">
+
+
+                    <!--OngoingCompetitions-->
+                    <dataGrid:CompetitionDataGridControl ItemsSource="{Binding OngoingCompetitions}" 
+                                  Count="{Binding OngoingCompetitions.Count}" />
+                </TabItem>
+                <TabItem
+      Header="Past Competitions">
+
+                    <!--PastCompetitions-->
+
+                    <dataGrid:CompetitionDataGridControl ItemsSource="{Binding PastCompetitions}" 
+                                  Count="{Binding PastCompetitions.Count}" />
+
+                </TabItem>
+            </TabControl>
+        </materialDesign:Card>
+
     </Grid>
 </UserControl>

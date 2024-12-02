@@ -16,6 +16,7 @@ using TrackSpace.DBUtil;
 using TrackSpace.Forms.CustomMessageBox;
 using TrackSpace.Models;
 using TrackSpace.Services;
+using TrackSpace.Services.Shared;
 using TrackSpace.ViewModel;
 using TrackSpace.ViewModel.Shared;
 
@@ -28,6 +29,7 @@ namespace TrackSpace.Forms.Windows
         public LoginWindow()
         {
             InitializeComponent();
+            UserService service = ServicesLocator.UserService;
             loginViewModel =ViewModelLocator.LoginViewModel;
             
             

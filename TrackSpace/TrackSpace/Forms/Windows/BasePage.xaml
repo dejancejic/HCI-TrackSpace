@@ -41,12 +41,12 @@
                                    RadiusX="0"
                                    RadiusY="10"/>
             </Border.Clip>
-            <!-- Main part -->
-            <StackPanel>
+ 
+            
 
                 <!-- Main content -->
-                <ContentControl  Margin="198 4 0 0" Content="{Binding MainContent, RelativeSource={RelativeSource AncestorType=UserControl}}" Height="583" Width="758" />
-            </StackPanel>
+                <ContentControl  Margin="198 0 0 0" Content="{Binding MainContent, RelativeSource={RelativeSource AncestorType=UserControl}}" Height="583" Width="758" />
+            
         </Border>
     </Grid>
 </UserControl>

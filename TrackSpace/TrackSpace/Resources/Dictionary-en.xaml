@@ -47,4 +47,7 @@
     <System:String x:Key="M">M</System:String>
     <System:String x:Key="F">F</System:String>
     <System:String x:Key="competitorNumber">Competitors</System:String>
+    <System:String x:Key="switchLanguage">Switch Language</System:String>
+    <System:String x:Key="searchClubs">Search Clubs</System:String>
+    <System:String x:Key="clubsW(">Clubs(</System:String>
 </ResourceDictionary>

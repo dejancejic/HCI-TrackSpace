@@ -6,6 +6,7 @@
       xmlns:local="clr-namespace:TrackSpace.Forms.Pages"
       xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
       xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+      xmlns:utils="clr-namespace:TrackSpace.Utils"
       xmlns:locator="clr-namespace:TrackSpace.ViewModel.Shared"
       mc:Ignorable="d" 
       d:DesignHeight="605" d:DesignWidth="400"
@@ -14,7 +15,6 @@ FontFamily="{DynamicResource MaterialDesignFont}"
       DataContext="{Binding Source={x:Static locator:ViewModelLocator.LoginViewModel}}"
       Title="LoginPage">
     <Page.Resources>
-
         <Style TargetType="Label" x:Key="HoverHighlightLabel">
             <Setter Property="Foreground" Value="#05b790"/>
             <Style.Triggers>
@@ -63,18 +63,28 @@ FontFamily="{DynamicResource MaterialDesignFont}"
 
 
                 <StackPanel Orientation="Horizontal" VerticalAlignment="Bottom" HorizontalAlignment="Right">
-                    <Button  Height="35" Width="35" Tag="en" Style="{StaticResource RoundedButtonStyle}"  Command="{Binding SwitchLanguageCommand}" CommandParameter="{Binding RelativeSource={RelativeSource Self}, Path=Tag}" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="0,0,15,14">
-                        <Image Source="pack://application:,,,/Resources/englishIcon.png"/>
-                    </Button>
-                    <Button Tag="sr" Height="35" Width="35" Style="{StaticResource RoundedButtonStyle}"  Command="{Binding SwitchLanguageCommand}" CommandParameter="{Binding RelativeSource={RelativeSource Self}, Path=Tag}" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="0,0,10,14">
-                        <Image Source="pack://application:,,,/Resources/serbianIcon.png"/>
-                    </Button>
-                    
-                    
-                    <!--<CheckBox
-  Content="E"
-  Style="{StaticResource MaterialDesignActionDarkCheckBox}"
-  ToolTip="MaterialDesignActionDarkCheckBox" />-->
+
+                    <ToggleButton Background="LightGray"
+    IsChecked="{Binding IsEnglishChecked, Mode=TwoWay}"
+    Style="{StaticResource MaterialDesignActionToggleButton}"
+    ToolTip="{DynamicResource switchLanguage}"
+    HorizontalAlignment="Right"
+    VerticalAlignment="Bottom"
+    Width="55" Height="55"
+    Margin="0,0,15,14">
+                       
+                        <ToggleButton.Content>
+                            <Image Source="pack://application:,,,/Resources/serbianIcon.png" Width="35" Height="35" />
+                        </ToggleButton.Content>
+                        <materialDesign:ToggleButtonAssist.OnContent>
+                            <Image Source="pack://application:,,,/Resources/englishIcon.png" Width="35" Height="35" />
+                        </materialDesign:ToggleButtonAssist.OnContent>
+                    </ToggleButton>
+
+
+
+
+
                 </StackPanel>
               
 
