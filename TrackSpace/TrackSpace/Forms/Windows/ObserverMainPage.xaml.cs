@@ -1,5 +1,6 @@
 ﻿using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Input;
 using System.Windows.Navigation;
 using TrackSpace.Forms.Pages;
 using TrackSpace.ViewModel;
@@ -48,7 +49,10 @@ namespace TrackSpace.Forms.Windows
 
         private void MouseDownHandler(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
+            if (e.LeftButton == MouseButtonState.Pressed)
+            {
                 this.DragMove();
+            }
            
         }
     }

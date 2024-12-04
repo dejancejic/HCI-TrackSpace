@@ -50,4 +50,24 @@
     <System:String x:Key="switchLanguage">Switch Language</System:String>
     <System:String x:Key="searchClubs">Search Clubs</System:String>
     <System:String x:Key="clubsW(">Clubs(</System:String>
+    <System:String x:Key="noGroupsyet">There are no groups assigned to this event!</System:String>
+    <System:String x:Key="error">Error</System:String>
+    <System:String x:Key="groupsW(">Groups(</System:String>
+    <System:String x:Key="club">Club</System:String>
+    <System:String x:Key="result">Result</System:String>
+    <System:String x:Key="groupWSpace" xml:space="preserve">Group </System:String>
+    <System:String x:Key="event">Event</System:String>
+    <System:String x:Key="start">Start</System:String>
+    <System:String x:Key="competitorsNo(">Competitors</System:String>
+    <System:String x:Key="eventsW(">Events(</System:String>
+    <System:String x:Key="entriesW(">Entries(</System:String>
+    <System:String x:Key="groupsW()">Groups({0})</System:String>
+    <System:String x:Key="title">Name</System:String>
+    <System:String x:Key="date">Date</System:String>
+    <System:String x:Key="location">Location</System:String>
+    <System:String x:Key="entries">Entries</System:String>
+    <System:String x:Key="competitionsW(">Competitions(</System:String>
+    <System:String x:Key="pastCompetitions">Past Competitions</System:String>
+    <System:String x:Key="ongoingCompetitions">Ongoing Competitions</System:String>
+    <System:String x:Key="searchCompetitions">Search Competitions</System:String>
 </ResourceDictionary>

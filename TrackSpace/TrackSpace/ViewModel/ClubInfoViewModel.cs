@@ -15,6 +15,7 @@ using TrackSpace.Forms.Pages;
 using TrackSpace.Models;
 using TrackSpace.Services;
 using TrackSpace.Services.Shared;
+using TrackSpace.Utils;
 using TrackSpace.ViewModel.Shared;
 
 
@@ -53,8 +54,8 @@ namespace TrackSpace.ViewModel
 
             public void GoBack(object obj)
         {
-
-            ViewModelLocator.ObserverMainPage.basePage.MainContent = new ClubsPage();
+            PageUtils.NavigatePages(new ClubsPage());
+            
         }
 
         public event PropertyChangedEventHandler? PropertyChanged;

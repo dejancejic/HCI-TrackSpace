@@ -22,16 +22,31 @@
     <Compile Update="Forms\Pages\CompetitionsPage.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="Forms\Pages\EventInfoPage.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Forms\Pages\GroupsPage.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="Forms\Pages\LoginPage.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="Forms\Pages\SettingsPage.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="Forms\SideMenuObserver.xaml.cs">
+    <Compile Update="Forms\SideMenus\SideMenuClubAdmin.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Forms\SideMenus\SideMenuObserver.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Forms\SideMenus\SideMenuOrganizer.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="Forms\UserControls\CompetitionDataGridControl.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Forms\UserControls\CompetitorDetailsDialog.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="Forms\Windows\BasePage.xaml.cs">
@@ -44,6 +59,9 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="Forms\Windows\ObserverMainPage.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Forms\Windows\OrganizerMainPage.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>
@@ -63,16 +81,31 @@
     <Page Update="Forms\Pages\CompetitionsPage.xaml">
       <SubType>Designer</SubType>
     </Page>
+    <Page Update="Forms\Pages\EventInfoPage.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Forms\Pages\GroupsPage.xaml">
+      <SubType>Designer</SubType>
+    </Page>
     <Page Update="Forms\Pages\LoginPage.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Forms\Pages\SettingsPage.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="Forms\SideMenuObserver.xaml">
+    <Page Update="Forms\SideMenus\SideMenuClubAdmin.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Forms\SideMenus\SideMenuObserver.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Forms\SideMenus\SideMenuOrganizer.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Forms\UserControls\CompetitionDataGridControl.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Forms\UserControls\CompetitorDetailsDialog.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Forms\Windows\BasePage.xaml">
@@ -85,6 +118,9 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Forms\Windows\ObserverMainPage.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Forms\Windows\OrganizerMainPage.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Resources\Dictionary-en.xaml">

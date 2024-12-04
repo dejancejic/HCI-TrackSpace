@@ -16,69 +16,7 @@
         ResizeMode="NoResize"
         FontSize="18"
         FontFamily="{DynamicResource AppFont}">
-    <Window.Resources>
-
-
-        <DataTemplate x:Key="ObserverSideMenu">
-            <StackPanel Margin="0 40 760 0">
-                <ListView SelectedIndex="0" SelectionMode="Single" Background="{DynamicResource SideMenu}" SelectionChanged="ListView_SelectionChanged">
-                    <ListView.ItemContainerStyle>
-                        <Style TargetType="ListViewItem">
-                            <Setter Property="HorizontalContentAlignment" Value="Center" />
-                            <Setter Property="Margin" Value="0,0,0,0" />
-                            <Setter Property="Template">
-                                <Setter.Value>
-                                    <ControlTemplate TargetType="ListViewItem">
-                                        <Border Name="Border" Padding="2" SnapsToDevicePixels="true">
-                                            <Grid Background="{TemplateBinding Background}">
-                                                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                                            </Grid>
-                                        </Border>
-                                        <ControlTemplate.Triggers>
-                                            <Trigger Property="IsMouseOver" Value="True">
-                                                <Setter TargetName="Border" Property="Background" Value="{DynamicResource Secondary}"/>
-                                            </Trigger>
-                                            <Trigger Property="IsSelected" Value="True">
-                                                <Setter TargetName="Border" Property="Background" Value="{DynamicResource Secondary}"/>
-                                            </Trigger>
-                                        </ControlTemplate.Triggers>
-                                    </ControlTemplate>
-                                </Setter.Value>
-                            </Setter>
-                        </Style>
-                    </ListView.ItemContainerStyle>
-
-                    <ListViewItem Tag="ClubsPage" Name="clubsItem" >
-                        <StackPanel HorizontalAlignment="Center">
-                            <materialDesign:PackIcon Foreground="white" Kind="BadgeAccountHorizontal" Height="30" Width="30" HorizontalAlignment="Center"/>
-                            <Label HorizontalAlignment="Center" Foreground="White" FontWeight="Bold" FontSize="18" Content="{DynamicResource clubs}"/>
-                        </StackPanel>
-                    </ListViewItem>
-                    <ListViewItem Tag="CompetitionsPage" Name="competitionsItem">
-                        <StackPanel HorizontalAlignment="Center">
-                            <materialDesign:PackIcon Foreground="white" Kind="Event" Height="30" Width="30" HorizontalAlignment="Center"/>
-                            <Label Foreground="White" FontWeight="Bold" FontSize="18" Content="{DynamicResource competitions}"/>
-                        </StackPanel>
-                    </ListViewItem>
-                    <ListViewItem Margin="0 280 0 0"  Tag="SettingsPage" Name="settingsItem">
-                        <StackPanel HorizontalAlignment="Center">
-                            <materialDesign:PackIcon Foreground="white" Kind="Settings" Height="30" Width="30" HorizontalAlignment="Center"/>
-                            <Label Foreground="White" FontWeight="Bold" FontSize="18" Content="{DynamicResource settings}"/>
-                        </StackPanel>
-                    </ListViewItem>
-                    <ListViewItem Tag="Logout" Name="logoutItem">
-                        <StackPanel HorizontalAlignment="Center">
-                            <materialDesign:PackIcon Foreground="white" Kind="Logout" Height="30" Width="30" HorizontalAlignment="Center"/>
-                            <Label Foreground="White" FontWeight="Bold" FontSize="18" Content="{DynamicResource logout}"/>
-                        </StackPanel>
-                    </ListViewItem>
-                </ListView>
-            </StackPanel>
-
-        </DataTemplate>
-        
-
-    </Window.Resources>
+    
     <Grid>
 
         <local:BasePage MouseDown="MouseDownHandler" x:Name="basePage">
@@ -91,7 +29,7 @@
             </local:BasePage.MainContent>
         </local:BasePage>
 
-        <!--<Frame MouseDown="MouseDownHandler" NavigationUIVisibility="Hidden" x:Name="mainFrame"  Margin="220 58,0,42" HorizontalAlignment="Left" Width="755"/>-->
+    
         
         
     </Grid>

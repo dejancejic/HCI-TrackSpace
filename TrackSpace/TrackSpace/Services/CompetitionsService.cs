@@ -10,18 +10,19 @@ using TrackSpace.Services.Shared;
 
 namespace TrackSpace.Services
 {
-    public class CompetitionsService
+    public class CompetitionsService : BaseService
     {
-        private readonly TrackspaceContext _context = DBConnection.GetContext();
+     
         private ObservableCollection<Competition> _competitions;
         private LocationServices _locationService = ServicesLocator.LocationService;
-
+        private UserService _userServices = ServicesLocator.UserService;
+        private EventsService _eventsService = ServicesLocator.EventsService;
         private ObservableCollection<CompetitorEntry> _entries;
 
         public CompetitionsService() {
 
          _competitions=new ObservableCollection<Competition>(_context.Competitions.ToList());
-            _entries=new ObservableCollection<CompetitorEntry>(_context.CompetitorEntries.ToList());
+            _entries = new ObservableCollection<CompetitorEntry>(_context.CompetitorEntries.ToList());
         }
 
 
@@ -32,13 +33,19 @@ namespace TrackSpace.Services
             foreach (var competition in _competitions)
             {
                 var location = _locationService.GetLocationByPostNumber(competition.PostNumber);
-
+                var user = _userServices.GetUserById(competition.IdUser);
+                competition.Events = _eventsService.GetEventsByIdCompetition(competition.IdCompetition);
                 if (location != null)
                 {
                     competition.PostNumberNavigation = location;
                 }
+                if (user != null)
+                {
+                    competition.IdUserNavigation = new CompetitionOrganizer() { IdUserNavigation = user };
+                }
+                }
 
-            }
+            
             return _competitions;
         }
 

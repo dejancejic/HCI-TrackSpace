@@ -43,6 +43,7 @@
         <Border Background="#07bf96"
                 CornerRadius="10 0 0 10"
                 ClipToBounds="True"
+        
                 MouseDown="Border_Mouse_Down"
                 Grid.Column="0">
             <Border.Clip>

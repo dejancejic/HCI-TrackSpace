@@ -9,9 +9,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Resources\contactIcon.png" />
+    <None Remove="Resources\dateTimeIcon.png" />
+    <None Remove="Resources\descriptionIcon.png" />
     <None Remove="Resources\englishIcon.png" />
     <None Remove="Resources\logoIcon.png" />
     <None Remove="Resources\serbianIcon.png" />
+    <None Remove="Resources\trackIcon.png" />
   </ItemGroup>
 
   <ItemGroup>
@@ -32,9 +36,13 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Resource Include="Resources\contactIcon.png" />
+    <Resource Include="Resources\dateTimeIcon.png" />
+    <Resource Include="Resources\descriptionIcon.png" />
     <Resource Include="Resources\englishIcon.png" />
     <Resource Include="Resources\logoIcon.png" />
     <Resource Include="Resources\serbianIcon.png" />
+    <Resource Include="Resources\trackIcon.png" />
   </ItemGroup>
 
 </Project>

@@ -19,6 +19,8 @@ public partial class Competitor
 
     public int IdCategory { get; set; }
 
+    public int? IdGroup { get; set; }
+
     public virtual ICollection<CompetitorEvent> CompetitorEvents { get; set; } = new List<CompetitorEvent>();
 
     public virtual Category IdCategoryNavigation { get; set; } = null!;

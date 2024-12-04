@@ -33,10 +33,10 @@ namespace TrackSpace.Forms.Windows
 
             ViewModelLocator.ObserverViewModel.User = admin.IdUserNavigation;
             
-            _clubAdminViewModel.MainFrame = mainFrame;
+            
             _clubAdminViewModel.Admin = admin;
             ViewModelLocator.ObserverViewModel.UpdateViewModel();
-            mainFrame.Navigate(new Uri("Forms/Pages/ClubsPage.xaml", UriKind.Relative));
+           
         }
 
         private void ListView_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -54,6 +54,14 @@ namespace TrackSpace.Forms.Windows
                     _clubAdminViewModel.NavigateCommand.Execute(selectedItem.Tag);
                 }
             }
+        }
+        private void MouseDownHandler(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        {
+            if (e.LeftButton == MouseButtonState.Pressed)
+            {
+                this.DragMove();
+            }
+
         }
 
 

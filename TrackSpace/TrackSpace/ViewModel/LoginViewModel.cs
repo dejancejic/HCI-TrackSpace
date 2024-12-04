@@ -95,6 +95,7 @@ namespace TrackSpace.ViewModel
                 //TODO select usertype
                 if (User.Type.Equals("club_admin"))
                 {
+                    ViewModelLocator.AccountType = User.Type;
                     ClubAdmin? admin;
                     try
                     {
@@ -113,18 +114,20 @@ namespace TrackSpace.ViewModel
                     }
                     
                     ClubAdminMainPage clubAdminPage = new ClubAdminMainPage(admin!);
+                    ViewModelLocator.ClubAdminMainPage= clubAdminPage;
                     clubAdminPage.Closed += (a, b) => Application.Current.MainWindow.Show();
                     clubAdminPage.Show();
                     Application.Current.MainWindow.Hide();
                 }
                 else if (User.Type.Equals("organizer"))
                 {
+                    ViewModelLocator.AccountType = User.Type;
                     CompetitionOrganizer? organizer = User.CompetitionOrganizer;
 
-                    //ObserverMainPage observerPage = new ObserverMainPage();
-                    //observerPage.Closed += (a, b) => Application.Current.MainWindow.Show();
-                    //observerPage.Show();
-                    //Application.Current.MainWindow.Hide();
+                    OrganizerMainPage organizerPage = new OrganizerMainPage(organizer!);
+                    organizerPage.Closed += (a, b) => Application.Current.MainWindow.Show();
+                    organizerPage.Show();
+                    Application.Current.MainWindow.Hide();
                 }
             }
             
@@ -160,7 +163,7 @@ namespace TrackSpace.ViewModel
         
 
         private void ShowObserverPage(object obj) {
-
+            ViewModelLocator.AccountType = "observer";
 
             ObserverMainPage observerPage = new ObserverMainPage();
             ViewModelLocator.ObserverMainPage=observerPage; 

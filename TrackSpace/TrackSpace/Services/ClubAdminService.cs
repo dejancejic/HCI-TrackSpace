@@ -10,9 +10,9 @@ using TrackSpace.Services.Shared;
 
 namespace TrackSpace.Services
 {
-    public class ClubAdminService
+    public class ClubAdminService : BaseService
     {
-        private readonly TrackspaceContext _context = DBConnection.GetContext();
+        
         private ObservableCollection<ClubAdmin> _clubAdmins;
         private UserService _userService;
 

@@ -14,6 +14,7 @@ using TrackSpace.Forms.Pages;
 using TrackSpace.Models;
 using TrackSpace.Services;
 using TrackSpace.Services.Shared;
+using TrackSpace.Utils;
 using TrackSpace.ViewModel.Shared;
 
 namespace TrackSpace.ViewModel
@@ -73,7 +74,7 @@ namespace TrackSpace.ViewModel
                 {
                     Club? club = FindClubByName(clubName);
 
-                    ViewModelLocator.ObserverMainPage.basePage.MainContent = new ClubInfoPage(club!);
+                    PageUtils.NavigatePages(new ClubInfoPage(club!));
                 }
             }
         }
@@ -92,8 +93,9 @@ namespace TrackSpace.ViewModel
 
                 Club? club = FindClubByName(clubName);
 
-                ViewModelLocator.ObserverMainPage.basePage.MainContent=new ClubInfoPage(club!);
-                
+
+                PageUtils.NavigatePages(new ClubInfoPage(club!));
+
             }
          }
 

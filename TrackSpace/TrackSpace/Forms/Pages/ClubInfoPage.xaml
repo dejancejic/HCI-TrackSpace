@@ -109,7 +109,7 @@ VerticalAlignment="Center" />
           SelectionUnit="FullRow" VerticalScrollBarVisibility="Hidden" HorizontalScrollBarVisibility="Disabled"
           CanUserAddRows="False"
           LoadingRow="DataGrid_LoadingRow"
-          SelectionChanged="DataGrid_SelectionChanged"
+          
           AlternatingRowBackground="{DynamicResource Secondary}">
 
 
@@ -124,7 +124,8 @@ VerticalAlignment="Center" />
 
                 <DataGrid.CellStyle>
                     <Style TargetType="DataGridCell">
-                        <Setter Property="TextBlock.TextAlignment" Value="Center" />
+                            <EventSetter Event="PreviewMouseLeftButtonDown" Handler="DataGridCell_MouseLeftButtonDown" />
+                            <Setter Property="TextBlock.TextAlignment" Value="Center" />
                         <Setter Property="HorizontalContentAlignment" Value="Center" />
                         <Setter Property="VerticalContentAlignment" Value="Center" />
                             <Setter Property="Margin" Value="0 3 0 0" />
@@ -174,7 +175,7 @@ VerticalAlignment="Center" />
 
 
         </materialDesign:DialogHost>
-        <StackPanel Orientation="Horizontal" Margin="30,224,0,327">
+        <StackPanel Orientation="Horizontal" Margin="30,234,0,307">
             <Label Content="{DynamicResource competitors}"
 FontWeight="Bold"  Foreground="Black" Height="105" />
 

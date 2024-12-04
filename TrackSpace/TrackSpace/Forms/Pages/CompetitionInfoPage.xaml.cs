@@ -25,7 +25,27 @@ namespace TrackSpace.Forms.Pages
             InitializeComponent();
             DataContext = ViewModelLocator.CompetitionInfoViewModel;
             ViewModelLocator.CompetitionInfoViewModel.Competition=competition;
+            ViewModelLocator.CompetitionInfoPage = this;
 
         }
+
+        private void Hyperlink_Click(object sender, RoutedEventArgs e)
+        {
+            Hyperlink hyperlink = sender as Hyperlink;
+            if (hyperlink != null)
+            {
+                var ev = (hyperlink.DataContext as Event);
+
+                if (ev != null)
+                {
+                    
+                    ViewModelLocator.CompetitionInfoViewModel.ShowEventById(ev.IdEvent);
+                }
+            }
+
+        }
+
+
+
     }
 }

@@ -3,28 +3,48 @@
   "WorkspaceRootPath": "C:\\Users\\Dejan\\Documents\\Interakcija covjek racunar\\HCI Projektni zadatak 1\\TrackSpace\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{82943BC2-4493-439A-9914-DA0D1FE42CDA}|TrackSpace\\TrackSpace.csproj|c:\\users\\dejan\\documents\\interakcija covjek racunar\\hci projektni zadatak 1\\trackspace\\trackspace\\forms\\pages\\competitioninfopage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{82943BC2-4493-439A-9914-DA0D1FE42CDA}|TrackSpace\\TrackSpace.csproj|solutionrelative:trackspace\\forms\\pages\\competitioninfopage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+      "AbsoluteMoniker": "D:0:0:{82943BC2-4493-439A-9914-DA0D1FE42CDA}|TrackSpace\\TrackSpace.csproj|c:\\users\\dejan\\documents\\interakcija covjek racunar\\hci projektni zadatak 1\\trackspace\\trackspace\\viewmodel\\observerviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{82943BC2-4493-439A-9914-DA0D1FE42CDA}|TrackSpace\\TrackSpace.csproj|solutionrelative:trackspace\\viewmodel\\observerviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{82943BC2-4493-439A-9914-DA0D1FE42CDA}|TrackSpace\\TrackSpace.csproj|c:\\users\\dejan\\documents\\interakcija covjek racunar\\hci projektni zadatak 1\\trackspace\\trackspace\\forms\\pages\\competitioninfopage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{82943BC2-4493-439A-9914-DA0D1FE42CDA}|TrackSpace\\TrackSpace.csproj|solutionrelative:trackspace\\forms\\pages\\competitioninfopage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{82943BC2-4493-439A-9914-DA0D1FE42CDA}|TrackSpace\\TrackSpace.csproj|c:\\users\\dejan\\documents\\interakcija covjek racunar\\hci projektni zadatak 1\\trackspace\\trackspace\\viewmodel\\eventinfoviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{82943BC2-4493-439A-9914-DA0D1FE42CDA}|TrackSpace\\TrackSpace.csproj|solutionrelative:trackspace\\viewmodel\\eventinfoviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{82943BC2-4493-439A-9914-DA0D1FE42CDA}|TrackSpace\\TrackSpace.csproj|c:\\users\\dejan\\documents\\interakcija covjek racunar\\hci projektni zadatak 1\\trackspace\\trackspace\\viewmodel\\competitioninfoviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{82943BC2-4493-439A-9914-DA0D1FE42CDA}|TrackSpace\\TrackSpace.csproj|solutionrelative:trackspace\\viewmodel\\competitioninfoviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{82943BC2-4493-439A-9914-DA0D1FE42CDA}|TrackSpace\\TrackSpace.csproj|c:\\users\\dejan\\documents\\interakcija covjek racunar\\hci projektni zadatak 1\\trackspace\\trackspace\\forms\\pages\\competitionspage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{82943BC2-4493-439A-9914-DA0D1FE42CDA}|TrackSpace\\TrackSpace.csproj|solutionrelative:trackspace\\forms\\pages\\competitionspage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+      "AbsoluteMoniker": "D:0:0:{82943BC2-4493-439A-9914-DA0D1FE42CDA}|TrackSpace\\TrackSpace.csproj|c:\\users\\dejan\\documents\\interakcija covjek racunar\\hci projektni zadatak 1\\trackspace\\trackspace\\viewmodel\\competitionsviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{82943BC2-4493-439A-9914-DA0D1FE42CDA}|TrackSpace\\TrackSpace.csproj|solutionrelative:trackspace\\viewmodel\\competitionsviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{82943BC2-4493-439A-9914-DA0D1FE42CDA}|TrackSpace\\TrackSpace.csproj|c:\\users\\dejan\\documents\\interakcija covjek racunar\\hci projektni zadatak 1\\trackspace\\trackspace\\viewmodel\\clubinfoviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{82943BC2-4493-439A-9914-DA0D1FE42CDA}|TrackSpace\\TrackSpace.csproj|solutionrelative:trackspace\\viewmodel\\clubinfoviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{82943BC2-4493-439A-9914-DA0D1FE42CDA}|TrackSpace\\TrackSpace.csproj|c:\\users\\dejan\\documents\\interakcija covjek racunar\\hci projektni zadatak 1\\trackspace\\trackspace\\models\\competition.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{82943BC2-4493-439A-9914-DA0D1FE42CDA}|TrackSpace\\TrackSpace.csproj|solutionrelative:trackspace\\models\\competition.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{82943BC2-4493-439A-9914-DA0D1FE42CDA}|TrackSpace\\TrackSpace.csproj|c:\\users\\dejan\\documents\\interakcija covjek racunar\\hci projektni zadatak 1\\trackspace\\trackspace\\viewmodel\\clubsviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{82943BC2-4493-439A-9914-DA0D1FE42CDA}|TrackSpace\\TrackSpace.csproj|solutionrelative:trackspace\\viewmodel\\clubsviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{82943BC2-4493-439A-9914-DA0D1FE42CDA}|TrackSpace\\TrackSpace.csproj|c:\\users\\dejan\\documents\\interakcija covjek racunar\\hci projektni zadatak 1\\trackspace\\trackspace\\forms\\windows\\clubadminmainpage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{82943BC2-4493-439A-9914-DA0D1FE42CDA}|TrackSpace\\TrackSpace.csproj|solutionrelative:trackspace\\forms\\windows\\clubadminmainpage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{82943BC2-4493-439A-9914-DA0D1FE42CDA}|TrackSpace\\TrackSpace.csproj|c:\\users\\dejan\\documents\\interakcija covjek racunar\\hci projektni zadatak 1\\trackspace\\trackspace\\utils\\pageutils.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{82943BC2-4493-439A-9914-DA0D1FE42CDA}|TrackSpace\\TrackSpace.csproj|solutionrelative:trackspace\\utils\\pageutils.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{82943BC2-4493-439A-9914-DA0D1FE42CDA}|TrackSpace\\TrackSpace.csproj|c:\\users\\dejan\\documents\\interakcija covjek racunar\\hci projektni zadatak 1\\trackspace\\trackspace\\forms\\windows\\clubadminmainpage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{82943BC2-4493-439A-9914-DA0D1FE42CDA}|TrackSpace\\TrackSpace.csproj|solutionrelative:trackspace\\forms\\windows\\clubadminmainpage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{82943BC2-4493-439A-9914-DA0D1FE42CDA}|TrackSpace\\TrackSpace.csproj|c:\\users\\dejan\\documents\\interakcija covjek racunar\\hci projektni zadatak 1\\trackspace\\trackspace\\viewmodel\\clubadminviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{82943BC2-4493-439A-9914-DA0D1FE42CDA}|TrackSpace\\TrackSpace.csproj|solutionrelative:trackspace\\viewmodel\\clubadminviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{82943BC2-4493-439A-9914-DA0D1FE42CDA}|TrackSpace\\TrackSpace.csproj|c:\\users\\dejan\\documents\\interakcija covjek racunar\\hci projektni zadatak 1\\trackspace\\trackspace\\forms\\windows\\observermainpage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{82943BC2-4493-439A-9914-DA0D1FE42CDA}|TrackSpace\\TrackSpace.csproj|solutionrelative:trackspace\\forms\\windows\\observermainpage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -34,7 +54,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 7,
+          "SelectedChildIndex": 8,
           "Children": [
             {
               "$type": "Bookmark",
@@ -46,53 +66,28 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "CompetitionsPage.xaml",
-              "DocumentMoniker": "C:\\Users\\Dejan\\Documents\\Interakcija covjek racunar\\HCI Projektni zadatak 1\\TrackSpace\\TrackSpace\\Forms\\Pages\\CompetitionsPage.xaml",
-              "RelativeDocumentMoniker": "TrackSpace\\Forms\\Pages\\CompetitionsPage.xaml",
-              "ToolTip": "C:\\Users\\Dejan\\Documents\\Interakcija covjek racunar\\HCI Projektni zadatak 1\\TrackSpace\\TrackSpace\\Forms\\Pages\\CompetitionsPage.xaml",
-              "RelativeToolTip": "TrackSpace\\Forms\\Pages\\CompetitionsPage.xaml",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2024-12-02T22:32:18.463Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "Competition.cs",
-              "DocumentMoniker": "C:\\Users\\Dejan\\Documents\\Interakcija covjek racunar\\HCI Projektni zadatak 1\\TrackSpace\\TrackSpace\\Models\\Competition.cs",
-              "RelativeDocumentMoniker": "TrackSpace\\Models\\Competition.cs",
-              "ToolTip": "C:\\Users\\Dejan\\Documents\\Interakcija covjek racunar\\HCI Projektni zadatak 1\\TrackSpace\\TrackSpace\\Models\\Competition.cs",
-              "RelativeToolTip": "TrackSpace\\Models\\Competition.cs",
-              "ViewState": "AQIAAAcAAAAAAAAAAAAzwBMAAAAwAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-02T22:24:24.88Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "ClubInfoViewModel.cs",
-              "DocumentMoniker": "C:\\Users\\Dejan\\Documents\\Interakcija covjek racunar\\HCI Projektni zadatak 1\\TrackSpace\\TrackSpace\\ViewModel\\ClubInfoViewModel.cs",
-              "RelativeDocumentMoniker": "TrackSpace\\ViewModel\\ClubInfoViewModel.cs",
-              "ToolTip": "C:\\Users\\Dejan\\Documents\\Interakcija covjek racunar\\HCI Projektni zadatak 1\\TrackSpace\\TrackSpace\\ViewModel\\ClubInfoViewModel.cs",
-              "RelativeToolTip": "TrackSpace\\ViewModel\\ClubInfoViewModel.cs",
-              "ViewState": "AQIAABUAAAAAAAAAAAAAACYAAAAvAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-02T22:16:39.268Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "CompetitionInfoPage.xaml.cs",
-              "DocumentMoniker": "C:\\Users\\Dejan\\Documents\\Interakcija covjek racunar\\HCI Projektni zadatak 1\\TrackSpace\\TrackSpace\\Forms\\Pages\\CompetitionInfoPage.xaml.cs",
-              "RelativeDocumentMoniker": "TrackSpace\\Forms\\Pages\\CompetitionInfoPage.xaml.cs",
-              "ToolTip": "C:\\Users\\Dejan\\Documents\\Interakcija covjek racunar\\HCI Projektni zadatak 1\\TrackSpace\\TrackSpace\\Forms\\Pages\\CompetitionInfoPage.xaml.cs",
-              "RelativeToolTip": "TrackSpace\\Forms\\Pages\\CompetitionInfoPage.xaml.cs",
-              "ViewState": "AQIAAAYAAAAAAAAAAAAAABgAAAAiAAAA",
+              "Title": "EventInfoViewModel.cs",
+              "DocumentMoniker": "C:\\Users\\Dejan\\Documents\\Interakcija covjek racunar\\HCI Projektni zadatak 1\\TrackSpace\\TrackSpace\\ViewModel\\EventInfoViewModel.cs",
+              "RelativeDocumentMoniker": "TrackSpace\\ViewModel\\EventInfoViewModel.cs",
+              "ToolTip": "C:\\Users\\Dejan\\Documents\\Interakcija covjek racunar\\HCI Projektni zadatak 1\\TrackSpace\\TrackSpace\\ViewModel\\EventInfoViewModel.cs",
+              "RelativeToolTip": "TrackSpace\\ViewModel\\EventInfoViewModel.cs",
+              "ViewState": "AQIAAC8AAAAAAAAAAAAkwDkAAABUAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-02T22:14:23.645Z",
+              "WhenOpened": "2024-12-04T22:29:21.725Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "CompetitionsViewModel.cs",
+              "DocumentMoniker": "C:\\Users\\Dejan\\Documents\\Interakcija covjek racunar\\HCI Projektni zadatak 1\\TrackSpace\\TrackSpace\\ViewModel\\CompetitionsViewModel.cs",
+              "RelativeDocumentMoniker": "TrackSpace\\ViewModel\\CompetitionsViewModel.cs",
+              "ToolTip": "C:\\Users\\Dejan\\Documents\\Interakcija covjek racunar\\HCI Projektni zadatak 1\\TrackSpace\\TrackSpace\\ViewModel\\CompetitionsViewModel.cs",
+              "RelativeToolTip": "TrackSpace\\ViewModel\\CompetitionsViewModel.cs",
+              "ViewState": "AQIAAEoAAAAAAAAAAADwv2QAAAAyAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-04T22:27:29.681Z",
               "EditorCaption": ""
             },
             {
@@ -103,21 +98,112 @@
               "RelativeDocumentMoniker": "TrackSpace\\ViewModel\\CompetitionInfoViewModel.cs",
               "ToolTip": "C:\\Users\\Dejan\\Documents\\Interakcija covjek racunar\\HCI Projektni zadatak 1\\TrackSpace\\TrackSpace\\ViewModel\\CompetitionInfoViewModel.cs",
               "RelativeToolTip": "TrackSpace\\ViewModel\\CompetitionInfoViewModel.cs",
-              "ViewState": "AQIAAA8AAAAAAAAAAAAAABIAAAAbAAAA",
+              "ViewState": "AQIAABcAAAAAAAAAAAAQwC8AAAA4AAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-02T22:12:34.321Z",
+              "WhenOpened": "2024-12-04T22:26:52.239Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "ClubInfoViewModel.cs",
+              "DocumentMoniker": "C:\\Users\\Dejan\\Documents\\Interakcija covjek racunar\\HCI Projektni zadatak 1\\TrackSpace\\TrackSpace\\ViewModel\\ClubInfoViewModel.cs",
+              "RelativeDocumentMoniker": "TrackSpace\\ViewModel\\ClubInfoViewModel.cs",
+              "ToolTip": "C:\\Users\\Dejan\\Documents\\Interakcija covjek racunar\\HCI Projektni zadatak 1\\TrackSpace\\TrackSpace\\ViewModel\\ClubInfoViewModel.cs",
+              "RelativeToolTip": "TrackSpace\\ViewModel\\ClubInfoViewModel.cs",
+              "ViewState": "AQIAACkAAAAAAAAAAAA5wDgAAAA1AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-04T22:25:36.075Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "ClubsViewModel.cs",
+              "DocumentMoniker": "C:\\Users\\Dejan\\Documents\\Interakcija covjek racunar\\HCI Projektni zadatak 1\\TrackSpace\\TrackSpace\\ViewModel\\ClubsViewModel.cs",
+              "RelativeDocumentMoniker": "TrackSpace\\ViewModel\\ClubsViewModel.cs",
+              "ToolTip": "C:\\Users\\Dejan\\Documents\\Interakcija covjek racunar\\HCI Projektni zadatak 1\\TrackSpace\\TrackSpace\\ViewModel\\ClubsViewModel.cs",
+              "RelativeToolTip": "TrackSpace\\ViewModel\\ClubsViewModel.cs",
+              "ViewState": "AQIAAD0AAAAAAAAAAAD4v1kAAABFAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-04T22:21:17.548Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "PageUtils.cs",
+              "DocumentMoniker": "C:\\Users\\Dejan\\Documents\\Interakcija covjek racunar\\HCI Projektni zadatak 1\\TrackSpace\\TrackSpace\\Utils\\PageUtils.cs",
+              "RelativeDocumentMoniker": "TrackSpace\\Utils\\PageUtils.cs",
+              "ToolTip": "C:\\Users\\Dejan\\Documents\\Interakcija covjek racunar\\HCI Projektni zadatak 1\\TrackSpace\\TrackSpace\\Utils\\PageUtils.cs",
+              "RelativeToolTip": "TrackSpace\\Utils\\PageUtils.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAACEAAAAaAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-04T22:13:08.793Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "CompetitionInfoPage.xaml",
-              "DocumentMoniker": "C:\\Users\\Dejan\\Documents\\Interakcija covjek racunar\\HCI Projektni zadatak 1\\TrackSpace\\TrackSpace\\Forms\\Pages\\CompetitionInfoPage.xaml",
-              "RelativeDocumentMoniker": "TrackSpace\\Forms\\Pages\\CompetitionInfoPage.xaml",
-              "ToolTip": "C:\\Users\\Dejan\\Documents\\Interakcija covjek racunar\\HCI Projektni zadatak 1\\TrackSpace\\TrackSpace\\Forms\\Pages\\CompetitionInfoPage.xaml",
-              "RelativeToolTip": "TrackSpace\\Forms\\Pages\\CompetitionInfoPage.xaml",
+              "Title": "ObserverViewModel.cs",
+              "DocumentMoniker": "C:\\Users\\Dejan\\Documents\\Interakcija covjek racunar\\HCI Projektni zadatak 1\\TrackSpace\\TrackSpace\\ViewModel\\ObserverViewModel.cs",
+              "RelativeDocumentMoniker": "TrackSpace\\ViewModel\\ObserverViewModel.cs",
+              "ToolTip": "C:\\Users\\Dejan\\Documents\\Interakcija covjek racunar\\HCI Projektni zadatak 1\\TrackSpace\\TrackSpace\\ViewModel\\ObserverViewModel.cs",
+              "RelativeToolTip": "TrackSpace\\ViewModel\\ObserverViewModel.cs",
+              "ViewState": "AQIAAIcAAAAAAAAAAAAAwJcAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-04T22:10:16.044Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "ClubAdminMainPage.xaml",
+              "DocumentMoniker": "C:\\Users\\Dejan\\Documents\\Interakcija covjek racunar\\HCI Projektni zadatak 1\\TrackSpace\\TrackSpace\\Forms\\Windows\\ClubAdminMainPage.xaml",
+              "RelativeDocumentMoniker": "TrackSpace\\Forms\\Windows\\ClubAdminMainPage.xaml",
+              "ToolTip": "C:\\Users\\Dejan\\Documents\\Interakcija covjek racunar\\HCI Projektni zadatak 1\\TrackSpace\\TrackSpace\\Forms\\Windows\\ClubAdminMainPage.xaml",
+              "RelativeToolTip": "TrackSpace\\Forms\\Windows\\ClubAdminMainPage.xaml",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2024-12-02T21:12:17.369Z",
+              "WhenOpened": "2024-12-04T22:11:42.874Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "ClubAdminViewModel.cs",
+              "DocumentMoniker": "C:\\Users\\Dejan\\Documents\\Interakcija covjek racunar\\HCI Projektni zadatak 1\\TrackSpace\\TrackSpace\\ViewModel\\ClubAdminViewModel.cs",
+              "RelativeDocumentMoniker": "TrackSpace\\ViewModel\\ClubAdminViewModel.cs",
+              "ToolTip": "C:\\Users\\Dejan\\Documents\\Interakcija covjek racunar\\HCI Projektni zadatak 1\\TrackSpace\\TrackSpace\\ViewModel\\ClubAdminViewModel.cs",
+              "RelativeToolTip": "TrackSpace\\ViewModel\\ClubAdminViewModel.cs",
+              "ViewState": "AQIAACUAAAAAAAAAAAAowDMAAAAQAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-04T21:56:37.237Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "ClubAdminMainPage.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\Dejan\\Documents\\Interakcija covjek racunar\\HCI Projektni zadatak 1\\TrackSpace\\TrackSpace\\Forms\\Windows\\ClubAdminMainPage.xaml.cs",
+              "RelativeDocumentMoniker": "TrackSpace\\Forms\\Windows\\ClubAdminMainPage.xaml.cs",
+              "ToolTip": "C:\\Users\\Dejan\\Documents\\Interakcija covjek racunar\\HCI Projektni zadatak 1\\TrackSpace\\TrackSpace\\Forms\\Windows\\ClubAdminMainPage.xaml.cs",
+              "RelativeToolTip": "TrackSpace\\Forms\\Windows\\ClubAdminMainPage.xaml.cs",
+              "ViewState": "AQIAABoAAAAAAAAAAAAAwCYAAAALAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-04T21:45:50.015Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "ObserverMainPage.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\Dejan\\Documents\\Interakcija covjek racunar\\HCI Projektni zadatak 1\\TrackSpace\\TrackSpace\\Forms\\Windows\\ObserverMainPage.xaml.cs",
+              "RelativeDocumentMoniker": "TrackSpace\\Forms\\Windows\\ObserverMainPage.xaml.cs",
+              "ToolTip": "C:\\Users\\Dejan\\Documents\\Interakcija covjek racunar\\HCI Projektni zadatak 1\\TrackSpace\\TrackSpace\\Forms\\Windows\\ObserverMainPage.xaml.cs",
+              "RelativeToolTip": "TrackSpace\\Forms\\Windows\\ObserverMainPage.xaml.cs",
+              "ViewState": "AQIAAAYAAAAAAAAAAAAAABUAAAAdAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-04T21:48:28.492Z",
               "EditorCaption": ""
             }
           ]

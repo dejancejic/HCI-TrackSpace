@@ -11,13 +11,15 @@ using TrackSpace.Command;
 using TrackSpace.Forms.Pages;
 using TrackSpace.Models;
 using TrackSpace.Services.Shared;
+using TrackSpace.Utils;
+using TrackSpace.ViewModel.Shared;
 
 namespace TrackSpace.ViewModel
 {
     public class ClubAdminViewModel: BaseViewModel, INotifyPropertyChanged
     {
         private ClubAdmin _admin;
-        private Frame _mainFrame;
+  
 
 
 
@@ -25,7 +27,7 @@ namespace TrackSpace.ViewModel
         public ICommand NavigateCommand { get; set; }
         public ICommand LogoutCommand { get; set; }
 
-        public Frame MainFrame { get { return _mainFrame; } set { _mainFrame = value; OnPropertyChanged(nameof(MainFrame)); } }
+        
 
         public ClubAdmin Admin { get { return _admin; } set { _admin = value; } }
         public ClubAdminViewModel() {
@@ -44,12 +46,10 @@ namespace TrackSpace.ViewModel
                     Logout(parameter);
                     return;
                 }
-                if (tag.Equals("SettingsPage"))
-                {
-                    MainFrame.Navigate(new SettingsPage(_admin.IdUserNavigation));
-                    return;
-                }
-                MainFrame.Navigate(new Uri($"Forms/Pages/{tag}.xaml", UriKind.Relative));
+
+
+                var pageInstance = PageUtils.LoadUserControlFromUri($"Forms/Pages/{tag}.xaml");
+                ViewModelLocator.ClubAdminMainPage.basePage.MainContent = pageInstance;
 
 
             }
@@ -64,9 +64,9 @@ namespace TrackSpace.ViewModel
                 window.Close();
             }
         }
-
-
         
+ 
+
         public event PropertyChangedEventHandler PropertyChanged;
         protected void OnPropertyChanged(string propertyName)
         {

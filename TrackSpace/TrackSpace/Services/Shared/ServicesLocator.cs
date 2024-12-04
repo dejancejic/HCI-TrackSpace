@@ -15,11 +15,21 @@ namespace TrackSpace.Services.Shared
         private static CategoryService _categoryService=new CategoryService();
         private static CompetitionsService _competitionsService = new CompetitionsService();
         private static LocationServices _locationService = new LocationServices();
+        private static EventsService _eventService = new EventsService();
+        private static CompetitorEventServices _competitorEventService = new CompetitorEventServices();
+        private static CompetitorsService _competitorsService=new CompetitorsService();
         public static UserService UserService { get { return _userService; } }
         public static ClubsService ClubsService { get { return _clubsService;} }
         public static ClubAdminService ClubAdminService { get { return _clubAdminService;} }
 
-        public static CategoryService CategoryService { get { return _categoryService; } }
+        public static CategoryService CategoryService {
+            get
+            {
+                if (_categoryService != null)
+                    return _categoryService;
+                return new CategoryService();
+            }
+        }
 
         public static CompetitionsService CompetitionsService { get { return _competitionsService; } }
         public static LocationServices LocationService { get { 
@@ -27,6 +37,35 @@ namespace TrackSpace.Services.Shared
                 return _locationService;
                 return new LocationServices();
             } }
+        public static EventsService EventsService
+        {
+            get
+            {
+                if (_eventService != null)
+                    return _eventService;
+                return new EventsService();
+            }
+        }
+
+        public static CompetitorEventServices CompetitorEventService
+        {
+            get
+            {
+                if (_competitorEventService != null)
+                    return _competitorEventService;
+                return new CompetitorEventServices();
+            }
+        }
+
+        public static CompetitorsService CompetitorsService
+        {
+            get
+            {
+                if (_competitorsService!= null)
+                    return _competitorsService;
+                return new CompetitorsService();
+            }
+        }
 
     }
 }

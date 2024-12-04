@@ -60,13 +60,8 @@ namespace TrackSpace.Forms.CustomMessageBox
                 this.DragMove();
             }
         }
-        private void CloseFormClick(object sender, MouseButtonEventArgs e)
-        {
-            if (e.ChangedButton == MouseButton.Left && e.Source is MaterialDesignThemes.Wpf.PackIcon)
-            {
-                this.Close();
-            }
-        }
+       
+
 
         private void CloseFormClickBtn(object sender, RoutedEventArgs e)
         {
@@ -93,6 +88,11 @@ namespace TrackSpace.Forms.CustomMessageBox
             }
             CloseFormClickBtn(sender, e);
 
+        }
+
+        private void CloseFormClick(object sender, RoutedEventArgs e)
+        {
+            this.Close();
         }
     }
 }

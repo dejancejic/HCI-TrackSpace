@@ -12,6 +12,7 @@ using TrackSpace.Forms.Pages;
 using TrackSpace.Models;
 using TrackSpace.Services;
 using TrackSpace.Services.Shared;
+using TrackSpace.Utils;
 using TrackSpace.ViewModel.Shared;
 using static System.Reflection.Metadata.BlobBuilder;
 
@@ -97,7 +98,7 @@ namespace TrackSpace.ViewModel
                 {
                     Competition? comp = FindCompetitionByName(competitionName);
                     var page = new CompetitionInfoPage(comp!);
-                    ViewModelLocator.ObserverMainPage.basePage.MainContent = page;
+                    PageUtils.NavigatePages(page);
                 }
             }
 

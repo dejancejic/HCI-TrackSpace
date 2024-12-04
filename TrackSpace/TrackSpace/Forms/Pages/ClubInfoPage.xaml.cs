@@ -32,16 +32,21 @@ namespace TrackSpace.Forms.Pages
             
         }
 
-        private void DataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
+      
+
+        private void DataGridCell_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-            if (e.AddedItems.Count > 0)
+
+            var cell = sender as DataGridCell;
+
+            if (cell != null && cell.DataContext is Competitor selectedCompetitor)
             {
-                var selectedCompetitor = e.AddedItems[0] as Competitor;
+
                 if (selectedCompetitor != null)
                 {
+
                     ViewModelLocator.ClubInfoViewModel.SelectedCompetitor = selectedCompetitor;
 
-                    
                     UserDetailsDialogHost.IsOpen = true;
                 }
             }

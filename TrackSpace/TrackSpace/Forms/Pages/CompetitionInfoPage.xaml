@@ -13,6 +13,7 @@
   >
     <UserControl.Resources>
         <utils:GenderTranslationConverter x:Key="GenderTranslationConverter" />
+        <utils:DateTimeConverter x:Key="DateTimeConverter" />
     </UserControl.Resources>
     <Grid Background="White">
 
@@ -26,16 +27,141 @@ ToolTip="MaterialDesignFloatingActionMiniDarkButton" VerticalAlignment="Bottom" 
   Kind="ArrowBack" />
         </Button>
 
+        <Button x:Name="closeBtn" Background="Transparent" BorderBrush="Transparent" Padding="5 0 0 0" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0 13 14 0"
+                Command="{Binding CloseCommand}">
+            <materialDesign:PackIcon Kind="Close" Width="25" Height="25" Opacity="0.5"/>
+        </Button>
+
         <Label HorizontalAlignment="Left" Margin="15,10,0,415" Content="{Binding Competition.Name}"
 FontWeight="Bold" FontSize="40" Foreground="Black" />
 
+        <Image Source="pack://application:,,,/Resources/descriptionIcon.png"  Margin="40,93,54,384" Width="50" Height="40"></Image>
 
-        <StackPanel Orientation="Horizontal" Margin="15,70,0,415" >
-            <Label HorizontalAlignment="Left" Content="Date:"
- Foreground="Black" />
-            <Label HorizontalAlignment="Left" Content="{Binding Competition.Start, StringFormat={}{0:dd.MM.yyyy.}}"
- Foreground="Black" />
+        <TextBlock x:Name="MeasureTextBlock" Text="{Binding Competition.Description}" TextWrapping="Wrap" Visibility="Collapsed" />
+        <TextBox x:Name="DescriptionTextBox"
+            MinWidth="280"
+            MaxWidth="280"
+            MaxHeight="180"
+  materialDesign:HintAssist.Hint="Description"
+  AcceptsReturn="True"
+            IsReadOnly="True"
+  SpellCheck.IsEnabled="False"
+  Text="{Binding Competition.Description}"
+  TextWrapping="Wrap" Padding="5 -5 5 0"
+  VerticalScrollBarVisibility="Auto" Margin="333,113,13,386" />
+
+
+        <StackPanel Orientation="Horizontal" Margin="15,15,0,415" >
+            <Image Source="pack://application:,,,/Resources/dateTimeIcon.png" Width="50" Height="40"></Image>
+            <Label HorizontalAlignment="Left"
+                    Margin="5 60 0 0"
+       Content="{Binding Competition.Start, Converter={StaticResource DateTimeConverter}}"
+       Foreground="Black" />
+
+
         </StackPanel>
+
+        <StackPanel Orientation="Horizontal" Margin="15,125,0,415">
+            <Image Source="pack://application:,,,/Resources/trackIcon.png" Width="50" Height="50"></Image> 
+            
+            <Label HorizontalAlignment="Left"  Margin="5 0 0 0" Content="{Binding Competition.PostNumberNavigation.Address}"
+Foreground="Black" />
+            <Label HorizontalAlignment="Left" Margin="-8 0 0 0" Content=","
+Foreground="Black" />
+        </StackPanel>
+
+        <Label HorizontalAlignment="Left" Margin="70,145,0,400"
+               Content="{Binding Competition.PostNumberNavigation.City}"
+Foreground="Black" />
+
+
+        
+        <StackPanel Orientation="Horizontal"  Margin="15,175,0,360" >
+            <Image Source="pack://application:,,,/Resources/contactIcon.png"  Width="50" Height="40"></Image>
+
+            <Label HorizontalAlignment="Left"  Margin="5 10 0 0" Content="{Binding  Competition.IdUserNavigation.IdUserNavigation.Email}"
+Foreground="Black" />
+
+        </StackPanel>
+
+        <StackPanel Orientation="Horizontal" Margin="15,230,0,301">
+            <Label Content="{DynamicResource eventsW(}" FontSize="22" FontWeight="Bold"></Label>
+            <Label Content="{Binding Competition.Events.Count}" Margin="-8 0 -8 0" FontSize="22" FontWeight="Bold"></Label>
+            <Label Content=")" FontSize="22" FontWeight="Bold"></Label>
+
+        </StackPanel>
+
+
+        <Border  Background="{DynamicResource Primary}" BorderBrush="{DynamicResource Primary}" Margin="18,200,23,0" Height="250" BorderThickness="1" CornerRadius="10">
+            <DataGrid Margin="2,1,2,1"  AlternatingRowBackground="{DynamicResource Secondary}"
+       ItemsSource="{Binding Competition.Events}" 
+       AutoGenerateColumns="False"
+       SelectionMode="Single" 
+       SelectionUnit="FullRow"
+       CanUserAddRows="False" 
+       HorizontalScrollBarVisibility="Disabled" 
+       VerticalScrollBarVisibility="Hidden">
+
+                <DataGrid.ColumnHeaderStyle>
+                    <Style TargetType="DataGridColumnHeader" BasedOn="{StaticResource {x:Type DataGridColumnHeader}}">
+                        <Setter Property="HorizontalContentAlignment" Value="Center" />
+                        <Setter Property="Background" Value="{DynamicResource Primary}" />
+                        <Setter Property="FontSize" Value="16" />
+                    </Style>
+                </DataGrid.ColumnHeaderStyle>
+
+                <DataGrid.CellStyle>
+                    <Style TargetType="DataGridCell">
+                        <Setter Property="TextBlock.TextAlignment" Value="Center" />
+                        <Setter Property="HorizontalContentAlignment" Value="Center" />
+                        <Setter Property="VerticalContentAlignment" Value="Center" />
+                        <Setter Property="Margin" Value="0 3 0 0" />
+                        <Setter Property="MinWidth" Value="180" />
+                        <Setter Property="MinHeight" Value="30" />
+                        <Setter Property="FontSize" Value="16" />
+                    </Style>
+                </DataGrid.CellStyle>
+
+                <DataGrid.RowStyle>
+                    <Style TargetType="DataGridRow">
+                        <Setter Property="Height" Value="30" />
+                    </Style>
+                </DataGrid.RowStyle>
+
+                <DataGrid.Columns>
+                    <DataGridTemplateColumn Header="{DynamicResource event}">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock HorizontalAlignment="Left" Margin="20 0 0 0">
+                     <Hyperlink Click="Hyperlink_Click" TextDecorations="None" Foreground="Black">
+                         <TextBlock Text="{Binding Name}" FontWeight="Bold" TextWrapping="Wrap">
+                                            <TextBlock.Style >
+                                                <Style TargetType="TextBlock">
+                                                    <Style.Triggers>
+                                                        <DataTrigger Binding="{Binding IsMouseOver, RelativeSource={RelativeSource Self}}" Value="True">
+                                                            <Setter Property="Foreground" Value="DarkBlue"/>
+                                                        </DataTrigger>
+                                                    </Style.Triggers>
+                                                </Style>
+                                            </TextBlock.Style>
+                         </TextBlock>
+                     </Hyperlink>
+                 </TextBlock>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                    <DataGridTextColumn Header="{DynamicResource start}" Binding="{Binding Start, StringFormat={}{0:HH:mm}}" IsReadOnly="True" />
+
+                    <DataGridTextColumn Header="{DynamicResource category}" Binding="{Binding IdCategoryNavigation.Name}" IsReadOnly="True" />
+                    <DataGridTextColumn Header="{DynamicResource competitorsNo(}" Binding="{Binding CompetitorEvents.Count}" IsReadOnly="True"/>
+                   
+                </DataGrid.Columns>
+            </DataGrid>
+        </Border>
+
+
+
+
 
     </Grid>
 </UserControl>

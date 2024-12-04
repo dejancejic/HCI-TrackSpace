@@ -1,0 +1,185 @@
+﻿<UserControl x:Class="TrackSpace.Forms.Pages.GroupsPage"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:TrackSpace.Forms.Pages"
+             xmlns:utils="clr-namespace:TrackSpace.Utils"
+             xmlns:viewmodel="clr-namespace:TrackSpace.ViewModel"
+             mc:Ignorable="d" 
+                         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+
+FontFamily="{DynamicResource AppFont}" FontSize="18"
+d:DesignHeight="650" d:DesignWidth="800">
+    <UserControl.DataContext>
+        <viewmodel:GroupsViewModel />
+    </UserControl.DataContext>
+    <UserControl.Resources>
+
+        <utils:DateTimeConverter x:Key="DateTimeConverter" />
+    </UserControl.Resources>
+    <Grid  Background="White">
+
+
+        <Button Command="{Binding GoBackCommand}"
+IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
+Style="{StaticResource MaterialDesignFloatingActionMiniDarkButton}" Width="45" Height="45" Background="{DynamicResource Primary}"
+ToolTip="MaterialDesignFloatingActionMiniDarkButton" VerticalAlignment="Bottom" Margin="0 0 15 15" HorizontalAlignment="Right">
+            <materialDesign:PackIcon
+  Width="30"
+  Height="30"
+  Kind="ArrowBack" />
+        </Button>
+
+        <Button x:Name="closeBtn" Background="Transparent" BorderBrush="Transparent" Padding="5 0 0 0" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0 13 14 0" Command="{Binding CloseCommand}">
+            <materialDesign:PackIcon Kind="Close" Width="25" Height="25" Opacity="0.5"/>
+        </Button>
+
+
+        <Label HorizontalAlignment="Left"  Content="{Binding Event.IdEventNavigation.IdCompetitionNavigation.Name}"
+FontWeight="Bold" FontSize="40" Foreground="Black" Margin="15,10,0,500"/>
+
+
+        <StackPanel Margin="0 70 270 0" Orientation="Vertical" HorizontalAlignment="Right" >
+            <Image Source="pack://application:,,,/Resources/trackIcon.png" Width="50" Height="50"></Image>
+            <StackPanel Orientation="Horizontal">
+                <Label HorizontalAlignment="Center" Content="{Binding Event.IdEventNavigation.IdCompetitionNavigation.PostNumberNavigation.Address}"></Label>
+                <Label Content="," Margin="-7 0 0 0"></Label>
+            </StackPanel>
+            <Label Content="{Binding Event.IdEventNavigation.IdCompetitionNavigation.PostNumberNavigation.City}"></Label>
+        </StackPanel>
+
+        <StackPanel Margin="0 70 80 0" Orientation="Vertical" HorizontalAlignment="Right" >
+            <Image Source="pack://application:,,,/Resources/dateTimeIcon.png" Width="50" Height="50"></Image>
+            <StackPanel Orientation="Horizontal">
+                <Label HorizontalAlignment="Center"
+Content="{Binding Event.IdEventNavigation.IdCompetitionNavigation.Start, Converter={StaticResource DateTimeConverter}, ConverterParameter=DateOnly}"
+ Foreground="Black" />
+
+            </StackPanel>
+            <Label Content="{Binding Event.IdEventNavigation.Start, Converter={StaticResource DateTimeConverter}, ConverterParameter=TimeOnly}" FontWeight="DemiBold"
+                HorizontalAlignment="Center">
+            </Label>
+        </StackPanel>
+
+        <StackPanel Orientation="Horizontal" Margin="15 75 0 430" >
+            <Label HorizontalAlignment="Left"   Content="{Binding Event.IdEventNavigation.Name}"
+FontWeight="Bold" FontSize="30" Foreground="Black" />
+
+            <Label HorizontalAlignment="Left"  Margin="8 0 0 0" Content="{Binding Event.IdEventNavigation.IdCategoryNavigation.Name}"
+FontWeight="Bold" FontSize="30" Foreground="Black" />
+
+        </StackPanel>
+
+
+        <StackPanel Orientation="Horizontal" Margin="15,190,0,300" >
+            <Label HorizontalAlignment="Left"   Content="{DynamicResource groupsW(}"
+FontWeight="Bold" FontSize="22" Foreground="Black" />
+
+            <Label HorizontalAlignment="Left"  Margin="-8 0 -8 0" Content="{Binding Event.GroupNumber}"
+FontWeight="Bold" FontSize="22" Foreground="Black" />
+            <Label HorizontalAlignment="Left"   Content=")"
+FontWeight="Bold" FontSize="22" Foreground="Black" />
+
+        </StackPanel>
+
+
+
+        <TabControl x:Name="GroupsTabControl" ItemsSource="{Binding Event.Groups}" 
+                    TabStripPlacement="Left" Margin="16,236,14,71" SelectionChanged="GroupsTabControl_SelectionChanged">
+            <TabControl.Resources>
+                <Style TargetType="TabItem">
+                    <Setter Property="MinWidth" Value="150" />
+                    <Setter Property="MinHeight" Value="50" />
+                    <Setter Property="HorizontalContentAlignment" Value="Center" />
+                    <Setter Property="VerticalContentAlignment" Value="Top" />
+
+                        <Setter Property="Background" Value="{DynamicResource Primary}" />
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="TabItem">
+                                <Border Background="{TemplateBinding Background}" CornerRadius="10" Margin="0 2 0 0">
+                                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" ContentSource="Header" />
+                                </Border>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                    <Style.Triggers>
+                        <Trigger Property="IsSelected" Value="True">
+                            <Setter Property="Background" Value="{DynamicResource Secondary}" />
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </TabControl.Resources>
+            <TabControl.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="{DynamicResource groupWSpace}"></TextBlock>
+                        <TextBlock Text="{Binding IdGroup}" />
+                    </StackPanel>
+                </DataTemplate>
+            </TabControl.ItemTemplate>
+            <TabControl.ContentTemplate>
+                <DataTemplate>
+                    <Border Background="{DynamicResource Primary}" BorderBrush="{DynamicResource Primary}"  Height="250" BorderThickness="1" CornerRadius="10">
+                        <DataGrid Margin="2,1,2,1"  AlternatingRowBackground="{DynamicResource Secondary}"
+                        ItemsSource="{Binding DataContext.CompetitorEvents, RelativeSource={RelativeSource AncestorType=UserControl}}" 
+                                  AutoGenerateColumns="False"
+                                  SelectionMode="Single"
+                                  SelectionUnit="FullRow" 
+                                  CanUserAddRows="False"
+                                  CanUserDeleteRows="False"
+                                  IsReadOnly="True"
+                                  CanUserReorderColumns="False"
+                                  CanUserResizeColumns="False">
+                            <DataGrid.ColumnHeaderStyle>
+                                <Style TargetType="DataGridColumnHeader" BasedOn="{StaticResource {x:Type DataGridColumnHeader}}">
+                                    <Setter Property="HorizontalContentAlignment" Value="Center" />
+                                    <Setter Property="Background" Value="{DynamicResource Primary}" />
+                                    <Setter Property="FontSize" Value="16" />
+                                </Style>
+                            </DataGrid.ColumnHeaderStyle>
+
+                            <DataGrid.CellStyle>
+                                <Style TargetType="DataGridCell">
+                                   
+                                    <Setter Property="TextBlock.TextAlignment" Value="Center" />
+                                    <Setter Property="HorizontalContentAlignment" Value="Center" />
+                                    <Setter Property="VerticalContentAlignment" Value="Center" />
+                                    <Setter Property="Margin" Value="0 3 0 0" />
+                                    <Setter Property="MinWidth" Value="100" />
+                                    <Setter Property="MinHeight" Value="30" />
+                                    <Setter Property="FontSize" Value="16" />
+                                </Style>
+                            </DataGrid.CellStyle>
+
+                            <DataGrid.RowStyle>
+                                <Style TargetType="DataGridRow">
+                                    <Setter Property="Height" Value="30" />
+                                </Style>
+                            </DataGrid.RowStyle>
+                            
+                            <DataGrid.Columns>
+                            <DataGridTextColumn Header="{DynamicResource name}" Binding="{Binding IdCompetitorNavigation.Name}" />
+                                <DataGridTextColumn Header="{DynamicResource surname}" Binding="{Binding IdCompetitorNavigation.Surname}" />
+                                <DataGridTextColumn Header="{DynamicResource category}" Binding="{Binding IdCompetitorNavigation.IdCategoryNavigation.Name}" IsReadOnly="True" />
+                            <DataGridTextColumn Header="{DynamicResource club}" Binding="{Binding IdCompetitorNavigation.IdClubNavigation.Name}" IsReadOnly="True" />
+                            <DataGridTextColumn Header="{DynamicResource result}" Binding="{Binding Result}" IsReadOnly="True" />
+
+                        </DataGrid.Columns>
+                    </DataGrid>
+
+                    </Border>
+                </DataTemplate>
+            </TabControl.ContentTemplate>
+        </TabControl>
+
+
+
+
+
+
+
+
+    </Grid>
+</UserControl>

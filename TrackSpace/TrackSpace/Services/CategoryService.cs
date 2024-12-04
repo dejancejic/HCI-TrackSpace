@@ -6,12 +6,13 @@ using System.Text;
 using System.Threading.Tasks;
 using TrackSpace.DBUtil;
 using TrackSpace.Models;
+using TrackSpace.Services.Shared;
 
 namespace TrackSpace.Services
 {
-    public class CategoryService
+    public class CategoryService:BaseService
     {
-        private readonly TrackspaceContext _context = DBConnection.GetContext();
+        
         private ObservableCollection<Category> _categories;
 
         public CategoryService()

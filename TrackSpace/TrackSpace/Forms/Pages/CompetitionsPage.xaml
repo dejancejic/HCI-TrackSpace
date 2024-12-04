@@ -12,7 +12,7 @@
       >
 
     <Grid Background="White">
-        <Label Content="Competitions" HorizontalAlignment="Left" FontWeight="Bold" Margin="18,10,0,318" FontSize="35"></Label>
+        <Label Content="{DynamicResource competitions}" HorizontalAlignment="Left" FontWeight="Bold" Margin="18,10,0,318" FontSize="35"></Label>
 
         <Button x:Name="closeBtn" Background="Transparent" BorderBrush="Transparent" Padding="5 0 0 0" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0 13 14 0" Command="{Binding CloseCommand}">
             <materialDesign:PackIcon Kind="Close" Width="25" Height="25" Opacity="0.5"/>
@@ -20,7 +20,7 @@
 
 
         <!--Search box-->
-        <materialDesign:AutoSuggestBox materialDesign:HintAssist.Hint="Search Competitions" FontSize="15"
+        <materialDesign:AutoSuggestBox materialDesign:HintAssist.Hint="{DynamicResource searchCompetitions}" FontSize="15"
                                TextChanged="AutoSuggestBox_TextChanged"
                                materialDesign:TextFieldAssist.HasClearButton="True" 
                                DropDownElevation="Dp0" 
@@ -52,7 +52,7 @@
     materialDesign:ColorZoneAssist.Mode="PrimaryLight"
     Style="{StaticResource MaterialDesignFilledTabControl}" Margin="63,3,38,0">
                 <TabItem Background="{DynamicResource Primary}" 
-      Header="Ongoing Competitions">
+      Header="{DynamicResource ongoingCompetitions}">
 
 
                     <!--OngoingCompetitions-->
@@ -60,7 +60,7 @@
                                   Count="{Binding OngoingCompetitions.Count}" />
                 </TabItem>
                 <TabItem
-      Header="Past Competitions">
+      Header="{DynamicResource pastCompetitions}">
 
                     <!--PastCompetitions-->
 

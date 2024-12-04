@@ -11,9 +11,9 @@ using TrackSpace.Services.Shared;
 
 namespace TrackSpace.Services
 {
-    public class ClubsService
+    public class ClubsService : BaseService
     {
-        private readonly TrackspaceContext _context = DBConnection.GetContext();
+       
         private ObservableCollection<Club> _clubs;
         private ObservableCollection<Competitor> _clubCompetitors;
         private CategoryService _categoryService;
@@ -31,6 +31,11 @@ namespace TrackSpace.Services
             return _clubs;
         }
 
+        public Club? GetClubById(int id)
+        {
+            return _clubs.FirstOrDefault(c=>c.IdClub==id);
+        }
+
         public ObservableCollection<Competitor> GetClubCompetitors(int idClub)
         {
 
@@ -39,7 +44,7 @@ namespace TrackSpace.Services
             foreach (var c in filteredCompetitors)
             {
                 c.IdCategoryNavigation = _categoryService.GetCategoryById(c.IdCategory);
-                c.IdCategoryNavigation.Name = c.IdCategoryNavigation.Name.Substring(0,3);
+                c.IdCategoryNavigation.Name = c.IdCategoryNavigation?.Name?.Substring(0,3);
             }
 
             return new ObservableCollection<Competitor>(filteredCompetitors);

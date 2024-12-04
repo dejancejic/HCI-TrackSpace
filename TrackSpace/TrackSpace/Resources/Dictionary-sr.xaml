@@ -50,4 +50,24 @@
     <System:String x:Key="switchLanguage">Promjenite Jezik</System:String>
     <System:String x:Key="searchClubs">Pretražite Klubove</System:String>
     <System:String x:Key="clubsW(">Klubovi(</System:String>
+    <System:String x:Key="noGroupsyet">Ova disciplina nema nijednu grupu!</System:String>
+    <System:String x:Key="error">Greška</System:String>
+    <System:String x:Key="groupsW(">Grupe(</System:String>
+    <System:String x:Key="club">Klub</System:String>
+    <System:String x:Key="result">Rezultat</System:String>
+    <System:String x:Key="groupWSpace" xml:space="preserve">Grupa </System:String>
+    <System:String x:Key="event">Disciplina</System:String>
+    <System:String x:Key="start">Početak</System:String>
+    <System:String x:Key="competitorsNo(">Takmičari</System:String>
+    <System:String x:Key="eventsW(">Discipline(</System:String>
+    <System:String x:Key="entriesW(">Prijave(</System:String>
+    <System:String x:Key="groupsW()">Grupe({0})</System:String>
+    <System:String x:Key="title">Naziv</System:String>
+    <System:String x:Key="date">Datum</System:String>
+    <System:String x:Key="location">Lokacija</System:String>
+    <System:String x:Key="entries">Prijave</System:String>
+    <System:String x:Key="competitionsW(">Takmičenja(</System:String>
+    <System:String x:Key="pastCompetitions">Završena Takmičenja</System:String>
+    <System:String x:Key="ongoingCompetitions">Predstojeća Takmičenja</System:String>
+    <System:String x:Key="searchCompetitions">Pretražite Takmičenja</System:String>
 </ResourceDictionary>

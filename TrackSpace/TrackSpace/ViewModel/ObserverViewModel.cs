@@ -16,6 +16,7 @@ using TrackSpace.Forms.Pages;
 using TrackSpace.Models;
 using TrackSpace.Services;
 using TrackSpace.Services.Shared;
+using TrackSpace.Utils;
 using TrackSpace.ViewModel.Shared;
 
 namespace TrackSpace.ViewModel
@@ -139,26 +140,20 @@ namespace TrackSpace.ViewModel
                 }
               
 
-                var pageInstance = LoadUserControlFromUri($"Forms/Pages/{tag}.xaml");
-                ViewModelLocator.ObserverMainPage.basePage.MainContent = pageInstance;
+                var pageInstance = PageUtils.LoadUserControlFromUri($"Forms/Pages/{tag}.xaml");
+                PageUtils.NavigatePages(pageInstance);
 
 
             }
         }
 
-        private UserControl LoadUserControlFromUri(string uri)
-        {
-
-                Uri pageUri = new Uri(uri, UriKind.Relative);
-                var page = (UserControl)Application.LoadComponent(pageUri);
-                return page;           
-        }
+       
 
 
 
         private void Logout(object obj)
         {
-                ViewModelLocator.ObserverMainPage.Close();
+            Close(obj);
         }
 
         private void SwitchTheme(object parameter)
@@ -258,7 +253,6 @@ namespace TrackSpace.ViewModel
         }
 
 
-        
         public event PropertyChangedEventHandler PropertyChanged;
         protected void OnPropertyChanged(string propertyName) 
         { 

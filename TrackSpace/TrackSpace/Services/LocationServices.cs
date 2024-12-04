@@ -6,12 +6,13 @@ using System.Text;
 using System.Threading.Tasks;
 using TrackSpace.DBUtil;
 using TrackSpace.Models;
+using TrackSpace.Services.Shared;
 
 namespace TrackSpace.Services
 {
-    public class LocationServices
+    public class LocationServices : BaseService
     {
-        private readonly TrackspaceContext _context = DBConnection.GetContext();
+        
         private ObservableCollection<Location> _locations;
 
         public LocationServices() {
