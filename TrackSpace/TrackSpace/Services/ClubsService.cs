@@ -36,6 +36,11 @@ namespace TrackSpace.Services
             return _clubs.FirstOrDefault(c=>c.IdClub==id);
         }
 
+        public Club? GetClubByIdAdmin(int idAdmin)
+        {
+            return _clubs.FirstOrDefault(c => c.IdUser == idAdmin);
+        }
+
         public ObservableCollection<Competitor> GetClubCompetitors(int idClub)
         {
 

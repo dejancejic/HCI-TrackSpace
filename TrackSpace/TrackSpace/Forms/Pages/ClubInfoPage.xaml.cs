@@ -27,8 +27,11 @@ namespace TrackSpace.Forms.Pages
             
             DataContext = ViewModelLocator.ClubInfoViewModel;
             ViewModelLocator.ClubInfoViewModel.Club = club;
-            
-          
+
+            if (ViewModelLocator.AccountType.Equals("club_admin"))
+            {
+                addCompetitorBtn.Visibility = Visibility.Visible;
+            }
             
         }
 

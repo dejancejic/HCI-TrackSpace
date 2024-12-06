@@ -22,6 +22,9 @@
     <Compile Update="Forms\Pages\CompetitionsPage.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="Forms\Pages\EnterCompetitionPage.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="Forms\Pages\EventInfoPage.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -79,6 +82,9 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Forms\Pages\CompetitionsPage.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Forms\Pages\EnterCompetitionPage.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Forms\Pages\EventInfoPage.xaml">

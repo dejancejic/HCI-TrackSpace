@@ -4,8 +4,10 @@ using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Input;
 using TrackSpace.Command;
+using TrackSpace.Forms.CustomMessageBox;
 using TrackSpace.Forms.Pages;
 using TrackSpace.Models;
 using TrackSpace.Services.Shared;
@@ -25,16 +27,32 @@ namespace TrackSpace.ViewModel
                 OnPropertyChanged(nameof(Competition)); } }
         public ICommand GoBackCommand { get; set; }
 
-
+        public ICommand EnterCompetitionCommand { get; set; }
         public CompetitionInfoViewModel()
         {
 
             GoBackCommand = new RelayCommand(GoBack, CanShowWindow);
+            EnterCompetitionCommand = new RelayCommand(EnterCompetition, CanShowWindow);
 
         }
         public void GoBack(object obj)
         {
             PageUtils.NavigatePages(ViewModelLocator.CompetitionsPage);
+        }
+
+        private void EnterCompetition(object obj) {
+
+            if (_competition.Start > DateTime.Now.AddDays(2))
+            {
+                ViewModelLocator.EnterCompetitionViewModel.Competition = _competition;
+                ViewModelLocator.EnterCompetitionViewModel.SetUpEntryModels();
+                PageUtils.NavigatePages(ViewModelLocator.EnterCompetitionPage);
+            }
+            else
+            {
+
+                new CustomMessageBox(false, false, (string)Application.Current.Resources["error"], (string)Application.Current.Resources["cantEnterCompetition"]).Show();
+            }
         }
 
         public void ShowEventById(object obj)

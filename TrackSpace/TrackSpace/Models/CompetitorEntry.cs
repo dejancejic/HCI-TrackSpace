@@ -14,6 +14,8 @@ public partial class CompetitorEntry
     public int? IdCompetitor { get; set; }
 
     public DateTime Date { get; set; }
+    
+    public int? IdEvent { get; set; }
 
     public virtual Competition IdCompetitionNavigation { get; set; } = null!;
 

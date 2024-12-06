@@ -41,6 +41,8 @@ namespace TrackSpace.ViewModel
 
         public ICommand GoBackCommand { get; set; }
 
+        public ICommand AddCompetitorCommand { get; set; }
+
         private ClubsService _clubsService=ServicesLocator.ClubsService;
         
 
@@ -49,13 +51,19 @@ namespace TrackSpace.ViewModel
         {
 
             GoBackCommand = new RelayCommand(GoBack, CanShowWindow);
-            
+            AddCompetitorCommand = new RelayCommand(AddCompetitor, CanShowWindow);
          }
 
             public void GoBack(object obj)
         {
             PageUtils.NavigatePages(new ClubsPage());
             
+        }
+
+        private void AddCompetitor(object obj)
+        { 
+        
+        
         }
 
         public event PropertyChangedEventHandler? PropertyChanged;

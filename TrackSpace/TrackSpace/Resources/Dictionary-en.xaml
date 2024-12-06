@@ -60,6 +60,7 @@
     <System:String x:Key="start">Start</System:String>
     <System:String x:Key="competitorsNo(">Competitors</System:String>
     <System:String x:Key="eventsW(">Events(</System:String>
+    <System:String x:Key="events">Events</System:String>
     <System:String x:Key="entriesW(">Entries(</System:String>
     <System:String x:Key="groupsW()">Groups({0})</System:String>
     <System:String x:Key="title">Name</System:String>
@@ -70,4 +71,8 @@
     <System:String x:Key="pastCompetitions">Past Competitions</System:String>
     <System:String x:Key="ongoingCompetitions">Ongoing Competitions</System:String>
     <System:String x:Key="searchCompetitions">Search Competitions</System:String>
+    <System:String x:Key="myClub">My Club</System:String>
+    <System:String x:Key="enterCompetition">Enter Competition</System:String>
+    <System:String x:Key="cantEnterCompetition">The time for entering has to be at least 2 days earlier than the competition!</System:String>
+    <System:String x:Key="confirmEntries">Confirm Entries</System:String>
 </ResourceDictionary>

@@ -60,6 +60,7 @@
     <System:String x:Key="start">Početak</System:String>
     <System:String x:Key="competitorsNo(">Takmičari</System:String>
     <System:String x:Key="eventsW(">Discipline(</System:String>
+    <System:String x:Key="events">Discipline</System:String>
     <System:String x:Key="entriesW(">Prijave(</System:String>
     <System:String x:Key="groupsW()">Grupe({0})</System:String>
     <System:String x:Key="title">Naziv</System:String>
@@ -70,4 +71,8 @@
     <System:String x:Key="pastCompetitions">Završena Takmičenja</System:String>
     <System:String x:Key="ongoingCompetitions">Predstojeća Takmičenja</System:String>
     <System:String x:Key="searchCompetitions">Pretražite Takmičenja</System:String>
+    <System:String x:Key="myClub">Moj Klub</System:String>
+    <System:String x:Key="enterCompetition">Prijavite Takmičare</System:String>
+    <System:String x:Key="cantEnterCompetition">Vrijeme za prijavu takmičara je bar 2 dana prije takmičenja!</System:String>
+    <System:String x:Key="confirmEntries">Potvrdite Prijave</System:String>
 </ResourceDictionary>

@@ -92,7 +92,7 @@ namespace TrackSpace.ViewModel
                 }
                 else
                 {
-                //TODO select usertype
+               
                 if (User.Type.Equals("club_admin"))
                 {
                     ViewModelLocator.AccountType = User.Type;
@@ -114,6 +114,11 @@ namespace TrackSpace.ViewModel
                     }
                     
                     ClubAdminMainPage clubAdminPage = new ClubAdminMainPage(admin!);
+
+                    ViewModelLocator.IdAdmin = admin!.IdUser;
+                    Club? adminsClub = ServicesLocator.ClubsService.GetClubByIdAdmin(admin.IdUser);
+                    ViewModelLocator.MyClubInfoPage=new Forms.Pages.ClubInfoPage(adminsClub!);
+                    ViewModelLocator.EnterCompetitionViewModel.Competitors = ServicesLocator.ClubsService.GetClubCompetitors(adminsClub!.IdClub);
                     ViewModelLocator.ClubAdminMainPage= clubAdminPage;
                     clubAdminPage.Closed += (a, b) => Application.Current.MainWindow.Show();
                     clubAdminPage.Show();

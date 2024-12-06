@@ -161,7 +161,13 @@ Foreground="Black" />
 
 
 
-
+        <Button x:Name="enterCompetitionBtn"  Visibility="Hidden" Margin="0,0,15,15" HorizontalAlignment="Center"  VerticalAlignment="Bottom" Content="{DynamicResource enterCompetition}"
+Background="{DynamicResource Primary}"
+Foreground="#ffffff"
+FontSize="18"
+Width="190"
+Height="45"
+materialDesign:ButtonAssist.CornerRadius="22" Command="{Binding EnterCompetitionCommand}"></Button>
 
     </Grid>
 </UserControl>

@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:TrackSpace.Forms.Windows"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         xmlns:pages="clr-namespace:TrackSpace.Forms.Pages"
-        xmlns:forms="clr-namespace:TrackSpace.Forms"
+        xmlns:forms="clr-namespace:TrackSpace.Forms.SideMenus"
         mc:Ignorable="d"
         Title="ClubAdminMainPage" Height="650" Width="1000"
         WindowStartupLocation="CenterScreen"
@@ -21,7 +21,7 @@
         
         <local:BasePage MouseDown="MouseDownHandler" x:Name="basePage">
             <local:BasePage.SideMenuContent>
-                <forms:SideMenuObserver></forms:SideMenuObserver>
+                <forms:SideMenuClubAdmin></forms:SideMenuClubAdmin>
             </local:BasePage.SideMenuContent>
 
             <local:BasePage.MainContent >

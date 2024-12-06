@@ -21,7 +21,7 @@
         <Label HorizontalAlignment="Left" Margin="15,10,0,415" Content="{Binding Name}"
 FontWeight="Bold" FontSize="40" Foreground="Black" />
 
-        <Button Command="{Binding GoBackCommand}"
+        <Button x:Name="goBackBtn" Command="{Binding GoBackCommand}"
   IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
   Style="{StaticResource MaterialDesignFloatingActionMiniDarkButton}" Width="45" Height="45" Background="{DynamicResource Primary}"
   ToolTip="MaterialDesignFloatingActionMiniDarkButton" VerticalAlignment="Bottom" Margin="0 0 15 15" HorizontalAlignment="Right">
@@ -29,6 +29,17 @@ FontWeight="Bold" FontSize="40" Foreground="Black" />
     Width="30"
     Height="30"
     Kind="ArrowBack" />
+        </Button>
+
+
+        <Button x:Name="addCompetitorBtn"  Visibility="Hidden" Command="{Binding AddCompetitorCommand}"
+IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
+Style="{StaticResource MaterialDesignFloatingActionMiniDarkButton}" Width="45" Height="45" Background="{DynamicResource Primary}"
+ToolTip="MaterialDesignFloatingActionMiniDarkButton" VerticalAlignment="Bottom" Margin="30 0 0 15" HorizontalAlignment="Left">
+            <materialDesign:PackIcon
+  Width="30"
+  Height="30"
+  Kind="AccountsAdd" />
         </Button>
 
 

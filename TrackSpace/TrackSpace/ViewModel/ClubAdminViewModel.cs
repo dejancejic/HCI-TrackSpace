@@ -46,7 +46,14 @@ namespace TrackSpace.ViewModel
                     Logout(parameter);
                     return;
                 }
+            
 
+                if (tag.Equals("MyClubPage"))
+                {
+                    ViewModelLocator.MyClubInfoPage.goBackBtn.Visibility = Visibility.Hidden;
+                    PageUtils.NavigatePages(ViewModelLocator.MyClubInfoPage);
+                    return;
+                }
 
                 var pageInstance = PageUtils.LoadUserControlFromUri($"Forms/Pages/{tag}.xaml");
                 ViewModelLocator.ClubAdminMainPage.basePage.MainContent = pageInstance;
@@ -59,10 +66,7 @@ namespace TrackSpace.ViewModel
         private void Logout(object obj)
         {
 
-            if (obj is Window window)
-            {
-                window.Close();
-            }
+            ViewModelLocator.ClubAdminMainPage.Close();
         }
         
  
