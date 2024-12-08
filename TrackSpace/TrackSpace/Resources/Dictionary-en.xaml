@@ -75,4 +75,16 @@
     <System:String x:Key="enterCompetition">Enter Competition</System:String>
     <System:String x:Key="cantEnterCompetition">The time for entering has to be at least 2 days earlier than the competition!</System:String>
     <System:String x:Key="confirmEntries">Confirm Entries</System:String>
+    <System:String x:Key="updatedEntries">Update successful</System:String>
+    <System:String x:Key="updateEntriesSuccessful">Successfully updated entries!</System:String>
+    <System:String x:Key="cantAddEntry">Can't add more than 2 entries per competitor!</System:String>
+    <System:String x:Key="nameSurnameEmpty">Name and surname mustn't be empty!</System:String>
+    <System:String x:Key="addCompetitor">Adding successful</System:String>
+    <System:String x:Key="addCompetitorSuccess">Successfully added a competitor to club!</System:String>
+    <System:String x:Key="addCompetitorTitle">Add Competitor</System:String>
+    <System:String x:Key="dayOfBirth">Date of Birth</System:String>
+    <System:String x:Key="enterCompetitorName">Enter Competitor's Name</System:String>
+    <System:String x:Key="enterCompetitorSurname">Enter Competitor's Surname</System:String>
+    <System:String x:Key="myCompetitions">My Competitions</System:String>
+    <System:String x:Key="addCompetition">New Competition</System:String>
 </ResourceDictionary>

@@ -12,17 +12,33 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using TrackSpace.ViewModel.Shared;
+using TrackSpace.ViewModel;
 
 namespace TrackSpace.Forms.SideMenus
 {
-    /// <summary>
-    /// Interaction logic for SideMenuOrganizer.xaml
-    /// </summary>
     public partial class SideMenuOrganizer : UserControl
     {
         public SideMenuOrganizer()
         {
             InitializeComponent();
         }
+        private void ListView_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (DataContext is OrganizerViewModel viewModel)
+            {
+                if (sender is ListView listView && listView.SelectedItem is ListViewItem selectedItem)
+                {
+                    if (selectedItem.Tag.ToString().Equals("Logout"))
+                    {
+                        viewModel.LogoutCommand.Execute(this);
+                        return;
+                    }
+
+                    ViewModelLocator.OrganizerViewModel.NavigateCommand.Execute(selectedItem.Tag);
+                }
+            }
+        }
     }
+
 }

@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using TrackSpace.Models;
+using TrackSpace.Services.Shared;
 using TrackSpace.ViewModel;
 using TrackSpace.ViewModel.Shared;
 
@@ -21,20 +22,31 @@ namespace TrackSpace.Forms.Pages
     
     public partial class ClubInfoPage : UserControl
     {
-        public ClubInfoPage(Club club)
+        public ClubInfoPage(Club club,bool myClub=true)
         {
             InitializeComponent();
             
             DataContext = ViewModelLocator.ClubInfoViewModel;
-            ViewModelLocator.ClubInfoViewModel.Club = club;
 
-            if (ViewModelLocator.AccountType.Equals("club_admin"))
-            {
-                addCompetitorBtn.Visibility = Visibility.Visible;
-            }
+            ViewModelLocator.ClubInfoViewModel.Club = club;
+            
+
+            SetBtnAddCompetitor(club,myClub);
             
         }
 
+        public void SetBtnAddCompetitor(Club club, bool myClub)
+        {
+            if (myClub==true)
+            {
+                addCompetitorBtn.Visibility = Visibility.Visible;
+                ViewModelLocator.ClubInfoViewModel.DialogHost = AddCompetitorDialogHost;
+            }
+            else
+            {
+                addCompetitorBtn.Visibility = Visibility.Hidden;
+            }
+        }
       
 
         private void DataGridCell_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
@@ -55,7 +67,13 @@ namespace TrackSpace.Forms.Pages
             }
         }
 
-
+        private void Name_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Enter)
+            {
+                SurnnameTextBox.Focus();
+            }
+        }
 
 
 

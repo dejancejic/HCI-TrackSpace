@@ -75,4 +75,16 @@
     <System:String x:Key="enterCompetition">Prijavite Takmičare</System:String>
     <System:String x:Key="cantEnterCompetition">Vrijeme za prijavu takmičara je bar 2 dana prije takmičenja!</System:String>
     <System:String x:Key="confirmEntries">Potvrdite Prijave</System:String>
+    <System:String x:Key="updatedEntries">Ažuriranje uspješno</System:String>
+    <System:String x:Key="updateEntriesSuccessful">Uspješno ažurirane prijave na takmičenje!</System:String>
+    <System:String x:Key="cantAddEntry">Ne možete dodati više od 2 prijave po takmičaru!</System:String>
+    <System:String x:Key="nameSurnameEmpty">Ime i prezime ne smiju biti prazni!</System:String>
+    <System:String x:Key="addCompetitor">Dodavanje uspješno</System:String>
+    <System:String x:Key="addCompetitorSuccess">Uspješno dodan takmičar u klub!</System:String>
+    <System:String x:Key="addCompetitorTitle">Dodaj Takmičara</System:String>
+    <System:String x:Key="dayOfBirth">Datum Rođenja</System:String>
+    <System:String x:Key="enterCompetitorName">Unesite Ime Takmičara</System:String>
+    <System:String x:Key="enterCompetitorSurname">Unesite Prezime Takmičara</System:String>
+    <System:String x:Key="myCompetitions">Moja Takmičenja</System:String>
+    <System:String x:Key="addCompetition">Novo Takmičenje</System:String>
 </ResourceDictionary>

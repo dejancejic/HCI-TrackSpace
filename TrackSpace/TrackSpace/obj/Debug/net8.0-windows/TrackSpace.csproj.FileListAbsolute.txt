@@ -173,3 +173,5 @@ C:\Users\Dejan\Documents\Interakcija covjek racunar\HCI Projektni zadatak 1\Trac
 C:\Users\Dejan\Documents\Interakcija covjek racunar\HCI Projektni zadatak 1\TrackSpace\TrackSpace\obj\Debug\net8.0-windows\Forms\Windows\OrganizerMainPage.baml
 C:\Users\Dejan\Documents\Interakcija covjek racunar\HCI Projektni zadatak 1\TrackSpace\TrackSpace\obj\Debug\net8.0-windows\Forms\Pages\EnterCompetitionPage.g.cs
 C:\Users\Dejan\Documents\Interakcija covjek racunar\HCI Projektni zadatak 1\TrackSpace\TrackSpace\obj\Debug\net8.0-windows\Forms\Pages\EnterCompetitionPage.baml
+C:\Users\Dejan\Documents\Interakcija covjek racunar\HCI Projektni zadatak 1\TrackSpace\TrackSpace\obj\Debug\net8.0-windows\Forms\Pages\AddCompetitionPage.g.cs
+C:\Users\Dejan\Documents\Interakcija covjek racunar\HCI Projektni zadatak 1\TrackSpace\TrackSpace\obj\Debug\net8.0-windows\Forms\Pages\AddCompetitionPage.baml

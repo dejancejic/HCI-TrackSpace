@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using TrackSpace.Forms;
 using TrackSpace.Models;
 using TrackSpace.Models.EntryModel;
 using TrackSpace.Services;
@@ -44,22 +45,10 @@ namespace TrackSpace.Forms.Pages
 
                 if (event1 != null) {
 
-                    if (event1.IdCategoryNavigation.Name[
-                        event1.IdCategoryNavigation.Name.Length-1] == 'M')
-                    {
-                        dataGridCompetitors.ItemsSource = ViewModelLocator.EnterCompetitionViewModel.MaleCompetitors;
-                    }
-                    else
-                    {
-                        dataGridCompetitors.ItemsSource = ViewModelLocator.EnterCompetitionViewModel.FemaleCompetitors;
-                    }
+                
+                ViewModelLocator.EnterCompetitionViewModel.SetMaleFemaleCompetitors(event1.IdEvent);
 
                 }
-
-
-                if(ViewModelLocator.EnterCompetitionViewModel.modelsDictionary!=null)
-                ViewModelLocator.EnterCompetitionViewModel.EntryModels = ViewModelLocator.EnterCompetitionViewModel.modelsDictionary[
-                    ViewModelLocator.EnterCompetitionViewModel.Competition.Events!.ToList()[selectedIndex].IdEvent];
 
                
                
@@ -70,6 +59,7 @@ namespace TrackSpace.Forms.Pages
         {
             EntryModel? selectedItem = dataGridCompetitors.SelectedItem as EntryModel;
 
+           
 
             if(selectedItem!=null)
             ViewModelLocator.EnterCompetitionViewModel.EntryModels.FirstOrDefault(e=>e.IdEvent==selectedItem.IdEvent
@@ -81,6 +71,15 @@ namespace TrackSpace.Forms.Pages
         {
             EntryModel? selectedItem = dataGridCompetitors.SelectedItem as EntryModel;
 
+
+            if (selectedItem!=null && ViewModelLocator.EnterCompetitionViewModel.CheckIfHas2Entries(selectedItem.Competitor.IdCompetitor))
+            {
+
+                new CustomMessageBox.CustomMessageBox(false, false, (string)Application.Current.Resources["error"], (string)Application.Current.Resources["cantAddEntry"]).Show();
+
+                checkBox_Unchecked(sender, e);
+                return;
+            }
 
             if (selectedItem != null)
                 ViewModelLocator.EnterCompetitionViewModel.EntryModels.FirstOrDefault(e => e.IdEvent == selectedItem.IdEvent

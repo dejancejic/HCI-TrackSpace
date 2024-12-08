@@ -4,9 +4,27 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TrackSpace.Forms.Windows"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns:pages="clr-namespace:TrackSpace.Forms.Pages"
+        xmlns:forms="clr-namespace:TrackSpace.Forms.SideMenus"
         mc:Ignorable="d"
-        Title="OrganizerMainWindow" Height="450" Width="800">
+        Title="ClubAdminMainPage" Height="650" Width="1000"
+        WindowStartupLocation="CenterScreen"
+        WindowStyle="None"
+        Background="Transparent"
+    AllowsTransparency="True"
+    ResizeMode="NoResize"
+    FontSize="18"
+    FontFamily="{DynamicResource AppFont}">
+
     <Grid>
-        
+
+        <local:BasePage MouseDown="MouseDownHandler" x:Name="basePage">
+            <local:BasePage.SideMenuContent>
+                <forms:SideMenuOrganizer></forms:SideMenuOrganizer>
+            </local:BasePage.SideMenuContent>
+
+            
+        </local:BasePage>
     </Grid>
 </Window>

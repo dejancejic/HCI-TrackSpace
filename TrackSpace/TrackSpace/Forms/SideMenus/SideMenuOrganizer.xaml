@@ -4,9 +4,71 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:TrackSpace.Forms.SideMenus"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
-            
+        <StackPanel Margin="0 40 760 0">
+            <ListView SelectedIndex="0" SelectionMode="Single" Background="{DynamicResource SideMenu}" SelectionChanged="ListView_SelectionChanged" >
+                <ListView.ItemContainerStyle>
+                    <Style TargetType="ListViewItem">
+                        <Setter Property="HorizontalContentAlignment" Value="Center" />
+                        <Setter Property="Margin" Value="0,0,0,0" />
+                        <Setter Property="Template">
+                            <Setter.Value>
+                                <ControlTemplate TargetType="ListViewItem">
+                                    <Border Name="Border" Padding="2" SnapsToDevicePixels="true">
+                                        <Grid Background="{TemplateBinding Background}">
+                                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                        </Grid>
+                                    </Border>
+                                    <ControlTemplate.Triggers>
+                                        <Trigger Property="IsMouseOver" Value="True">
+                                            <Setter TargetName="Border" Property="Background" Value="{DynamicResource Secondary}"/>
+                                        </Trigger>
+                                        <Trigger Property="IsSelected" Value="True">
+                                            <Setter TargetName="Border" Property="Background" Value="{DynamicResource Secondary}"/>
+                                        </Trigger>
+                                    </ControlTemplate.Triggers>
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                    </Style>
+                </ListView.ItemContainerStyle>
+
+                <ListViewItem Tag="CompetitionsPage" Name="competitionsItem">
+                    <StackPanel HorizontalAlignment="Center">
+                        <materialDesign:PackIcon Foreground="white" Kind="Event" Height="40" Width="30" HorizontalAlignment="Center"/>
+                        <Label Foreground="White" FontWeight="Bold" FontSize="18" Content="{DynamicResource competitions}"/>
+                    </StackPanel>
+                </ListViewItem>
+                <ListViewItem Tag="MyCompetitionsPage" Name="myCompetitionItem" >
+                    <StackPanel HorizontalAlignment="Center">
+                        <materialDesign:PackIcon Foreground="white" Kind="Eye" Height="40" Width="30" HorizontalAlignment="Center"/>
+                        <Label HorizontalAlignment="Center" Foreground="White" FontWeight="Bold" FontSize="18" Content="{DynamicResource myCompetitions}"/>
+                    </StackPanel>
+                </ListViewItem>
+                <ListViewItem Tag="AddCompetitionPage" Name="addCompetitionItem" >
+                    <StackPanel HorizontalAlignment="Center">
+                        <materialDesign:PackIcon Foreground="white" Kind="AddBox" Height="40" Width="30" HorizontalAlignment="Center"/>
+                        <Label HorizontalAlignment="Center" Foreground="White" FontWeight="Bold" FontSize="18" Content="{DynamicResource addCompetition}"/>
+                    </StackPanel>
+                </ListViewItem>
+
+                <ListViewItem Margin="0 180 0 0"  Tag="SettingsPage" Name="settingsItem">
+                    <StackPanel HorizontalAlignment="Center">
+                        <materialDesign:PackIcon Foreground="white" Kind="Settings" Height="40" Width="30" HorizontalAlignment="Center"/>
+                        <Label Foreground="White" FontWeight="Bold" FontSize="18" Content="{DynamicResource settings}"/>
+                    </StackPanel>
+                </ListViewItem>
+                <ListViewItem Tag="Logout" Name="logoutItem">
+                    <StackPanel HorizontalAlignment="Center">
+                        <materialDesign:PackIcon Foreground="white" Kind="Logout" Height="40" Width="30" HorizontalAlignment="Center"/>
+                        <Label Foreground="White" FontWeight="Bold" FontSize="18" Content="{DynamicResource exit}"/>
+                    </StackPanel>
+                </ListViewItem>
+
+            </ListView>
+        </StackPanel>
     </Grid>
 </UserControl>

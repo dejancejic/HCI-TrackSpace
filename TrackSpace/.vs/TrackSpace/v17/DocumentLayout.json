@@ -3,16 +3,16 @@
   "WorkspaceRootPath": "C:\\Users\\Dejan\\Documents\\Interakcija covjek racunar\\HCI Projektni zadatak 1\\TrackSpace\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{82943BC2-4493-439A-9914-DA0D1FE42CDA}|TrackSpace\\TrackSpace.csproj|c:\\users\\dejan\\documents\\interakcija covjek racunar\\hci projektni zadatak 1\\trackspace\\trackspace\\viewmodel\\entercompetitionviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{82943BC2-4493-439A-9914-DA0D1FE42CDA}|TrackSpace\\TrackSpace.csproj|solutionrelative:trackspace\\viewmodel\\entercompetitionviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{82943BC2-4493-439A-9914-DA0D1FE42CDA}|TrackSpace\\TrackSpace.csproj|c:\\users\\dejan\\documents\\interakcija covjek racunar\\hci projektni zadatak 1\\trackspace\\trackspace\\forms\\pages\\addcompetitionpage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{82943BC2-4493-439A-9914-DA0D1FE42CDA}|TrackSpace\\TrackSpace.csproj|solutionrelative:trackspace\\forms\\pages\\addcompetitionpage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{82943BC2-4493-439A-9914-DA0D1FE42CDA}|TrackSpace\\TrackSpace.csproj|c:\\users\\dejan\\documents\\interakcija covjek racunar\\hci projektni zadatak 1\\trackspace\\trackspace\\forms\\pages\\entercompetitionpage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{82943BC2-4493-439A-9914-DA0D1FE42CDA}|TrackSpace\\TrackSpace.csproj|solutionrelative:trackspace\\forms\\pages\\entercompetitionpage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{82943BC2-4493-439A-9914-DA0D1FE42CDA}|TrackSpace\\TrackSpace.csproj|c:\\users\\dejan\\documents\\interakcija covjek racunar\\hci projektni zadatak 1\\trackspace\\trackspace\\viewmodel\\addcompetitionviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{82943BC2-4493-439A-9914-DA0D1FE42CDA}|TrackSpace\\TrackSpace.csproj|solutionrelative:trackspace\\viewmodel\\addcompetitionviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{82943BC2-4493-439A-9914-DA0D1FE42CDA}|TrackSpace\\TrackSpace.csproj|c:\\users\\dejan\\documents\\interakcija covjek racunar\\hci projektni zadatak 1\\trackspace\\trackspace\\forms\\pages\\entercompetitionpage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{82943BC2-4493-439A-9914-DA0D1FE42CDA}|TrackSpace\\TrackSpace.csproj|solutionrelative:trackspace\\forms\\pages\\entercompetitionpage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+      "AbsoluteMoniker": "D:0:0:{82943BC2-4493-439A-9914-DA0D1FE42CDA}|TrackSpace\\TrackSpace.csproj|c:\\users\\dejan\\documents\\interakcija covjek racunar\\hci projektni zadatak 1\\trackspace\\trackspace\\forms\\pages\\addcompetitionpage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{82943BC2-4493-439A-9914-DA0D1FE42CDA}|TrackSpace\\TrackSpace.csproj|solutionrelative:trackspace\\forms\\pages\\addcompetitionpage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -22,7 +22,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 4,
+          "SelectedChildIndex": 5,
           "Children": [
             {
               "$type": "Bookmark",
@@ -35,39 +35,39 @@
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "EnterCompetitionPage.xaml.cs",
-              "DocumentMoniker": "C:\\Users\\Dejan\\Documents\\Interakcija covjek racunar\\HCI Projektni zadatak 1\\TrackSpace\\TrackSpace\\Forms\\Pages\\EnterCompetitionPage.xaml.cs",
-              "RelativeDocumentMoniker": "TrackSpace\\Forms\\Pages\\EnterCompetitionPage.xaml.cs",
-              "ToolTip": "C:\\Users\\Dejan\\Documents\\Interakcija covjek racunar\\HCI Projektni zadatak 1\\TrackSpace\\TrackSpace\\Forms\\Pages\\EnterCompetitionPage.xaml.cs",
-              "RelativeToolTip": "TrackSpace\\Forms\\Pages\\EnterCompetitionPage.xaml.cs",
-              "ViewState": "AQIAAD0AAAAAAAAAAAAQwFYAAABnAAAA",
+              "Title": "AddCompetitionViewModel.cs",
+              "DocumentMoniker": "C:\\Users\\Dejan\\Documents\\Interakcija covjek racunar\\HCI Projektni zadatak 1\\TrackSpace\\TrackSpace\\ViewModel\\AddCompetitionViewModel.cs",
+              "RelativeDocumentMoniker": "TrackSpace\\ViewModel\\AddCompetitionViewModel.cs",
+              "ToolTip": "C:\\Users\\Dejan\\Documents\\Interakcija covjek racunar\\HCI Projektni zadatak 1\\TrackSpace\\TrackSpace\\ViewModel\\AddCompetitionViewModel.cs",
+              "RelativeToolTip": "TrackSpace\\ViewModel\\AddCompetitionViewModel.cs",
+              "ViewState": "AQIAABAAAAAAAAAAAAAAwCoAAAAqAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-06T15:10:38.93Z",
+              "WhenOpened": "2024-12-08T22:56:06.518Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 2,
-              "Title": "EnterCompetitionPage.xaml",
-              "DocumentMoniker": "C:\\Users\\Dejan\\Documents\\Interakcija covjek racunar\\HCI Projektni zadatak 1\\TrackSpace\\TrackSpace\\Forms\\Pages\\EnterCompetitionPage.xaml",
-              "RelativeDocumentMoniker": "TrackSpace\\Forms\\Pages\\EnterCompetitionPage.xaml",
-              "ToolTip": "C:\\Users\\Dejan\\Documents\\Interakcija covjek racunar\\HCI Projektni zadatak 1\\TrackSpace\\TrackSpace\\Forms\\Pages\\EnterCompetitionPage.xaml",
-              "RelativeToolTip": "TrackSpace\\Forms\\Pages\\EnterCompetitionPage.xaml",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2024-12-06T14:32:05.18Z",
+              "Title": "AddCompetitionPage.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\Dejan\\Documents\\Interakcija covjek racunar\\HCI Projektni zadatak 1\\TrackSpace\\TrackSpace\\Forms\\Pages\\AddCompetitionPage.xaml.cs",
+              "RelativeDocumentMoniker": "TrackSpace\\Forms\\Pages\\AddCompetitionPage.xaml.cs",
+              "ToolTip": "C:\\Users\\Dejan\\Documents\\Interakcija covjek racunar\\HCI Projektni zadatak 1\\TrackSpace\\TrackSpace\\Forms\\Pages\\AddCompetitionPage.xaml.cs",
+              "RelativeToolTip": "TrackSpace\\Forms\\Pages\\AddCompetitionPage.xaml.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABcAAAALAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-08T21:21:10.832Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "EnterCompetitionViewModel.cs",
-              "DocumentMoniker": "C:\\Users\\Dejan\\Documents\\Interakcija covjek racunar\\HCI Projektni zadatak 1\\TrackSpace\\TrackSpace\\ViewModel\\EnterCompetitionViewModel.cs",
-              "RelativeDocumentMoniker": "TrackSpace\\ViewModel\\EnterCompetitionViewModel.cs",
-              "ToolTip": "C:\\Users\\Dejan\\Documents\\Interakcija covjek racunar\\HCI Projektni zadatak 1\\TrackSpace\\TrackSpace\\ViewModel\\EnterCompetitionViewModel.cs",
-              "RelativeToolTip": "TrackSpace\\ViewModel\\EnterCompetitionViewModel.cs",
-              "ViewState": "AQIAAHoAAAAAAAAAAAAtwI0AAAAkAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-06T14:33:11.508Z",
+              "Title": "AddCompetitionPage.xaml",
+              "DocumentMoniker": "C:\\Users\\Dejan\\Documents\\Interakcija covjek racunar\\HCI Projektni zadatak 1\\TrackSpace\\TrackSpace\\Forms\\Pages\\AddCompetitionPage.xaml",
+              "RelativeDocumentMoniker": "TrackSpace\\Forms\\Pages\\AddCompetitionPage.xaml",
+              "ToolTip": "C:\\Users\\Dejan\\Documents\\Interakcija covjek racunar\\HCI Projektni zadatak 1\\TrackSpace\\TrackSpace\\Forms\\Pages\\AddCompetitionPage.xaml",
+              "RelativeToolTip": "TrackSpace\\Forms\\Pages\\AddCompetitionPage.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2024-12-08T21:21:09.68Z",
               "EditorCaption": ""
             }
           ]

@@ -26,11 +26,14 @@ namespace TrackSpace.Services
         }
 
 
-        public ObservableCollection<Competition> GetAllCompetitions()
+        public ObservableCollection<Competition> GetAllCompetitions(ObservableCollection<Competition>? comps =null)
         {
+            if (comps == null)
+            {
+                comps = _competitions;
+            }
 
-
-            foreach (var competition in _competitions)
+            foreach (var competition in comps)
             {
                 var location = _locationService.GetLocationByPostNumber(competition.PostNumber);
                 var user = _userServices.GetUserById(competition.IdUser);
@@ -46,7 +49,7 @@ namespace TrackSpace.Services
                 }
 
             
-            return _competitions;
+            return comps;
         }
 
         public ObservableCollection<Competition> GetPastCompetitions()
@@ -64,6 +67,31 @@ namespace TrackSpace.Services
             return new ObservableCollection<Competition>(ongoingCompetitions);
         }
 
+        private ObservableCollection<Competition> GetCompetitionsByIdOrganizer(int idOrganizer)
+        {
+            return new ObservableCollection<Competition>(_competitions.Where(c => c.IdUser == idOrganizer).ToList());
+        }
+
+        public ObservableCollection<Competition> GetAllCompetitionsByIdOrganizer(int idOrganizer)
+        {
+            var comps = GetCompetitionsByIdOrganizer(idOrganizer);
+            return GetAllCompetitions(comps);
+        }
+
+        public ObservableCollection<Competition> GetOngoingCompetitions(int idOrganizer)
+        {
+            var ongoingCompetitions = GetAllCompetitions(GetCompetitionsByIdOrganizer(idOrganizer)).Where(c => c.Start > DateTime.Today).ToList();
+
+            return new ObservableCollection<Competition>(ongoingCompetitions);
+        }
+
+        public ObservableCollection<Competition> GetPastCompetitions(int idOrganizer)
+        {
+            var pastCompetitions = GetAllCompetitions(GetCompetitionsByIdOrganizer(idOrganizer)).Where(c => c.Start <= DateTime.Today).ToList();
+
+
+            return new ObservableCollection<Competition>(pastCompetitions);
+        }
 
 
     }

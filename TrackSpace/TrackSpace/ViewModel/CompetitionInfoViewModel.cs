@@ -44,6 +44,7 @@ namespace TrackSpace.ViewModel
 
             if (_competition.Start > DateTime.Now.AddDays(2))
             {
+                
                 ViewModelLocator.EnterCompetitionViewModel.Competition = _competition;
                 ViewModelLocator.EnterCompetitionViewModel.SetUpEntryModels();
                 PageUtils.NavigatePages(ViewModelLocator.EnterCompetitionPage);

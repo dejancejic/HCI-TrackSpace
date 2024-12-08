@@ -28,6 +28,16 @@ namespace TrackSpace.Services
             Competitor? comp=_competitors.FirstOrDefault(c=>c.IdCompetitor==id);
             return AssignCategoryAndClub(comp);
         }
+
+        public void AddCompetitor(Competitor competitor)
+        {
+            _context.Competitors.Add(competitor);
+
+            _context.SaveChanges();
+            _competitors.Add(competitor);
+
+        
+        }
         private Competitor? AssignCategoryAndClub(Competitor? comp)
         {
             if (comp != null)

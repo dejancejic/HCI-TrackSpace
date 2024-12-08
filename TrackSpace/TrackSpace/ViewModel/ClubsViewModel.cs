@@ -73,8 +73,9 @@ namespace TrackSpace.ViewModel
                 if (clubName != null)
                 {
                     Club? club = FindClubByName(clubName);
-
-                    PageUtils.NavigatePages(new ClubInfoPage(club!));
+                    var page = new ClubInfoPage(club!,false);
+                   
+                    PageUtils.NavigatePages(page);
                 }
             }
         }

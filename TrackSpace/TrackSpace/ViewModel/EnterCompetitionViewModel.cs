@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Extensions.Logging;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
@@ -26,11 +27,10 @@ namespace TrackSpace.ViewModel
 
         private ObservableCollection<EntryModel> _entryModels = null!;
 
-        private ObservableCollection<EntryModel> _femaleCompetitors = null!;
-        private ObservableCollection<EntryModel> _maleCompetitors = null!;
+        private Dictionary<int, ObservableCollection<EntryModel>> modelsDictionary;
+        private Dictionary<int, int> numberOfEntries=new Dictionary<int, int>();
 
 
-        
 
         public ObservableCollection<EntryModel> EntryModels
         {
@@ -39,24 +39,41 @@ namespace TrackSpace.ViewModel
             }
         }
 
-        public ObservableCollection<EntryModel> MaleCompetitors
+
+        public void SetMaleFemaleCompetitors(int idEvent)
         {
-            get { return _maleCompetitors; }
-            set
+            ObservableCollection<EntryModel> entryModels = modelsDictionary[idEvent];
+            Event? ev = _competition.Events.FirstOrDefault(e => e.IdEvent == idEvent);
+
+            ObservableCollection<EntryModel> emMale = new ObservableCollection<EntryModel>();
+            ObservableCollection<EntryModel> emFemale = new ObservableCollection<EntryModel>();
+
+            foreach (var entry in entryModels)
             {
-                _maleCompetitors = value;
-                OnPropertyChanged(nameof(MaleCompetitors));
+                if (entry.Competitor.Pol.Equals("M"))
+                {
+                    emMale.Add(entry);
+                }
+                else
+                {
+                    emFemale.Add(entry);
+
+                }
             }
-        }
-        public ObservableCollection<EntryModel> FemaleCompetitors
-        {
-            get { return _femaleCompetitors; }
-            set
+
+            if (ev!.IdCategoryNavigation.Name![ev.IdCategoryNavigation.Name.Length - 1]=='M')
             {
-                _femaleCompetitors = value;
-                OnPropertyChanged(nameof(FemaleCompetitors));
+                EntryModels = emMale;
             }
+            else
+            {
+                EntryModels = emFemale;
+
+            }
+
+
         }
+        
 
        
 
@@ -107,21 +124,33 @@ namespace TrackSpace.ViewModel
             }
             
 
-            new CustomMessageBox(false,true,"Update Successful!","Successfully updated entries!").Show();
+            new CustomMessageBox(false, true, (string)Application.Current.Resources["updatedEntries"],(string)Application.Current.Resources["updateEntriesSuccessful"]).Show();
 
         }
 
+        public bool CheckIfHas2Entries(int idCompetitor)
+        {
+            if (numberOfEntries[idCompetitor] == 2)
+                return true;
 
-        public Dictionary<int, ObservableCollection<EntryModel>> modelsDictionary;
+            return false;
+        }
+
+        
 
         public void SetUpEntryModels()
         {
             modelsDictionary = new Dictionary<int, ObservableCollection<EntryModel>>();
             _entryModels = new ObservableCollection<EntryModel>();
+            numberOfEntries = new Dictionary<int, int>();
 
 
-            HashSet<EntryModel> setMale = new HashSet<EntryModel>();
-            HashSet<EntryModel> setFemale = new HashSet<EntryModel>();
+
+            foreach (var comp in Competitors)
+            {
+                numberOfEntries.Add(comp.IdCompetitor, 0);
+            }
+
 
             foreach (var ev in _competition.Events)
             {
@@ -134,6 +163,7 @@ namespace TrackSpace.ViewModel
                     if (ce != null)
                     {
                         model = new EntryModel(comp, ev.IdEvent, true);
+                        numberOfEntries[comp.IdCompetitor] = numberOfEntries[comp.IdCompetitor] + 1;
                     }
                     else
                     {
@@ -141,24 +171,14 @@ namespace TrackSpace.ViewModel
                     }
                     list.Add(model);
                     
-                    if (comp.Pol.Contains('M'))
-                    {
-                        setMale.Add(model);
-                    }
-                    else
-                    {
-                        setFemale.Add(model);
-                       
-                    }
                 }
                 modelsDictionary.Add(ev.IdEvent, list);
-                MaleCompetitors =new ObservableCollection<EntryModel>(setMale.ToList());
-                FemaleCompetitors = new ObservableCollection<EntryModel>(setFemale.ToList());
+              
             }
 
             if(_competition.Events.Count > 0)
             {
-                EntryModels = modelsDictionary[_competition.Events.ToList()[0].IdEvent];
+                SetMaleFemaleCompetitors(_competition.Events.ToList()[0].IdEvent);
             }
 
 

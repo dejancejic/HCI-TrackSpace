@@ -11,18 +11,32 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using TrackSpace.Forms.Pages;
 using TrackSpace.Models;
+using TrackSpace.ViewModel.Shared;
 
 namespace TrackSpace.Forms.Windows
 {
-    /// <summary>
-    /// Interaction logic for OrganizerMainWindow.xaml
-    /// </summary>
+
     public partial class OrganizerMainPage : Window
     {
         public OrganizerMainPage(CompetitionOrganizer organizer)
         {
             InitializeComponent();
+            basePage.MainContent = new CompetitionsPage();
+            DataContext = ViewModelLocator.OrganizerViewModel;
         }
+
+        private void MouseDownHandler(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        {
+            if (e.LeftButton == MouseButtonState.Pressed)
+            {
+                this.DragMove();
+            }
+
+        }
+
+
+
     }
 }

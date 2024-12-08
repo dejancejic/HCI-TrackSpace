@@ -22,13 +22,35 @@ namespace TrackSpace.Forms.Pages
    
     public partial class CompetitionsPage : UserControl
     {
-        public CompetitionsPage()
+        
+        public CompetitionsPage(bool OrganizersCompetition=false)
         {
-            InitializeComponent();
+            if(OrganizersCompetition==false)
+            SetPage(false);
+            else
+                SetPage(true);
 
-            DataContext = ViewModelLocator.CompetitionsViewModel;
+            InitializeComponent();
+          
+
             ViewModelLocator.CompetitionsPage = this;
 
+        }
+        public void SetPage(bool OrganizersCompetition)
+        {
+
+            if (OrganizersCompetition == true)
+            {
+                ViewModelLocator.CompetitionsViewModel = new CompetitionsViewModel(true);
+
+            }
+            else
+            {
+                ViewModelLocator.CompetitionsViewModel = new CompetitionsViewModel();
+
+            }
+
+            DataContext = ViewModelLocator.CompetitionsViewModel;
         }
 
 

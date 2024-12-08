@@ -18,8 +18,9 @@ namespace TrackSpace.Services.Shared
         private static EventsService _eventService = new EventsService();
         private static CompetitorEventServices _competitorEventService = new CompetitorEventServices();
         private static CompetitorsService _competitorsService=new CompetitorsService();
+        private static OrganizerService _organizerService = new OrganizerService();
         public static UserService UserService { get { return _userService; } }
-        public static ClubsService ClubsService { get { return _clubsService;} }
+        public static ClubsService ClubsService { get { return _clubsService;} set { _clubsService = value; } }
         public static ClubAdminService ClubAdminService { get { return _clubAdminService;} }
 
         public static CategoryService CategoryService {
@@ -64,6 +65,17 @@ namespace TrackSpace.Services.Shared
                 if (_competitorsService!= null)
                     return _competitorsService;
                 return new CompetitorsService();
+            }
+
+        }
+
+        public static OrganizerService OrganizerService
+        {
+            get
+            {
+                if (_organizerService != null)
+                    return _organizerService;
+                return new OrganizerService();
             }
         }
 

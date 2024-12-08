@@ -102,7 +102,7 @@ FontFamily="{DynamicResource MaterialDesignFont}"
                     </DockPanel>
                     <DockPanel Margin="0,27,0,50">
                         <materialDesign:PackIcon Foreground="#07bf96" Kind="Lock" Width="28" Height="28" VerticalAlignment="Center" Margin="0,0,10,0"/>
-                        <PasswordBox x:Name="passwordTF" Style="{StaticResource MaterialDesignFloatingHintPasswordBox}" materialDesign:HintAssist.Hint="{DynamicResource password}" 
+                        <PasswordBox x:Name="passwordTF" Style="{StaticResource MaterialDesignRevealPasswordBox}" materialDesign:HintAssist.Hint="{DynamicResource password}" 
                                      PasswordChanged="PasswordBox_PasswordChanged" 
                                      KeyDown="PasswordBox_KeyDown"
                           materialDesign:HintAssist.FloatingOffset="0,-20"

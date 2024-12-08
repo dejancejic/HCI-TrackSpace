@@ -14,6 +14,7 @@ namespace TrackSpace.ViewModel.Shared
 
         public static string AccountType { get; set; } = "observer";
         public static int IdAdmin { get; set; }
+        public static int IdOrganizer { get; set; }
         private static LoginViewModel _loginViewModel = new LoginViewModel();
         private static ObserverViewModel _observerViewModel = new ObserverViewModel();
         private static ClubAdminViewModel _clubAdminViewModel = new ClubAdminViewModel();
@@ -24,8 +25,11 @@ namespace TrackSpace.ViewModel.Shared
         private static EventInfoViewModel _eventInfoViewModel=new EventInfoViewModel();
         private static GroupsViewModel _groupsViewModel=new GroupsViewModel();
         private static EnterCompetitionViewModel _enterCompetitionViewModel = new EnterCompetitionViewModel();
+        private static OrganizerViewModel _organizerViewModel = new OrganizerViewModel();
+        private static AddCompetitionViewModel _addCompetitionViewModel = new AddCompetitionViewModel();
 
         private static CompetitionsPage _competitionsPage = new CompetitionsPage();
+        private static CompetitionsPage _myCompetitionsPage = new CompetitionsPage();
         private static CompetitionInfoPage _competitionInfoPage = new CompetitionInfoPage(new Models.Competition());
         private static EventInfoPage _eventInfoPage=new EventInfoPage(new Models.Event());
         private static ClubInfoPage _clubInfoPage=new ClubInfoPage(new Models.Club());
@@ -35,6 +39,7 @@ namespace TrackSpace.ViewModel.Shared
         private static ClubAdminMainPage _clubAdminMainPage;
         private static OrganizerMainPage _organizerMainPage;
 
+        public static CompetitionsPage MyCompetitionsPage { get { return _myCompetitionsPage; } set { _myCompetitionsPage = value; } }
         public static CompetitionsPage CompetitionsPage { get { return _competitionsPage; } set { _competitionsPage = value; } }
         public static EventInfoPage EventInfoPage { get { return _eventInfoPage; } set { _eventInfoPage = value; } }
 
@@ -73,6 +78,7 @@ namespace TrackSpace.ViewModel.Shared
         public static CompetitionsViewModel CompetitionsViewModel
         {
             get { return _competitionsViewModel; }
+            set { _competitionsViewModel = value; }
         }
         public static CompetitionInfoViewModel CompetitionInfoViewModel
         {
@@ -88,7 +94,33 @@ namespace TrackSpace.ViewModel.Shared
         }
         public static EnterCompetitionViewModel EnterCompetitionViewModel
         {
-            get { return _enterCompetitionViewModel; }
+            get { return _enterCompetitionViewModel;
+            }
+            set {
+                _enterCompetitionViewModel= value;
+            }
+        }
+        public static OrganizerViewModel OrganizerViewModel
+        {
+            get
+            {
+                return _organizerViewModel;
+            }
+            set
+            {
+                _organizerViewModel=value;
+            }
+        }
+        public static AddCompetitionViewModel AddCompetitionViewModel
+        {
+            get
+            {
+                return _addCompetitionViewModel;
+            }
+            set
+            {
+                _addCompetitionViewModel = value;
+            }
         }
     }
 

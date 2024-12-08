@@ -52,8 +52,18 @@ namespace TrackSpace.ViewModel
                 {
                     ViewModelLocator.MyClubInfoPage.goBackBtn.Visibility = Visibility.Hidden;
                     PageUtils.NavigatePages(ViewModelLocator.MyClubInfoPage);
+                   
                     return;
                 }
+
+                if (tag.Equals("CompetitionsPage"))
+                {
+                    var page = new CompetitionsPage();
+
+                    PageUtils.NavigatePages(page);
+                    return;
+                }
+
 
                 var pageInstance = PageUtils.LoadUserControlFromUri($"Forms/Pages/{tag}.xaml");
                 ViewModelLocator.ClubAdminMainPage.basePage.MainContent = pageInstance;

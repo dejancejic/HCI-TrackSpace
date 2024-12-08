@@ -33,7 +33,7 @@ namespace TrackSpace.Utils
                     ViewModelLocator.ClubAdminMainPage.basePage.MainContent = userControl;
                     break;
                 case "organizer":
-                    //ViewModelLocator.OrganizerMainPage.basePage.MainContent = userControl;
+                    ViewModelLocator.OrganizerMainPage.basePage.MainContent = userControl;
                     break;
 
             }

@@ -56,11 +56,22 @@ namespace TrackSpace.ViewModel
         public ICommand ShowCompetitionCommand { get; set; }
         
 
-        public CompetitionsViewModel()
+        public CompetitionsViewModel(bool myCompetitions=false)
         {
-            AllCompetitions=_competitionsService.GetAllCompetitions();
-            PastCompetitions=_competitionsService.GetPastCompetitions();
-            OngoingCompetitions = _competitionsService.GetOngoingCompetitions();
+            if (myCompetitions == true)
+            {
+                AllCompetitions = _competitionsService.GetAllCompetitionsByIdOrganizer(ViewModelLocator.IdOrganizer);
+                PastCompetitions = _competitionsService.GetPastCompetitions(ViewModelLocator.IdOrganizer);
+                OngoingCompetitions = _competitionsService.GetOngoingCompetitions(ViewModelLocator.IdOrganizer);
+            }
+            else
+            {
+
+                AllCompetitions = _competitionsService.GetAllCompetitions();
+                PastCompetitions = _competitionsService.GetPastCompetitions();
+                OngoingCompetitions = _competitionsService.GetOngoingCompetitions();
+
+            }
 
             ShowCompetitionCommand = new RelayCommand(ShowCompetition,CanShowWindow);
 

@@ -27,6 +27,8 @@ namespace TrackSpace.ViewModel
         private UserService _userService;
         private ClubAdminService _clubAdminService;
         private string _selectedLanguage;
+
+
        
         private bool _isEnglishChecked=true;
         public bool IsEnglishChecked
@@ -116,6 +118,7 @@ namespace TrackSpace.ViewModel
                     ClubAdminMainPage clubAdminPage = new ClubAdminMainPage(admin!);
 
                     ViewModelLocator.IdAdmin = admin!.IdUser;
+
                     Club? adminsClub = ServicesLocator.ClubsService.GetClubByIdAdmin(admin.IdUser);
                     ViewModelLocator.MyClubInfoPage=new Forms.Pages.ClubInfoPage(adminsClub!);
                     ViewModelLocator.EnterCompetitionViewModel.Competitors = ServicesLocator.ClubsService.GetClubCompetitors(adminsClub!.IdClub);
@@ -127,9 +130,13 @@ namespace TrackSpace.ViewModel
                 else if (User.Type.Equals("organizer"))
                 {
                     ViewModelLocator.AccountType = User.Type;
-                    CompetitionOrganizer? organizer = User.CompetitionOrganizer;
-
+                    CompetitionOrganizer? organizer = ServicesLocator.OrganizerService.GetOrganizerById(User.IdUser);
+                    organizer.IdUserNavigation = User;
+                    ViewModelLocator.IdOrganizer = organizer!.IdUser;
+                    ViewModelLocator.ObserverViewModel.User = User;
+                    ViewModelLocator.ObserverViewModel.UpdateViewModel();
                     OrganizerMainPage organizerPage = new OrganizerMainPage(organizer!);
+                    ViewModelLocator.OrganizerMainPage = organizerPage;
                     organizerPage.Closed += (a, b) => Application.Current.MainWindow.Show();
                     organizerPage.Show();
                     Application.Current.MainWindow.Hide();

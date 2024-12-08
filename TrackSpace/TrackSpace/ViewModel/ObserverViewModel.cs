@@ -138,7 +138,13 @@ namespace TrackSpace.ViewModel
                     Logout(parameter);
                     return;
                 }
-              
+                if (tag.Equals("CompetitionsPage"))
+                {
+                    var page = new CompetitionsPage();
+
+                    PageUtils.NavigatePages(page);
+                    return;
+                }
 
                 var pageInstance = PageUtils.LoadUserControlFromUri($"Forms/Pages/{tag}.xaml");
                 PageUtils.NavigatePages(pageInstance);
