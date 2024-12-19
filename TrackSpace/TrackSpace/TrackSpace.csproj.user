@@ -10,7 +10,13 @@
     <Compile Update="Forms\CustomMessageBox\CustomMessageBox.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="Forms\CustomMessageBox\InputMessageBox.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="Forms\Pages\AddCompetitionPage.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Forms\Pages\AddEventsPage.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="Forms\Pages\ClubInfoPage.xaml.cs">
@@ -75,7 +81,13 @@
     <Page Update="Forms\CustomMessageBox\CustomMessageBox.xaml">
       <SubType>Designer</SubType>
     </Page>
+    <Page Update="Forms\CustomMessageBox\InputMessageBox.xaml">
+      <SubType>Designer</SubType>
+    </Page>
     <Page Update="Forms\Pages\AddCompetitionPage.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Forms\Pages\AddEventsPage.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Forms\Pages\ClubInfoPage.xaml">

@@ -23,6 +23,9 @@ namespace TrackSpace.Forms.Pages
         {
            
             DataContext = ViewModelLocator.AddCompetitionViewModel;
+            ViewModelLocator.AddCompetitionPage = this;
+            ViewModelLocator.AddCompetitionViewModel.AddEventsPage = new AddEventsPage();
+            ViewModelLocator.AddCompetitionViewModel.Loaded = false;
             InitializeComponent();
            
         }

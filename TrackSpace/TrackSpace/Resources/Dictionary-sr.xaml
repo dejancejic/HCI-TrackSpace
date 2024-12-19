@@ -55,6 +55,7 @@
     <System:String x:Key="groupsW(">Grupe(</System:String>
     <System:String x:Key="club">Klub</System:String>
     <System:String x:Key="result">Rezultat</System:String>
+    <System:String x:Key="resultDot">Rezultat:</System:String>
     <System:String x:Key="groupWSpace" xml:space="preserve">Grupa </System:String>
     <System:String x:Key="event">Disciplina</System:String>
     <System:String x:Key="start">Početak</System:String>
@@ -87,4 +88,6 @@
     <System:String x:Key="enterCompetitorSurname">Unesite Prezime Takmičara</System:String>
     <System:String x:Key="myCompetitions">Moja Takmičenja</System:String>
     <System:String x:Key="addCompetition">Novo Takmičenje</System:String>
+    <System:String x:Key="confirm">Potvrdite</System:String>
+    <System:String x:Key="cancel">Odustanite</System:String>
 </ResourceDictionary>

@@ -31,6 +31,17 @@ ToolTip="MaterialDesignFloatingActionMiniDarkButton" VerticalAlignment="Bottom" 
   Kind="ArrowBack" />
         </Button>
 
+        <Button Command="{Binding AddGroupCommand}" Visibility="Hidden" Name="addGroupBtn"
+IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
+Style="{StaticResource MaterialDesignFloatingActionMiniDarkButton}" Width="45" Height="45" Background="{DynamicResource Primary}"
+ToolTip="MaterialDesignFloatingActionMiniDarkButton" VerticalAlignment="Bottom" Margin="15 0 0 15" HorizontalAlignment="Left">
+            <materialDesign:PackIcon
+  Width="30"
+  Height="30"
+  Kind="GroupAdd" />
+        </Button>
+
+
         <Button x:Name="closeBtn" Background="Transparent" BorderBrush="Transparent" Padding="5 0 0 0" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0 13 14 0" Command="{Binding CloseCommand}">
             <materialDesign:PackIcon Kind="Close" Width="25" Height="25" Opacity="0.5"/>
         </Button>
@@ -76,7 +87,7 @@ FontWeight="Bold" FontSize="30" Foreground="Black" />
             <Label HorizontalAlignment="Left"   Content="{DynamicResource groupsW(}"
 FontWeight="Bold" FontSize="22" Foreground="Black" />
 
-            <Label HorizontalAlignment="Left"  Margin="-8 0 -8 0" Content="{Binding Event.GroupNumber}"
+            <Label HorizontalAlignment="Left"  Margin="-8 0 -8 0" Content="{Binding Groups.Count}"
 FontWeight="Bold" FontSize="22" Foreground="Black" />
             <Label HorizontalAlignment="Left"   Content=")"
 FontWeight="Bold" FontSize="22" Foreground="Black" />
@@ -85,7 +96,7 @@ FontWeight="Bold" FontSize="22" Foreground="Black" />
 
 
 
-        <TabControl x:Name="GroupsTabControl" ItemsSource="{Binding Event.Groups}" 
+        <TabControl x:Name="GroupsTabControl" ItemsSource="{Binding Groups}" 
                     TabStripPlacement="Left" Margin="16,236,14,71" SelectionChanged="GroupsTabControl_SelectionChanged">
             <TabControl.Resources>
                 <Style TargetType="TabItem">
@@ -115,23 +126,91 @@ FontWeight="Bold" FontSize="22" Foreground="Black" />
                 <DataTemplate>
                     <StackPanel Orientation="Horizontal">
                         <TextBlock Text="{DynamicResource groupWSpace}"></TextBlock>
-                        <TextBlock Text="{Binding IdGroup}" />
+                        <TextBlock Text="{Binding Number}" />
                     </StackPanel>
                 </DataTemplate>
             </TabControl.ItemTemplate>
             <TabControl.ContentTemplate>
                 <DataTemplate>
-                    <Border Background="{DynamicResource Primary}" BorderBrush="{DynamicResource Primary}"  Height="250" BorderThickness="1" CornerRadius="10">
-                        <DataGrid Margin="2,1,2,1"  AlternatingRowBackground="{DynamicResource Secondary}"
-                        ItemsSource="{Binding DataContext.CompetitorEvents, RelativeSource={RelativeSource AncestorType=UserControl}}" 
-                                  AutoGenerateColumns="False"
-                                  SelectionMode="Single"
-                                  SelectionUnit="FullRow" 
-                                  CanUserAddRows="False"
-                                  CanUserDeleteRows="False"
-                                  IsReadOnly="True"
-                                  CanUserReorderColumns="False"
-                                  CanUserResizeColumns="False">
+                    <Border  Background="{DynamicResource Primary}" BorderBrush="{DynamicResource Primary}" Height="250" BorderThickness="1" CornerRadius="10">
+                        <Grid>
+                            <DataGrid Margin="2,1,2,1" AlternatingRowBackground="{DynamicResource Secondary}" SelectionChanged="DataGrid_SelectionChanged_1"
+                  ItemsSource="{Binding DataContext.CompetitorEvents, RelativeSource={RelativeSource AncestorType=UserControl}}" 
+                  AutoGenerateColumns="False"
+                  SelectionMode="Single"
+                  SelectionUnit="FullRow" 
+                  CanUserAddRows="False"
+                  CanUserDeleteRows="False"
+                  IsReadOnly="True"
+                  CanUserReorderColumns="False"
+                  CanUserResizeColumns="False">
+                                <DataGrid.ColumnHeaderStyle>
+                                    <Style TargetType="DataGridColumnHeader" BasedOn="{StaticResource {x:Type DataGridColumnHeader}}">
+                                        <Setter Property="HorizontalContentAlignment" Value="Center" />
+                                        <Setter Property="Background" Value="{DynamicResource Primary}" />
+                                        <Setter Property="FontSize" Value="16" />
+                                    </Style>
+                                </DataGrid.ColumnHeaderStyle>
+
+                                <DataGrid.CellStyle>
+                                    <Style TargetType="DataGridCell">
+                                        <Setter Property="TextBlock.TextAlignment" Value="Center" />
+                                        <Setter Property="HorizontalContentAlignment" Value="Center" />
+                                        <Setter Property="VerticalContentAlignment" Value="Center" />
+                                        <Setter Property="Margin" Value="0 3 0 0" />
+                                        <Setter Property="MinWidth" Value="100" />
+                                        <Setter Property="MinHeight" Value="30" />
+                                        <Setter Property="FontSize" Value="16" />
+                                    </Style>
+                                </DataGrid.CellStyle>
+
+                                <DataGrid.RowStyle>
+                                    <Style TargetType="DataGridRow">
+                                        <Setter Property="Height" Value="30" />
+                                    </Style>
+                                </DataGrid.RowStyle>
+
+                                <DataGrid.Columns>
+                                    <DataGridTextColumn Header="{DynamicResource name}" Binding="{Binding IdCompetitorNavigation.Name}" />
+                                    <DataGridTextColumn Header="{DynamicResource surname}" Binding="{Binding IdCompetitorNavigation.Surname}" />
+                                    <DataGridTextColumn Header="{DynamicResource category}" Binding="{Binding IdCompetitorNavigation.IdCategoryNavigation.Name}" IsReadOnly="True" />
+                                    <DataGridTextColumn Header="{DynamicResource club}" Binding="{Binding IdCompetitorNavigation.IdClubNavigation.Name}" IsReadOnly="True" />
+                                    <DataGridTextColumn Header="{DynamicResource result}" Binding="{Binding Result}" IsReadOnly="True" />
+                                </DataGrid.Columns>
+                            </DataGrid>
+
+                        </Grid>
+                    </Border>
+
+                </DataTemplate>
+            </TabControl.ContentTemplate>
+        </TabControl>
+
+
+
+        <materialDesign:DialogHost Name="UserDetailsDialogHost">
+            <materialDesign:DialogHost.DialogContent >
+
+                <StackPanel Margin="16" HorizontalAlignment="Center" Width="450">
+                    <TextBlock Text="Competitors" 
+  
+   FontWeight="Bold" 
+   Margin="0,0,0,16" 
+   HorizontalAlignment="Center" />
+
+                    <Border  Background="{DynamicResource Primary}" BorderBrush="{DynamicResource Primary}" Height="250" MinWidth="350" BorderThickness="1" CornerRadius="10">
+
+                        <DataGrid Margin="2,1,2,1" AlternatingRowBackground="{DynamicResource Secondary}"
+ItemsSource="{Binding DataContext.CompetitorsWithoutGroup, RelativeSource={RelativeSource AncestorType=UserControl}}" 
+AutoGenerateColumns="False"
+SelectionMode="Extended"
+SelectionUnit="FullRow" 
+CanUserAddRows="False"
+CanUserDeleteRows="False"
+IsReadOnly="True"
+CanUserReorderColumns="False"
+CanUserResizeColumns="False"
+SelectionChanged="DataGrid_SelectionChanged" >
                             <DataGrid.ColumnHeaderStyle>
                                 <Style TargetType="DataGridColumnHeader" BasedOn="{StaticResource {x:Type DataGridColumnHeader}}">
                                     <Setter Property="HorizontalContentAlignment" Value="Center" />
@@ -142,7 +221,6 @@ FontWeight="Bold" FontSize="22" Foreground="Black" />
 
                             <DataGrid.CellStyle>
                                 <Style TargetType="DataGridCell">
-                                   
                                     <Setter Property="TextBlock.TextAlignment" Value="Center" />
                                     <Setter Property="HorizontalContentAlignment" Value="Center" />
                                     <Setter Property="VerticalContentAlignment" Value="Center" />
@@ -158,24 +236,46 @@ FontWeight="Bold" FontSize="22" Foreground="Black" />
                                     <Setter Property="Height" Value="30" />
                                 </Style>
                             </DataGrid.RowStyle>
-                            
+
                             <DataGrid.Columns>
-                            <DataGridTextColumn Header="{DynamicResource name}" Binding="{Binding IdCompetitorNavigation.Name}" />
-                                <DataGridTextColumn Header="{DynamicResource surname}" Binding="{Binding IdCompetitorNavigation.Surname}" />
+                                <DataGridTextColumn Header="{DynamicResource name}" Binding="{Binding IdCompetitorNavigation.Name}" IsReadOnly="True" />
+                                <DataGridTextColumn Header="{DynamicResource surname}" Binding="{Binding IdCompetitorNavigation.Surname}" IsReadOnly="True"/>
                                 <DataGridTextColumn Header="{DynamicResource category}" Binding="{Binding IdCompetitorNavigation.IdCategoryNavigation.Name}" IsReadOnly="True" />
-                            <DataGridTextColumn Header="{DynamicResource club}" Binding="{Binding IdCompetitorNavigation.IdClubNavigation.Name}" IsReadOnly="True" />
-                            <DataGridTextColumn Header="{DynamicResource result}" Binding="{Binding Result}" IsReadOnly="True" />
-
-                        </DataGrid.Columns>
-                    </DataGrid>
-
+                                <DataGridTextColumn Header="{DynamicResource club}" Binding="{Binding IdCompetitorNavigation.IdClubNavigation.Name}" IsReadOnly="True" />
+                                
+                            </DataGrid.Columns>
+                        </DataGrid>
                     </Border>
-                </DataTemplate>
-            </TabControl.ContentTemplate>
-        </TabControl>
+                    <StackPanel Orientation="Horizontal" Margin="0,30,0,0" HorizontalAlignment="Center">
+                        
+                        <Button Width="120" Content="Add to group" Background="{DynamicResource Primary}" Foreground="White"
+            Style="{StaticResource MaterialDesignRaisedDarkButton}"
+Command="{Binding AddCompetitorCommand}" 
+HorizontalAlignment="Center" 
+ />
+                        <Button Width="120" Content="{DynamicResource close}" Background="{DynamicResource Primary}" Foreground="White" Margin="15 0 0 0"
+            Style="{StaticResource MaterialDesignRaisedDarkButton}"
+Command="{x:Static materialDesign:DialogHost.CloseDialogCommand}" 
+HorizontalAlignment="Center" 
+ />
+                    </StackPanel>
+                </StackPanel>
+            </materialDesign:DialogHost.DialogContent>
+            </materialDesign:DialogHost>
 
+        <Button Command="{Binding AddCompetitorToGroupCommand}"    Visibility="Hidden" Name="addCompetitorBtn" 
+                IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
+                Style="{StaticResource MaterialDesignFloatingActionMiniDarkButton}" Width="32" Height="32" Background="{DynamicResource Primary}"
+                ToolTip="MaterialDesignFloatingActionMiniDarkButton" Margin="0 -50 3 20" HorizontalAlignment="Right" Click="ShowCompetitorsWithoutGroup">
+            <materialDesign:PackIcon Width="25" Height="25" Kind="Add" />
+        </Button>
 
-
+        <Button Command="{Binding RemoveCompetitorFromGroupCommand}"    Visibility="Hidden" Name="removeCompetitorBtn" 
+IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
+Style="{StaticResource MaterialDesignFloatingActionMiniDarkButton}" Width="32" Height="32" Background="{DynamicResource Primary}"
+ToolTip="MaterialDesignFloatingActionMiniDarkButton"   Margin="0 50 3 20" HorizontalAlignment="Right">
+            <materialDesign:PackIcon Width="25" Height="25" Kind="Minus" />
+        </Button>
 
 
 

@@ -55,6 +55,7 @@
     <System:String x:Key="groupsW(">Groups(</System:String>
     <System:String x:Key="club">Club</System:String>
     <System:String x:Key="result">Result</System:String>
+    <System:String x:Key="resultDot">Result:</System:String>
     <System:String x:Key="groupWSpace" xml:space="preserve">Group </System:String>
     <System:String x:Key="event">Event</System:String>
     <System:String x:Key="start">Start</System:String>
@@ -87,4 +88,6 @@
     <System:String x:Key="enterCompetitorSurname">Enter Competitor's Surname</System:String>
     <System:String x:Key="myCompetitions">My Competitions</System:String>
     <System:String x:Key="addCompetition">New Competition</System:String>
+    <System:String x:Key="confirm">Confirm</System:String>
+    <System:String x:Key="cancel">Cancel</System:String>
 </ResourceDictionary>

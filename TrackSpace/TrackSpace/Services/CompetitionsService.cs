@@ -1,9 +1,11 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using TrackSpace.DBUtil;
 using TrackSpace.Models;
 using TrackSpace.Services.Shared;
@@ -91,6 +93,22 @@ namespace TrackSpace.Services
 
 
             return new ObservableCollection<Competition>(pastCompetitions);
+        }
+
+        public Competition AddCompetition(Competition comp)
+        {
+            var existingOrganizer = _context.CompetitionOrganizers.SingleOrDefault(o => o.IdUser == comp.IdUser);
+
+            
+            foreach (var entry in _context.ChangeTracker.Entries().Where(e => e.State != EntityState.Unchanged).ToList())
+            {
+                entry.State = EntityState.Unchanged;
+            }
+
+            _context.Competitions.Add(comp);
+            _context.SaveChanges();
+            _competitions.Add(comp);
+            return comp;
         }
 
 

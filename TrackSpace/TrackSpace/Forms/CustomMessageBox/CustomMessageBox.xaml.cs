@@ -75,7 +75,7 @@ namespace TrackSpace.Forms.CustomMessageBox
         {
             if (e.Source is Button)
             {
-                onNo.Invoke(sender);
+                onYes.Invoke(sender);
             }
                 CloseFormClickBtn(sender, e);
             

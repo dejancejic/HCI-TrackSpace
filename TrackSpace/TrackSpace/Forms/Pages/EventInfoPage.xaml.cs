@@ -33,6 +33,13 @@ namespace TrackSpace.Forms.Pages
             {
                 GroupsStackPanel.Visibility = Visibility.Visible;
             }
+
+            if (ViewModelLocator.AccountType.Equals("organizer") && event1.Start<=DateTime.Now.AddDays(2))
+            { 
+                resultPanel.Visibility= Visibility.Visible;
+                updateResultBtn.Visibility=Visibility.Visible;
+            }
+
         }
 
        
@@ -62,6 +69,7 @@ namespace TrackSpace.Forms.Pages
                 {
 
                     ViewModelLocator.EventInfoViewModel.SelectedCompetitor = selectedCompetitor;
+                    
 
                     UserDetailsDialogHost.IsOpen = true;
                 }

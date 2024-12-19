@@ -330,9 +330,7 @@ public partial class TrackspaceContext : DbContext
             entity.Property(e => e.IdEvent)
                 .ValueGeneratedNever()
                 .HasColumnName("idEvent");
-            entity.Property(e => e.StartHeight)
-                .HasMaxLength(45)
-                .HasColumnName("startHeight");
+            
 
             entity.HasOne(d => d.IdEventNavigation).WithOne(p => p.JumpingEvent)
                 .HasForeignKey<JumpingEvent>(d => d.IdEvent)
@@ -383,9 +381,7 @@ public partial class TrackspaceContext : DbContext
             entity.Property(e => e.IdEvent)
                 .ValueGeneratedNever()
                 .HasColumnName("idEvent");
-            entity.Property(e => e.Weight)
-                .HasMaxLength(45)
-                .HasColumnName("weight");
+            
 
             entity.HasOne(d => d.IdEventNavigation).WithOne(p => p.ThrowingEvent)
                 .HasForeignKey<ThrowingEvent>(d => d.IdEvent)

@@ -158,6 +158,26 @@ FontWeight="Bold"
 VerticalAlignment="Center" />
                         <TextBlock Text="{Binding SelectedCompetitor.Pol, Converter={StaticResource GenderTranslationConverter}}" 
 VerticalAlignment="Center" />
+                        
+                    </StackPanel>
+
+
+                    <StackPanel Orientation="Horizontal" Name="resultPanel" Visibility="Hidden" HorizontalAlignment="Left" Margin="10,8,0,8">
+                        <TextBlock Text="{DynamicResource resultDot}"
+FontWeight="Bold" 
+VerticalAlignment="Center" />
+                        <TextBox Width="150" Margin="10 0 0 0" Text="{Binding Result.Result}"
+  x:Name="NameTextBox"
+  materialDesign:HintAssist.HelperText="Update result"
+  materialDesign:HintAssist.Hint="{DynamicResource result}">
+
+                        </TextBox>
+                        <Button Width="100" Content="Update" Name="updateResultBtn" Visibility="Hidden" Background="{DynamicResource Primary}" Foreground="White"
+            Style="{StaticResource MaterialDesignRaisedDarkButton}"
+Command="{Binding UpdateResultCommand}" 
+HorizontalAlignment="Center" 
+Margin="10,0,0,0" />
+
                     </StackPanel>
 
 

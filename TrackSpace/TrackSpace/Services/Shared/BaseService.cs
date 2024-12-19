@@ -9,7 +9,7 @@ namespace TrackSpace.Services.Shared
 {
     public class BaseService
     {
-        protected readonly TrackspaceContext _context = DBConnection.GetContext();
+        protected  TrackspaceContext _context = DBConnection.GetContext();
 
 
     }

@@ -15,6 +15,7 @@ using TrackSpace.Services;
 using TrackSpace.Services.Shared;
 using TrackSpace.Utils;
 using TrackSpace.ViewModel.Shared;
+using ZstdSharp.Unsafe;
 
 namespace TrackSpace.ViewModel
 {
@@ -23,10 +24,16 @@ namespace TrackSpace.ViewModel
         private Event _selectedEvent;
 
         private Competitor _selectedCompetitor;
-        public Competitor SelectedCompetitor { get { return _selectedCompetitor; } set { _selectedCompetitor = value; OnPropertyChanged(nameof(SelectedCompetitor)); } }
+        public Competitor SelectedCompetitor { get { return _selectedCompetitor; } set { _selectedCompetitor = value; OnPropertyChanged(nameof(SelectedCompetitor));
+                ChangeResult(_selectedCompetitor.IdCompetitor);
+            } }
 
         private ObservableCollection<CompetitorEvent> _events;
         private CompetitorsService _competitorsService=ServicesLocator.CompetitorsService;
+
+        private CompetitorEvent _result;
+
+        public CompetitorEvent Result { get { return _result; } set{ _result = value; OnPropertyChanged(nameof(Result)); } }
     
        
         public ObservableCollection<CompetitorEvent> Events {
@@ -46,14 +53,16 @@ namespace TrackSpace.ViewModel
                 OnPropertyChanged(nameof(SelectedEvent)); } }
         public ICommand GoBackCommand { get; set; }
         public ICommand ShowGroupsPage { get; set; }
+        public ICommand UpdateResultCommand { get; set; }
         public EventInfoViewModel() {
             GoBackCommand = new RelayCommand(GoBack, CanShowWindow);
             ShowGroupsPage = new RelayCommand(ShowGroupsPageNavigation, CanShowWindow);
+            UpdateResultCommand=new RelayCommand(UpdateResult, CanShowWindow);
         }
 
         public void ShowGroupsPageNavigation(object obj)
         {
-            if (SelectedEvent.RunningEvent.GroupNumber != 0)
+            if(ViewModelLocator.AccountType.Equals("organizer") || SelectedEvent.RunningEvent.GroupNumber != 0)
             {
                 PageUtils.NavigatePages(new GroupsPage(SelectedEvent.RunningEvent));
             }
@@ -69,6 +78,32 @@ namespace TrackSpace.ViewModel
         {
             PageUtils.NavigatePages(ViewModelLocator.CompetitionInfoPage);
             
+        }
+
+        private void UpdateResult(object obj)
+        {
+            ServicesLocator.CompetitorEventService.UpdateResult(Result);
+            new CustomMessageBox(false,true,"Update successful","Successfully updated competitor's result!").Show();
+            
+            foreach(var item in Events)
+            {
+                if(item.IdEvent==Result.IdEvent && item.IdCompetitor==Result.IdCompetitor)
+                {
+                    item.Result = Result.Result;
+                    break;
+                }
+            }
+            OnPropertyChanged(nameof(Events));
+        }
+
+        private void ChangeResult(int idCompetitor)
+        {
+           CompetitorEvent? ce= ServicesLocator.CompetitorEventService.GetCompetitorEventByIdEventAndIdCompetitor(SelectedEvent.IdEvent,idCompetitor);
+
+            if (ce != null)
+            {
+                Result = ce;
+            }
         }
 
 

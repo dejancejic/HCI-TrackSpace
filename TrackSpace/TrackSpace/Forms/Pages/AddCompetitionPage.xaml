@@ -17,29 +17,22 @@ FontWeight="Bold" FontSize="40" Foreground="Black" />
             <materialDesign:PackIcon Kind="Close" Width="25" Height="25" Opacity="0.5"/>
         </Button>
 
-        <ComboBox FontSize="16" Grid.Column="1" Grid.Row="1"  Margin="500 100 0 0" VerticalAlignment="Top"
-materialDesign:HintAssist.Hint="Select Location" 
-                IsEnabled="{Binding IsChecked, ElementName=FilledComboBoxEnabledCheckBox}"
-Style="{StaticResource MaterialDesignFilledComboBox}"
-                 ItemsSource="{Binding Locations}"
-                SelectedItem="{Binding SelectedLocation, Mode=TwoWay}" 
-SelectedIndex="0" Width="250" Height="77" />
+        
 
 
         <StackPanel Margin="25 70 0 0">
-            <TextBox Width="450" HorizontalAlignment="Left"
+            <TextBox Width="450" HorizontalAlignment="Left" Text="{Binding CompetitionName}"
   x:Name="NameTextBox"
   materialDesign:HintAssist.HelperText="Enter Competition's name"
   materialDesign:HintAssist.Hint="Name">
             
         </TextBox>
 
-           
-                <TextBox Margin="0 20 0 0" 
-  Height="70"
+
+            <TextBox Margin="0 40 0 0"  Text="{Binding Description}"
+  Height="55"
   HorizontalAlignment="Left"
-  Width="450"
-  VerticalAlignment="Stretch"
+  Width="702"
   materialDesign:HintAssist.Hint="Description"
   materialDesign:HintAssist.HelperText="Enter Competition's description"
   AcceptsReturn="True"
@@ -52,7 +45,6 @@ SelectedIndex="0" Width="250" Height="77" />
 
             <StackPanel Orientation="Horizontal">
                 <Label Content="Select Date:" Margin="0 20 400 0"></Label>
-                <Label Content="Select Time:" Margin="-80 20 40 0"></Label>
             </StackPanel>
             
             <StackPanel Orientation="Horizontal">
@@ -61,21 +53,33 @@ materialDesign:CalendarAssist.Orientation="Horizontal" SelectedDate="{Binding Se
                  materialDesign:CalendarAssist.HeaderBackground="{DynamicResource Primary}"
                     materialDesign:CalendarAssist.HeaderForeground="White"   
                     />
-
-
-                <materialDesign:Clock Margin="45 0 0 0" Time="{Binding TimeSpan}" Height="280"
-  Width="auto"
-  DisplayAutomation="Cycle"
+                <StackPanel Orientation="Vertical" Width="388">
+                    <materialDesign:TimePicker SelectedTime="{Binding SelectedDate}"
+   Height="50px"
+                    Width="230" Margin="0 8 0 0"
+  materialDesign:HintAssist.HelperText="Choose time of competition"
+  materialDesign:HintAssist.Hint="Pick Time"
   Is24Hours="True"
-  IsHeaderVisible="False" />
+  Style="{StaticResource MaterialDesignOutlinedTimePicker}" />
+                   
+                    <ComboBox FontSize="16" Margin="0 70 0 0"
+materialDesign:HintAssist.Hint="Select Location" 
+                IsEnabled="{Binding IsChecked, ElementName=FilledComboBoxEnabledCheckBox}"
+Style="{StaticResource MaterialDesignFilledComboBox}"
+                 ItemsSource="{Binding Locations}"
+                SelectedItem="{Binding SelectedLocation, Mode=TwoWay}" 
+SelectedIndex="0" Width="230" Height="57" />
+
+                </StackPanel>
+                
             </StackPanel>
 
 
             <Button Width="150" Content="Add Events" Background="{DynamicResource Primary}" Foreground="White"
             Style="{StaticResource MaterialDesignRaisedDarkButton}"
 Command="{Binding AddEventsCommand}" 
-HorizontalAlignment="Center" 
-Margin="0,15,0,0" />
+HorizontalAlignment="Right" 
+Margin="0,10,25,0" Height="35" />
 
         </StackPanel>
 

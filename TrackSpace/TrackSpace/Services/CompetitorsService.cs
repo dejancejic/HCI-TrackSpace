@@ -1,10 +1,12 @@
-﻿using Org.BouncyCastle.Asn1.Mozilla;
+﻿using Microsoft.EntityFrameworkCore;
+using Org.BouncyCastle.Asn1.Mozilla;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TrackSpace.DBUtil;
 using TrackSpace.Models;
 using TrackSpace.Services.Shared;
 
@@ -25,7 +27,8 @@ namespace TrackSpace.Services
 
         public Competitor? GetCompetitorById(int id)
         {
-            Competitor? comp=_competitors.FirstOrDefault(c=>c.IdCompetitor==id);
+            _context = DBConnection.GetContext();
+            Competitor? comp=_context.Competitors.FirstOrDefault(c=>c.IdCompetitor==id);
             return AssignCategoryAndClub(comp);
         }
 
@@ -60,6 +63,31 @@ namespace TrackSpace.Services
                 }
             }
             return new ObservableCollection<Competitor?>(filteredCompetitors);
+        }
+
+        private void GroupUtil(int idCompetitor,int? idGroup)
+        {
+            _context = DBConnection.GetContext();
+
+            var item = _context.Competitors.FirstOrDefault((u) => u.IdCompetitor == idCompetitor);
+
+
+
+            item!.IdGroup = idGroup;
+            _context.SaveChanges();
+
+            item = _competitors.FirstOrDefault((u) => u.IdCompetitor == idCompetitor);
+            item!.IdGroup = idGroup;
+        }
+
+        public void AddCompetitorToGroup(int idCompetitor,int idGroup)
+        {
+            GroupUtil(idCompetitor,idGroup);
+        }
+
+        public void RemoveCompetitorFromGroup(int idCompetitor)
+        {
+            GroupUtil(idCompetitor, null);
         }
 
 
