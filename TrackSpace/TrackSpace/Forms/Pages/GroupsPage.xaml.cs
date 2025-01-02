@@ -38,6 +38,20 @@ namespace TrackSpace.Forms.Pages
                 removeCompetitorBtn.Visibility = Visibility.Visible;
                 
             }
+            if (ViewModelLocator.AccountType.Equals("organizer") && ViewModelLocator.IdOrganizer == runningEvent.IdEventNavigation.IdCompetitionNavigation.IdUser &&
+              runningEvent.IdEventNavigation.Start < DateTime.Now.AddDays(int.Parse(ConfigurationManager.AppSettings[0])) && ViewModelLocator.GroupsViewModel.Groups.Count == 0)
+            {
+                addCompetitorBtn.Visibility = Visibility.Hidden;
+                removeCompetitorBtn.Visibility = Visibility.Hidden;
+
+                noGroupsTB.Visibility = Visibility.Visible;
+
+            }
+            ViewModelLocator.GroupsViewModel.addBtn= addCompetitorBtn;
+            ViewModelLocator.GroupsViewModel.removeBtn = removeCompetitorBtn;
+            ViewModelLocator.GroupsViewModel.noGroupsTB = noGroupsTB;
+            
+
         }
 
 

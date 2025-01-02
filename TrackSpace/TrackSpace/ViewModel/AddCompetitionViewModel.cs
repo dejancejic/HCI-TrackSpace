@@ -312,6 +312,9 @@ namespace TrackSpace.ViewModel
         }
 
         private Dictionary<string, bool> selectedEvents = new Dictionary<string, bool>();
+
+        private int _countSelected = 0;
+        public int CountSelected { get { return _countSelected; }set { _countSelected = value; OnPropertyChanged(nameof(CountSelected)); } }
        
         private void OnSelected(string key)
         {
@@ -322,8 +325,9 @@ namespace TrackSpace.ViewModel
             }
             else
             {
-                selectedEvents.Add(key, true);
+                selectedEvents.Add(key, true);  
             }
+            CountSelected++;
         }
 
         private void OnUnselected(string key)
@@ -336,7 +340,8 @@ namespace TrackSpace.ViewModel
             {
                 selectedEvents.Add(key, false);
             }
-            
+            CountSelected--;
+
         }
 
 
@@ -540,8 +545,6 @@ namespace TrackSpace.ViewModel
 
         private async Task ShowInputMessageBoxesAsync()
         {
-            var tasks = new List<Task>();
-
             foreach (var kv in selectedEvents)
             {
                 if (kv.Value == true)
@@ -571,15 +574,13 @@ namespace TrackSpace.ViewModel
                         tcs.SetResult(true);
                     });
 
-                   
                     input.Show();
 
-                    tasks.Add(tcs.Task);
+                    await tcs.Task;
                 }
             }
-
-            await Task.WhenAll(tasks);
         }
+
 
 
         private async void ShowCustomMessageBox()

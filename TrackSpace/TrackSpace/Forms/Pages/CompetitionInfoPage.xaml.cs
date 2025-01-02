@@ -27,7 +27,7 @@ namespace TrackSpace.Forms.Pages
             ViewModelLocator.CompetitionInfoViewModel.Competition=competition;
             ViewModelLocator.CompetitionInfoPage = this;
 
-            if (ViewModelLocator.AccountType.Equals("club_admin") && competition.Start > DateTime.Now.AddDays(2))
+            if (ViewModelLocator.AccountType.Equals("club_admin") && competition.Start > DateTime.Now.AddDays(2) && ViewModelLocator.AdminToAClub==true)
             {
                 enterCompetitionBtn.Visibility = Visibility.Visible;
             }

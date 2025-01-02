@@ -121,7 +121,15 @@ namespace TrackSpace.ViewModel
 
                     Club? adminsClub = new ClubsService().GetClubByIdAdmin(admin.IdUser);
                     ViewModelLocator.MyClubInfoPage=new Forms.Pages.ClubInfoPage(adminsClub!);
-                    ViewModelLocator.EnterCompetitionViewModel.Competitors = new ClubsService().GetClubCompetitors(adminsClub!.IdClub);
+                    if (adminsClub != null)
+                    {
+                        ViewModelLocator.AdminToAClub = true;
+                        ViewModelLocator.EnterCompetitionViewModel.Competitors = new ClubsService().GetClubCompetitors(adminsClub!.IdClub);
+                    }
+                    else
+                    {
+                        ViewModelLocator.AdminToAClub = false;
+                    }
                     ViewModelLocator.ClubAdminMainPage= clubAdminPage;
                     clubAdminPage.Closed += (a, b) => Application.Current.MainWindow.Show();
                     clubAdminPage.Show();

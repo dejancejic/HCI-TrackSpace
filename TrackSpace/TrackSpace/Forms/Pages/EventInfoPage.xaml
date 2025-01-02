@@ -14,6 +14,8 @@
         <utils:GenderTranslationConverter x:Key="GenderTranslationConverter" />
         <utils:DateTimeConverter x:Key="DateTimeConverter" />
         <utils:GroupNumberConverter x:Key="GroupNumberConverter"></utils:GroupNumberConverter>
+        <utils:EmptyCollectionToVisibilityConverter x:Key="EmptyCollectionToVisibilityConverter"/>
+        
     </UserControl.Resources>
 
     <Grid Background="White">
@@ -194,57 +196,68 @@ Margin="10,0,0,0" />
 
 
             <Border Background="{DynamicResource Primary}" BorderBrush="{DynamicResource Primary}" Margin="18,170,23,0" Height="280" BorderThickness="1" CornerRadius="10">
-            <DataGrid Margin="2,1,2,1"  AlternatingRowBackground="{DynamicResource Secondary}"
-ItemsSource="{Binding Events}" 
-AutoGenerateColumns="False"
-SelectionMode="Single" 
-SelectionUnit="FullRow"
-CanUserAddRows="False"
-CanUserDeleteRows="False"
-IsReadOnly="True"
-CanUserReorderColumns="False"
-CanUserResizeColumns="False"
+                <Grid>
+                    <DataGrid Margin="2,1,2,1" AlternatingRowBackground="{DynamicResource Secondary}"
+                  ItemsSource="{Binding Events}" 
+                  AutoGenerateColumns="False"
+                  SelectionMode="Single" 
+                  SelectionUnit="FullRow"
+                  CanUserAddRows="False"
+                  CanUserDeleteRows="False"
+                  IsReadOnly="True"
+                  CanUserReorderColumns="False"
+                  CanUserResizeColumns="False"
+                  HorizontalScrollBarVisibility="Disabled" 
+                  VerticalScrollBarVisibility="Hidden">
 
-HorizontalScrollBarVisibility="Disabled" 
-VerticalScrollBarVisibility="Hidden">
+                        <DataGrid.ColumnHeaderStyle>
+                            <Style TargetType="DataGridColumnHeader" BasedOn="{StaticResource {x:Type DataGridColumnHeader}}">
+                                <Setter Property="HorizontalContentAlignment" Value="Center" />
+                                <Setter Property="Background" Value="{DynamicResource Primary}" />
+                                <Setter Property="FontSize" Value="16" />
+                            </Style>
+                        </DataGrid.ColumnHeaderStyle>
 
-                <DataGrid.ColumnHeaderStyle>
-                    <Style TargetType="DataGridColumnHeader" BasedOn="{StaticResource {x:Type DataGridColumnHeader}}">
-                        <Setter Property="HorizontalContentAlignment" Value="Center" />
-                        <Setter Property="Background" Value="{DynamicResource Primary}" />
-                        <Setter Property="FontSize" Value="16" />
-                    </Style>
-                </DataGrid.ColumnHeaderStyle>
+                        <DataGrid.CellStyle>
+                            <Style TargetType="DataGridCell">
+                                <EventSetter Event="PreviewMouseLeftButtonDown" Handler="DataGridCell_MouseLeftButtonDown" />
+                                <Setter Property="TextBlock.TextAlignment" Value="Center" />
+                                <Setter Property="HorizontalContentAlignment" Value="Center" />
+                                <Setter Property="VerticalContentAlignment" Value="Center" />
+                                <Setter Property="Margin" Value="0 3 0 0" />
+                                <Setter Property="MinWidth" Value="123" />
+                                <Setter Property="MinHeight" Value="30" />
+                                <Setter Property="FontSize" Value="16" />
+                            </Style>
+                        </DataGrid.CellStyle>
 
-                <DataGrid.CellStyle>
-                    <Style TargetType="DataGridCell">
-                            <EventSetter Event="PreviewMouseLeftButtonDown" Handler="DataGridCell_MouseLeftButtonDown" />
-                            <Setter Property="TextBlock.TextAlignment" Value="Center" />
-                        <Setter Property="HorizontalContentAlignment" Value="Center" />
-                        <Setter Property="VerticalContentAlignment" Value="Center" />
-                        <Setter Property="Margin" Value="0 3 0 0" />
-                        <Setter Property="MinWidth" Value="140" />
-                        <Setter Property="MinHeight" Value="30" />
-                        <Setter Property="FontSize" Value="16" />
-                    </Style>
-                </DataGrid.CellStyle>
+                        <DataGrid.RowStyle>
+                            <Style TargetType="DataGridRow">
+                                <Setter Property="Height" Value="30" />
+                            </Style>
+                        </DataGrid.RowStyle>
 
-                <DataGrid.RowStyle>
-                    <Style TargetType="DataGridRow">
-                        <Setter Property="Height" Value="30" />
-                    </Style>
-                </DataGrid.RowStyle>
+                        <DataGrid.Columns>
+                            <DataGridTemplateColumn Header="{DynamicResource orderNumber}" Width="100">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <TextBlock TextAlignment="Left" Margin="45 0 0 0" Text="{Binding Order}" />
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
 
-                <DataGrid.Columns>
+                            <DataGridTextColumn Header="{DynamicResource name}" Binding="{Binding IdCompetitorNavigation.Name}" IsReadOnly="True" />
+                            <DataGridTextColumn Header="{DynamicResource surname}" Binding="{Binding IdCompetitorNavigation.Surname}" IsReadOnly="True" />
+                            <DataGridTextColumn Header="{DynamicResource category}" Binding="{Binding IdCompetitorNavigation.IdCategoryNavigation.Name}" IsReadOnly="True" />
+                            <DataGridTextColumn Header="{DynamicResource club}" Binding="{Binding IdCompetitorNavigation.IdClubNavigation.Name}" IsReadOnly="True" />
+                            <DataGridTextColumn Header="{DynamicResource result}" Binding="{Binding Result}" IsReadOnly="True" />
+                        </DataGrid.Columns>
+                    </DataGrid>
+                    <TextBlock Text="{DynamicResource noEntriesYet}" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="Gray" 
+                   Visibility="{Binding Events.Count, Converter={StaticResource EmptyCollectionToVisibilityConverter}}"/>
+                </Grid>
+            </Border>
 
-                    <DataGridTextColumn Header="{DynamicResource name}" Binding="{Binding IdCompetitorNavigation.Name}" IsReadOnly="True" />
-                        <DataGridTextColumn Header="{DynamicResource surname}" Binding="{Binding IdCompetitorNavigation.Surname}" IsReadOnly="True" />
-                        <DataGridTextColumn Header="{DynamicResource category}" Binding="{Binding IdCompetitorNavigation.IdCategoryNavigation.Name}" IsReadOnly="True" />
-                        <DataGridTextColumn Header="{DynamicResource club}" Binding="{Binding IdCompetitorNavigation.IdClubNavigation.Name}" IsReadOnly="True" />
-                        <DataGridTextColumn Header="{DynamicResource result}" Binding="{Binding Result}" IsReadOnly="True" />
-                </DataGrid.Columns>
-            </DataGrid>
-        </Border>
         </materialDesign:DialogHost>
 
 

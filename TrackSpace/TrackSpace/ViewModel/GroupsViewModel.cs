@@ -150,7 +150,9 @@ namespace TrackSpace.ViewModel
            
             
         }
-
+        public Button addBtn { get; set; }
+        public Button removeBtn { get; set; } 
+        public TextBlock noGroupsTB { get; set; }
         private void AddGroup(object obj)
         {
             new CustomMessageBox(true,true, (string)Application.Current.Resources["addGroup"], (string)Application.Current.Resources["sureToAddGroup"], (a) => {
@@ -161,6 +163,9 @@ namespace TrackSpace.ViewModel
                 };
                 g=new EventsService().AddGroup(g);
                 Groups.Add(g);
+                addBtn.Visibility=Visibility.Visible;
+                removeBtn.Visibility=Visibility.Visible;
+                noGroupsTB.Visibility=Visibility.Hidden;   
                 OnPropertyChanged(nameof(Groups));
             }, (a) => {}).Show();
 

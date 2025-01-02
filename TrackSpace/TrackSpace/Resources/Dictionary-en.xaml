@@ -148,4 +148,14 @@
     <System:String x:Key="contactPhone">Contact phone</System:String>
     <System:String x:Key="accountType">Account type</System:String>
     <System:String x:Key="repeatPassword">Repeat password</System:String>
+    <System:String x:Key="noCompetitors">There are no competitors in this club at the moment</System:String>
+    <System:String x:Key="noClubs">There are no clubs at the moment</System:String>
+    <System:String x:Key="noEventsSelected">There are no events selected</System:String>
+    <System:String x:Key="noEvents">There are no events to show</System:String>
+    <System:String x:Key="noCompetitions">There are no competitions to show</System:String>
+    <System:String x:Key="noCompetitorsToShow">There are no competitors to show</System:String>
+    <System:String x:Key="notAnAdminYet">You are not admin to any club yet</System:String>
+    <System:String x:Key="noEntriesYet">There are no entries yet</System:String>
+    <System:String x:Key="noGroupsYetAdded">There are no groups yet</System:String>
+    <System:String x:Key="orderNumber">Order</System:String>
 </ResourceDictionary>

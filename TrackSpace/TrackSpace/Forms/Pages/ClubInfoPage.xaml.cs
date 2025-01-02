@@ -32,6 +32,11 @@ namespace TrackSpace.Forms.Pages
             
 
             SetBtnAddCompetitor(club,myClub);
+            if(club==null)
+            {
+                mainGrid.Visibility=Visibility.Collapsed;
+                noClubTB.Visibility = Visibility.Visible;
+            }
             
         }
 

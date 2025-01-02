@@ -40,9 +40,13 @@ namespace TrackSpace.ViewModel
             get { return _events; }
             set {
                 _events = value;
-                foreach(var ev in _events)
+                int i = 1;
+                _events = new ObservableCollection<CompetitorEvent>(_events.OrderBy(e => e.Result).ToList());
+
+                foreach (var ev in _events)
                     {
                     ev.IdCompetitorNavigation = _competitorsService.GetCompetitorById(ev.IdCompetitor);
+                    ev.Order=i++;
                     }
                 OnPropertyChanged(nameof(Events));
             }

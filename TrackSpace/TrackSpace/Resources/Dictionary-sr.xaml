@@ -146,4 +146,14 @@
     <System:String x:Key="contactPhone">Kontakt telefon</System:String>
     <System:String x:Key="accountType">Tip naloga</System:String>
     <System:String x:Key="repeatPassword">Ponovite lozinku</System:String>
+    <System:String x:Key="noCompetitors">Trenutno nema nijedan takmičar u ovom klubu</System:String>
+    <System:String x:Key="noClubs">Trenutno ne postoji nijedan klub</System:String>
+    <System:String x:Key="noEventsSelected">Niste odabrali nijednu disciplinu</System:String>
+    <System:String x:Key="noEvents">Trenutno nema nijedna disciplina za prikaz</System:String>
+    <System:String x:Key="noCompetitions">Trenutno nema nijedno takmičenje za prikaz</System:String>
+    <System:String x:Key="noCompetitorsToShow">Nema takmičara za prikaz</System:String>
+    <System:String x:Key="notAnAdminYet">Još uvijek niste administrator kluba</System:String>
+    <System:String x:Key="noEntriesYet">Još uvijek nema prijavljenih takmičara</System:String>
+    <System:String x:Key="noGroupsYetAdded">Još uvijek nema nijedna grupa</System:String>
+    <System:String x:Key="orderNumber">Pozicija</System:String>
 </ResourceDictionary>

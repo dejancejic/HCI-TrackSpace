@@ -12,9 +12,13 @@
       >
     <UserControl.Resources>
         <utils:GenderTranslationConverter x:Key="GenderTranslationConverter" />
+        <utils:EmptyCollectionToVisibilityConverter x:Key="EmptyCollectionToVisibilityConverter"/>
     </UserControl.Resources>
+
+    <Grid Name="noClubTB">
+        <TextBlock Text="{DynamicResource notAnAdminYet}"  VerticalAlignment="Center" HorizontalAlignment="Center" Visibility="Visible"></TextBlock>
     
-        <Grid Background="White">
+    <Grid Background="White" Name="mainGrid">
         <Button x:Name="closeBtn" Background="Transparent" BorderBrush="Transparent" Padding="5 0 0 0" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0 13 14 0" Command="{Binding CloseCommand}">
             <materialDesign:PackIcon Kind="Close" Width="25" Height="25" Opacity="0.5"/>
         </Button>
@@ -200,7 +204,8 @@ VerticalAlignment="Center" />
             </materialDesign:DialogHost.DialogContent>
 
             <Border  Background="{DynamicResource Primary}" BorderBrush="{DynamicResource Primary}" Margin="30,275,122,75"  BorderThickness="1" CornerRadius="10">
-                <DataGrid Margin="2,1,2,1"
+                <Grid>
+                    <DataGrid Margin="2,1,2,1"
           ItemsSource="{Binding Club.Competitors}" 
           AutoGenerateColumns="False"
           SelectionMode="Single"
@@ -266,6 +271,9 @@ VerticalAlignment="Center" />
                     <DataGridTextColumn Header="{DynamicResource gender}" Binding="{Binding Pol, Converter={StaticResource GenderTranslationConverter}}" IsReadOnly="True" />
                 </DataGrid.Columns>
             </DataGrid>
+                    <TextBlock Text="{DynamicResource noCompetitors}" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="Gray" 
+                               Visibility="{Binding Club.Competitors.Count, Converter={StaticResource EmptyCollectionToVisibilityConverter}}"/>
+                </Grid>
                 </Border>
 
 
@@ -319,6 +327,7 @@ FontWeight="Bold"  Foreground="Black"  />
         <materialDesign:PackIcon Kind="InfoCircleOutline" Height="110" Width="110" HorizontalAlignment="Right"
                                  Margin="0 85 70 0" Foreground="{DynamicResource Primary}"></materialDesign:PackIcon>
 
+    </Grid>
     </Grid>
       
 </UserControl>

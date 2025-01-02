@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace TrackSpace.Models;
 
@@ -10,8 +11,12 @@ public partial class CompetitorEvent : INotifyPropertyChanged
 
     public int IdEvent { get; set; }
 
+
     private string? _result;
     public string? Result { get { return _result; } set { _result = value; OnPropertyChanged(nameof(Result)); } }
+
+    [NotMapped] 
+    public int Order { get; set; }
 
     public virtual Competitor IdCompetitorNavigation { get; set; } = null!;
 

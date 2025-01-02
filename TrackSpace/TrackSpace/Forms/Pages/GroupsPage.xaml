@@ -17,6 +17,7 @@ d:DesignHeight="650" d:DesignWidth="800">
     <UserControl.Resources>
 
         <utils:DateTimeConverter x:Key="DateTimeConverter" />
+        <utils:EmptyCollectionToVisibilityConverter x:Key="EmptyCollectionToVisibilityConverter"/>
     </UserControl.Resources>
     <Grid  Background="White">
 
@@ -178,7 +179,8 @@ FontWeight="Bold" FontSize="22" Foreground="Black" />
                                     <DataGridTextColumn Header="{DynamicResource result}" Binding="{Binding Result}" IsReadOnly="True" />
                                 </DataGrid.Columns>
                             </DataGrid>
-
+                            <TextBlock Text="{DynamicResource noCompetitorsToShow}" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="Gray" 
+                Visibility="{Binding DataContext.CompetitorEvents.Count, RelativeSource={RelativeSource AncestorType=UserControl}, Converter={StaticResource EmptyCollectionToVisibilityConverter}}"/>
                         </Grid>
                     </Border>
 
@@ -199,8 +201,8 @@ FontWeight="Bold" FontSize="22" Foreground="Black" />
    HorizontalAlignment="Center" />
 
                     <Border  Background="{DynamicResource Primary}" BorderBrush="{DynamicResource Primary}" Height="250" MinWidth="350" BorderThickness="1" CornerRadius="10">
-
-                        <DataGrid Margin="2,1,2,1" AlternatingRowBackground="{DynamicResource Secondary}"
+                        <Grid>
+                            <DataGrid Margin="2,1,2,1" AlternatingRowBackground="{DynamicResource Secondary}"
 ItemsSource="{Binding DataContext.CompetitorsWithoutGroup, RelativeSource={RelativeSource AncestorType=UserControl}}" 
 AutoGenerateColumns="False"
 SelectionMode="Extended"
@@ -245,6 +247,9 @@ SelectionChanged="DataGrid_SelectionChanged" >
                                 
                             </DataGrid.Columns>
                         </DataGrid>
+                            <TextBlock Text="{DynamicResource noCompetitorsToShow}" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="Gray" 
+Visibility="{Binding DataContext.CompetitorsWithoutGroup.Count, RelativeSource={RelativeSource AncestorType=UserControl}, Converter={StaticResource EmptyCollectionToVisibilityConverter}}"/>
+                        </Grid>
                     </Border>
                     <StackPanel Orientation="Horizontal" Margin="0,30,0,0" HorizontalAlignment="Center">
                         
@@ -269,8 +274,11 @@ HorizontalAlignment="Center"
                 ToolTip="MaterialDesignFloatingActionMiniDarkButton" Margin="0 -50 3 20" HorizontalAlignment="Right" Click="ShowCompetitorsWithoutGroup">
             <materialDesign:PackIcon Width="25" Height="25" Kind="Add" />
         </Button>
+        
+        <TextBlock Name="noGroupsTB"  Text="{DynamicResource noGroupsYetAdded}" HorizontalAlignment="Center" VerticalAlignment="Center"   Foreground="Gray" 
+Visibility="{Binding Groups.Count, Converter={StaticResource EmptyCollectionToVisibilityConverter}}"/>
 
-        <Button Command="{Binding RemoveCompetitorFromGroupCommand}"    Visibility="Hidden" Name="removeCompetitorBtn" 
+        <Button Command="{Binding RemoveCompetitorFromGroupCommand}" Visibility="Hidden" Name="removeCompetitorBtn" 
 IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
 Style="{StaticResource MaterialDesignFloatingActionMiniDarkButton}" Width="32" Height="32" Background="{DynamicResource Primary}"
 ToolTip="MaterialDesignFloatingActionMiniDarkButton"   Margin="0 50 3 20" HorizontalAlignment="Right">

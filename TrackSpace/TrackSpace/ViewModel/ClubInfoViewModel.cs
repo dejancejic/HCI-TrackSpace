@@ -130,12 +130,22 @@ namespace TrackSpace.ViewModel
 
         public int RowIndex { get { return _rowIndex; } set { _rowIndex = value; } }
 
-        public Club Club { get { return _club; } set { _club = value;
-                _club.Competitors = new ClubsService().GetClubCompetitors(_club.IdClub);
-                Club.CompetitorNumber = (short)_club.Competitors.Count;
-                Club.IdUserNavigation = _clubsService.GetClubAdminById(Club.IdUser);
+        public Club Club
+        {
+            get { return _club; }
+            set
+            {
+                _club = value;
+                if (_club != null)
+                {
+                    _club.Competitors = new ClubsService().GetClubCompetitors(_club.IdClub);
+                    Club.CompetitorNumber = (short)_club.Competitors.Count;
+                    Club.IdUserNavigation = _clubsService.GetClubAdminById(Club.IdUser);
+                }
 
-                OnPropertyChanged(nameof(Club)); } }
+                OnPropertyChanged(nameof(Club));
+            }
+        } 
 
         public ICommand GoBackCommand { get; set; }
 
@@ -145,7 +155,7 @@ namespace TrackSpace.ViewModel
         private ClubsService _clubsService = new ClubsService();
 
 
-        public string Name { get { return _club.Name; } }
+        public string Name { get { if (_club != null){ return _club.Name; }return ""; } }
         public ClubInfoViewModel()
         {
 
