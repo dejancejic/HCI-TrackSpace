@@ -135,10 +135,10 @@ Style="{StaticResource CustomToggleButtonStyle}" Background="{DynamicResource Pr
         </StackPanel>
 
 
-        <Label Content="{DynamicResource chooseLanguage}" Margin="400,213,73,217" FontSize="25"></Label>
+        <Label Content="{DynamicResource chooseLanguage}" Margin="400,219,73,211" FontSize="25"></Label>
 
 
-        <StackPanel Margin="410,315,71,210">
+        <StackPanel Margin="410,325,71,200">
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition />
@@ -156,7 +156,7 @@ SelectedIndex="0" Height="50">
 
             </ComboBox>
         </StackPanel >
-        <StackPanel Orientation="Vertical" Margin="400,61,56,417"  >
+        <StackPanel Orientation="Vertical" Margin="400,95,56,383"  >
             <Label HorizontalAlignment="Left" Content="{DynamicResource selectFont}"
 FontSize="25" Foreground="Black" Width="247" />
 
