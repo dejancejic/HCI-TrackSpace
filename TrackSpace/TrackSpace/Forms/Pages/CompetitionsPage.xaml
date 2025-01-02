@@ -10,6 +10,32 @@
              FontSize="18" FontFamily="{DynamicResource AppFont}"
       d:DesignHeight="650" d:DesignWidth="800"
       >
+    <UserControl.Resources>
+        <Style x:Key="CustomTabItemStyle" TargetType="TabItem" BasedOn="{StaticResource MaterialDesignTabItem}">
+            <Setter Property="Background" Value="{DynamicResource Primary}" />
+            <Setter Property="Margin" Value="0 0 0 0" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="TabItem">
+                        <Grid>
+                            <Border Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="1" CornerRadius="10">
+                                <ContentPresenter ContentSource="Header" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="10,2" />
+                            </Border>
+                        </Grid>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <Trigger Property="IsSelected" Value="True">
+                    <Setter Property="Background" Value="{DynamicResource Secondary}" />
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+
+        <Style TargetType="ComboBox" BasedOn="{StaticResource MaterialDesignComboBox}">
+            <Setter Property="materialDesign:HintAssist.Hint" Value="{DynamicResource year}" />
+        </Style>
+    </UserControl.Resources>
 
     <Grid Background="White">
         <Label Content="{DynamicResource competitions}" HorizontalAlignment="Left" FontWeight="Bold" Margin="18,10,0,318" FontSize="35"></Label>
@@ -27,7 +53,7 @@
                                Style="{StaticResource MaterialDesignOutlinedAutoSuggestBox}"
                                Suggestions="{Binding AutoSuggestBox1Suggestions}" 
                                Text="{Binding AutoSuggestBox1Text, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
-                               ValueMember="Value" Margin="320,10,91,523">
+                               ValueMember="Value" Margin="276,10,229,523">
             <materialDesign:AutoSuggestBox.ItemTemplate>
                 <DataTemplate>
                     <DockPanel>
@@ -41,35 +67,41 @@
 
 
 
-        
 
 
 
 
-        <materialDesign:Card Margin="0,120,-3,-1" >
-            <TabControl 
-    materialDesign:ColorZoneAssist.Background="{DynamicResource Primary}"
-    materialDesign:ColorZoneAssist.Mode="PrimaryLight"
-    Style="{StaticResource MaterialDesignFilledTabControl}" Margin="63,3,38,0">
-                <TabItem Background="{DynamicResource Primary}" 
-      Header="{DynamicResource ongoingCompetitions}">
 
 
-                    <!--OngoingCompetitions-->
-                    <dataGrid:CompetitionDataGridControl ItemsSource="{Binding OngoingCompetitions}" 
-                                  Count="{Binding OngoingCompetitions.Count}" />
-                </TabItem>
-                <TabItem
-      Header="{DynamicResource pastCompetitions}">
+        <TabControl Margin="0,80,0,-1" materialDesign:ColorZoneAssist.Background="Transparent" materialDesign:ColorZoneAssist.Mode="PrimaryLight" Style="{StaticResource MaterialDesignFilledTabControl}">
+            <TabControl.Resources>
+                <Style TargetType="TabItem" BasedOn="{StaticResource CustomTabItemStyle}" />
+            </TabControl.Resources>
+            <TabItem Header="{DynamicResource ongoingCompetitions}" FontWeight="Bold">
+                <!-- OngoingCompetitions -->
+                <dataGrid:CompetitionDataGridControl ItemsSource="{Binding OngoingCompetitions}" Count="{Binding OngoingCompetitions.Count}" />
+            </TabItem>
+            <TabItem Header="{DynamicResource pastCompetitions}" FontWeight="Bold">
+                <!-- PastCompetitions -->
+                <dataGrid:CompetitionDataGridControl ItemsSource="{Binding PastCompetitions}" Count="{Binding PastCompetitions.Count}" />
+            </TabItem>
+        </TabControl>
 
-                    <!--PastCompetitions-->
 
-                    <dataGrid:CompetitionDataGridControl ItemsSource="{Binding PastCompetitions}" 
-                                  Count="{Binding PastCompetitions.Count}" />
 
-                </TabItem>
-            </TabControl>
-        </materialDesign:Card>
+        <StackPanel Orientation="Horizontal" VerticalAlignment="Top" Margin="470 20 0 0" Width="150">
+            <Button Background="{DynamicResource Primary}"  Command="{Binding ToggleComboBoxCommand}" Style="{StaticResource MaterialDesignRaisedButton}">
+                <Button.Content>
+                    <StackPanel Orientation="Horizontal">
+                        <materialDesign:PackIcon Kind="Filter" />
+                        <TextBlock  Margin="5,0,0,0" />
+                    </StackPanel>
+                </Button.Content>
+            </Button>
+            <ComboBox ItemsSource="{Binding Years}" SelectedItem="{Binding SelectedYear}" Width="108" Margin="10,0,0,0" Visibility="{Binding IsComboBoxVisible, Converter={StaticResource BooleanToVisibilityConverter}}" />
+            <TextBlock Text="{Binding SelectedYear, StringFormat='Selected Year: {0}'}" Margin="10,0,0,0" Visibility="{Binding IsYearSelected, Converter={StaticResource BooleanToVisibilityConverter}}" />
+        </StackPanel>
+
 
     </Grid>
 </UserControl>

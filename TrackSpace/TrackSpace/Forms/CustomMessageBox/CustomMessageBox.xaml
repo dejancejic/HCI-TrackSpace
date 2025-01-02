@@ -13,7 +13,7 @@
         AllowsTransparency="True"
         ResizeMode="NoResize"
         FontSize="18"
-        FontFamily="{DynamicResource MaterialDesignFont}">
+        FontFamily="{DynamicResource AppFont}">
     <Grid Margin="20">
         <Grid.Effect>
             <DropShadowEffect BlurRadius="30"

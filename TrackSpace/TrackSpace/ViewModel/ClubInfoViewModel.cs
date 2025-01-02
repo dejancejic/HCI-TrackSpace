@@ -32,7 +32,7 @@ namespace TrackSpace.ViewModel
 
         private Competitor _addedCompetitor = new Competitor() { Name = "",Surname="" };
 
-        private CompetitorsService _competitorsService = ServicesLocator.CompetitorsService;
+        private CompetitorsService _competitorsService = new CompetitorsService();
 
 
         private DateTime _dateTime = DateTime.Now.AddYears(-15);
@@ -131,8 +131,7 @@ namespace TrackSpace.ViewModel
         public int RowIndex { get { return _rowIndex; } set { _rowIndex = value; } }
 
         public Club Club { get { return _club; } set { _club = value;
-                ServicesLocator.ClubsService = new Services.ClubsService();
-                _club.Competitors = ServicesLocator.ClubsService.GetClubCompetitors(_club.IdClub);
+                _club.Competitors = new ClubsService().GetClubCompetitors(_club.IdClub);
                 Club.CompetitorNumber = (short)_club.Competitors.Count;
                 Club.IdUserNavigation = _clubsService.GetClubAdminById(Club.IdUser);
 
@@ -143,7 +142,7 @@ namespace TrackSpace.ViewModel
         public ICommand AddCompetitorCommand { get; set; }
         public ICommand AddCompetitorConfirmCommand { get; set; }
 
-        private ClubsService _clubsService = ServicesLocator.ClubsService;
+        private ClubsService _clubsService = new ClubsService();
 
 
         public string Name { get { return _club.Name; } }
@@ -219,7 +218,7 @@ namespace TrackSpace.ViewModel
            
             _competitorsService.AddCompetitor(AddedCompetitor);
             Club.Competitors.Add(AddedCompetitor);
-            AddedCompetitor.IdCategoryNavigation = ServicesLocator.CategoryService.GetCategoryById(categoryId);
+            AddedCompetitor.IdCategoryNavigation = new CategoryService().GetCategoryById(categoryId);
            
 
 
@@ -229,7 +228,8 @@ namespace TrackSpace.ViewModel
             CustomMessageBox cm = new CustomMessageBox(false, true, (string)Application.Current.Resources["addCompetitor"],
                 (string)Application.Current.Resources["addCompetitorSuccess"]);
             cm.Show();
-            
+
+            Club = Club;
     
             cm.Closed+=(a,b)=>
             DialogHost.IsOpen = false;

@@ -16,8 +16,8 @@ namespace TrackSpace.Services
    public class EventsService : BaseService
     {
         private ObservableCollection<Event> _events;
-        private CategoryService _categoryService=ServicesLocator.CategoryService;
-        private CompetitorEventServices _competitorEventService=ServicesLocator.CompetitorEventService;
+        private CategoryService _categoryService=new CategoryService();
+        private CompetitorEventServices _competitorEventService=new CompetitorEventServices();
         private ObservableCollection<RunningEvent> _runningEvents;
         private ObservableCollection<JumpingEvent> _jumpingEvents;
         private ObservableCollection<ThrowingEvent> _throwingEvents;
@@ -66,7 +66,7 @@ namespace TrackSpace.Services
                         Name = str,
                         IdCategory = i
                     };
-                    ev.IdCategoryNavigation = ServicesLocator.CategoryService.GetCategoryById(i);
+                    ev.IdCategoryNavigation = new CategoryService().GetCategoryById(i);
                     RunningEvent r = new RunningEvent()
                     {
                         IdEventNavigation = ev
@@ -95,7 +95,7 @@ namespace TrackSpace.Services
                         Name = str,
                         IdCategory = i
                     };
-                    ev.IdCategoryNavigation = ServicesLocator.CategoryService.GetCategoryById(i);
+                    ev.IdCategoryNavigation = new CategoryService().GetCategoryById(i);
                     JumpingEvent r = new JumpingEvent()
                     {
                         IdEventNavigation = ev
@@ -124,7 +124,7 @@ namespace TrackSpace.Services
                         Name = str,
                         IdCategory = i
                     };
-                    ev.IdCategoryNavigation = ServicesLocator.CategoryService.GetCategoryById(i);
+                    ev.IdCategoryNavigation = new CategoryService().GetCategoryById(i);
                     ThrowingEvent r = new ThrowingEvent()
                     {
                         IdEventNavigation = ev
@@ -153,12 +153,7 @@ namespace TrackSpace.Services
 
         public Event AddEvent(Event ev)
         {
-            //foreach (var entry in _context.ChangeTracker.Entries<Event>().ToList()) {
-            //    if (entry.Entity.IdEvent == ev.IdEvent) {
-            //        _context.Entry(entry.Entity).State = Microsoft.EntityFrameworkCore.EntityState.Detached; 
-            //    } 
-            //}
-
+            _context=DBConnection.GetContext();
             _context.Events.Add(ev);
             _context.SaveChanges();
             _events.Add(ev);
@@ -167,6 +162,7 @@ namespace TrackSpace.Services
 
         public void AddRunningEvent(RunningEvent ev)
         {
+            _context = DBConnection.GetContext();
             _context.RunningEvents.Add(ev);
             _context.SaveChanges();
             _runningEvents.Add(ev);
@@ -174,6 +170,7 @@ namespace TrackSpace.Services
 
         public void AddJumpingEvent(JumpingEvent ev)
         {
+            _context = DBConnection.GetContext();
             _context.JumpingEvents.Add(ev);
             _context.SaveChanges();
             _jumpingEvents.Add(ev);
@@ -181,6 +178,7 @@ namespace TrackSpace.Services
 
         public void AddThrowingEvent(ThrowingEvent ev)
         {
+            _context = DBConnection.GetContext();
             _context.ThrowingEvents.Add(ev);
             _context.SaveChanges();
             _throwingEvents.Add(ev);
@@ -188,10 +186,7 @@ namespace TrackSpace.Services
 
         public Group AddGroup(Group group)
         {
-            foreach (var entry in _context.ChangeTracker.Entries().Where(e => e.State != EntityState.Unchanged).ToList())
-            {
-                entry.State = EntityState.Unchanged;
-            }
+            _context = DBConnection.GetContext();
             _context.Groups.Add(group);
             _context.SaveChanges();
             _groups.Add(group);
@@ -211,8 +206,8 @@ namespace TrackSpace.Services
                 var competitor = _context.Competitors.FirstOrDefault((c) => c.IdCompetitor==elem.IdCompetitor);
                 if(competitor!=null && competitor.IdGroup==null)
                 {
-                    competitor.IdCategoryNavigation=ServicesLocator.CategoryService.GetCategoryById(competitor.IdCategory);
-                    competitor.IdClubNavigation = ServicesLocator.ClubsService.GetClubById(competitor.IdClub);
+                    competitor.IdCategoryNavigation=new CategoryService().GetCategoryById(competitor.IdCategory);
+                    competitor.IdClubNavigation = new ClubsService().GetClubById(competitor.IdClub);
                     elem.IdCompetitorNavigation = competitor;
                     ce.Add(elem);
                 }

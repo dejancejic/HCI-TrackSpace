@@ -16,7 +16,7 @@ namespace TrackSpace.Services
 
         private ObservableCollection<CompetitorEvent> _competitorEvents;
         private ObservableCollection<CompetitorEntry> _competitorEntries;
-        private CompetitorsService _competitorsService = ServicesLocator.CompetitorsService;
+        private CompetitorsService _competitorsService = new CompetitorsService();
         public CompetitorEventServices() {
         _competitorEvents = new ObservableCollection<CompetitorEvent>(_context.CompetitorEvents.ToList());
         _competitorEntries=new ObservableCollection<CompetitorEntry>(_context.CompetitorEntries.ToList());
@@ -47,9 +47,7 @@ namespace TrackSpace.Services
 
         public void UpdateResult(CompetitorEvent competitorEvent)
         {
-            if (_context.Entry(competitorEvent).State == Microsoft.EntityFrameworkCore.EntityState.Detached) { 
-                _context.CompetitorEvents.Attach(competitorEvent);
-            }
+            _context = DBConnection.GetContext();
             _context.Entry(competitorEvent).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
             _context.SaveChanges();
 

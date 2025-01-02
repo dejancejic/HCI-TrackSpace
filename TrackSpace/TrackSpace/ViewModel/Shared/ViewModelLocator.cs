@@ -15,6 +15,8 @@ namespace TrackSpace.ViewModel.Shared
         public static string AccountType { get; set; } = "observer";
         public static int IdAdmin { get; set; }
         public static int IdOrganizer { get; set; }
+
+        public static int IdSystemAdmin { get; set; }
         private static LoginViewModel _loginViewModel = new LoginViewModel();
         private static ObserverViewModel _observerViewModel = new ObserverViewModel();
         private static ClubAdminViewModel _clubAdminViewModel = new ClubAdminViewModel();
@@ -27,6 +29,7 @@ namespace TrackSpace.ViewModel.Shared
         private static EnterCompetitionViewModel _enterCompetitionViewModel = new EnterCompetitionViewModel();
         private static OrganizerViewModel _organizerViewModel = new OrganizerViewModel();
         private static AddCompetitionViewModel _addCompetitionViewModel = new AddCompetitionViewModel();
+        private static AdminViewModel _adminViewModel = new AdminViewModel();  
        
 
         private static CompetitionsPage _competitionsPage = new CompetitionsPage();
@@ -37,9 +40,11 @@ namespace TrackSpace.ViewModel.Shared
         private static EnterCompetitionPage _enterCompetitionPage = new EnterCompetitionPage(new Models.Competition());
         private static AddCompetitionPage _addCompetitionPage = new AddCompetitionPage();
 
+
         private static ObserverMainPage _observerMainPage;
         private static ClubAdminMainPage _clubAdminMainPage;
         private static OrganizerMainPage _organizerMainPage;
+        private static AdminMainPage _adminMainPage;
 
         public static CompetitionsPage MyCompetitionsPage { get { return _myCompetitionsPage; } set { _myCompetitionsPage = value; } }
         public static CompetitionsPage CompetitionsPage { get { return _competitionsPage; } set { _competitionsPage = value; } }
@@ -52,6 +57,8 @@ namespace TrackSpace.ViewModel.Shared
         public static OrganizerMainPage OrganizerMainPage { get { return _organizerMainPage; } set { _organizerMainPage = value; } }
 
         public static ClubAdminMainPage ClubAdminMainPage { get { return _clubAdminMainPage; } set { _clubAdminMainPage = value; } }
+
+        public static AdminMainPage AdminMainPage { get { return _adminMainPage; } set { _adminMainPage = value; } }
         public static EnterCompetitionPage EnterCompetitionPage { get { return _enterCompetitionPage; }set{ _enterCompetitionPage = value; } }
 
         public static AddCompetitionPage AddCompetitionPage { get { return _addCompetitionPage; } set { _addCompetitionPage = value; } }
@@ -126,6 +133,17 @@ namespace TrackSpace.ViewModel.Shared
             set
             {
                 _addCompetitionViewModel = value;
+            }
+        }
+        public static AdminViewModel AdminViewModel
+        {
+            get
+            {
+                return _adminViewModel;
+            }
+            set
+            {
+                _adminViewModel = value;
             }
         }
     }

@@ -27,6 +27,16 @@ ToolTip="MaterialDesignFloatingActionMiniDarkButton" VerticalAlignment="Bottom" 
   Kind="ArrowBack" />
         </Button>
 
+        <Button Command="{Binding DeleteCompetitionCommand}" Visibility="Hidden" Name="deleteBtn"
+IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
+Style="{StaticResource MaterialDesignFloatingActionMiniDarkButton}" Width="45" Height="45" Background="{DynamicResource Primary}"
+ToolTip="MaterialDesignFloatingActionMiniDarkButton" VerticalAlignment="Bottom" Margin="15 0 0 15" HorizontalAlignment="Left">
+            <materialDesign:PackIcon
+  Width="30"
+  Height="30"
+  Kind="Delete" />
+        </Button>
+
         <Button x:Name="closeBtn" Background="Transparent" BorderBrush="Transparent" Padding="5 0 0 0" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0 13 14 0"
                 Command="{Binding CloseCommand}">
             <materialDesign:PackIcon Kind="Close" Width="25" Height="25" Opacity="0.5"/>

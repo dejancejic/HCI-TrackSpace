@@ -22,11 +22,26 @@ namespace TrackSpace.ViewModel
     {
 
         private string _autoSuggestBox1Text;
+        private ObservableCollection<Competition> _ongoing;
+        private ObservableCollection<Competition> _past;
         public ObservableCollection<Competition> AllCompetitions { get; set; }
-        public ObservableCollection<Competition> PastCompetitions { get; set; }
-        public ObservableCollection<Competition> OngoingCompetitions { get; set; }
+        public ObservableCollection<Competition> OngoingCompetitionsCopy { get; set; }
+        public ObservableCollection<Competition> PastCompetitionsCopy { get; set; }
+        public ObservableCollection<Competition> PastCompetitions { get { return _past; } set { _past = value; OnPropertyChanged(nameof(PastCompetitions)); } }
+        public ObservableCollection<Competition> OngoingCompetitions { get { return _ongoing; } set { _ongoing = value; OnPropertyChanged(nameof(OngoingCompetitions)); } }
 
-        private CompetitionsService _competitionsService=ServicesLocator.CompetitionsService;
+        private ObservableCollection<int> _years= new ObservableCollection<int> { 2020, 2021, 2022, 2023, 2024, 2025 };
+
+        private int _selectedYear;
+       
+
+        public ObservableCollection<int> Years { get => _years; set { _years = value; OnPropertyChanged(nameof(Years)); } }
+        public int SelectedYear { get => _selectedYear; set { _selectedYear = value;
+                Filter();
+                OnPropertyChanged(nameof(SelectedYear)); } }
+
+
+        private CompetitionsService _competitionsService=new CompetitionsService();
 
         private ObservableCollection<KeyValuePair<string, string>> _autoSuggestBox1Suggestions;
         public string AutoSuggestBox1Text
@@ -37,6 +52,70 @@ namespace TrackSpace.ViewModel
             {
                 _autoSuggestBox1Text = value;
                 OnPropertyChanged(nameof(AutoSuggestBox1Text)); UpdateSuggestions(value);
+            }
+        }
+
+        private bool _isComboBoxVisible;
+        private bool _isYearSelected;
+
+        public ICommand ToggleComboBoxCommand { get; }
+
+        private void ToggleComboBox(object obj) {
+            IsComboBoxVisible = !IsComboBoxVisible;
+            Filter();
+        }
+        public bool IsComboBoxVisible { get => _isComboBoxVisible; set { _isComboBoxVisible = value; OnPropertyChanged(nameof(IsComboBoxVisible)); } }
+        public bool IsYearSelected
+        {
+            get => _isYearSelected; set { _isYearSelected = value; OnPropertyChanged(nameof(IsYearSelected)); }
+        }
+        private void Filter()
+        {
+            if (IsComboBoxVisible == true )
+            {
+                ObservableCollection<Competition> ongoing = new ObservableCollection<Competition>();
+                foreach (var el in OngoingCompetitionsCopy)
+                {
+                    if (el.Start.Year == SelectedYear)
+                    {
+                        ongoing.Add(el);
+                    }
+                }
+                OngoingCompetitions = ongoing;
+                ObservableCollection<Competition> past = new ObservableCollection<Competition>();
+
+                foreach (var el in PastCompetitionsCopy)
+                {
+                    if (el.Start.Year == SelectedYear)
+                    {
+                        past.Add(el);
+                    }
+                }
+                PastCompetitions = past;
+
+
+
+            }
+            else
+            {
+                if (myCompetitions == true)
+                {
+                    AllCompetitions = _competitionsService.GetAllCompetitionsByIdOrganizer(ViewModelLocator.IdOrganizer);
+                    OngoingCompetitionsCopy= _competitionsService.GetOngoingCompetitions(ViewModelLocator.IdOrganizer);
+                    PastCompetitionsCopy = _competitionsService.GetPastCompetitions(ViewModelLocator.IdOrganizer);
+                    PastCompetitions = _competitionsService.GetPastCompetitions(ViewModelLocator.IdOrganizer);
+                    OngoingCompetitions = _competitionsService.GetOngoingCompetitions(ViewModelLocator.IdOrganizer);
+                }
+                else
+                {
+
+                    AllCompetitions = _competitionsService.GetAllCompetitions();
+                    OngoingCompetitionsCopy = _competitionsService.GetOngoingCompetitions();
+                    PastCompetitionsCopy = _competitionsService.GetPastCompetitions();
+                    PastCompetitions = _competitionsService.GetPastCompetitions();
+                    OngoingCompetitions = _competitionsService.GetOngoingCompetitions();
+
+                }
             }
         }
 
@@ -54,15 +133,19 @@ namespace TrackSpace.ViewModel
         }
 
         public ICommand ShowCompetitionCommand { get; set; }
-        
+
+        private bool myCompetitions = false;
 
         public CompetitionsViewModel(bool myCompetitions=false)
         {
+            this.myCompetitions = myCompetitions;
             if (myCompetitions == true)
             {
                 AllCompetitions = _competitionsService.GetAllCompetitionsByIdOrganizer(ViewModelLocator.IdOrganizer);
                 PastCompetitions = _competitionsService.GetPastCompetitions(ViewModelLocator.IdOrganizer);
                 OngoingCompetitions = _competitionsService.GetOngoingCompetitions(ViewModelLocator.IdOrganizer);
+                OngoingCompetitionsCopy = _competitionsService.GetOngoingCompetitions(ViewModelLocator.IdOrganizer);
+                PastCompetitionsCopy = _competitionsService.GetPastCompetitions(ViewModelLocator.IdOrganizer);
             }
             else
             {
@@ -70,10 +153,13 @@ namespace TrackSpace.ViewModel
                 AllCompetitions = _competitionsService.GetAllCompetitions();
                 PastCompetitions = _competitionsService.GetPastCompetitions();
                 OngoingCompetitions = _competitionsService.GetOngoingCompetitions();
+                OngoingCompetitionsCopy = _competitionsService.GetOngoingCompetitions();
+                PastCompetitionsCopy = _competitionsService.GetPastCompetitions();
 
             }
 
             ShowCompetitionCommand = new RelayCommand(ShowCompetition,CanShowWindow);
+            ToggleComboBoxCommand = new RelayCommand(ToggleComboBox,CanShowWindow);
 
             AutoSuggestBox1Suggestions = new ObservableCollection<KeyValuePair<string, string>>();
         }

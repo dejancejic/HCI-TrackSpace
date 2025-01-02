@@ -71,7 +71,7 @@ namespace TrackSpace.ViewModel
                 OnPropertyChanged(nameof(Event));
             } 
         }
-        private CompetitorEventServices _competitorEventServices = ServicesLocator.CompetitorEventService;
+       
         public ICommand GoBackCommand { get; set; }
         public ICommand AddGroupCommand { get; set; }
         public ICommand AddCompetitorToGroupCommand { get; set; }
@@ -94,7 +94,7 @@ namespace TrackSpace.ViewModel
         private int idGroupSelected = 0;
         public void UpdateCompetitorEvents(int idGroup)
         {
-            var even= _competitorEventServices.GetCompetitorEventsByIdGroup(idGroup,_runningEvent.IdEvent);
+            var even= new CompetitorEventServices().GetCompetitorEventsByIdGroup(idGroup,_runningEvent.IdEvent);
 
             idGroupSelected = idGroup;
             CompetitorEvents = even;
@@ -102,7 +102,7 @@ namespace TrackSpace.ViewModel
         
         private void AddCompetitorToGroup(object obj)
         {
-            CompetitorsWithoutGroup=ServicesLocator.EventsService.GetCompetitorEventsWithoutGroupByIdEvent(Event.IdEvent);
+            CompetitorsWithoutGroup=new EventsService().GetCompetitorEventsWithoutGroupByIdEvent(Event.IdEvent);
 
             DialogHost.IsOpen = true;
         }
@@ -111,6 +111,8 @@ namespace TrackSpace.ViewModel
         {
             var idCompetitor = 0;
             int i = 0;
+            if (SelectedCompetitorEvent == null)
+                return;
             foreach (var item in CompetitorEvents)
             {
                 if (item.IdCompetitorNavigation.IdCompetitor == SelectedCompetitorEvent.IdCompetitor)
@@ -120,9 +122,11 @@ namespace TrackSpace.ViewModel
                 }
                 i++;
             }
-            ServicesLocator.CompetitorsService.RemoveCompetitorFromGroup(idCompetitor);
+           
+            new CompetitorsService().RemoveCompetitorFromGroup(idCompetitor);
             UpdateCompetitorEvents(idGroupSelected);
-            new CustomMessageBox(false, true, "Removal successful", "Successfully removed competitor from group!").Show();
+            SelectedCompetitorEvent = null;
+            new CustomMessageBox(false, true, (string)Application.Current.Resources["removalSuccessful"], (string)Application.Current.Resources["successfullyRemoved"]).Show();
 
         }
 
@@ -134,14 +138,14 @@ namespace TrackSpace.ViewModel
             foreach(var item in SelectedCompetitors)
             {
                 CompetitorEvents.Add(item);
-                ServicesLocator.CompetitorsService.AddCompetitorToGroup(item.IdCompetitor,idGroupSelected);
+                new CompetitorsService().AddCompetitorToGroup(item.IdCompetitor,idGroupSelected);
             }
             OnPropertyChanged(nameof(CompetitorEvents));
 
             await Task.Delay(500);
 
             if (SelectedCompetitors.Count != 0)
-                new CustomMessageBox(false, true, "Adding successful", "Successfully added competitors to group!").Show();
+                new CustomMessageBox(false, true, (string)Application.Current.Resources["addingSuccessful"], (string)Application.Current.Resources["successfullyAdded"]).Show();
             SelectedCompetitors = new ObservableCollection<CompetitorEvent>();
            
             
@@ -149,13 +153,13 @@ namespace TrackSpace.ViewModel
 
         private void AddGroup(object obj)
         {
-            new CustomMessageBox(true,true,"Add group","Are you sure you want to add a new group?", (a) => {
+            new CustomMessageBox(true,true, (string)Application.Current.Resources["addGroup"], (string)Application.Current.Resources["sureToAddGroup"], (a) => {
 
                 Group g = new Group() {
                 IdEvent=Event.IdEvent,
                 Number=Groups.Count+1
                 };
-                g=ServicesLocator.EventsService.AddGroup(g);
+                g=new EventsService().AddGroup(g);
                 Groups.Add(g);
                 OnPropertyChanged(nameof(Groups));
             }, (a) => {}).Show();

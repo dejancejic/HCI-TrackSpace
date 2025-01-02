@@ -61,19 +61,22 @@ namespace TrackSpace.ViewModel
         public ObservableCollection<string> Fonts { get; set; }
         public ObservableCollection<string> Languages { get; set; }
 
-        private UserService _userService = ServicesLocator.UserService;
+        private UserService _userService = new UserService();
 
         public void UpdateViewModel()
         {
 
             int indexFont = 0;
             int indexTheme = 0;
+            int indexLanguage = 0;
+            _userService=new UserService();
 
 
             if (User != null)
             {
                 indexFont = User.FontID;
                 indexTheme = User.ThemeID;
+                indexLanguage = User.LanguageId;
             }
             if (indexTheme == 0)
                 IsGreenTheme = true;
@@ -82,6 +85,7 @@ namespace TrackSpace.ViewModel
             else IsRedTheme = true;
 
             SelectedFont = Fonts[indexFont];
+            SelectedLanguage= Languages[indexLanguage];
 
         }
        
@@ -245,15 +249,21 @@ namespace TrackSpace.ViewModel
         private void UpdateLanguage(string language)
         {
             string tag = "";
+            int index = 0;
             switch (language)
             {
             case "English":
                     tag = "en";
+                    index = 0;
                     break;
             case "Srpski":
                     tag = "sr";
+                    index = 1;
                     break;
             }
+            if (User != null)
+                _userService.UpdateUserLanguage(User.IdUser, index);
+
             LoginViewModel.SetLanguage(tag);
         
         }

@@ -29,7 +29,7 @@ namespace TrackSpace.Forms.Windows
         public LoginWindow()
         {
             InitializeComponent();
-            UserService service = ServicesLocator.UserService;
+            UserService service = new UserService();
             loginViewModel =ViewModelLocator.LoginViewModel;
             
             

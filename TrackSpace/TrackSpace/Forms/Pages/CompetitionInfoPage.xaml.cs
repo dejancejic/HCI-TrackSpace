@@ -32,6 +32,11 @@ namespace TrackSpace.Forms.Pages
                 enterCompetitionBtn.Visibility = Visibility.Visible;
             }
 
+            if(ViewModelLocator.AccountType.Equals("organizer") && ViewModelLocator.IdOrganizer==competition.IdUser)
+            {
+                deleteBtn.Visibility=Visibility.Visible;
+            }
+
         }
 
         private void Hyperlink_Click(object sender, RoutedEventArgs e)

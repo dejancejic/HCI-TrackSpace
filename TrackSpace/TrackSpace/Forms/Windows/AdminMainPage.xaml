@@ -1,0 +1,32 @@
+﻿<Window x:Class="TrackSpace.Forms.Windows.AdminMainPage"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:TrackSpace.Forms.Windows"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns:pages="clr-namespace:TrackSpace.Forms.Pages"
+        xmlns:forms="clr-namespace:TrackSpace.Forms.SideMenus"
+        mc:Ignorable="d"
+        Title="ClubAdminMainPage" Height="650" Width="1000"
+        WindowStartupLocation="CenterScreen"
+        WindowStyle="None"
+        Background="Transparent"
+    AllowsTransparency="True"
+    ResizeMode="NoResize"
+    FontSize="18"
+    FontFamily="{DynamicResource AppFont}">
+
+    <Grid>
+
+        <local:BasePage MouseDown="MouseDownHandler" x:Name="basePage">
+            <local:BasePage.SideMenuContent>
+                <forms:SideMenuAdmin></forms:SideMenuAdmin>
+            </local:BasePage.SideMenuContent>
+
+            <local:BasePage.MainContent >
+                <pages:AddUserPage></pages:AddUserPage>
+            </local:BasePage.MainContent>
+        </local:BasePage>
+    </Grid>
+</Window>

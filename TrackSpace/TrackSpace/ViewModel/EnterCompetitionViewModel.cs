@@ -13,6 +13,7 @@ using TrackSpace.Command;
 using TrackSpace.Forms.CustomMessageBox;
 using TrackSpace.Models;
 using TrackSpace.Models.EntryModel;
+using TrackSpace.Services;
 using TrackSpace.Services.Shared;
 using TrackSpace.Utils;
 using TrackSpace.ViewModel.Shared;
@@ -107,15 +108,15 @@ namespace TrackSpace.ViewModel
                 {
 
                     CompetitorEvent? ce =
-                        ServicesLocator.CompetitorEventService.GetCompetitorEventByIdEventAndIdCompetitor(idEvent, entryModel.Competitor.IdCompetitor);
+                        new CompetitorEventServices().GetCompetitorEventByIdEventAndIdCompetitor(idEvent, entryModel.Competitor.IdCompetitor);
 
                     if (ce == null && entryModel.IsChecked == true)
                     {
-                        ServicesLocator.CompetitorEventService.AddCompetitorEvent(idEvent, entryModel.Competitor.IdCompetitor,Competition.IdCompetition);
+                        new CompetitorEventServices().AddCompetitorEvent(idEvent, entryModel.Competitor.IdCompetitor,Competition.IdCompetition);
                     }
                     else if (ce != null && entryModel.IsChecked == false)
                     {
-                        ServicesLocator.CompetitorEventService.DeleteCompetitorEvent(idEvent, entryModel.Competitor.IdCompetitor,Competition.IdCompetition);
+                        new CompetitorEventServices().DeleteCompetitorEvent(idEvent, entryModel.Competitor.IdCompetitor,Competition.IdCompetition);
                     }
 
                 }
@@ -158,7 +159,7 @@ namespace TrackSpace.ViewModel
 
                 foreach (var comp in Competitors)
                 {
-                    CompetitorEvent? ce = ServicesLocator.CompetitorEventService.GetCompetitorEventByIdEventAndIdCompetitor(ev.IdEvent,comp.IdCompetitor);
+                    CompetitorEvent? ce = new CompetitorEventServices().GetCompetitorEventByIdEventAndIdCompetitor(ev.IdEvent,comp.IdCompetitor);
                     EntryModel model;
                     if (ce != null)
                     {

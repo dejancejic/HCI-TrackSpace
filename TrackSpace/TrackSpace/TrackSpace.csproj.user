@@ -13,10 +13,16 @@
     <Compile Update="Forms\CustomMessageBox\InputMessageBox.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="Forms\Pages\AddClubPage.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="Forms\Pages\AddCompetitionPage.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="Forms\Pages\AddEventsPage.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Forms\Pages\AddUserPage.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="Forms\Pages\ClubInfoPage.xaml.cs">
@@ -46,6 +52,9 @@
     <Compile Update="Forms\Pages\SettingsPage.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="Forms\SideMenus\SideMenuAdmin.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="Forms\SideMenus\SideMenuClubAdmin.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -59,6 +68,9 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="Forms\UserControls\CompetitorDetailsDialog.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Forms\Windows\AdminMainPage.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="Forms\Windows\BasePage.xaml.cs">
@@ -84,10 +96,16 @@
     <Page Update="Forms\CustomMessageBox\InputMessageBox.xaml">
       <SubType>Designer</SubType>
     </Page>
+    <Page Update="Forms\Pages\AddClubPage.xaml">
+      <SubType>Designer</SubType>
+    </Page>
     <Page Update="Forms\Pages\AddCompetitionPage.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Forms\Pages\AddEventsPage.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Forms\Pages\AddUserPage.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Forms\Pages\ClubInfoPage.xaml">
@@ -117,6 +135,9 @@
     <Page Update="Forms\Pages\SettingsPage.xaml">
       <SubType>Designer</SubType>
     </Page>
+    <Page Update="Forms\SideMenus\SideMenuAdmin.xaml">
+      <SubType>Designer</SubType>
+    </Page>
     <Page Update="Forms\SideMenus\SideMenuClubAdmin.xaml">
       <SubType>Designer</SubType>
     </Page>
@@ -130,6 +151,9 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Forms\UserControls\CompetitorDetailsDialog.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Forms\Windows\AdminMainPage.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Forms\Windows\BasePage.xaml">

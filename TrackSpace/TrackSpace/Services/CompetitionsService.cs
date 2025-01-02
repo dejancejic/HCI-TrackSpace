@@ -9,6 +9,7 @@ using System.Windows;
 using TrackSpace.DBUtil;
 using TrackSpace.Models;
 using TrackSpace.Services.Shared;
+using ZstdSharp.Unsafe;
 
 namespace TrackSpace.Services
 {
@@ -16,9 +17,9 @@ namespace TrackSpace.Services
     {
      
         private ObservableCollection<Competition> _competitions;
-        private LocationServices _locationService = ServicesLocator.LocationService;
-        private UserService _userServices = ServicesLocator.UserService;
-        private EventsService _eventsService = ServicesLocator.EventsService;
+        private LocationServices _locationService = new LocationServices();
+        private UserService _userServices = new UserService();
+        private EventsService _eventsService = new EventsService();
         private ObservableCollection<CompetitorEntry> _entries;
 
         public CompetitionsService() {
@@ -109,6 +110,94 @@ namespace TrackSpace.Services
             _context.SaveChanges();
             _competitions.Add(comp);
             return comp;
+        }
+
+
+        public void DeleteCompetition(Competition comp)
+        {
+            var itemsToRemove = _context.CompetitorEntries.Where((ce)=>ce.IdCompetition==comp.IdCompetition).ToList();
+            //deleting competitor entries:
+            
+
+            foreach(var item in itemsToRemove)
+            {
+                _context.CompetitorEntries.Remove(item);
+                _context.SaveChanges();
+            }
+
+
+            //deleting competitor events:
+            var itemsToRemove1 = new List<CompetitorEvent>();
+            foreach(var item in itemsToRemove)
+            {
+                var ce = _context.CompetitorEvents.FirstOrDefault((c)=>c.IdCompetitor==item.IdCompetitor && c.IdEvent==item.IdEvent);
+                if(ce!=null)
+                itemsToRemove1.Add(ce);
+            }
+            foreach (var item in itemsToRemove1)
+            {
+                _context.CompetitorEvents.Remove(item);
+                _context.SaveChanges();
+            }
+
+
+            //deleting groups
+            var itemsToRemove3 = new List<Group>();
+
+            foreach (var item in itemsToRemove)
+            {
+                var g = _context.Groups.FirstOrDefault((g) => g.IdEvent == item.IdEvent);
+                if(g!=null)
+                itemsToRemove3.Add(g);
+            }
+            foreach (var item in itemsToRemove3)
+            {
+                //removing group from competitors
+                var competitorsWithGroup = _context.Competitors.Where((c) => c.IdGroup != null && c.IdGroup ==item.IdGroup).ToList();
+                foreach(var competitor in competitorsWithGroup)
+                {
+                    _context.Competitors.Remove(competitor);
+                    _context.SaveChanges();
+                }
+                //deleting groups
+                _context.Groups.Remove(item);
+                _context.SaveChanges();
+            }
+
+            //deleting events
+            var events = _context.Events.Where((e)=>e.IdCompetition==comp.IdCompetition).ToList();
+
+            foreach (var ev in events)
+            {
+                var running = _context.RunningEvents.FirstOrDefault((e) => e.IdEvent == ev.IdEvent);
+                if (running != null)
+                {
+                    _context.RunningEvents.Remove(running);
+                    _context.SaveChanges();
+                }
+                var throwing= _context.ThrowingEvents.FirstOrDefault((e)=>e.IdEvent == ev.IdEvent);
+                if (throwing != null)
+                {
+                    _context.ThrowingEvents.Remove(throwing);
+                    _context.SaveChanges();
+                }
+                var jumping= _context.JumpingEvents.FirstOrDefault((e)=>e.IdEvent==ev.IdEvent);
+                if (jumping != null)
+                {
+                    _context.JumpingEvents.Remove(jumping);
+                    _context.SaveChanges();
+                }
+                _context.Events.Remove(ev);
+                _context.SaveChanges();
+            }
+
+            _context = DBConnection.GetContext();
+            comp.IdUserNavigation = null;
+
+            //deleting competition
+            _context.Competitions.Remove(comp);
+            _context.SaveChanges();
+            _competitions.Remove(comp);
         }
 
 

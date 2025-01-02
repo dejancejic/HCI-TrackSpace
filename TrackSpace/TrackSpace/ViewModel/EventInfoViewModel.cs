@@ -29,7 +29,7 @@ namespace TrackSpace.ViewModel
             } }
 
         private ObservableCollection<CompetitorEvent> _events;
-        private CompetitorsService _competitorsService=ServicesLocator.CompetitorsService;
+        private CompetitorsService _competitorsService=new CompetitorsService();
 
         private CompetitorEvent _result;
 
@@ -62,7 +62,7 @@ namespace TrackSpace.ViewModel
 
         public void ShowGroupsPageNavigation(object obj)
         {
-            if(ViewModelLocator.AccountType.Equals("organizer") || SelectedEvent.RunningEvent.GroupNumber != 0)
+            if((ViewModelLocator.AccountType.Equals("organizer") && ViewModelLocator.IdOrganizer==SelectedEvent.IdCompetitionNavigation.IdUser)|| SelectedEvent.RunningEvent.GroupNumber != 0)
             {
                 PageUtils.NavigatePages(new GroupsPage(SelectedEvent.RunningEvent));
             }
@@ -82,10 +82,11 @@ namespace TrackSpace.ViewModel
 
         private void UpdateResult(object obj)
         {
-            ServicesLocator.CompetitorEventService.UpdateResult(Result);
-            new CustomMessageBox(false,true,"Update successful","Successfully updated competitor's result!").Show();
-            
-            foreach(var item in Events)
+            new CompetitorEventServices().UpdateResult(Result);
+            new CustomMessageBox(false,true, (string)Application.Current.Resources["updateSuccessful"], (string)Application.Current.Resources["updatedResult"]).Show();
+
+
+            foreach (var item in Events)
             {
                 if(item.IdEvent==Result.IdEvent && item.IdCompetitor==Result.IdCompetitor)
                 {
@@ -98,7 +99,7 @@ namespace TrackSpace.ViewModel
 
         private void ChangeResult(int idCompetitor)
         {
-           CompetitorEvent? ce= ServicesLocator.CompetitorEventService.GetCompetitorEventByIdEventAndIdCompetitor(SelectedEvent.IdEvent,idCompetitor);
+           CompetitorEvent? ce= new CompetitorEventServices().GetCompetitorEventByIdEventAndIdCompetitor(SelectedEvent.IdEvent,idCompetitor);
 
             if (ce != null)
             {

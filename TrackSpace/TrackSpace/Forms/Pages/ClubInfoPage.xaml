@@ -296,7 +296,7 @@ FontWeight="Bold"  Foreground="Black"  />
 
             <StackPanel Orientation="Horizontal">
                 <Label HorizontalAlignment="Left" Content="{DynamicResource contact}" Width="170"
-FontWeight="Bold" FontSize="20" Foreground="Black"  />
+FontWeight="Bold"  Foreground="Black"  />
                 <Label HorizontalAlignment="Left" Content="{Binding Club.Contact}"  Foreground="Black"  />
 
             </StackPanel>

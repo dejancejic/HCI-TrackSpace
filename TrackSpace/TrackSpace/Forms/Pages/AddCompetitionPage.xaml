@@ -23,8 +23,8 @@ FontWeight="Bold" FontSize="40" Foreground="Black" />
         <StackPanel Margin="25 70 0 0">
             <TextBox Width="450" HorizontalAlignment="Left" Text="{Binding CompetitionName}"
   x:Name="NameTextBox"
-  materialDesign:HintAssist.HelperText="Enter Competition's name"
-  materialDesign:HintAssist.Hint="Name">
+  materialDesign:HintAssist.HelperText="{DynamicResource enterCompName}"
+  materialDesign:HintAssist.Hint="{DynamicResource name}">
             
         </TextBox>
 
@@ -33,8 +33,8 @@ FontWeight="Bold" FontSize="40" Foreground="Black" />
   Height="55"
   HorizontalAlignment="Left"
   Width="702"
-  materialDesign:HintAssist.Hint="Description"
-  materialDesign:HintAssist.HelperText="Enter Competition's description"
+  materialDesign:HintAssist.Hint="{DynamicResource description}"
+  materialDesign:HintAssist.HelperText="{DynamicResource enterDescription}"
   AcceptsReturn="True"
   SpellCheck.IsEnabled="False"
   
@@ -44,7 +44,7 @@ FontWeight="Bold" FontSize="40" Foreground="Black" />
                
 
             <StackPanel Orientation="Horizontal">
-                <Label Content="Select Date:" Margin="0 20 400 0"></Label>
+                <Label Content="{DynamicResource selectDate}" Margin="0 20 400 0"></Label>
             </StackPanel>
             
             <StackPanel Orientation="Horizontal">
@@ -57,13 +57,13 @@ materialDesign:CalendarAssist.Orientation="Horizontal" SelectedDate="{Binding Se
                     <materialDesign:TimePicker SelectedTime="{Binding SelectedDate}"
    Height="50px"
                     Width="230" Margin="0 8 0 0"
-  materialDesign:HintAssist.HelperText="Choose time of competition"
-  materialDesign:HintAssist.Hint="Pick Time"
+  materialDesign:HintAssist.HelperText="{DynamicResource chooseTime}"
+  materialDesign:HintAssist.Hint="{DynamicResource pickTime}"
   Is24Hours="True"
   Style="{StaticResource MaterialDesignOutlinedTimePicker}" />
                    
                     <ComboBox FontSize="16" Margin="0 70 0 0"
-materialDesign:HintAssist.Hint="Select Location" 
+materialDesign:HintAssist.Hint="{DynamicResource pickLocation}" 
                 IsEnabled="{Binding IsChecked, ElementName=FilledComboBoxEnabledCheckBox}"
 Style="{StaticResource MaterialDesignFilledComboBox}"
                  ItemsSource="{Binding Locations}"
@@ -75,7 +75,7 @@ SelectedIndex="0" Width="230" Height="57" />
             </StackPanel>
 
 
-            <Button Width="150" Content="Add Events" Background="{DynamicResource Primary}" Foreground="White"
+            <Button Width="150" Content="{DynamicResource addEvents}" Background="{DynamicResource Primary}" Foreground="White"
             Style="{StaticResource MaterialDesignRaisedDarkButton}"
 Command="{Binding AddEventsCommand}" 
 HorizontalAlignment="Right" 

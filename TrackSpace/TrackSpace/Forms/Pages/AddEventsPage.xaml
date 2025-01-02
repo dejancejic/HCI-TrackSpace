@@ -8,44 +8,60 @@
            xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
 FontFamily="{DynamicResource AppFont}" FontSize="18"
 d:DesignHeight="650" d:DesignWidth="800">
-   
+
     <Grid Background="White" Loaded="LoadEvents">
 
-        <Button Width="150" Content="Add Competition" Background="{DynamicResource Primary}" Foreground="White"
+        <Button Width="170" Content="{DynamicResource addNewCompetition}" Background="{DynamicResource Primary}" Foreground="White"
             Style="{StaticResource MaterialDesignRaisedDarkButton}"
 Command="{Binding AddCompetitionCommand}" 
 HorizontalAlignment="Center" VerticalAlignment="Top" 
 Margin="0,538,0,0" Height="36" />
 
-        <Label HorizontalAlignment="Left" Margin="18,10,0,517" Content="Add Events"
+        <Label HorizontalAlignment="Left" Margin="18,10,0,517" Content="{DynamicResource addEvents}"
 FontWeight="Bold" FontSize="40" Foreground="Black" />
         <Button x:Name="closeBtn" Background="Transparent" BorderBrush="Transparent" Padding="5 0 0 0" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0 13 14 0" Command="{Binding CloseCommand}">
             <materialDesign:PackIcon Kind="Close" Width="25" Height="25" Opacity="0.5"/>
         </Button>
-
-        <Label HorizontalAlignment="Left" Margin="44,79,0,451" Content="Running events:"
-FontWeight="Bold" FontSize="20" Foreground="Black" />
-        <ScrollViewer Margin="23,115,511,92" VerticalScrollBarVisibility="Auto">
-            <StackPanel x:Name="running" Orientation="Vertical">
+        <ScrollViewer Margin="16,141,423,100"  VerticalScrollBarVisibility="Auto">
+            <StackPanel x:Name="running" Margin="0 0 10 0" Orientation="Vertical">
 
             </StackPanel>
         </ScrollViewer>
-        <Label HorizontalAlignment="Left" Margin="286,79,0,464" Content="Jumping events:"
-FontWeight="Bold" FontSize="20" Foreground="Black" />
-
-        <Label HorizontalAlignment="Left" Margin="537,79,0,462" Content="Throwing events:"
-FontWeight="Bold" FontSize="20" Foreground="Black" />
-        <ScrollViewer Margin="268,115,246,92" VerticalScrollBarVisibility="Auto">
-            <StackPanel x:Name="jumping"  Orientation="Vertical">
-
-            </StackPanel>
-        </ScrollViewer>
-        <ScrollViewer Margin="522,115,11,92" VerticalScrollBarVisibility="Auto">
-            <StackPanel x:Name="throwing" Orientation="Vertical">
+        <ScrollViewer Margin="16,141,423,100"  VerticalScrollBarVisibility="Hidden">
+            <StackPanel x:Name="jumping" Margin="0 0 10 0"  Orientation="Vertical">
 
             </StackPanel>
         </ScrollViewer>
 
+        <ScrollViewer Margin="16,141,423,100"  VerticalScrollBarVisibility="Hidden">
+            <StackPanel x:Name="throwing" Margin="0 0 10 0" Orientation="Vertical">
+
+                </StackPanel>
+            </ScrollViewer>
+        
+
+        <Border  BorderBrush="{DynamicResource Primary}" Margin="16,141,418,100"  BorderThickness="1" CornerRadius="10">
+        </Border>
+
+        <Border  BorderBrush="{DynamicResource Primary}" Margin="414,141,20,100"  BorderThickness="1" CornerRadius="10">
+        </Border>
+
+
+        <ScrollViewer Margin="412,141,27,100"  VerticalScrollBarVisibility="Auto">
+            <StackPanel x:Name="selected" Margin="0 0 10 0" Orientation="Vertical">
+
+            </StackPanel>
+        </ScrollViewer>
+
+        <Label FontWeight="Bold" HorizontalAlignment="Right" Margin="0,100,206,0" Content="{DynamicResource selectedEvents}" Height="92" VerticalAlignment="Top"></Label>
+
+        <ComboBox FontSize="16" Margin="23,72,458,461"
+materialDesign:HintAssist.Hint="{DynamicResource events}"
+IsEnabled="{Binding IsChecked, ElementName=FilledComboBoxEnabledCheckBox}"
+Style="{StaticResource MaterialDesignFilledComboBox}"
+                 ItemsSource="{Binding Types}"
+                SelectedItem="{Binding SelectedType, Mode=TwoWay}" 
+SelectedIndex="0"/>
 
 
         <Button x:Name="goBackBtn" Command="{Binding GoBackCommand}"

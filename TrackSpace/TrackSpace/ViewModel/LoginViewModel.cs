@@ -68,8 +68,8 @@ namespace TrackSpace.ViewModel
             SwitchLanguageCommand = new RelayCommand(SwitchLanguage, CanShowWindow);
             try
             {
-                _userService = ServicesLocator.UserService;
-                _clubAdminService = ServicesLocator.ClubAdminService;
+                _userService = new UserService();
+                _clubAdminService = new ClubAdminService();
             }
             catch (Exception ex)
             {
@@ -82,7 +82,7 @@ namespace TrackSpace.ViewModel
 
             private void LoginUser(object obj)
         {
-            
+            _userService = new UserService();
                 User = _userService.GetUserByUsernameAndPassword(Username, Password);
                
                 if (User == null)
@@ -119,9 +119,9 @@ namespace TrackSpace.ViewModel
 
                     ViewModelLocator.IdAdmin = admin!.IdUser;
 
-                    Club? adminsClub = ServicesLocator.ClubsService.GetClubByIdAdmin(admin.IdUser);
+                    Club? adminsClub = new ClubsService().GetClubByIdAdmin(admin.IdUser);
                     ViewModelLocator.MyClubInfoPage=new Forms.Pages.ClubInfoPage(adminsClub!);
-                    ViewModelLocator.EnterCompetitionViewModel.Competitors = ServicesLocator.ClubsService.GetClubCompetitors(adminsClub!.IdClub);
+                    ViewModelLocator.EnterCompetitionViewModel.Competitors = new ClubsService().GetClubCompetitors(adminsClub!.IdClub);
                     ViewModelLocator.ClubAdminMainPage= clubAdminPage;
                     clubAdminPage.Closed += (a, b) => Application.Current.MainWindow.Show();
                     clubAdminPage.Show();
@@ -130,7 +130,7 @@ namespace TrackSpace.ViewModel
                 else if (User.Type.Equals("organizer"))
                 {
                     ViewModelLocator.AccountType = User.Type;
-                    CompetitionOrganizer? organizer = ServicesLocator.OrganizerService.GetOrganizerById(User.IdUser);
+                    CompetitionOrganizer? organizer = new OrganizerService().GetOrganizerById(User.IdUser);
                     organizer.IdUserNavigation = User;
                     ViewModelLocator.IdOrganizer = organizer!.IdUser;
                     ViewModelLocator.ObserverViewModel.User = User;
@@ -139,6 +139,19 @@ namespace TrackSpace.ViewModel
                     ViewModelLocator.OrganizerMainPage = organizerPage;
                     organizerPage.Closed += (a, b) => Application.Current.MainWindow.Show();
                     organizerPage.Show();
+                    Application.Current.MainWindow.Hide();
+                }
+                else if (User.Type.Equals("admin"))
+                {
+                    ViewModelLocator.AccountType = User.Type;
+                    
+                    ViewModelLocator.IdSystemAdmin = User.IdUser;
+                    ViewModelLocator.ObserverViewModel.User = User;
+                    ViewModelLocator.ObserverViewModel.UpdateViewModel();
+                    AdminMainPage adminPage = new AdminMainPage(User);
+                    ViewModelLocator.AdminMainPage = adminPage;
+                    adminPage.Closed += (a, b) => Application.Current.MainWindow.Show();
+                    adminPage.Show();
                     Application.Current.MainWindow.Hide();
                 }
             }

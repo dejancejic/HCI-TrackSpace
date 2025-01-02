@@ -10,11 +10,11 @@ none
 false
 TRACE;DEBUG;NET;NET8_0;NETCOREAPP
 C:\Users\Dejan\Documents\Interakcija covjek racunar\HCI Projektni zadatak 1\TrackSpace\TrackSpace\App.xaml
-2840323003
+32-1013203537
 
-801805842158
+852049930140
 2261466566574
-Forms\CustomMessageBox\CustomMessageBox.xaml;Forms\CustomMessageBox\InputMessageBox.xaml;Forms\Pages\AddCompetitionPage.xaml;Forms\Pages\AddEventsPage.xaml;Forms\Pages\ClubInfoPage.xaml;Forms\Pages\ClubsPage.xaml;Forms\Pages\CompetitionInfoPage.xaml;Forms\Pages\CompetitionsPage.xaml;Forms\Pages\EnterCompetitionPage.xaml;Forms\Pages\EventInfoPage.xaml;Forms\Pages\GroupsPage.xaml;Forms\Pages\LoginPage.xaml;Forms\Pages\SettingsPage.xaml;Forms\SideMenus\SideMenuClubAdmin.xaml;Forms\SideMenus\SideMenuObserver.xaml;Forms\SideMenus\SideMenuOrganizer.xaml;Forms\UserControls\CompetitionDataGridControl.xaml;Forms\UserControls\CompetitorDetailsDialog.xaml;Forms\Windows\BasePage.xaml;Forms\Windows\ClubAdminMainPage.xaml;Forms\Windows\LoginWindow.xaml;Forms\Windows\ObserverMainPage.xaml;Forms\Windows\OrganizerMainPage.xaml;Resources\Dictionary-en.xaml;Resources\Dictionary-sr.xaml;Themes\BlueTheme.xaml;Themes\GreenTheme.xaml;Themes\RedTheme.xaml;
+Forms\CustomMessageBox\CustomMessageBox.xaml;Forms\CustomMessageBox\InputMessageBox.xaml;Forms\Pages\AddClubPage.xaml;Forms\Pages\AddCompetitionPage.xaml;Forms\Pages\AddEventsPage.xaml;Forms\Pages\AddUserPage.xaml;Forms\Pages\ClubInfoPage.xaml;Forms\Pages\ClubsPage.xaml;Forms\Pages\CompetitionInfoPage.xaml;Forms\Pages\CompetitionsPage.xaml;Forms\Pages\EnterCompetitionPage.xaml;Forms\Pages\EventInfoPage.xaml;Forms\Pages\GroupsPage.xaml;Forms\Pages\LoginPage.xaml;Forms\Pages\SettingsPage.xaml;Forms\SideMenus\SideMenuAdmin.xaml;Forms\SideMenus\SideMenuClubAdmin.xaml;Forms\SideMenus\SideMenuObserver.xaml;Forms\SideMenus\SideMenuOrganizer.xaml;Forms\UserControls\CompetitionDataGridControl.xaml;Forms\UserControls\CompetitorDetailsDialog.xaml;Forms\Windows\AdminMainPage.xaml;Forms\Windows\BasePage.xaml;Forms\Windows\ClubAdminMainPage.xaml;Forms\Windows\LoginWindow.xaml;Forms\Windows\ObserverMainPage.xaml;Forms\Windows\OrganizerMainPage.xaml;Resources\Dictionary-en.xaml;Resources\Dictionary-sr.xaml;Themes\BlueTheme.xaml;Themes\GreenTheme.xaml;Themes\RedTheme.xaml;
 
 True
 

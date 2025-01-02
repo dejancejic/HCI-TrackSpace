@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore.Migrations.Operations;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
@@ -10,6 +11,7 @@ using TrackSpace.Command;
 using TrackSpace.Forms.CustomMessageBox;
 using TrackSpace.Forms.Pages;
 using TrackSpace.Models;
+using TrackSpace.Services;
 using TrackSpace.Services.Shared;
 using TrackSpace.Utils;
 using TrackSpace.ViewModel.Shared;
@@ -28,12 +30,13 @@ namespace TrackSpace.ViewModel
         public ICommand GoBackCommand { get; set; }
 
         public ICommand EnterCompetitionCommand { get; set; }
+        public ICommand DeleteCompetitionCommand { get; set; }
         public CompetitionInfoViewModel()
         {
 
             GoBackCommand = new RelayCommand(GoBack, CanShowWindow);
             EnterCompetitionCommand = new RelayCommand(EnterCompetition, CanShowWindow);
-
+            DeleteCompetitionCommand = new RelayCommand(DeleteCompetition, CanShowWindow);
         }
         public void GoBack(object obj)
         {
@@ -71,6 +74,18 @@ namespace TrackSpace.ViewModel
             }
         }
 
+        private void DeleteCompetition(object obj)
+        {
+            new CustomMessageBox(true, true, (string)Application.Current.Resources["deleteConfirm"], (string)Application.Current.Resources["sureToDeleteCompetition"], (a) => {
+                
+                new CompetitionsService().DeleteCompetition(Competition);
+                PageUtils.NavigatePages(new CompetitionsPage());
+                new CustomMessageBox(false, true, (string)Application.Current.Resources["deleteSuccessful"], (string)Application.Current.Resources["successfullyDeletedCompetition"]).Show();
+            }, 
+                (a) => { }).Show();
+            
+           
+        }
 
 
         public event PropertyChangedEventHandler? PropertyChanged;

@@ -17,9 +17,7 @@ using TrackSpace.ViewModel.Shared;
 
 namespace TrackSpace.Forms.Pages
 {
-    /// <summary>
-    /// Interaction logic for LoginPage.xaml
-    /// </summary>
+    
     public partial class LoginPage : Page
     {
 
@@ -30,7 +28,7 @@ namespace TrackSpace.Forms.Pages
 
             loginViewModel = ViewModelLocator.LoginViewModel;
             loginViewModel.Password = "Password";
-            loginViewModel.Username = "Username";
+            loginViewModel.Username = "ClubAdmin";
         }
 
 

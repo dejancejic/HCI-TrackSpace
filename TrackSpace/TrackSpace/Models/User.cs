@@ -19,6 +19,8 @@ public partial class User
 
     public int FontID { get; set; }
 
+    public int LanguageId { get; set; } 
+
     public virtual ClubAdmin? ClubAdmin { get; set; }
 
     public virtual CompetitionOrganizer? CompetitionOrganizer { get; set; }

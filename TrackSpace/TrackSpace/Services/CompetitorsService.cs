@@ -17,8 +17,8 @@ namespace TrackSpace.Services
 
 
         private ObservableCollection<Competitor> _competitors;
-        private CategoryService _categoryService=ServicesLocator.CategoryService;
-        private ClubsService _clubsService=ServicesLocator.ClubsService;
+        private CategoryService _categoryService=new CategoryService();
+        private ClubsService _clubsService=new ClubsService();
         public CompetitorsService() { 
         
             _competitors=new ObservableCollection<Competitor>(_context.Competitors.ToList());

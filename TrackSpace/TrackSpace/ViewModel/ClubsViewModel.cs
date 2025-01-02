@@ -45,7 +45,7 @@ namespace TrackSpace.ViewModel
             }
         }
 
-        private ClubsService _clubsService = ServicesLocator.ClubsService;
+        private ClubsService _clubsService = new ClubsService();
         public ClubsViewModel() {
 
             Clubs = _clubsService.GetAllClubs();

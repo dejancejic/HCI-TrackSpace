@@ -13,7 +13,7 @@
         AllowsTransparency="True"
         ResizeMode="NoResize"
         FontSize="18"
-        FontFamily="{DynamicResource MaterialDesignFont}">
+        FontFamily="{DynamicResource AppFont}">
     <Grid Margin="20">
         <Grid.Effect>
             <DropShadowEffect BlurRadius="30"
@@ -106,7 +106,7 @@ Style="{StaticResource MaterialDesignOutlinedTimePicker}" />
 Background="{DynamicResource Primary}"
 Foreground="#ffffff"
 FontSize="18"
-Width="100"
+Width="115"
 Height="30"
 materialDesign:ButtonAssist.CornerRadius="10" Click="ConfirmButtonClick"/>
 
@@ -114,7 +114,7 @@ materialDesign:ButtonAssist.CornerRadius="10" Click="ConfirmButtonClick"/>
 Background="{DynamicResource Primary}"
 Foreground="#ffffff"
 FontSize="18"
-Width="100"
+Width="115"
 Height="30"
 materialDesign:ButtonAssist.CornerRadius="10" Click="CancelButtonClick"/>
 

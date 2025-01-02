@@ -29,7 +29,8 @@ namespace TrackSpace.Forms.Pages
             InitializeComponent();
             DataContext = ViewModelLocator.GroupsViewModel;
             ViewModelLocator.GroupsViewModel.Event = runningEvent;
-            if(ViewModelLocator.AccountType.Equals("organizer") && runningEvent.IdEventNavigation.Start < DateTime.Now.AddDays(int.Parse(ConfigurationManager.AppSettings[0])))
+            if(ViewModelLocator.AccountType.Equals("organizer") && ViewModelLocator.IdOrganizer==runningEvent.IdEventNavigation.IdCompetitionNavigation.IdUser &&
+                runningEvent.IdEventNavigation.Start < DateTime.Now.AddDays(int.Parse(ConfigurationManager.AppSettings[0])))
             {
                 addGroupBtn.Visibility = Visibility.Visible;
                 ViewModelLocator.GroupsViewModel.DialogHost= UserDetailsDialogHost;

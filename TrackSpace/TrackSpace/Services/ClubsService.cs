@@ -62,5 +62,26 @@ namespace TrackSpace.Services
         }
 
 
+        public bool CheckClubExists(string code)
+        {
+            return _clubs.FirstOrDefault(c => c.ClubCode.Equals(code)) != null;
+        }
+
+
+        public void AddClub(string name,string code,string phone,int idAdmin)
+        {
+            Club c = new Club()
+            { Name=name,
+            ClubCode=code,
+            Contact=phone,
+            CompetitorNumber=0,
+            IdUser=idAdmin,
+            };
+            _clubs.Add(c);
+            _context.Clubs.Add(c);
+
+            _context.SaveChanges();
+        }
+
     }
 }

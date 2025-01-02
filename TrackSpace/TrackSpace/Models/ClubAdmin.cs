@@ -12,4 +12,11 @@ public partial class ClubAdmin
     public virtual ICollection<CompetitorEntry> CompetitorEntries { get; set; } = new List<CompetitorEntry>();
 
     public virtual User IdUserNavigation { get; set; } = null!;
+
+    public override string ToString() {
+        if(IdUserNavigation != null)
+        return IdUserNavigation.Username;
+
+        return "";
+    }
 }

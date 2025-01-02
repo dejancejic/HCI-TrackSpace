@@ -192,7 +192,7 @@ FontWeight="Bold" FontSize="22" Foreground="Black" />
             <materialDesign:DialogHost.DialogContent >
 
                 <StackPanel Margin="16" HorizontalAlignment="Center" Width="450">
-                    <TextBlock Text="Competitors" 
+                    <TextBlock Text="{DynamicResource competitorsNo(}" 
   
    FontWeight="Bold" 
    Margin="0,0,0,16" 
@@ -248,12 +248,12 @@ SelectionChanged="DataGrid_SelectionChanged" >
                     </Border>
                     <StackPanel Orientation="Horizontal" Margin="0,30,0,0" HorizontalAlignment="Center">
                         
-                        <Button Width="120" Content="Add to group" Background="{DynamicResource Primary}" Foreground="White"
+                        <Button Width="150" Content="{DynamicResource addToGroup}" Background="{DynamicResource Primary}" Foreground="White"
             Style="{StaticResource MaterialDesignRaisedDarkButton}"
 Command="{Binding AddCompetitorCommand}" 
 HorizontalAlignment="Center" 
  />
-                        <Button Width="120" Content="{DynamicResource close}" Background="{DynamicResource Primary}" Foreground="White" Margin="15 0 0 0"
+                        <Button Width="150" Content="{DynamicResource close}" Background="{DynamicResource Primary}" Foreground="White" Margin="15 0 0 0"
             Style="{StaticResource MaterialDesignRaisedDarkButton}"
 Command="{x:Static materialDesign:DialogHost.CloseDialogCommand}" 
 HorizontalAlignment="Center" 

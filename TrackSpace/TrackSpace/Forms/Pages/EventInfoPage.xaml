@@ -168,7 +168,7 @@ FontWeight="Bold"
 VerticalAlignment="Center" />
                         <TextBox Width="150" Margin="10 0 0 0" Text="{Binding Result.Result}"
   x:Name="NameTextBox"
-  materialDesign:HintAssist.HelperText="Update result"
+  materialDesign:HintAssist.HelperText="{DynamicResource updateResult}"
   materialDesign:HintAssist.Hint="{DynamicResource result}">
 
                         </TextBox>
