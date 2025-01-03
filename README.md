@@ -64,10 +64,14 @@ Klikom na naziv takmičenja ili na pretraženo takmičenje prelazi se na stranic
 <p align=center>Prikaz informacija o takmičenju</p>
 
 #### Informacije o disciplini
-Klikom na jednu od disciplina otvara se nova stranica koja prikazuje podatke o disciplini, kao i prijavljene takmičare na neku disciplinu odnosno poziciju(sortirano po rezultatu, ako ga ima), ime, prezime, klub i rezultat. Rezulat će biti prikazan kada je u pitanju završeno takmičenje, odnosno kada organizator takmičenja unese informacije o rezultatima.
+Klikom na jednu od disciplina otvara se nova stranica koja prikazuje podatke o disciplini, kao i prijavljene takmičare na neku disciplinu odnosno poziciju(sortirano po rezultatu, ako ga ima), ime, prezime, klub i rezultat. Rezulat će biti prikazan kada je u pitanju završeno takmičenje, odnosno kada organizator takmičenja unese informacije o rezultatima. Takođe, sortiranje takmičara je moguće po više kriterijuma klikom na naslov neke od kolona u tabeli.
 
 ![image](https://github.com/user-attachments/assets/084c19b8-3cc6-4c8a-b98e-b20e7cab6a48)
-<p align=center>Prikaz informacija o disciplini</p>
+<p align=center>Prikaz informacija o disciplini sa takmičenja koje predstoji(startna lista)</p>
+
+![image](https://github.com/user-attachments/assets/d6f38f2b-db28-4cc7-9c7c-8110401bc6b9)
+<p align=center>Prikaz informacija o disciplini sa takmičenja koje je završeno(rezultati)</p>
+
 U slučaju da se radi o trkačkoj disciplini, prikazuje se i labela na koju je moguće kliknuti, a koja vodi na prikaz informacija o grupama na toj disciplini.
 
 ![image](https://github.com/user-attachments/assets/7b9d4d3c-94a9-453b-b434-d539f53fe8df)
@@ -82,6 +86,60 @@ Klikom na labelu sa grupama prikazuje se nova stranica koja pored informacija o 
 
 ## Administrator kluba
 
+U slučaju da je ulogovani korisnik administrator kluba njemu se prikazuju iste funkcionalnosti kao i posmatraču(takmičenja i klubovi) s time da je u opcijama dodana i funkcionalnost prikaza kluba kojem je dati korisnik administrator.
+
+![image](https://github.com/user-attachments/assets/073338cc-ef17-4bf1-aa93-302dbcf68720)
+<p align=center>Forma za administratora kluba</p> 
+Administrator kluba ima mogućnost prijave takmičara na takmičenje, na formi za prikaz informacija o takmičenju, ukoliko takmičenje počinje bar 2 dana od trenutnog datuma, odnosno ukoliko tek predstoji, što je prikazano na sljedećoj slici.
+
+![image](https://github.com/user-attachments/assets/b0af4644-9735-4d7b-90f0-966a24ebc773)
+<p align=center>Forma za prikaz informacija o predstojećem takmičenju</p> 
+
+### Prijava na takmičenje
+Klikom na dugme za prijavu takmičara na takmičenje otvara se forma za prijavu takmičara na discipline odabranog takmičenja. Tu su izlistane sve discipline i svi takmičari koji se mogu prijaviti na neku disciplinu(ukoliko je riječ o ženskoj kategoriji discipline prikazuju se samo osobe ženskog pola i suprotno). Korisnik bira koju disciplinu želi i prikazuju mu se, putem checkbox-ova 
+
+![image](https://github.com/user-attachments/assets/bbde668e-339c-4385-b9a7-548b756a42e3)
+<p align=center>Forma za prijavu na takmičenje</p>
+Korisnik klikom na dugme za potvrđivanje prijave onda ažurira trenutne prijave na takmičenje za šta dobija i odgovarajuće obavještenje.
+
+### Moj klub
+Na stranici za prikaz sopstvenog kluba se prikazuju informacije o klubu za koji je dati administrator zadužen ili odgovarajuće obavještenje ako administratoru još uvijek nema dodijeljen klub od strane administratora sistema.
+
+![image](https://github.com/user-attachments/assets/5b867868-b1a0-4bbd-bd67-43bcf8ca36fb)
+<p align=center>Forma za prikaz administratorovog kluba</p>
+
+Osim standardnog prikaza svih takmičara u klubu i informacija o samom klubu, administrator kluba ima i mogućnost dodavanja članova u klub, gdje se klikom na dugme u dnu stranice otvara prozor za dodavanje novog člana. Korisnik može da odabere ime, prezime, datum rođenja i pol takmičara, dok se kategorija takmičara automatski prikazuje u zavisnosti od godine rođenja takmičara.
+
+![image](https://github.com/user-attachments/assets/ad54c53c-a070-408f-adb0-41fbac357fd2)
+<p align=center>Forma za dodavanje novog takmičara u klub</p>
+Ukoliko se ne popune sva polja prikazaće se obavještenje kao na slici ispod
+
+![image](https://github.com/user-attachments/assets/3662cc8d-4305-42e0-8c6a-7fb03da564fb)
+<p align=center>Prikaz greške u slučaju da nisu popunjena sva polja</p>
+
+## Organizator takmičenja
+
+Osnovna forma za organizatora takmičenja prikazana je na slici ispod. Pored funkcionalnosti prikaza svih takmičenja, oni imaju i mogućnost prikaza svojih takmičenja kojima mogu upravljati. Takođe, u bočnom meniju se nalazi i opcija za dodavanje novog takmičenja.
+
+![image](https://github.com/user-attachments/assets/4f51ffcf-1f86-4ebf-8646-dc80a3ceb6a2)
+<p align=center>Prikaz forme za organizatora takmičenja</p>
+U slučaju da je izabrana opcija prikaza takmičenja za koje je zadužen trenutni organizator, prikazuju se sva njegova takmičenja ili obavještenje da trenutno nema takmičenja na kojima je on zadužen.
+
+![image](https://github.com/user-attachments/assets/448f52df-b34b-42fc-90ba-3047fde0fd35)
+<p align=center>Prikaz takmičenja za koje je zadužen organizator takmičenja</p>
+
+Kada se uđe na jedno od izabranih takmičenja, klikom na labelu imena takmičenja, organizatoru se daje mogućnost da obriše dato takmičenje, pri čemu se tada otvara forma za potvrdu brisanja.
+
+![image](https://github.com/user-attachments/assets/34a6b8ff-a0ff-4636-a420-b31be69e20ec)
+<p align=center>Informacije o takmičenju za koje je zadužen organizator takmičenja</p>
+ Nakon uspješnog brisanja prikazuje se obavještenje o uspješnom brisanju takmičenja.
+ 
+![image](https://github.com/user-attachments/assets/c185111a-751d-4226-84af-26689bca520a)
+<p align=center>Potvrda brisanja takmičenja</p>
+
+Organizator takmičenja može da unosi rezultate takmičenja pri ulasku u samo takmičenje i na određenu disciplinu, tako što će klikom na prijavjenog takmičara na toj disciplini dobiti formu sa informacijama o takmičaru koja uključuje i polje za unos ili izmjenu rezultata koje je ostvario takmičar. Nakon uspješnog ažuriranja rezultata dobija se obavještenje o uspješnom ažuriranju rezultata takmičara.
+
+![image](https://github.com/user-attachments/assets/cb5fcdf5-8596-485b-b308-0cac0c818d3a)
 
 
 
