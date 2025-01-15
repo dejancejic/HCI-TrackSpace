@@ -27,6 +27,7 @@ namespace TrackSpace.Forms.Pages
         public GroupsPage(RunningEvent runningEvent)
         {
             InitializeComponent();
+            ViewModelLocator.GroupsViewModel=new GroupsViewModel();
             DataContext = ViewModelLocator.GroupsViewModel;
             ViewModelLocator.GroupsViewModel.Event = runningEvent;
             if(ViewModelLocator.AccountType.Equals("organizer") && ViewModelLocator.IdOrganizer==runningEvent.IdEventNavigation.IdCompetitionNavigation.IdUser &&

@@ -297,7 +297,7 @@ public partial class TrackspaceContext : DbContext
 
             entity.HasOne(d => d.IdCompetitionNavigation).WithMany(p => p.Events)
                 .HasForeignKey(d => d.IdCompetition)
-                .OnDelete(DeleteBehavior.ClientSetNull)
+                .OnDelete(DeleteBehavior.Cascade)
                 .HasConstraintName("fk_DISCIPLINA_TAKMICENJE1");
         });
 
@@ -317,7 +317,7 @@ public partial class TrackspaceContext : DbContext
 
             entity.HasOne(d => d.IdEventNavigation).WithMany(p => p.Groups)
                 .HasForeignKey(d => d.IdEvent)
-                .OnDelete(DeleteBehavior.ClientSetNull)
+                .OnDelete(DeleteBehavior.Cascade)
                 .HasConstraintName("fk_GRUPA_TRKACKA_DISCIPLINA1");
         });
 
@@ -368,7 +368,7 @@ public partial class TrackspaceContext : DbContext
 
             entity.HasOne(d => d.IdEventNavigation).WithOne(p => p.RunningEvent)
                 .HasForeignKey<RunningEvent>(d => d.IdEvent)
-                .OnDelete(DeleteBehavior.ClientSetNull)
+                .OnDelete(DeleteBehavior.Cascade)
                 .HasConstraintName("fk_TRKACKA_DISCIPLINA_DISCIPLINA1");
         });
 

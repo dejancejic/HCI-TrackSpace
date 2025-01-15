@@ -26,6 +26,9 @@ FontWeight="Bold" FontSize="40" Foreground="Black" />
         <Button x:Name="closeBtn" Background="Transparent" BorderBrush="Transparent" Padding="5 0 0 0" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0 13 14 0" Command="{Binding CloseCommand}">
             <materialDesign:PackIcon Kind="Close" Width="25" Height="25" Opacity="0.5"/>
         </Button>
+        <Button Background="Transparent" BorderBrush="Transparent" Padding="5 0 0 0" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0 13 40 0" Command="{Binding MinimizeCommand}">
+            <materialDesign:PackIcon Kind="Minus" Width="25" Height="25" Opacity="0.5"/>
+        </Button>
         <ScrollViewer Margin="16,141,423,100"  VerticalScrollBarVisibility="Auto">
             <StackPanel x:Name="running" Margin="0 0 10 0" Orientation="Vertical">
 
@@ -53,12 +56,13 @@ FontWeight="Bold" FontSize="40" Foreground="Black" />
 
         <ScrollViewer Margin="412,141,27,100"  VerticalScrollBarVisibility="Auto">
             <StackPanel x:Name="selected" Margin="0 0 10 0" Orientation="Vertical">
-                <TextBlock Text="{DynamicResource noEventsSelected}" Margin="0 170 0 0" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="Gray" 
+                <TextBlock Text="{DynamicResource noEventsSelected}" Margin="10 170 0 0" HorizontalAlignment="Center" Foreground="Gray" 
 Visibility="{Binding CountSelected, Converter={StaticResource EmptyCollectionToVisibilityConverter}}"/>
             </StackPanel>
         </ScrollViewer>
 
-        <Label FontWeight="Bold" HorizontalAlignment="Right" Margin="0,100,206,0" Content="{DynamicResource selectedEvents}" Height="92" VerticalAlignment="Top"></Label>
+        <materialDesign:PackIcon Foreground="{DynamicResource Primary}" Kind="CalendarStar" Width="35" Height="38" VerticalAlignment="Top" Margin="410,100,5,0"/>
+        <Label FontWeight="Bold" HorizontalAlignment="Right" Margin="0,105,170,0" Content="{DynamicResource selectedEvents}" Height="92" VerticalAlignment="Top"></Label>
 
         <ComboBox FontSize="16" Margin="23,72,458,461"
 materialDesign:HintAssist.Hint="{DynamicResource events}"

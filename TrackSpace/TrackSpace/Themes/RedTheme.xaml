@@ -2,6 +2,6 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
     
     <SolidColorBrush x:Key="Primary" Color="#e37e5e"></SolidColorBrush>
-    <SolidColorBrush x:Key="Secondary" Color="#f88379"></SolidColorBrush>
+    <SolidColorBrush x:Key="Secondary" Color="#ff9c6b"></SolidColorBrush>
     <SolidColorBrush x:Key="SideMenu" Color="#3c99e9"></SolidColorBrush>
 </ResourceDictionary>

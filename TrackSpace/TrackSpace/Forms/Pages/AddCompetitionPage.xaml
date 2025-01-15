@@ -9,6 +9,7 @@
 FontFamily="{DynamicResource AppFont}" FontSize="18"
 d:DesignHeight="650" d:DesignWidth="800"
 >
+  
     <Grid Background="White">
 
         <Label HorizontalAlignment="Left" Margin="18,10,0,415" Content="{DynamicResource addCompetition}"
@@ -16,12 +17,17 @@ FontWeight="Bold" FontSize="40" Foreground="Black" />
         <Button x:Name="closeBtn" Background="Transparent" BorderBrush="Transparent" Padding="5 0 0 0" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0 13 14 0" Command="{Binding CloseCommand}">
             <materialDesign:PackIcon Kind="Close" Width="25" Height="25" Opacity="0.5"/>
         </Button>
+        <Button Background="Transparent" BorderBrush="Transparent" Padding="5 0 0 0" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0 13 40 0" Command="{Binding MinimizeCommand}">
+            <materialDesign:PackIcon Kind="Minus" Width="25" Height="25" Opacity="0.5"/>
+        </Button>
 
-        
 
-
-        <StackPanel Margin="25 70 0 0">
-            <TextBox Width="450" HorizontalAlignment="Left" Text="{Binding CompetitionName}"
+        <materialDesign:PackIcon Foreground="{DynamicResource Primary}" Kind="RenameOutline" Width="35" Height="38" VerticalAlignment="Top" Margin="20,70,5,0"/>
+        <materialDesign:PackIcon Foreground="{DynamicResource Primary}" Kind="CommentTextOutline" Width="35" Height="38" VerticalAlignment="Top" Margin="20,140,5,0"/>
+        <materialDesign:PackIcon Foreground="{DynamicResource Primary}" Kind="Alarm" Width="35" Height="38" VerticalAlignment="Top" Margin="460,260,5,0"/>
+        <materialDesign:PackIcon Foreground="{DynamicResource Primary}" Kind="MapOutline" Width="35" Height="38" VerticalAlignment="Top" Margin="460,385,5,0"/>
+        <StackPanel Margin="65 70 0 0">
+            <TextBox TextChanged="NameTextBox_TextChanged" Width="450" HorizontalAlignment="Left" Text="{Binding CompetitionName}"
   x:Name="NameTextBox"
   materialDesign:HintAssist.HelperText="{DynamicResource enterCompName}"
   materialDesign:HintAssist.Hint="{DynamicResource name}">
@@ -29,7 +35,7 @@ FontWeight="Bold" FontSize="40" Foreground="Black" />
         </TextBox>
 
 
-            <TextBox Margin="0 40 0 0"  Text="{Binding Description}"
+            <TextBox TextChanged="DescriptionTextBox_TextChanged" Margin="0 40 80 0"  Text="{Binding Description}"
   Height="55"
   HorizontalAlignment="Left"
   Width="702"
@@ -43,26 +49,33 @@ FontWeight="Bold" FontSize="40" Foreground="Black" />
 
                
 
-            <StackPanel Orientation="Horizontal">
-                <Label Content="{DynamicResource selectDate}" Margin="0 20 400 0"></Label>
+            <StackPanel Orientation="Horizontal" Margin="-45 10 0 0">
+                <materialDesign:PackIcon Foreground="{DynamicResource Primary}" Kind="CalendarEdit" Width="35" Height="38" VerticalAlignment="Top" Margin="0 12 0 0"/>
+                <Label Content="{DynamicResource selectDate}" Margin="6 20 400 0"></Label>
             </StackPanel>
             
-            <StackPanel Orientation="Horizontal">
+            <StackPanel Orientation="Horizontal" Margin="-40 0 0 0">
                 <Calendar Width="380" HorizontalAlignment="Left" Margin="0 0 0 0" Height="280"
 materialDesign:CalendarAssist.Orientation="Horizontal" SelectedDate="{Binding SelectedDate}" 
                  materialDesign:CalendarAssist.HeaderBackground="{DynamicResource Primary}"
                     materialDesign:CalendarAssist.HeaderForeground="White"   
                     />
+                
                 <StackPanel Orientation="Vertical" Width="388">
                     <materialDesign:TimePicker SelectedTime="{Binding SelectedDate}"
-   Height="50px"
-                    Width="230" Margin="0 8 0 0"
-  materialDesign:HintAssist.HelperText="{DynamicResource chooseTime}"
-  materialDesign:HintAssist.Hint="{DynamicResource pickTime}"
-  Is24Hours="True"
-  Style="{StaticResource MaterialDesignOutlinedTimePicker}" />
-                   
-                    <ComboBox FontSize="16" Margin="0 70 0 0"
+                           Height="50px"
+                           Width="230"
+                           Margin="30 8 0 0"
+                           materialDesign:HintAssist.HelperText="{DynamicResource chooseTime}"
+                           materialDesign:HintAssist.Hint="{DynamicResource pickTime}"
+                           Is24Hours="True"
+                           
+                           Style="{StaticResource MaterialDesignOutlinedTimePicker}">
+                        
+                    </materialDesign:TimePicker>
+
+
+                    <ComboBox FontSize="16" Margin="30 70 0 0"
 materialDesign:HintAssist.Hint="{DynamicResource pickLocation}" 
                 IsEnabled="{Binding IsChecked, ElementName=FilledComboBoxEnabledCheckBox}"
 Style="{StaticResource MaterialDesignFilledComboBox}"
@@ -79,7 +92,7 @@ SelectedIndex="0" Width="230" Height="57" />
             Style="{StaticResource MaterialDesignRaisedDarkButton}"
 Command="{Binding AddEventsCommand}" 
 HorizontalAlignment="Right" 
-Margin="0,10,25,0" Height="35" />
+Margin="0,0,25,0" Height="35" />
 
         </StackPanel>
 

@@ -17,6 +17,7 @@ using TrackSpace.Models;
 using TrackSpace.Models.EntryModel;
 using TrackSpace.Services;
 using TrackSpace.Services.Shared;
+using TrackSpace.ViewModel;
 using TrackSpace.ViewModel.Shared;
 
 namespace TrackSpace.Forms.Pages
@@ -27,7 +28,8 @@ namespace TrackSpace.Forms.Pages
         public EnterCompetitionPage(Competition competition)
         {
             InitializeComponent();
-            ViewModelLocator.EnterCompetitionViewModel.Competition = competition;
+           // ViewModelLocator.EnterCompetitionViewModel = new EnterCompetitionViewModel();
+           // ViewModelLocator.EnterCompetitionViewModel.Competition = competition;
             DataContext = ViewModelLocator.EnterCompetitionViewModel;
             ViewModelLocator.EnterCompetitionPage = this;
           

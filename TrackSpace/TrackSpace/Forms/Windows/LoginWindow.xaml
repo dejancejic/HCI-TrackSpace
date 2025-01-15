@@ -47,8 +47,8 @@
                 MouseDown="Border_Mouse_Down"
                 Grid.Column="0">
             <Border.Clip>
-                <RectangleGeometry Rect="0,0,400,605"
-                                   RadiusX="0"
+                <RectangleGeometry Rect="0,0,408,605"
+                                   RadiusX="10"
                                    RadiusY="10"/>
             </Border.Clip>
             <Grid>

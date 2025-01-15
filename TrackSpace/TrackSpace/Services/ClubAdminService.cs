@@ -48,7 +48,8 @@ namespace TrackSpace.Services
 
         public ClubAdmin? GetClubAdminById(int id)
         {
-            ClubAdmin? clubAdmin = _clubAdmins.FirstOrDefault(a => a.IdUser == id);
+            _context = DBConnection.GetContext();
+            ClubAdmin? clubAdmin = _context.ClubAdmins.FirstOrDefault(a => a.IdUser == id);
             if(clubAdmin! != null) {
 
                 clubAdmin!.IdUserNavigation = _userService.GetUserById(id)!;

@@ -48,13 +48,14 @@ namespace TrackSpace.ViewModel
 
         public Frame CurrentFrame { get; set; }
 
-        public string Username { get; set; }
-        public string Password { get; set; }
+        public string Username { get; set; } = "";
+        public string Password { get; set; } = "";
        
 
         public ICommand LoginCommand { get; set; }
         public ICommand ShowObserverPageCommand { get; set; }
         public ICommand CloseFormCommand { get; set; }
+        public ICommand MinimizeFormCommand { get; set; }
         public ICommand ShowSettingsFrameCommand { get; set; }
         public ICommand SwitchLanguageCommand { get; set; }
 
@@ -66,6 +67,7 @@ namespace TrackSpace.ViewModel
             ShowObserverPageCommand = new RelayCommand(ShowObserverPage, CanShowWindow);
             CloseFormCommand = new RelayCommand(CloseForm, CanShowWindow);
             SwitchLanguageCommand = new RelayCommand(SwitchLanguage, CanShowWindow);
+            MinimizeFormCommand = new RelayCommand(MinimizeForm, CanShowWindow);
             try
             {
                 _userService = new UserService();
@@ -120,7 +122,10 @@ namespace TrackSpace.ViewModel
                     ViewModelLocator.IdAdmin = admin!.IdUser;
 
                     Club? adminsClub = new ClubsService().GetClubByIdAdmin(admin.IdUser);
-                    ViewModelLocator.MyClubInfoPage=new Forms.Pages.ClubInfoPage(adminsClub!);
+                    if(adminsClub!=null)
+                    ViewModelLocator.MyClubId = adminsClub.IdClub;
+
+                    ViewModelLocator.MyClubInfoPage=new Forms.Pages.ClubInfoPage(adminsClub!,true);
                     if (adminsClub != null)
                     {
                         ViewModelLocator.AdminToAClub = true;
@@ -209,6 +214,11 @@ namespace TrackSpace.ViewModel
         {
             Application.Current.MainWindow.Close();
         
+        }
+
+        protected void MinimizeForm(object obj)
+        {
+            Application.Current.MainWindow.WindowState = WindowState.Minimized;
         }
 
         public event PropertyChangedEventHandler PropertyChanged;

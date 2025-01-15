@@ -90,6 +90,8 @@
     <System:String x:Key="addCompetition">Novo Takmičenje</System:String>
     <System:String x:Key="confirm">Potvrdite</System:String>
     <System:String x:Key="cancel">Odustanite</System:String>
+    <System:String x:Key="removalSuccessful">Uklanjanje uspješno</System:String>
+    <System:String x:Key="successfullyRemoved">Uspješno uklonjen takmičar iz grupe!</System:String>
     <System:String x:Key="addingSuccessful">Dodavanje uspješno</System:String>
     <System:String x:Key="successfullyAdded">Uspješno dodani takmičari u grupu!</System:String>
     <System:String x:Key="addGroup">Dodavanje grupe</System:String>
@@ -105,6 +107,7 @@
     <System:String x:Key="time">Vrijeme</System:String>
     <System:String x:Key="addTime">Dodajte vrijeme discipline</System:String>
     <System:String x:Key="sureToAddCompetition">Da li ste sigurni da želite dodati takmičenje?</System:String>
+    <System:String x:Key="addCompetitionSuccess">Uspješno dodano takmičenje!</System:String>
     <System:String x:Key="selectDate">Izaberite datum:</System:String>
     <System:String x:Key="enterCompName">Unesite ime takmičenja</System:String>
     <System:String x:Key="description">Opis</System:String>
@@ -156,4 +159,11 @@
     <System:String x:Key="noEntriesYet">Još uvijek nema prijavljenih takmičara</System:String>
     <System:String x:Key="noGroupsYetAdded">Još uvijek nema nijedna grupa</System:String>
     <System:String x:Key="orderNumber">Pozicija</System:String>
+    <System:String x:Key="confirmation">Potvrda</System:String>
+    <System:String x:Key="sureToAddCompetitorsToGroup">Da li ste sigurni da želite da dodate ove takmičare u grupu?</System:String>
+    <System:String x:Key="sureToRemoveCompetitorFromGroup">Da li ste sigurni da želite da uklonite ovog takmičara iz grupe?</System:String>
+    <System:String x:Key="sureToConfirmEntries">Da li ste sigurni da želite da potvrdite prijave?</System:String>
+    <System:String x:Key="city">Grad</System:String>
+    <System:String x:Key="sureToLogout">Da li ste sigurni da želite da se odjavite?</System:String>
+
 </ResourceDictionary>

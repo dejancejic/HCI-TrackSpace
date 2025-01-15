@@ -22,10 +22,11 @@ namespace TrackSpace.Forms.Pages
    
     public partial class CompetitionsPage : UserControl
     {
-        
-        public CompetitionsPage(bool OrganizersCompetition=false)
+        public bool OrganizersCompetition { get; set; }
+        public CompetitionsPage(bool organizersCompetition=false)
         {
-            if(OrganizersCompetition==false)
+            OrganizersCompetition = organizersCompetition;
+            if(organizersCompetition==false)
             SetPage(false);
             else
                 SetPage(true);

@@ -46,8 +46,9 @@ ToolTip="MaterialDesignFloatingActionMiniDarkButton" VerticalAlignment="Bottom" 
         <Label HorizontalAlignment="Left" Margin="15,10,0,415" Content="{Binding Competition.Name}"
 FontWeight="Bold" FontSize="40" Foreground="Black" />
 
-        <Image Source="pack://application:,,,/Resources/descriptionIcon.png"  Margin="40,93,54,384" Width="50" Height="40"></Image>
-
+        <!--<Image Source="pack://application:,,,/Resources/descriptionIcon.png"  Margin="40,93,54,384" Width="50" Height="40"></Image>-->
+        <materialDesign:PackIcon Foreground="{DynamicResource Primary}" HorizontalAlignment="Center" Kind="CommentTextMultipleOutline" Width="38" Height="38" VerticalAlignment="Center" Margin="20,150,54,375"/>
+        
         <TextBlock x:Name="MeasureTextBlock" Text="{Binding Competition.Description}" TextWrapping="Wrap" Visibility="Collapsed" />
         <TextBox x:Name="DescriptionTextBox"
             MinWidth="280"
@@ -59,43 +60,51 @@ FontWeight="Bold" FontSize="40" Foreground="Black" />
   SpellCheck.IsEnabled="False"
   Text="{Binding Competition.Description}"
   TextWrapping="Wrap" Padding="5 -5 5 0"
-  VerticalScrollBarVisibility="Auto" Margin="333,113,13,386" />
+  VerticalScrollBarVisibility="Auto" Margin="333,150,13,365" />
+
+        <Button Background="Transparent" BorderBrush="Transparent" Padding="5 0 0 0" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0 13 40 0" Command="{Binding MinimizeCommand}">
+            <materialDesign:PackIcon Kind="Minus" Width="25" Height="25" Opacity="0.5"/>
+        </Button>
+
+        <DockPanel Margin="15,85,500,454">
+            <materialDesign:PackIcon Foreground="{DynamicResource Primary}" Kind="CalendarClock" Width="41" Height="40" VerticalAlignment="Center" Margin="0,0,10,0"/>
+            <TextBox FontSize="18" IsReadOnly="true" Style="{StaticResource MaterialDesignFloatingHintTextBox}" materialDesign:HintAssist.Hint="{DynamicResource start}"
+materialDesign:HintAssist.FloatingOffset="0,-20"
+BorderBrush="#c5c8cc" Text="{Binding Competition.Start, Converter={StaticResource DateTimeConverter}}"
+BorderThickness="0"/>
+
+        </DockPanel>
+
+     
+
+        <DockPanel Margin="15,125,490,365">
+            <materialDesign:PackIcon Foreground="{DynamicResource Primary}" Kind="MapOutline" Width="41" Height="38" VerticalAlignment="Center" Margin="0,0,10,0"/>
+            <TextBox FontSize="18" IsReadOnly="true" Style="{StaticResource MaterialDesignFloatingHintTextBox}" materialDesign:HintAssist.Hint="{DynamicResource location}"
+materialDesign:HintAssist.FloatingOffset="0,-20" 
+BorderBrush="#c5c8cc" Text="{Binding Competition.PostNumberNavigation.Address}"
+BorderThickness="0"/>
+
+        </DockPanel>
+
+        <DockPanel Margin="345,87,80,454">
+            <materialDesign:PackIcon Foreground="{DynamicResource Primary}" Kind="CardAccountMailOutline" Width="38" Height="38" VerticalAlignment="Center" Margin="0,0,15,0"/>
+            <TextBox FontSize="18" IsReadOnly="true" Style="{StaticResource MaterialDesignFloatingHintTextBox}" materialDesign:HintAssist.Hint="{DynamicResource contactMail}"
+materialDesign:HintAssist.FloatingOffset="0,-20" 
+BorderBrush="#c5c8cc" Text="{Binding  Competition.IdUserNavigation.IdUserNavigation.Email}"
+BorderThickness="0"/>
+
+        </DockPanel>
 
 
-        <StackPanel Orientation="Horizontal" Margin="15,15,0,415" >
-            <Image Source="pack://application:,,,/Resources/dateTimeIcon.png" Width="50" Height="40"></Image>
-            <Label HorizontalAlignment="Left"
-                    Margin="5 60 0 0"
-       Content="{Binding Competition.Start, Converter={StaticResource DateTimeConverter}}"
-       Foreground="Black" />
-
-
-        </StackPanel>
-
-        <StackPanel Orientation="Horizontal" Margin="15,125,0,415">
-            <Image Source="pack://application:,,,/Resources/trackIcon.png" Width="50" Height="50"></Image> 
-            
-            <Label HorizontalAlignment="Left"  Margin="5 0 0 0" Content="{Binding Competition.PostNumberNavigation.Address}"
-Foreground="Black" />
-            <Label HorizontalAlignment="Left" Margin="-8 0 0 0" Content=","
-Foreground="Black" />
-        </StackPanel>
-
-        <Label HorizontalAlignment="Left" Margin="70,145,0,400"
+        <Label HorizontalAlignment="Left" Margin="64,185,0,350"
                Content="{Binding Competition.PostNumberNavigation.City}"
 Foreground="Black" />
 
 
-        
-        <StackPanel Orientation="Horizontal"  Margin="15,175,0,360" >
-            <Image Source="pack://application:,,,/Resources/contactIcon.png"  Width="50" Height="40"></Image>
-
-            <Label HorizontalAlignment="Left"  Margin="5 10 0 0" Content="{Binding  Competition.IdUserNavigation.IdUserNavigation.Email}"
-Foreground="Black" />
-
-        </StackPanel>
+       
 
         <StackPanel Orientation="Horizontal" Margin="15,230,0,301">
+            <materialDesign:PackIcon Foreground="{DynamicResource Primary}" Kind="CalendarStar" Width="40" Height="36" VerticalAlignment="Center" Margin="0,-17,3,0"/>
             <Label Content="{DynamicResource eventsW(}" FontSize="22" FontWeight="Bold"></Label>
             <Label Content="{Binding Competition.Events.Count}" Margin="-8 0 -8 0" FontSize="22" FontWeight="Bold"></Label>
             <Label Content=")" FontSize="22" FontWeight="Bold"></Label>
@@ -127,6 +136,7 @@ Foreground="Black" />
                         <Setter Property="TextBlock.TextAlignment" Value="Center" />
                         <Setter Property="HorizontalContentAlignment" Value="Center" />
                         <Setter Property="VerticalContentAlignment" Value="Center" />
+                        <Setter Property="VerticalAlignment" Value="Center" />
                         <Setter Property="Margin" Value="0 3 0 0" />
                         <Setter Property="MinWidth" Value="180" />
                         <Setter Property="MinHeight" Value="30" />
@@ -136,8 +146,9 @@ Foreground="Black" />
 
                 <DataGrid.RowStyle>
                     <Style TargetType="DataGridRow">
-                        <Setter Property="Height" Value="30" />
-                    </Style>
+                        <Setter Property="Height" Value="35" />
+                            
+                        </Style>
                 </DataGrid.RowStyle>
 
                 <DataGrid.Columns>

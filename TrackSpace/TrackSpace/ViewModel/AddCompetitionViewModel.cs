@@ -486,7 +486,7 @@ namespace TrackSpace.ViewModel
                 _types = new ObservableCollection<string>() { (string)Application.Current.Resources["runningEvents"],
             (string)Application.Current.Resources["jumpingEvents"],(string)Application.Current.Resources["throwingEvents"] };
 
-                
+
                 
                 PageUtils.NavigatePages(AddEventsPage);
                
@@ -619,6 +619,8 @@ namespace TrackSpace.ViewModel
                 SelectedDate = DateTime.Now;
                 CompetitionName = "";
                 Description = "";
+           new CustomMessageBox(false, true, (string)Application.Current.Resources["addingSuccessful"], (string)Application.Current.Resources["addCompetitionSuccess"]).Show();
+
                 PageUtils.NavigatePages(new AddCompetitionPage());
             }, (a) =>
             {

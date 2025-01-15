@@ -13,23 +13,24 @@ using TrackSpace.ViewModel;
 
 namespace TrackSpace.Services
 {
-   public class EventsService : BaseService
+    public class EventsService : BaseService
     {
         private ObservableCollection<Event> _events;
-        private CategoryService _categoryService=new CategoryService();
-        private CompetitorEventServices _competitorEventService=new CompetitorEventServices();
+        private CategoryService _categoryService = new CategoryService();
+        private CompetitorEventServices _competitorEventService = new CompetitorEventServices();
         private ObservableCollection<RunningEvent> _runningEvents;
         private ObservableCollection<JumpingEvent> _jumpingEvents;
         private ObservableCollection<ThrowingEvent> _throwingEvents;
         private ObservableCollection<Group> _groups;
-        public EventsService() {
+        public EventsService()
+        {
 
 
             _events = new ObservableCollection<Event>(_context.Events.ToList());
             _runningEvents = new ObservableCollection<RunningEvent>(_context.RunningEvents.ToList());
             _jumpingEvents = new ObservableCollection<JumpingEvent>(_context.JumpingEvents.ToList());
             _throwingEvents = new ObservableCollection<ThrowingEvent>(_context.ThrowingEvents.ToList());
-            _groups =new ObservableCollection<Group>(_context.Groups.ToList());
+            _groups = new ObservableCollection<Group>(_context.Groups.ToList());
             foreach (Event ev in _events)
             {
                 foreach (RunningEvent runningEvent in _runningEvents)
@@ -47,11 +48,11 @@ namespace TrackSpace.Services
             }
         }
 
-       
+
 
         public List<RunningEvent> GetRunningEvents()
         {
-            var eventList = new List<string>() { 
+            var eventList = new List<string>() {
             "100m","200m","400m","800m","1500m"
             };
 
@@ -140,20 +141,20 @@ namespace TrackSpace.Services
 
         public List<Group> GetGroupsByIdEvent(int idEvent)
         {
-            return _groups.Where(g=>g.IdEvent==idEvent).ToList();
+            return _groups.Where(g => g.IdEvent == idEvent).ToList();
         }
-        
+
         public List<Event> GetEventsByIdCompetition(int idCompetition)
         {
 
-            return _events.Where(e=>e.IdCompetition==idCompetition).ToList();
-        
+            return _events.Where(e => e.IdCompetition == idCompetition).ToList();
+
         }
 
 
         public Event AddEvent(Event ev)
         {
-            _context=DBConnection.GetContext();
+            _context = DBConnection.GetContext();
             _context.Events.Add(ev);
             _context.SaveChanges();
             _events.Add(ev);
@@ -195,18 +196,24 @@ namespace TrackSpace.Services
 
         }
 
+        public RunningEvent GetRunningEventByIdEvent(int idEvent)
+        {
+            return _context.RunningEvents.FirstOrDefault(ev=>ev.IdEvent==idEvent)!;
+        }
+
         public ObservableCollection<CompetitorEvent> GetCompetitorEventsWithoutGroupByIdEvent(int idEvent)
         {
             ObservableCollection<CompetitorEvent> ce = new ObservableCollection<CompetitorEvent>();
             _context = DBConnection.GetContext();
-            var elements = _context.CompetitorEvents.Where((ev)=>ev.IdEvent==idEvent).ToList();
+            var elements = _context.CompetitorEvents.Where((ev) => ev.IdEvent == idEvent).ToList();
 
-            foreach (var elem in elements) {
+            foreach (var elem in elements)
+            {
 
-                var competitor = _context.Competitors.FirstOrDefault((c) => c.IdCompetitor==elem.IdCompetitor);
-                if(competitor!=null && competitor.IdGroup==null)
+                var competitor = _context.Competitors.FirstOrDefault((c) => c.IdCompetitor == elem.IdCompetitor);
+                if (competitor != null && competitor.IdGroup == null)
                 {
-                    competitor.IdCategoryNavigation=new CategoryService().GetCategoryById(competitor.IdCategory);
+                    competitor.IdCategoryNavigation = new CategoryService().GetCategoryById(competitor.IdCategory);
                     competitor.IdClubNavigation = new ClubsService().GetClubById(competitor.IdClub);
                     elem.IdCompetitorNavigation = competitor;
                     ce.Add(elem);

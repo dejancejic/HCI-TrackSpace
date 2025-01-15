@@ -12,16 +12,14 @@ using TrackSpace.Services.Shared;
 
 namespace TrackSpace.Services
 {
-    public class CompetitorsService:BaseService
+    public class CompetitorsService : BaseService
     {
 
 
-        private ObservableCollection<Competitor> _competitors;
-        private CategoryService _categoryService=new CategoryService();
-        private ClubsService _clubsService=new ClubsService();
+
+        private CategoryService _categoryService = new CategoryService();
+        private ClubsService _clubsService = new ClubsService();
         public CompetitorsService() { 
-        
-            _competitors=new ObservableCollection<Competitor>(_context.Competitors.ToList());
             
         }
 
@@ -32,12 +30,25 @@ namespace TrackSpace.Services
             return AssignCategoryAndClub(comp);
         }
 
+        public ObservableCollection<Competitor> GetCompetitorsByIdClub(int idClub)
+        {
+            _context = DBConnection.GetContext();
+            var list= _context.Competitors.Where(c => c.IdClub == idClub).ToList();
+            var helperList= new List<Competitor>();
+            foreach(var el in list)
+            { 
+                helperList.Add(AssignCategoryAndClub(el)!);
+            }
+            list = helperList;
+            return new ObservableCollection<Competitor>(list);
+        }
+
         public void AddCompetitor(Competitor competitor)
         {
             _context.Competitors.Add(competitor);
 
             _context.SaveChanges();
-            _competitors.Add(competitor);
+     
 
         
         }
@@ -52,7 +63,7 @@ namespace TrackSpace.Services
         }
         public ObservableCollection<Competitor?> GetCompetitorsByIdGroup(int idGroup)
         {
-            var filteredCompetitors = _competitors.Where(c => c.IdGroup == idGroup).ToList();
+            var filteredCompetitors = _context.Competitors.Where(c => c.IdGroup == idGroup).ToList();
 
             foreach (var comp in filteredCompetitors)
             {
@@ -76,7 +87,7 @@ namespace TrackSpace.Services
             item!.IdGroup = idGroup;
             _context.SaveChanges();
 
-            item = _competitors.FirstOrDefault((u) => u.IdCompetitor == idCompetitor);
+            item = _context.Competitors.FirstOrDefault((u) => u.IdCompetitor == idCompetitor);
             item!.IdGroup = idGroup;
         }
 

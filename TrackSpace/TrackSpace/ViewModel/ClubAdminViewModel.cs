@@ -10,6 +10,7 @@ using System.Windows.Input;
 using TrackSpace.Command;
 using TrackSpace.Forms.Pages;
 using TrackSpace.Models;
+using TrackSpace.Services;
 using TrackSpace.Services.Shared;
 using TrackSpace.Utils;
 using TrackSpace.ViewModel.Shared;
@@ -51,6 +52,21 @@ namespace TrackSpace.ViewModel
                 if (tag.Equals("MyClubPage"))
                 {
                     ViewModelLocator.MyClubInfoPage.goBackBtn.Visibility = Visibility.Hidden;
+
+                    Club? adminsClub = new ClubsService().GetClubByIdAdmin(ViewModelLocator.IdAdmin);
+                    if (adminsClub != null)
+                        ViewModelLocator.MyClubId = adminsClub.IdClub;
+
+                    ViewModelLocator.MyClubInfoPage = new Forms.Pages.ClubInfoPage(adminsClub!, true);
+                    if (adminsClub != null)
+                    {
+                        ViewModelLocator.AdminToAClub = true;
+                        ViewModelLocator.EnterCompetitionViewModel.Competitors = new ClubsService().GetClubCompetitors(adminsClub!.IdClub);
+                    }
+                    else
+                    {
+                        ViewModelLocator.AdminToAClub = false;
+                    }
                     PageUtils.NavigatePages(ViewModelLocator.MyClubInfoPage);
                    
                     return;

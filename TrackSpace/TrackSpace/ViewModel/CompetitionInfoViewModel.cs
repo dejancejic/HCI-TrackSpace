@@ -40,7 +40,21 @@ namespace TrackSpace.ViewModel
         }
         public void GoBack(object obj)
         {
+            var organizers = ViewModelLocator.CompetitionsPage.OrganizersCompetition;
+            ViewModelLocator.CompetitionsPage = new CompetitionsPage(organizers);
             PageUtils.NavigatePages(ViewModelLocator.CompetitionsPage);
+        }
+        public void UpdateCompetitionEvents()
+        {
+            foreach (var ev in Competition.Events)
+            {
+
+                ev.CompetitorEvents =new CompetitorEventServices().GetCompetitorEventsByIdEvent(ev.IdEvent);
+               
+            }
+            Competition = Competition;
+            OnPropertyChanged(nameof(Competition.Events));
+            OnPropertyChanged(nameof(Competition));
         }
 
         private void EnterCompetition(object obj) {
@@ -48,9 +62,12 @@ namespace TrackSpace.ViewModel
             if (_competition.Start > DateTime.Now.AddDays(2))
             {
                 
+                ViewModelLocator.EnterCompetitionViewModel.Competitors = new CompetitorsService().GetCompetitorsByIdClub(ViewModelLocator.MyClubId);
+                
                 ViewModelLocator.EnterCompetitionViewModel.Competition = _competition;
                 ViewModelLocator.EnterCompetitionViewModel.SetUpEntryModels();
-                PageUtils.NavigatePages(ViewModelLocator.EnterCompetitionPage);
+
+                PageUtils.NavigatePages(new EnterCompetitionPage(_competition));
             }
             else
             {

@@ -55,7 +55,7 @@ namespace TrackSpace.Forms.Windows {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/TrackSpace;component/forms/windows/basepage.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/TrackSpace;V1.0.0.0;component/forms/windows/basepage.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\..\..\Forms\Windows\BasePage.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);

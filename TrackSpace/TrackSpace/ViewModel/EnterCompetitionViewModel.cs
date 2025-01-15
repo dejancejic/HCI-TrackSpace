@@ -11,6 +11,7 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using TrackSpace.Command;
 using TrackSpace.Forms.CustomMessageBox;
+using TrackSpace.Forms.Pages;
 using TrackSpace.Models;
 using TrackSpace.Models.EntryModel;
 using TrackSpace.Services;
@@ -93,12 +94,16 @@ namespace TrackSpace.ViewModel
 
         public void GoBack(object obj)
         {
-            PageUtils.NavigatePages(ViewModelLocator.CompetitionInfoPage);
+        
+            PageUtils.NavigatePages(new CompetitionInfoPage(Competition));
         }
 
         public void ConfirmEntries(object obj)
         {
-            foreach (var keyValuePair in modelsDictionary)
+            new CustomMessageBox(true, true, (string)Application.Current.Resources["confirm"], (string)Application.Current.Resources["sureToConfirmEntries"],
+                (y) => { 
+                
+                 foreach (var keyValuePair in modelsDictionary)
             {
 
                 int idEvent = keyValuePair.Key;
@@ -123,10 +128,11 @@ namespace TrackSpace.ViewModel
 
 
             }
-            
 
+            ViewModelLocator.CompetitionInfoViewModel.UpdateCompetitionEvents();
             new CustomMessageBox(false, true, (string)Application.Current.Resources["updatedEntries"],(string)Application.Current.Resources["updateEntriesSuccessful"]).Show();
-
+                
+                }, (n) => { }).Show();
         }
 
         public bool CheckIfHas2Entries(int idCompetitor)

@@ -48,10 +48,15 @@
         <Button x:Name="closeBtn" Background="Transparent" BorderBrush="Transparent" Padding="5 0 0 0" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0 13 14 0" Command="{Binding CloseCommand}">
             <materialDesign:PackIcon Kind="Close" Width="25" Height="25" Opacity="0.5"/>
         </Button>
+        <Button Background="Transparent" BorderBrush="Transparent" Padding="5 0 0 0" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0 13 40 0" Command="{Binding MinimizeCommand}">
+            <materialDesign:PackIcon Kind="Minus" Width="25" Height="25" Opacity="0.5"/>
+        </Button>
         <Label HorizontalAlignment="Left" Margin="15,20,0,375" Content="{DynamicResource settings}"
                FontWeight="Bold" FontSize="40" Foreground="Black" />
 
-        <Label HorizontalAlignment="Left" Margin="50,90,0,329" Content="{DynamicResource selectTheme}"
+
+        <materialDesign:PackIcon Foreground="{DynamicResource Primary}" Kind="Palette" Width="40" Height="40" VerticalAlignment="Top" Margin="30,90,0,0"/>
+        <Label HorizontalAlignment="Left" Margin="75,90,0,329" Content="{DynamicResource selectTheme}"
         FontSize="25" Foreground="Black" />
 
         <StackPanel Orientation="Vertical" Margin="50,95,424,0">
@@ -134,7 +139,7 @@ Style="{StaticResource CustomToggleButtonStyle}" Background="{DynamicResource Pr
             </Grid>
         </StackPanel>
 
-
+        <materialDesign:PackIcon Foreground="{DynamicResource Primary}" Kind="Translate" Width="35" Height="35" VerticalAlignment="Top" Margin="359,217,0,0"/>
         <Label Content="{DynamicResource chooseLanguage}" Margin="400,219,73,211" FontSize="25"></Label>
 
 
@@ -156,7 +161,8 @@ SelectedIndex="0" Height="50">
 
             </ComboBox>
         </StackPanel >
-        <StackPanel Orientation="Vertical" Margin="400,95,56,383"  >
+        <materialDesign:PackIcon Foreground="{DynamicResource Primary}" Kind="FormatFont" Width="40" Height="40" VerticalAlignment="Top" Margin="355,90,0,0"/>
+        <StackPanel Orientation="Vertical" Margin="400,91,56,387"  >
             <Label HorizontalAlignment="Left" Content="{DynamicResource selectFont}"
 FontSize="25" Foreground="Black" Width="247" />
 

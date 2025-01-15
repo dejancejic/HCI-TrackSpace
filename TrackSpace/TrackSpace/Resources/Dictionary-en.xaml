@@ -107,6 +107,7 @@
     <System:String x:Key="time">Time</System:String>
     <System:String x:Key="addTime">Enter time for event</System:String>
     <System:String x:Key="sureToAddCompetition">Are you sure you want to add competition?</System:String>
+    <System:String x:Key="addCompetitionSuccess">Successfully added competition!</System:String>
     <System:String x:Key="selectDate">Select date:</System:String>
     <System:String x:Key="enterCompName">Enter competition's name</System:String>
     <System:String x:Key="description">Description</System:String>
@@ -158,4 +159,10 @@
     <System:String x:Key="noEntriesYet">There are no entries yet</System:String>
     <System:String x:Key="noGroupsYetAdded">There are no groups yet</System:String>
     <System:String x:Key="orderNumber">Order</System:String>
+    <System:String x:Key="confirmation">Confirmation</System:String>
+    <System:String x:Key="sureToAddCompetitorsToGroup">Are you sure you want to add these competitors to group?</System:String>
+    <System:String x:Key="sureToRemoveCompetitorFromGroup">Are you sure you want to remove this competitor from group?</System:String>
+    <System:String x:Key="sureToConfirmEntries">Are you sure you want to confirm entries?</System:String>
+    <System:String x:Key="city">City</System:String>
+    <System:String x:Key="sureToLogout">Are you sure you want to logout ?</System:String>
 </ResourceDictionary>

@@ -115,91 +115,114 @@ namespace TrackSpace.Services
 
         public void DeleteCompetition(Competition comp)
         {
-            var itemsToRemove = _context.CompetitorEntries.Where((ce)=>ce.IdCompetition==comp.IdCompetition).ToList();
-            //deleting competitor entries:
-            
-
-            foreach(var item in itemsToRemove)
+            bool saveFailed;
+            int i = 0;
+            do
             {
-                _context.CompetitorEntries.Remove(item);
-                _context.SaveChanges();
-            }
-
-
-            //deleting competitor events:
-            var itemsToRemove1 = new List<CompetitorEvent>();
-            foreach(var item in itemsToRemove)
-            {
-                var ce = _context.CompetitorEvents.FirstOrDefault((c)=>c.IdCompetitor==item.IdCompetitor && c.IdEvent==item.IdEvent);
-                if(ce!=null)
-                itemsToRemove1.Add(ce);
-            }
-            foreach (var item in itemsToRemove1)
-            {
-                _context.CompetitorEvents.Remove(item);
-                _context.SaveChanges();
-            }
-
-
-            //deleting groups
-            var itemsToRemove3 = new List<Group>();
-
-            foreach (var item in itemsToRemove)
-            {
-                var g = _context.Groups.FirstOrDefault((g) => g.IdEvent == item.IdEvent);
-                if(g!=null)
-                itemsToRemove3.Add(g);
-            }
-            foreach (var item in itemsToRemove3)
-            {
-                //removing group from competitors
-                var competitorsWithGroup = _context.Competitors.Where((c) => c.IdGroup != null && c.IdGroup ==item.IdGroup).ToList();
-                foreach(var competitor in competitorsWithGroup)
+                saveFailed = false;
+                i++;
+                if (i == 10)
+                    break;
+                try
                 {
-                    _context.Competitors.Remove(competitor);
+                    var itemsToRemove = _context.CompetitorEntries.Where((ce) => ce.IdCompetition == comp.IdCompetition).ToList();
+
+                    // Deleting competitor entries
+                    foreach (var item in itemsToRemove)
+                    {
+                        _context.CompetitorEntries.Remove(item);
+                    }
+
+                    // Deleting competitor events
+                    var itemsToRemove1 = new List<CompetitorEvent>();
+                    foreach (var item in itemsToRemove)
+                    {
+                        var ce = _context.CompetitorEvents.FirstOrDefault((c) => c.IdCompetitor == item.IdCompetitor && c.IdEvent == item.IdEvent);
+                        if (ce != null)
+                            itemsToRemove1.Add(ce);
+                    }
+                    foreach (var item in itemsToRemove1)
+                    {
+                        _context.CompetitorEvents.Remove(item);
+                    }
+
+                    // Deleting groups
+                    var itemsToRemove3 = new List<Group>();
+                    foreach (var item in itemsToRemove)
+                    {
+                        var g = _context.Groups.FirstOrDefault((g) => g.IdEvent == item.IdEvent);
+                        if (g != null)
+                            itemsToRemove3.Add(g);
+                    }
+                    foreach (var item in itemsToRemove3)
+                    {
+                        // Removing group from competitors
+                        var competitorsWithGroup = _context.Competitors.Where((c) => c.IdGroup != null && c.IdGroup == item.IdGroup).ToList();
+                        foreach (var competitor in competitorsWithGroup)
+                        {
+                            _context.Competitors.Remove(competitor);
+                        }
+                        // Deleting groups
+                        _context.Groups.Remove(item);
+                    }
+
+                    // Deleting events
+                    var events = _context.Events.Where((e) => e.IdCompetition == comp.IdCompetition).ToList();
+                    foreach (var ev in events)
+                    {
+                        var running = _context.RunningEvents.FirstOrDefault((e) => e.IdEvent == ev.IdEvent);
+                        if (running != null)
+                        {
+                            _context.RunningEvents.Remove(running);
+                        }
+                        var throwing = _context.ThrowingEvents.FirstOrDefault((e) => e.IdEvent == ev.IdEvent);
+                        if (throwing != null)
+                        {
+                            _context.ThrowingEvents.Remove(throwing);
+                        }
+                        var jumping = _context.JumpingEvents.FirstOrDefault((e) => e.IdEvent == ev.IdEvent);
+                        if (jumping != null)
+                        {
+                            _context.JumpingEvents.Remove(jumping);
+                        }
+                        _context.Events.Remove(ev);
+                    }
+
                     _context.SaveChanges();
+                    comp.IdUserNavigation = null;
+                    _context = DBConnection.GetContext();
+
+                    // Deleting competition
+                    _context.Competitions.Remove(comp);
+                    _context.SaveChanges();
+                    _competitions.Remove(comp);
+                    
                 }
-                //deleting groups
-                _context.Groups.Remove(item);
-                _context.SaveChanges();
-            }
-
-            //deleting events
-            var events = _context.Events.Where((e)=>e.IdCompetition==comp.IdCompetition).ToList();
-
-            foreach (var ev in events)
-            {
-                var running = _context.RunningEvents.FirstOrDefault((e) => e.IdEvent == ev.IdEvent);
-                if (running != null)
+                catch (DbUpdateConcurrencyException ex)
                 {
-                    _context.RunningEvents.Remove(running);
-                    _context.SaveChanges();
-                }
-                var throwing= _context.ThrowingEvents.FirstOrDefault((e)=>e.IdEvent == ev.IdEvent);
-                if (throwing != null)
-                {
-                    _context.ThrowingEvents.Remove(throwing);
-                    _context.SaveChanges();
-                }
-                var jumping= _context.JumpingEvents.FirstOrDefault((e)=>e.IdEvent==ev.IdEvent);
-                if (jumping != null)
-                {
-                    _context.JumpingEvents.Remove(jumping);
-                    _context.SaveChanges();
-                }
-                _context.Events.Remove(ev);
-                _context.SaveChanges();
-            }
+                    saveFailed = true;
 
-            _context = DBConnection.GetContext();
-            comp.IdUserNavigation = null;
+                    
+                    var entry = ex.Entries.Single();
+                    var databaseValues = entry.GetDatabaseValues();
+                    var clientValues = entry.CurrentValues;
 
-            //deleting competition
-            _context.Competitions.Remove(comp);
-            _context.SaveChanges();
-            _competitions.Remove(comp);
+                    if (databaseValues == null)
+                    {
+                     
+                        entry.State = EntityState.Detached;
+                    }
+                    else
+                    {
+                       
+                        entry.OriginalValues.SetValues(databaseValues);
+                        if (i == 10)
+                            return;
+                    }
+                }
+            } while (saveFailed);
         }
 
 
+        }
     }
-}

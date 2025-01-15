@@ -38,19 +38,19 @@
 
                 <ListViewItem Tag="ClubsPage" Name="clubsItem" >
                     <StackPanel HorizontalAlignment="Center">
-                        <materialDesign:PackIcon Foreground="white" Kind="BadgeAccountHorizontal" Height="40" Width="30" HorizontalAlignment="Center"/>
+                        <materialDesign:PackIcon Foreground="white" Kind="ShieldStarOutline" Height="40" Width="30" HorizontalAlignment="Center"/>
                         <Label HorizontalAlignment="Center" Foreground="White" FontWeight="Bold" FontSize="18" Content="{DynamicResource clubs}"/>
                     </StackPanel>
                 </ListViewItem>
                 <ListViewItem Tag="CompetitionsPage" Name="competitionsItem">
                     <StackPanel HorizontalAlignment="Center">
-                        <materialDesign:PackIcon Foreground="white" Kind="Event" Height="40" Width="30" HorizontalAlignment="Center"/>
+                        <materialDesign:PackIcon Foreground="white" Kind="TrophyOutline" Height="40" Width="30" HorizontalAlignment="Center"/>
                         <Label Foreground="White" FontWeight="Bold" FontSize="18" Content="{DynamicResource competitions}"/>
                     </StackPanel>
                 </ListViewItem>
                 <ListViewItem Tag="MyClubPage" Name="myclubItem" >
                     <StackPanel HorizontalAlignment="Center">
-                        <materialDesign:PackIcon Foreground="white" Kind="AccountGroup" Height="40" Width="30" HorizontalAlignment="Center"/>
+                        <materialDesign:PackIcon Foreground="white" Kind="ShieldAccountOutline" Height="40" Width="30" HorizontalAlignment="Center"/>
                         <Label HorizontalAlignment="Center" Foreground="White" FontWeight="Bold" FontSize="18" Content="{DynamicResource myClub}"/>
                     </StackPanel>
                 </ListViewItem>

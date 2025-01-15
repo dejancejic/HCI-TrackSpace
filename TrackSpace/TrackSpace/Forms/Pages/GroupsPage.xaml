@@ -31,6 +31,9 @@ ToolTip="MaterialDesignFloatingActionMiniDarkButton" VerticalAlignment="Bottom" 
   Height="30"
   Kind="ArrowBack" />
         </Button>
+        <Button Background="Transparent" BorderBrush="Transparent" Padding="5 0 0 0" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0 13 40 0" Command="{Binding MinimizeCommand}">
+            <materialDesign:PackIcon Kind="Minus" Width="25" Height="25" Opacity="0.5"/>
+        </Button>
 
         <Button Command="{Binding AddGroupCommand}" Visibility="Hidden" Name="addGroupBtn"
 IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
@@ -52,16 +55,16 @@ ToolTip="MaterialDesignFloatingActionMiniDarkButton" VerticalAlignment="Bottom" 
 FontWeight="Bold" FontSize="40" Foreground="Black" Margin="15,10,0,500"/>
 
 
-        <StackPanel Margin="0 70 270 0" Orientation="Vertical" HorizontalAlignment="Right" >
+        <!--<StackPanel Margin="0 70 270 0" Orientation="Vertical" HorizontalAlignment="Right" >
             <Image Source="pack://application:,,,/Resources/trackIcon.png" Width="50" Height="50"></Image>
             <StackPanel Orientation="Horizontal">
                 <Label HorizontalAlignment="Center" Content="{Binding Event.IdEventNavigation.IdCompetitionNavigation.PostNumberNavigation.Address}"></Label>
                 <Label Content="," Margin="-7 0 0 0"></Label>
             </StackPanel>
             <Label Content="{Binding Event.IdEventNavigation.IdCompetitionNavigation.PostNumberNavigation.City}"></Label>
-        </StackPanel>
+        </StackPanel>-->
 
-        <StackPanel Margin="0 70 80 0" Orientation="Vertical" HorizontalAlignment="Right" >
+        <!--<StackPanel Margin="0 70 80 0" Orientation="Vertical" HorizontalAlignment="Right" >
             <Image Source="pack://application:,,,/Resources/dateTimeIcon.png" Width="50" Height="50"></Image>
             <StackPanel Orientation="Horizontal">
                 <Label HorizontalAlignment="Center"
@@ -72,7 +75,41 @@ Content="{Binding Event.IdEventNavigation.IdCompetitionNavigation.Start, Convert
             <Label Content="{Binding Event.IdEventNavigation.Start, Converter={StaticResource DateTimeConverter}, ConverterParameter=TimeOnly}" FontWeight="DemiBold"
                 HorizontalAlignment="Center">
             </Label>
-        </StackPanel>
+        </StackPanel>-->
+        <materialDesign:PackIcon Foreground="{DynamicResource Primary}" Kind="AccountGroupOutline" Width="37" Height="38" VerticalAlignment="Top" Margin="18,200,0,0"/>
+
+        <DockPanel Margin="285,80,270,415">
+            <materialDesign:PackIcon Foreground="{DynamicResource Primary}" Kind="MapOutline" Width="41" Height="40" VerticalAlignment="Center" Margin="0,0,10,0"/>
+            <TextBox FontSize="18" IsReadOnly="true" Style="{StaticResource MaterialDesignFloatingHintTextBox}" materialDesign:HintAssist.Hint="{DynamicResource location}"
+materialDesign:HintAssist.FloatingOffset="0,-20"
+BorderBrush="#c5c8cc" Text="{Binding Event.IdEventNavigation.IdCompetitionNavigation.PostNumberNavigation.Address}"
+BorderThickness="0"/>
+
+        </DockPanel>
+
+        <Label Margin="334,138,240,390" Foreground="Black"
+       Content="{Binding Event.IdEventNavigation.IdCompetitionNavigation.PostNumberNavigation.City}"></Label>
+        
+        <DockPanel Margin="538,85,70,460" >
+            <materialDesign:PackIcon Foreground="{DynamicResource Primary}" Kind="Calendar" Width="41" Height="40" VerticalAlignment="Center" Margin="0,0,10,0"/>
+            <TextBox FontSize="18" IsReadOnly="true" Style="{StaticResource MaterialDesignFloatingHintTextBox}" materialDesign:HintAssist.Hint="{DynamicResource date}"
+materialDesign:HintAssist.FloatingOffset="0,-20"
+BorderBrush="#c5c8cc" Text="{Binding Event.IdEventNavigation.Start, Converter={StaticResource DateTimeConverter}, ConverterParameter=DateOnly}"
+BorderThickness="0"/>
+
+        </DockPanel>
+
+
+        <DockPanel Margin="538,145,70,405" >
+            <materialDesign:PackIcon Foreground="{DynamicResource Primary}" Kind="Alarm" Width="41" Height="40" VerticalAlignment="Center" Margin="0,0,10,0"/>
+            <TextBox FontSize="18" IsReadOnly="true" Style="{StaticResource MaterialDesignFloatingHintTextBox}" materialDesign:HintAssist.Hint="{DynamicResource time}"
+materialDesign:HintAssist.FloatingOffset="0,-20"
+BorderBrush="#c5c8cc" Text="{Binding Event.IdEventNavigation.Start, Converter={StaticResource DateTimeConverter}, ConverterParameter=TimeOnly}"
+BorderThickness="0"/>
+
+        </DockPanel>
+
+
 
         <StackPanel Orientation="Horizontal" Margin="15 75 0 430" >
             <Label HorizontalAlignment="Left"   Content="{Binding Event.IdEventNavigation.Name}"
@@ -84,7 +121,8 @@ FontWeight="Bold" FontSize="30" Foreground="Black" />
         </StackPanel>
 
 
-        <StackPanel Orientation="Horizontal" Margin="15,190,0,300" >
+        <StackPanel Orientation="Horizontal" Margin="55,203,0,300" >
+
             <Label HorizontalAlignment="Left"   Content="{DynamicResource groupsW(}"
 FontWeight="Bold" FontSize="22" Foreground="Black" />
 
@@ -133,7 +171,7 @@ FontWeight="Bold" FontSize="22" Foreground="Black" />
             </TabControl.ItemTemplate>
             <TabControl.ContentTemplate>
                 <DataTemplate>
-                    <Border  Background="{DynamicResource Primary}" BorderBrush="{DynamicResource Primary}" Height="250" BorderThickness="1" CornerRadius="10">
+                    <Border  Background="{DynamicResource Primary}" BorderBrush="{DynamicResource Primary}" Height="250" BorderThickness="1" CornerRadius="10" MinWidth="500">
                         <Grid>
                             <DataGrid Margin="2,1,2,1" AlternatingRowBackground="{DynamicResource Secondary}" SelectionChanged="DataGrid_SelectionChanged_1"
                   ItemsSource="{Binding DataContext.CompetitorEvents, RelativeSource={RelativeSource AncestorType=UserControl}}" 
@@ -190,7 +228,7 @@ FontWeight="Bold" FontSize="22" Foreground="Black" />
 
 
 
-        <materialDesign:DialogHost Name="UserDetailsDialogHost">
+        <materialDesign:DialogHost Name="UserDetailsDialogHost" Margin="-5 -5 -5 -5">
             <materialDesign:DialogHost.DialogContent >
 
                 <StackPanel Margin="16" HorizontalAlignment="Center" Width="450">

@@ -7,7 +7,7 @@
       xmlns:utils="clr-namespace:TrackSpace.Utils"
       xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
       mc:Ignorable="d" 
-      FontFamily="{DynamicResource AppFont}" FontSize="18"
+      FontFamily="{DynamicResource AppFont}" FontSize="20"
       d:DesignHeight="650" d:DesignWidth="800"
       >
     <UserControl.Resources>
@@ -17,15 +17,33 @@
 
     <Grid Name="noClubTB">
         <TextBlock Text="{DynamicResource notAnAdminYet}"  VerticalAlignment="Center" HorizontalAlignment="Center" Visibility="Visible"></TextBlock>
-    
-    <Grid Background="White" Name="mainGrid">
+
         <Button x:Name="closeBtn" Background="Transparent" BorderBrush="Transparent" Padding="5 0 0 0" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0 13 14 0" Command="{Binding CloseCommand}">
             <materialDesign:PackIcon Kind="Close" Width="25" Height="25" Opacity="0.5"/>
         </Button>
-        <Label HorizontalAlignment="Left" Margin="15,10,0,415" Content="{Binding Name}"
-FontWeight="Bold" FontSize="40" Foreground="Black" />
+        <Button Background="Transparent" BorderBrush="Transparent" Padding="5 0 0 0" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0 13 40 0" Command="{Binding MinimizeCommand}">
+            <materialDesign:PackIcon Kind="Minus" Width="25" Height="25" Opacity="0.5"/>
+        </Button>
+        <Grid Background="White" Name="mainGrid">
 
-        <Button x:Name="goBackBtn" Command="{Binding GoBackCommand}"
+            <Button x:Name="closeBtn1" Background="Transparent" BorderBrush="Transparent" Padding="5 0 0 0" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0 13 14 0" Command="{Binding CloseCommand}">
+                <materialDesign:PackIcon Kind="Close" Width="25" Height="25" Opacity="0.5"/>
+            </Button>
+            <Button Background="Transparent" BorderBrush="Transparent" Padding="5 0 0 0" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0 13 40 0" Command="{Binding MinimizeCommand}">
+                <materialDesign:PackIcon Kind="Minus" Width="25" Height="25" Opacity="0.5"/>
+            </Button>
+
+            <StackPanel Orientation="Horizontal" Margin="15,10,0,415">
+                <Label HorizontalAlignment="Left"  Content="{Binding Name}"
+FontWeight="Bold" FontSize="40" Foreground="Black" />
+                <Label HorizontalAlignment="Left"  Content=" -  "
+FontWeight="Bold" FontSize="40" Foreground="Black" />
+                <Label HorizontalAlignment="Left"  Content="{Binding Club.ClubCode}"
+FontWeight="Bold" FontSize="40" Foreground="Black" />
+            </StackPanel>
+
+
+            <Button x:Name="goBackBtn" Command="{Binding GoBackCommand}"
   IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
   Style="{StaticResource MaterialDesignFloatingActionMiniDarkButton}" Width="45" Height="45" Background="{DynamicResource Primary}"
   ToolTip="MaterialDesignFloatingActionMiniDarkButton" VerticalAlignment="Bottom" Margin="0 0 15 15" HorizontalAlignment="Right">
@@ -36,7 +54,7 @@ FontWeight="Bold" FontSize="40" Foreground="Black" />
         </Button>
 
 
-        <materialDesign:DialogHost x:Name="AddCompetitorDialogHost">
+            <materialDesign:DialogHost x:Name="AddCompetitorDialogHost" Margin="-5 -5 -5 -5">
             <materialDesign:DialogHost.DialogContent >
                 
                 <StackPanel Margin="16" HorizontalAlignment="Center" Width="350">
@@ -64,13 +82,13 @@ FontWeight="Bold" FontSize="40" Foreground="Black" />
 
                     <StackPanel>
                         <TextBox Width="200" Text="{Binding AddedCompetitor.Name}" 
-  x:Name="NameTextBox"
+  x:Name="NameTextBox" TextChanged="NameTbChanged"
   materialDesign:HintAssist.HelperText="{DynamicResource enterCompetitorName}"
   materialDesign:HintAssist.Hint="{DynamicResource name}" KeyDown="Name_KeyDown">
 
                     </TextBox>
 
-                        <TextBox Width="200" Margin="0 25 0 0" Text="{Binding AddedCompetitor.Surname}" 
+                            <TextBox Width="200" Margin="0 25 0 0" Text="{Binding AddedCompetitor.Surname}" TextChanged="NameTbChanged"
 x:Name="SurnnameTextBox"
 materialDesign:HintAssist.HelperText="{DynamicResource enterCompetitorSurname}"
 materialDesign:HintAssist.Hint="{DynamicResource surname}">
@@ -136,7 +154,7 @@ ToolTip="MaterialDesignFloatingActionMiniDarkButton" VerticalAlignment="Bottom" 
             </materialDesign:DialogHost>
 
 
-        <materialDesign:DialogHost x:Name="UserDetailsDialogHost">
+        <materialDesign:DialogHost x:Name="UserDetailsDialogHost" Margin="-5 -5 -5 -5">
             <materialDesign:DialogHost.DialogContent >
 
                 <StackPanel Margin="16" HorizontalAlignment="Center" Width="400">
@@ -203,13 +221,13 @@ VerticalAlignment="Center" />
                 </StackPanel>
             </materialDesign:DialogHost.DialogContent>
 
-            <Border  Background="{DynamicResource Primary}" BorderBrush="{DynamicResource Primary}" Margin="30,275,122,75"  BorderThickness="1" CornerRadius="10">
+            <Border  Background="{DynamicResource Primary}" BorderBrush="{DynamicResource Primary}" Margin="60,215,75,80"  BorderThickness="1" CornerRadius="10">
                 <Grid>
                     <DataGrid Margin="2,1,2,1"
           ItemsSource="{Binding Club.Competitors}" 
           AutoGenerateColumns="False"
           SelectionMode="Single"
-          SelectionUnit="FullRow" VerticalScrollBarVisibility="Hidden" HorizontalScrollBarVisibility="Disabled"
+          SelectionUnit="FullRow" VerticalScrollBarVisibility="Hidden" HorizontalScrollBarVisibility="Auto"
           CanUserAddRows="False"
           LoadingRow="DataGrid_LoadingRow"
           
@@ -232,15 +250,16 @@ VerticalAlignment="Center" />
                         <Setter Property="HorizontalContentAlignment" Value="Center" />
                         <Setter Property="VerticalContentAlignment" Value="Center" />
                             <Setter Property="Margin" Value="0 3 0 0" />
-                            <Setter Property="MinWidth" Value="120" />
-                        <Setter Property="Height" Value="30" />
-                    </Style>
+                            <Setter Property="MinWidth" Value="125" />
+                        <Setter Property="Height" Value="32" />
+                                    <Setter Property="FontSize" Value="15" />
+                                </Style>
                 </DataGrid.CellStyle>
 
 
                 <DataGrid.RowStyle>
                     <Style TargetType="DataGridRow">
-                        <Setter Property="Height" Value="30" />
+                        <Setter Property="Height" Value="32" />
 
                     </Style>
                 </DataGrid.RowStyle>
@@ -261,13 +280,25 @@ VerticalAlignment="Center" />
                     </DataGridTemplateColumn>
 
 
-                    <DataGridTextColumn Header="{DynamicResource name}" Binding="{Binding Name}" IsReadOnly="True" />
+                                <DataGridTemplateColumn Header="{DynamicResource name}">
+                                    <DataGridTemplateColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <TextBlock Text="{Binding Name}" FontWeight="Bold" TextAlignment="Center" />
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.CellTemplate>
+                                </DataGridTemplateColumn>
+
+                                <DataGridTemplateColumn Header="{DynamicResource surname}">
+                                    <DataGridTemplateColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <TextBlock Text="{Binding Surname}" FontWeight="Bold" TextAlignment="Center" />
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.CellTemplate>
+                                </DataGridTemplateColumn>
 
 
-                    <DataGridTextColumn Header="{DynamicResource surname}" Binding="{Binding Surname}" IsReadOnly="True" />
 
-
-                    <DataGridTextColumn Header="{DynamicResource category}" Binding="{Binding IdCategoryNavigation.Name}" IsReadOnly="True" />
+                                <DataGridTextColumn Header="{DynamicResource category}" Binding="{Binding IdCategoryNavigation.Name}" IsReadOnly="True" />
                     <DataGridTextColumn Header="{DynamicResource gender}" Binding="{Binding Pol, Converter={StaticResource GenderTranslationConverter}}" IsReadOnly="True" />
                 </DataGrid.Columns>
             </DataGrid>
@@ -281,42 +312,41 @@ VerticalAlignment="Center" />
 
 
         </materialDesign:DialogHost>
-        <StackPanel Orientation="Horizontal" Margin="30,234,0,307">
-            <Label Content="{DynamicResource competitors}"
-FontWeight="Bold"  Foreground="Black" Height="105" />
+            
+        <StackPanel Orientation="Horizontal" Margin="55,154,0,307">
+                <materialDesign:PackIcon Foreground="{DynamicResource Primary}" Kind="AccountGroupOutline" Width="38" Height="38" VerticalAlignment="Center" Margin="0,-53,5,0"/>
+                <Label Content="{DynamicResource competitors}"
+FontWeight="Bold"  Foreground="Black" Height="85" />
 
-            <Label HorizontalAlignment="Left" Margin="-7 0 -7 0" Content="{Binding Club.CompetitorNumber}"
+            <Label HorizontalAlignment="Left" Margin="-7 19 -7 0" Content="{Binding Club.CompetitorNumber}"
 FontWeight="Bold"  Foreground="Black"  />
             <Label  Content=")"
-FontWeight="Bold"  Foreground="Black" Width="15" Height="109"  />
+FontWeight="Bold"  Foreground="Black" Width="15" Height="85"  />
 
 
         </StackPanel>
 
-        <StackPanel Orientation="Vertical"  Margin="30,100,316,378">
-            <StackPanel Orientation="Horizontal">
-                <Label HorizontalAlignment="Left" Content="{DynamicResource clubCode}" Width="170"
-FontWeight="Bold"  Foreground="Black"  />
-                <Label HorizontalAlignment="Left" Content="{Binding Club.ClubCode}" Foreground="Black"  />
+        <StackPanel Orientation="Vertical"  Margin="50,80,350,308">
+                
+  
+                <DockPanel Margin="0,25,200,5">
+                    <materialDesign:PackIcon Foreground="{DynamicResource Primary}" Kind="Phone" Width="28" Height="28" VerticalAlignment="Center" Margin="0,0,10,0"/>
+                    <TextBox FontSize="17" IsReadOnly="true" Style="{StaticResource MaterialDesignFloatingHintTextBox}" materialDesign:HintAssist.Hint="{DynamicResource contact}"
+materialDesign:HintAssist.FloatingOffset="0,-20"
+BorderBrush="#c5c8cc" Text="{Binding Club.Contact}"
+BorderThickness="0"/>
 
-            </StackPanel>
+                </DockPanel>
 
+                <DockPanel Margin="220,-43,-70,0">
+                    <materialDesign:PackIcon Foreground="{DynamicResource Primary}" Kind="CodeBlockBraces" Width="28" Height="28" VerticalAlignment="Center" Margin="0,0,10,0"/>
+                    <TextBox FontSize="17" IsReadOnly="true"  Style="{StaticResource MaterialDesignFloatingHintTextBox}" materialDesign:HintAssist.Hint="{DynamicResource contactMail}"
+materialDesign:HintAssist.FloatingOffset="0,-20"
+BorderBrush="#c5c8cc" Text="{Binding Club.IdUserNavigation.IdUserNavigation.Email}" 
+BorderThickness="0"/>
 
-            <StackPanel Orientation="Horizontal">
-                <Label HorizontalAlignment="Left" Content="{DynamicResource contact}" Width="170"
-FontWeight="Bold"  Foreground="Black"  />
-                <Label HorizontalAlignment="Left" Content="{Binding Club.Contact}"  Foreground="Black"  />
+                </DockPanel>
 
-            </StackPanel>
-
-            <StackPanel Orientation="Horizontal">
-                <Label HorizontalAlignment="Left" Content="{DynamicResource contactMail}" Width="170"
-FontWeight="Bold"  Foreground="Black"  />
-                <Label HorizontalAlignment="Left" Content="{Binding Club.IdUserNavigation.IdUserNavigation.Email}" 
-                        Foreground="Black"  />
-
-
-            </StackPanel>
 
 
 
@@ -325,7 +355,7 @@ FontWeight="Bold"  Foreground="Black"  />
         </StackPanel>
 
         <materialDesign:PackIcon Kind="InfoCircleOutline" Height="110" Width="110" HorizontalAlignment="Right"
-                                 Margin="0 85 70 0" Foreground="{DynamicResource Primary}"></materialDesign:PackIcon>
+                                 Margin="0 65 70 0" Foreground="{DynamicResource Primary}"></materialDesign:PackIcon>
 
     </Grid>
     </Grid>

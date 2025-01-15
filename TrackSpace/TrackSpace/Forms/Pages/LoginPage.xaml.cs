@@ -27,8 +27,6 @@ namespace TrackSpace.Forms.Pages
             InitializeComponent();
 
             loginViewModel = ViewModelLocator.LoginViewModel;
-            loginViewModel.Password = "Password";
-            loginViewModel.Username = "ClubAdmin";
         }
 
 

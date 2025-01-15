@@ -181,7 +181,7 @@ namespace TrackSpace.ViewModel
 
             if (AddedCompetitor.Name!.Length == 0 || AddedCompetitor.Surname!.Length==0)
             {
-                new CustomMessageBox(false, false, (string)Application.Current.Resources["error"], (string)Application.Current.Resources["errornameSurnameEmpty"]).Show();
+                new CustomMessageBox(false, false, (string)Application.Current.Resources["error"], (string)Application.Current.Resources["fillFields"]).Show();
                 return;
             }
 

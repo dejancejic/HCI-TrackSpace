@@ -83,6 +83,7 @@ namespace TrackSpace.Services
         }
         private User AddUser(string username,string password,string mail,string type)
         {
+            _context = DBConnection.GetContext();
             User u=new User() { Username=username,Password=HashPassword(password),Email=mail,Type=type,FontID=0,LanguageId=0,ThemeID=0 };
             _context.Users.Add(u);
             _users.Add(u);
@@ -104,7 +105,7 @@ namespace TrackSpace.Services
         {
             User u = AddUser(username, password, mail, "club_admin");
             ClubAdmin admin = new ClubAdmin() { IdUser = u.IdUser, IdUserNavigation = u };
-
+           
             _context.ClubAdmins.Add(admin);
             _context.SaveChanges();
         }

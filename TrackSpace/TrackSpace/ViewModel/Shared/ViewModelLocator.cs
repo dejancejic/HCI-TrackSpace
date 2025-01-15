@@ -20,6 +20,7 @@ namespace TrackSpace.ViewModel.Shared
 
         public static bool AdminToAClub { get; set; }
 
+        public static int MyClubId { get; set; } = 0;
         private static LoginViewModel _loginViewModel = new LoginViewModel();
         private static ObserverViewModel _observerViewModel = new ObserverViewModel();
         private static ClubAdminViewModel _clubAdminViewModel = new ClubAdminViewModel();

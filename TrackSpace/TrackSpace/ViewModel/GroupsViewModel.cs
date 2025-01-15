@@ -13,6 +13,7 @@ using System.Windows.Input;
 using System.Windows.Threading;
 using TrackSpace.Command;
 using TrackSpace.Forms.CustomMessageBox;
+using TrackSpace.Forms.Pages;
 using TrackSpace.Models;
 using TrackSpace.Services;
 using TrackSpace.Services.Shared;
@@ -67,7 +68,7 @@ namespace TrackSpace.ViewModel
         public RunningEvent Event { get { return _runningEvent; } set {
             _runningEvent=value;
 
-                Groups=new ObservableCollection<Group>(_runningEvent.Groups);
+                Groups=new ObservableCollection<Group>(new EventsService().GetGroupsByIdEvent(_runningEvent.IdEvent));
                 OnPropertyChanged(nameof(Event));
             } 
         }
@@ -88,7 +89,7 @@ namespace TrackSpace.ViewModel
 
         public void GoBack(object obj)
         {
-            PageUtils.NavigatePages(ViewModelLocator.EventInfoPage);
+            PageUtils.NavigatePages(new EventInfoPage(_runningEvent.IdEventNavigation));
         }
 
         private int idGroupSelected = 0;
@@ -109,31 +110,41 @@ namespace TrackSpace.ViewModel
 
         private void RemoveCompetitorFromGroup(object obj)
         {
-            var idCompetitor = 0;
-            int i = 0;
+            
             if (SelectedCompetitorEvent == null)
                 return;
-            foreach (var item in CompetitorEvents)
-            {
-                if (item.IdCompetitorNavigation.IdCompetitor == SelectedCompetitorEvent.IdCompetitor)
+            new CustomMessageBox(true,true, (string)Application.Current.Resources["confirmation"], (string)Application.Current.Resources["sureToRemoveCompetitorFromGroup"], (y) =>{
+
+                var idCompetitor = 0;
+                foreach (var item in CompetitorEvents)
                 {
-                    idCompetitor = SelectedCompetitorEvent.IdCompetitor;
-                    break;
+                    if (item.IdCompetitorNavigation.IdCompetitor == SelectedCompetitorEvent.IdCompetitor)
+                    {
+                        idCompetitor = SelectedCompetitorEvent.IdCompetitor;
+                        break;
+                    }
+
                 }
-                i++;
-            }
-           
-            new CompetitorsService().RemoveCompetitorFromGroup(idCompetitor);
-            UpdateCompetitorEvents(idGroupSelected);
-            SelectedCompetitorEvent = null;
-            new CustomMessageBox(false, true, (string)Application.Current.Resources["removalSuccessful"], (string)Application.Current.Resources["successfullyRemoved"]).Show();
+
+                new CompetitorsService().RemoveCompetitorFromGroup(idCompetitor);
+                UpdateCompetitorEvents(idGroupSelected);
+                SelectedCompetitorEvent = null;
+                new CustomMessageBox(false, true, (string)Application.Current.Resources["removalSuccessful"], (string)Application.Current.Resources["successfullyRemoved"]).Show();
+
+
+            }, (n) => { }).Show();
+            
 
         }
 
-        private async void AddCompetitors(object obj)
+        private void AddCompetitors(object obj)
         {
+            if (SelectedCompetitors.Count == 0)
+                return;
 
-            DialogHost.IsOpen = false;
+            new CustomMessageBox(true, true, (string)Application.Current.Resources["confirmation"], (string)Application.Current.Resources["sureToAddCompetitorsToGroup"], (y) => {
+
+                DialogHost.IsOpen = false;
 
             foreach(var item in SelectedCompetitors)
             {
@@ -142,13 +153,14 @@ namespace TrackSpace.ViewModel
             }
             OnPropertyChanged(nameof(CompetitorEvents));
 
-            await Task.Delay(500);
-
-            if (SelectedCompetitors.Count != 0)
-                new CustomMessageBox(false, true, (string)Application.Current.Resources["addingSuccessful"], (string)Application.Current.Resources["successfullyAdded"]).Show();
-            SelectedCompetitors = new ObservableCollection<CompetitorEvent>();
-           
             
+            
+            new CustomMessageBox(false, true, (string)Application.Current.Resources["addingSuccessful"], (string)Application.Current.Resources["successfullyAdded"]).Show();
+            SelectedCompetitors = new ObservableCollection<CompetitorEvent>();
+
+            }, (n) => { }).Show();
+
+
         }
         public Button addBtn { get; set; }
         public Button removeBtn { get; set; } 
@@ -167,6 +179,12 @@ namespace TrackSpace.ViewModel
                 removeBtn.Visibility=Visibility.Visible;
                 noGroupsTB.Visibility=Visibility.Hidden;   
                 OnPropertyChanged(nameof(Groups));
+
+                var evNav = ViewModelLocator.EventInfoViewModel.SelectedEvent.RunningEvent.IdEventNavigation;
+
+                ViewModelLocator.EventInfoViewModel.SelectedEvent.RunningEvent=new EventsService().GetRunningEventByIdEvent(Event.IdEvent);
+                ViewModelLocator.EventInfoViewModel.SelectedEvent.RunningEvent.IdEventNavigation = evNav;
+
             }, (a) => {}).Show();
 
 

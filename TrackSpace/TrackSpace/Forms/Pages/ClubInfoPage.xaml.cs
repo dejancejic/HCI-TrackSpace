@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -22,7 +23,7 @@ namespace TrackSpace.Forms.Pages
     
     public partial class ClubInfoPage : UserControl
     {
-        public ClubInfoPage(Club club,bool myClub=true)
+        public ClubInfoPage(Club club,bool myClub=false)
         {
             InitializeComponent();
             
@@ -32,6 +33,10 @@ namespace TrackSpace.Forms.Pages
             
 
             SetBtnAddCompetitor(club,myClub);
+            if (myClub == true)
+            {
+                goBackBtn.Visibility=Visibility.Collapsed;
+            }
             if(club==null)
             {
                 mainGrid.Visibility=Visibility.Collapsed;
@@ -42,7 +47,7 @@ namespace TrackSpace.Forms.Pages
 
         public void SetBtnAddCompetitor(Club club, bool myClub)
         {
-            if (myClub==true)
+            if (myClub==true && !ViewModelLocator.AccountType.Equals("observer"))
             {
                 addCompetitorBtn.Visibility = Visibility.Visible;
                 ViewModelLocator.ClubInfoViewModel.DialogHost = AddCompetitorDialogHost;
@@ -77,6 +82,23 @@ namespace TrackSpace.Forms.Pages
             if (e.Key == Key.Enter)
             {
                 SurnnameTextBox.Focus();
+            }
+        }
+
+        private void NameTbChanged(object sender, TextChangedEventArgs e)
+        {
+            var textBox = sender as TextBox;
+            if (textBox != null)
+            {
+
+                string filteredText = new string(textBox.Text.Where((c) => char.IsLetter(c) || char.IsWhiteSpace(c) || c == '"').ToArray());
+
+                if (filteredText.Length > int.Parse(ConfigurationManager.AppSettings[9]!))
+                {
+                    filteredText = filteredText.Substring(0, int.Parse(ConfigurationManager.AppSettings[9]!));
+                }
+                textBox.Text = filteredText;
+                textBox.CaretIndex = filteredText.Length;
             }
         }
 

@@ -60,6 +60,9 @@ FontFamily="{DynamicResource MaterialDesignFont}"
                 <Button Background="Transparent" BorderBrush="Transparent" Padding="5 0 0 0" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0 13 14 0" Command="{Binding CloseFormCommand}">
                     <materialDesign:PackIcon Kind="Close" Width="25" Height="25" Opacity="0.5"/>
                 </Button>
+                <Button Background="Transparent" BorderBrush="Transparent" Padding="5 0 0 0" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0 13 40 0" Command="{Binding MinimizeFormCommand}">
+                    <materialDesign:PackIcon Kind="Minus" Width="25" Height="25" Opacity="0.5"/>
+                </Button>
 
 
                 <StackPanel Orientation="Horizontal" VerticalAlignment="Bottom" HorizontalAlignment="Right">
