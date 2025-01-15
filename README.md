@@ -30,43 +30,43 @@
 ## Posmatrač
   U slučaju odabira ulaska u aplikaciju kao posmatrač sistem generiše formu kao na slici ispod. Sa strane forme se nalazi meni za izbor prozora koji će se prikazivati pored menija u glavnom prozoru. Tu se nalaze opcije za prikaz stranice sa klubovima(inicijalno izabrana), stranice sa takmičenjima, stranice za podešavanja i dugme za odjavu sa sistema(izlaz).
   
-  ![image](https://github.com/user-attachments/assets/9ee11ef7-b7bc-4d49-b3fe-61d817b1c24e)
+ ![image](https://github.com/user-attachments/assets/554b6fe6-d8ac-4c03-8683-131182b194aa)
 <p align=center>Forma za posmatrača(prozor za prikaz klubova)</p>
 
 ### Klubovi
 Na stranici za prikaz klubova se izlistavaju svi klubovi koji postoje u sistemu(ime, kod kluba, kontakt telefon i broj takmičara u klubu), a takođe tu se nalazi i traka za pretragu putem koje korisnik može da pretraži klubove po nazivu ili kodu kluba.
 
-![image](https://github.com/user-attachments/assets/991eb69d-78cb-4361-ac2f-1e43797b0a09)
+![image](https://github.com/user-attachments/assets/c69808a8-86f7-42d9-a046-9e877c38e556)
 <p align=center>Pretraga klubova</p>
 U slučaju odabira kluba putem pretrage ili klikom na link jednog od imena kluba prikazanog u tabeli otvara se novi prozor sa informacijama o klubu(naziv, kod kluba, mejl administratora i podaci o takmičarima u klubu).
 
-![image](https://github.com/user-attachments/assets/9c492711-5ace-4833-9598-6984ab03e50a)
+![image](https://github.com/user-attachments/assets/083241f6-fa9b-472c-9fd3-ac854366ed94)
 <p align=center>Prikaz informacija o klubu</p>
 Korisnik se može vratiti na prikaz svih klubova klikom na dugme za povratak u donjem desnom ćošku forme, a takođe može i da prikaže sve takmičare klikom na jednog od njih u tabeli.
 
-![image](https://github.com/user-attachments/assets/fa0ebfc8-9d49-4d98-b785-e2630ba7415d)
+![image](https://github.com/user-attachments/assets/c97957ec-0d81-485c-96ad-c9366631ad59)
 <p align=center>Prikaz informacija o takmičaru</p>
 
 ### Takmičenja
 Na stranici za prikaz takmičenja se prikazuje forma koja ima 2 tab-a vezana za odabir prikaza takmičenja koja trebaju da se održe ili su završena. Tu se nalazi i traka za pretragu takmičenja po imenu ili lokaciji. Za svako takmičenje se prikazuju informacije o nazivu, datumu održavanja, lokaciji i broju prijava na takmičenje.
 
-![image](https://github.com/user-attachments/assets/b80fecf1-6f76-4b96-b102-dd806912a9ea)
+![image](https://github.com/user-attachments/assets/6a1bb734-eae6-40d7-a010-fbcfa23d0413)
 <p align=center>Prikaz takmičenja</p>
 Takmičenja je moguće filtrirati i po godini održavanja što se podešava klikom na dugme kada se otvara combo-box za izbor godine. Filter se može i ugasiti ponovnim klikom na dugme za filtriranje čime se prikazuju sva takmičenja(u zavisnosti od tab-a).
 
-![image](https://github.com/user-attachments/assets/8743b6ff-40b7-4703-aeb5-0a7044c136fc)
+![image](https://github.com/user-attachments/assets/9715b3f2-47e1-4b80-8d46-57e9fc4a5cc1)
 <p align=center>Filtriranje takmičenja po godini</p>
 
 #### Informacije o takmičenju
 Klikom na naziv takmičenja ili na pretraženo takmičenje prelazi se na stranicu za prikaz takmičenja, gdje se prikazuju informacije o datumu i vremenu takmičenja, stadionu(lokaciji), mejlu organizatora takmičenja te i sam opis takmičenja. Ispod su prikazane i sve discipline na takmičenju(naziv, vrijeme početka, kategorija i broj prijavljenih takmičara na disciplinu). Takođe, korisnik se može vratiti na prikaz svih takmičenja klikom na dugme za povratak u donjem dijelu forme.
 
-![image](https://github.com/user-attachments/assets/8ce4c73f-2f0a-4ba3-9bf9-03edf35c4b71)
+![image](https://github.com/user-attachments/assets/afd99305-a92c-4716-8f63-3ef51c389183)
 <p align=center>Prikaz informacija o takmičenju</p>
 
 #### Informacije o disciplini
 Klikom na jednu od disciplina otvara se nova stranica koja prikazuje podatke o disciplini, kao i prijavljene takmičare na neku disciplinu odnosno poziciju(sortirano po rezultatu, ako ga ima), ime, prezime, klub i rezultat. Rezulat će biti prikazan kada je u pitanju završeno takmičenje, odnosno kada organizator takmičenja unese informacije o rezultatima. Takođe, sortiranje takmičara je moguće po više kriterijuma klikom na naslov neke od kolona u tabeli.
 
-![image](https://github.com/user-attachments/assets/084c19b8-3cc6-4c8a-b98e-b20e7cab6a48)
+![image](https://github.com/user-attachments/assets/96cef54c-9c46-4bc4-b0cf-7452a165dc8a)
 <p align=center>Prikaz informacija o disciplini sa takmičenja koje predstoji(startna lista)</p>
 
 ![image](https://github.com/user-attachments/assets/d6f38f2b-db28-4cc7-9c7c-8110401bc6b9)
