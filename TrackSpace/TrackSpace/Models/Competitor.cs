@@ -26,4 +26,6 @@ public partial class Competitor
     public virtual Category IdCategoryNavigation { get; set; } = null!;
 
     public virtual Club IdClubNavigation { get; set; } = null!;
+
+    public virtual Group IdGroupNavigation { get; set; } = null!;
 }

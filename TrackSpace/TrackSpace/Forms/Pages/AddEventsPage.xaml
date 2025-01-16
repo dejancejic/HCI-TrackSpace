@@ -61,8 +61,11 @@ Visibility="{Binding CountSelected, Converter={StaticResource EmptyCollectionToV
             </StackPanel>
         </ScrollViewer>
 
-        <materialDesign:PackIcon Foreground="{DynamicResource Primary}" Kind="CalendarStar" Width="35" Height="38" VerticalAlignment="Top" Margin="410,100,5,0"/>
-        <Label FontWeight="Bold" HorizontalAlignment="Right" Margin="0,105,170,0" Content="{DynamicResource selectedEvents}" Height="92" VerticalAlignment="Top"></Label>
+        <StackPanel Orientation="Horizontal" Margin="410,100,5,0">
+            <materialDesign:PackIcon Foreground="{DynamicResource Primary}" Kind="CalendarStar" Width="35" Height="38" VerticalAlignment="Top"/>
+            <Label FontWeight="Bold" HorizontalAlignment="Right"  Content="{DynamicResource selectedEvents}" Height="92" VerticalAlignment="Top"></Label>
+        </StackPanel>
+      
 
         <ComboBox FontSize="16" Margin="23,72,458,461"
 materialDesign:HintAssist.Hint="{DynamicResource events}"

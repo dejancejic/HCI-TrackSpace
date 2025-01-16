@@ -14,6 +14,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using TrackSpace.Command;
 using TrackSpace.Models;
+using TrackSpace.Services;
 using TrackSpace.ViewModel.Shared;
 
 namespace TrackSpace.Forms.Pages
@@ -34,7 +35,7 @@ namespace TrackSpace.Forms.Pages
                 GroupsStackPanel.Visibility = Visibility.Visible;
             }
 
-            if (ViewModelLocator.AccountType.Equals("organizer") && event1.Start<=DateTime.Now.AddDays(2))
+            if (ViewModelLocator.AccountType.Equals("organizer") && event1.Start<=DateTime.Now.AddDays(2) && new EventsService().CheckOrganizerAllowedToUpdateResult(ViewModelLocator.IdOrganizer,event1))
             { 
                 resultPanel.Visibility= Visibility.Visible;
                 updateResultBtn.Visibility=Visibility.Visible;

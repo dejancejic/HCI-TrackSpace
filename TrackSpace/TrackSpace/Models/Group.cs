@@ -12,4 +12,6 @@ public partial class Group
     public int IdEvent { get; set; }
 
     public virtual RunningEvent IdEventNavigation { get; set; } = null!;
+
+    public virtual ICollection<Competitor> Competitors{ get; set; }
 }

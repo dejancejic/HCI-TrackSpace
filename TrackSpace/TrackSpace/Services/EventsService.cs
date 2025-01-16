@@ -196,6 +196,18 @@ namespace TrackSpace.Services
 
         }
 
+        public bool CheckOrganizerAllowedToUpdateResult(int idUser,Event e)
+        {
+
+            Competition ? c = _context.Competitions.FirstOrDefault((c) => c.IdCompetition == e.IdCompetition);
+
+            if (c.IdUser==idUser)
+            {
+                return true;
+            }
+            return false;
+        }
+
         public RunningEvent GetRunningEventByIdEvent(int idEvent)
         {
             return _context.RunningEvents.FirstOrDefault(ev=>ev.IdEvent==idEvent)!;
@@ -225,4 +237,6 @@ namespace TrackSpace.Services
         }
 
     }
+
+
 }

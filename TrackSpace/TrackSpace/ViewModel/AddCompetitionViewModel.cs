@@ -482,8 +482,8 @@ namespace TrackSpace.ViewModel
             }
             else
             {
-                _selectedType = "Trkačke discipline";
-                _types = new ObservableCollection<string>() { (string)Application.Current.Resources["runningEvents"],
+                SelectedType = (string)Application.Current.Resources["runningEvents"];
+                Types = new ObservableCollection<string>() { (string)Application.Current.Resources["runningEvents"],
             (string)Application.Current.Resources["jumpingEvents"],(string)Application.Current.Resources["throwingEvents"] };
 
 

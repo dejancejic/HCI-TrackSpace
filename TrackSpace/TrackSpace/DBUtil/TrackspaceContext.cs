@@ -209,6 +209,11 @@ public partial class TrackspaceContext : DbContext
                 .HasForeignKey(d => d.IdClub)
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("fk_TAKMICAR_KLUB1");
+
+            entity.HasOne(d => d.IdGroupNavigation).WithMany(p => p.Competitors)
+                .HasForeignKey(d => d.IdGroup)
+                .OnDelete(DeleteBehavior.SetNull)
+                .HasConstraintName("fk_competitor_group1");
         });
 
         modelBuilder.Entity<CompetitorEntry>(entity =>
@@ -235,7 +240,7 @@ public partial class TrackspaceContext : DbContext
 
             entity.HasOne(d => d.IdCompetitionNavigation).WithMany(p => p.CompetitorEntries)
                 .HasForeignKey(d => d.IdCompetition)
-                .OnDelete(DeleteBehavior.ClientSetNull)
+                .OnDelete(DeleteBehavior.Cascade)
                 .HasConstraintName("fk_PRIJAVA_TAKMICARA_TAKMICENJE1");
 
             entity.HasOne(d => d.IdUserNavigation).WithMany(p => p.CompetitorEntries)
@@ -267,7 +272,7 @@ public partial class TrackspaceContext : DbContext
 
             entity.HasOne(d => d.IdEventNavigation).WithMany(p => p.CompetitorEvents)
                 .HasForeignKey(d => d.IdEvent)
-                .OnDelete(DeleteBehavior.ClientSetNull)
+                .OnDelete(DeleteBehavior.Cascade)
                 .HasConstraintName("fk_TAKMICAR_DISCIPLINA_DISCIPLINA1");
         });
 
@@ -334,7 +339,7 @@ public partial class TrackspaceContext : DbContext
 
             entity.HasOne(d => d.IdEventNavigation).WithOne(p => p.JumpingEvent)
                 .HasForeignKey<JumpingEvent>(d => d.IdEvent)
-                .OnDelete(DeleteBehavior.ClientSetNull)
+                .OnDelete(DeleteBehavior.Cascade)
                 .HasConstraintName("fk_SKAKACKA_DISCIPLINA_DISCIPLINA1");
         });
 
@@ -385,7 +390,7 @@ public partial class TrackspaceContext : DbContext
 
             entity.HasOne(d => d.IdEventNavigation).WithOne(p => p.ThrowingEvent)
                 .HasForeignKey<ThrowingEvent>(d => d.IdEvent)
-                .OnDelete(DeleteBehavior.ClientSetNull)
+                .OnDelete(DeleteBehavior.Cascade)
                 .HasConstraintName("fk_BACACKA_DISCIPLINA_DISCIPLINA1");
         });
 
