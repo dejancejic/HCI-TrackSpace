@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("TrackSpace")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+5f60e555971608c6fd3a2b1bcd055e6e4d9d28b3")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+aed619bbe24ed043b9af821cc50d38241f50f9cb")]
 [assembly: System.Reflection.AssemblyProductAttribute("TrackSpace")]
 [assembly: System.Reflection.AssemblyTitleAttribute("TrackSpace")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

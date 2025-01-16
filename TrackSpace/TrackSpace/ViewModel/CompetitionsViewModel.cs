@@ -30,7 +30,8 @@ namespace TrackSpace.ViewModel
         public ObservableCollection<Competition> PastCompetitions { get { return _past; } set { _past = value; OnPropertyChanged(nameof(PastCompetitions)); } }
         public ObservableCollection<Competition> OngoingCompetitions { get { return _ongoing; } set { _ongoing = value; OnPropertyChanged(nameof(OngoingCompetitions)); } }
 
-        private ObservableCollection<int> _years= new ObservableCollection<int> { 2020, 2021, 2022, 2023, 2024, 2025 };
+        private static int currentYear = DateTime.Now.Year;
+        private ObservableCollection<int> _years= new ObservableCollection<int> { currentYear-5, currentYear - 4, currentYear - 3, currentYear - 2, currentYear - 1, currentYear, currentYear +1 };
 
         private int _selectedYear;
        
