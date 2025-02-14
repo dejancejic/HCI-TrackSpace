@@ -107,7 +107,7 @@ FontWeight="Bold"
  />
                             <ToggleButton HorizontalAlignment="Center" Margin="5 0 0 0"
   materialDesign:ToggleButtonAssist.OnContent="{DynamicResource M}" IsChecked="{Binding IsMale, Mode=TwoWay}"
-  Content="{DynamicResource F}"
+  Content="{DynamicResource F}" Background="{DynamicResource Primary}"
   Style="{StaticResource MaterialDesignActionToggleButton}"
   ToolTip="MaterialDesignActionLightToggleButton" />
                             

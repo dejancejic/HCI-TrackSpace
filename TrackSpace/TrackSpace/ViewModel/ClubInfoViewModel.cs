@@ -3,6 +3,7 @@ using MaterialDesignThemes.Wpf;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Configuration;
 using System.Diagnostics;
 using System.Linq;
 using System.Runtime.CompilerServices;
@@ -184,7 +185,11 @@ namespace TrackSpace.ViewModel
                 new CustomMessageBox(false, false, (string)Application.Current.Resources["error"], (string)Application.Current.Resources["fillFields"]).Show();
                 return;
             }
-
+            if (Date.Year >DateTime.Now.Year - int.Parse(ConfigurationManager.AppSettings[10]!))
+            {
+                new CustomMessageBox(false, false, (string)Application.Current.Resources["error"], (string)Application.Current.Resources["incorrectDate"]).Show();
+                return;
+            }
 
             AddedCompetitor.Dob = DoB;
 

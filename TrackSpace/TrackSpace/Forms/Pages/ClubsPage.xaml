@@ -32,7 +32,7 @@
                                        Style="{StaticResource MaterialDesignOutlinedAutoSuggestBox}"
                                        Suggestions="{Binding AutoSuggestBox1Suggestions}" 
                                        Text="{Binding AutoSuggestBox1Text, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
-                                       ValueMember="Value" Margin="226,13,154,521">
+                                       ValueMember="Value" Margin="226,13,154,520">
             <materialDesign:AutoSuggestBox.ItemTemplate>
                 <DataTemplate>
                     <DockPanel>

@@ -165,5 +165,5 @@
     <System:String x:Key="sureToConfirmEntries">Da li ste sigurni da želite da potvrdite prijave?</System:String>
     <System:String x:Key="city">Grad</System:String>
     <System:String x:Key="sureToLogout">Da li ste sigurni da želite da se odjavite?</System:String>
-
+    <System:String x:Key="incorrectDate">Godina rođenja mora biti bar 10 godina manja od trenutne</System:String>
 </ResourceDictionary>

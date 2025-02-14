@@ -55,27 +55,7 @@ ToolTip="MaterialDesignFloatingActionMiniDarkButton" VerticalAlignment="Bottom" 
 FontWeight="Bold" FontSize="40" Foreground="Black" Margin="15,10,0,500"/>
 
 
-        <!--<StackPanel Margin="0 70 270 0" Orientation="Vertical" HorizontalAlignment="Right" >
-            <Image Source="pack://application:,,,/Resources/trackIcon.png" Width="50" Height="50"></Image>
-            <StackPanel Orientation="Horizontal">
-                <Label HorizontalAlignment="Center" Content="{Binding Event.IdEventNavigation.IdCompetitionNavigation.PostNumberNavigation.Address}"></Label>
-                <Label Content="," Margin="-7 0 0 0"></Label>
-            </StackPanel>
-            <Label Content="{Binding Event.IdEventNavigation.IdCompetitionNavigation.PostNumberNavigation.City}"></Label>
-        </StackPanel>-->
-
-        <!--<StackPanel Margin="0 70 80 0" Orientation="Vertical" HorizontalAlignment="Right" >
-            <Image Source="pack://application:,,,/Resources/dateTimeIcon.png" Width="50" Height="50"></Image>
-            <StackPanel Orientation="Horizontal">
-                <Label HorizontalAlignment="Center"
-Content="{Binding Event.IdEventNavigation.IdCompetitionNavigation.Start, Converter={StaticResource DateTimeConverter}, ConverterParameter=DateOnly}"
- Foreground="Black" />
-
-            </StackPanel>
-            <Label Content="{Binding Event.IdEventNavigation.Start, Converter={StaticResource DateTimeConverter}, ConverterParameter=TimeOnly}" FontWeight="DemiBold"
-                HorizontalAlignment="Center">
-            </Label>
-        </StackPanel>-->
+       
         <materialDesign:PackIcon Foreground="{DynamicResource Primary}" Kind="AccountGroupOutline" Width="37" Height="38" VerticalAlignment="Top" Margin="18,200,0,0"/>
 
         <DockPanel Margin="285,80,270,415">
@@ -100,7 +80,7 @@ BorderThickness="0"/>
         </DockPanel>
 
 
-        <DockPanel Margin="538,145,70,405" >
+        <DockPanel Margin="538,145,70,400" >
             <materialDesign:PackIcon Foreground="{DynamicResource Primary}" Kind="Alarm" Width="41" Height="40" VerticalAlignment="Center" Margin="0,0,10,0"/>
             <TextBox FontSize="18" IsReadOnly="true" Style="{StaticResource MaterialDesignFloatingHintTextBox}" materialDesign:HintAssist.Hint="{DynamicResource time}"
 materialDesign:HintAssist.FloatingOffset="0,-20"

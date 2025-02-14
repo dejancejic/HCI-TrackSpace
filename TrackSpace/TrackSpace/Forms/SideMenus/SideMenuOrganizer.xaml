@@ -55,7 +55,7 @@
                     </StackPanel>
                 </ListViewItem>
 
-                <ListViewItem Margin="0 180 0 0"  Tag="SettingsPage" Name="settingsItem">
+                <ListViewItem Margin="0 170 0 0"  Tag="SettingsPage" Name="settingsItem">
                     <StackPanel HorizontalAlignment="Center">
                         <materialDesign:PackIcon Foreground="white" Kind="Settings" Height="40" Width="30" HorizontalAlignment="Center"/>
                         <Label Foreground="White" FontWeight="Bold" FontSize="18" Content="{DynamicResource settings}"/>

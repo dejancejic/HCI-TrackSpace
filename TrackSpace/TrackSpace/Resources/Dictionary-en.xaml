@@ -165,4 +165,5 @@
     <System:String x:Key="sureToConfirmEntries">Are you sure you want to confirm entries?</System:String>
     <System:String x:Key="city">City</System:String>
     <System:String x:Key="sureToLogout">Are you sure you want to logout ?</System:String>
+    <System:String x:Key="incorrectDate">Year of birth must be at least 10 years earlier than this year</System:String>
 </ResourceDictionary>

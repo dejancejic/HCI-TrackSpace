@@ -66,7 +66,7 @@ FontWeight="Bold" FontSize="40" Foreground="Black" />
             <materialDesign:PackIcon Kind="Minus" Width="25" Height="25" Opacity="0.5"/>
         </Button>
 
-        <DockPanel Margin="15,85,500,454">
+        <DockPanel Margin="15,85,500,450">
             <materialDesign:PackIcon Foreground="{DynamicResource Primary}" Kind="CalendarClock" Width="41" Height="40" VerticalAlignment="Center" Margin="0,0,10,0"/>
             <TextBox FontSize="18" IsReadOnly="true" Style="{StaticResource MaterialDesignFloatingHintTextBox}" materialDesign:HintAssist.Hint="{DynamicResource start}"
 materialDesign:HintAssist.FloatingOffset="0,-20"
